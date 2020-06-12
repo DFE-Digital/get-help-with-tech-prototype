@@ -39,6 +39,9 @@
   GOV.UK Prototype Kit
 {% endblock %}
 
+{% block bodyStart %}
+  <div data-module="edge">
+{% endblock %}
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {# Set serviceName in config.js. #}
@@ -78,6 +81,8 @@
 {% endif %}
 
 {% block bodyEnd %}
+  </div>
+
   {% block scripts %}
     {% include "includes/scripts.html" %}
     {% block pageScripts %}{% endblock %}
