@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block pageTitle %}Sign in{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <form action="/check-email" method="post" class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Sign in</h1>
+
+      {{ govukInput({
+        label: {
+          text: "Email address"
+        },
+        id: "sign-in-email-address",
+        name: "sign-in-email-address"
+      }) }}
+
+      {{ govukButton({
+        text: "Sign in"
+      }) }}
+    </form>
+  </div>
+{% endblock %}
