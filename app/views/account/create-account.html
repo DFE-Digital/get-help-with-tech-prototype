@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block pageTitle %}Create an account{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <form action="/account/check-email" method="post" class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Create an account</h1>
+
+      {{ govukInput({
+        label: {
+          text: "Full name",
+          classes: "govuk-label--m"
+        },
+        id: "name",
+        name: "name"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Email address",
+          classes: "govuk-label--m"
+        },
+        hint: {
+          text: "Use your work address"
+        },
+        id: "sign-in-email-address",
+        name: "sign-in-email-address"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Organisation you work for",
+          classes: "govuk-label--m"
+        },
+        id: "organisation",
+        name: "organisation"
+      }) }}
+
+      <h2 class="govuk-heading-m">You won’t need a password to use this service</h2>
+      <p class="govuk-body govuk-!-margin-bottom-8">Instead, you’ll sign in using your email address. Each time you sign in, we’ll send you a link to get back in.</p>
+
+      {{ govukButton({
+        text: "Create account"
+      }) }}
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% set title = "Tell us who needs internet access" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body">
+      Increased internet access is available to children from early years up to 16, and care leavers up to 25 if they:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        don’t have access to a <a class="govuk-link" href="https://www.ofcom.org.uk/phones-telecoms-and-internet/advice-for-consumers/advice/broadband-speeds/broadband-basics">fixed broadband connection</a>
+      </li>
+      <li>
+        cannot afford the additional data needed to access educational resources or social care services
+      </li>
+    </ul>
+
+    <h2 class="govuk-heading-l">What you need to tell us</h2>
+    <p class="govuk-body">
+      Tell us:
+    </p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      <li>how many eligible young people you know about</li>
+      <li>how many of them can access a BT hotspot</li>
+      <li>who needs additional mobile data</li>
+    </ul>
+
+    {{ govukButton({
+      isStartButton: true,
+      text: 'Start now',
+      href: '/account'
+    })}}
+  </div>
+</div>
+{% endblock %}
