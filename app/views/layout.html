@@ -42,6 +42,22 @@
 {% block bodyStart %}
   <div data-module="edge">
 {% endblock %}
+
+{% block beforeContent %}
+  {% if showPhaseBanner != false %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "Prototype"
+      },
+      html: "This is a prototype of a new service. Some parts may not work yet."
+    }) }}
+  {% endif %}
+  {% block pageNavigation %}
+  {% endblock %}
+  {% block pageBanner %}
+  {% endblock %}
+{% endblock %}
+
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {# Set serviceName in config.js. #}
