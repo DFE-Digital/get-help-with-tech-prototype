@@ -28,30 +28,25 @@ Move the folder into your `projects` folder.
 
 ## Terminal basics
 
-The terminal (on Mac and Linux, git bash on Windows) lets you type in commands and run programs on your computer. You can also use it to browse your file system, for example to open folders.
+The terminal (on mac and linux, git bash on windows) lets you type in commands and run programs on your computer. You can also use it to browse your file system - to open folders, etc.
 
-You can follow a [tutorial on basic terminal commands](https://tutorials.codebar.io/command-line/introduction/tutorial.html) on the codebar website.
+Learning a few basic terminal commands can make using the kit much easier.
+
+* [Tutorial on using terminal (mac)](http://mac.appstorm.net/how-to/utilities-how-to/how-to-use-terminal-the-basics/)
+* [Tutorial on using git bash (windows)](https://openhatch.org/missions/windows-setup/open-git-bash-prompt)
 
 ### Navigating to your prototype
 
 You need to navigate to your prototype in the terminal. Most commands for the kit need to be run in the prototype folder.
 
-If you're using a Mac, enter:
-
+#### Mac users:
 ```
 cd ~/projects/juggling-licence-prototype
 ```
 
-If you're using Windows, enter:
-
+#### Windows users:
 ```
 cd ~/Documents/projects/juggling-licence-prototype
-```
-
-If any of your folder names contain spaces, you must add quotation marks around everything after `~/`. For example:
-
-```
-cd ~/"a folder name with spaces/Documents/projects/juggling-licence-prototype"
 ```
 
 ## Install the kit
