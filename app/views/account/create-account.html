@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 {% block pageTitle %}Create an account{% endblock %}
 
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/account"
+  }) }}
+{% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <form action="/account/check-email" method="post" class="govuk-grid-column-two-thirds">
