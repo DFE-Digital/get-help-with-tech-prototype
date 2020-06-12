@@ -2,43 +2,82 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  Increasing children’s internet access
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        The GOV.UK Prototype Kit
-        <span class="govuk-caption-xl">{{releaseVersion}}</span>
-      </h1>{{releaseVersion | log }}
-      <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services.
-      </p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Increasing children’s internet&nbsp;access
+    </h1>
 
-      <p>
-        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
-      </p>
-
-      <h2 class="govuk-heading-m">About this page</h2>
-
-      <p>We recommend you add links to your prototype to this page, rather than delete it.
-        You'll find this page in the kit at '/app/views/index.html'.</p>
-
-      <p>You can change the service name by editing the file '/app/config.js'.</p>
-
-      <h2 class="govuk-heading-m">Examples and documentation</h2>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="/docs/tutorials-and-examples">Example pages and documentation</a>
-        </li>
-        <li>
-          <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
-        </li>
-      </ul>
-    </div>
+    <p class="govuk-body-l">
+      We know internet access supports remote education, as well as virtual meetings between children and their social workers. That’s why we’re providing laptops, tablets and 4G wireless routers to disadvantaged families. (There’s more about this on <a class="govuk-link" href="https://www.gov.uk/guidance/get-help-with-technology-for-remote-education-during-coronavirus-covid-19">GOV.UK</a>.)
+    </p>
+    <p class="govuk-body-l">
+      We also know some children don’t have reliable internet access. That’s why we’re now acting to change this.
+    </p>
+    <h2 class="govuk-heading-l">
+      How we’re improving children’s internet access
+    </h2>
+    <p class="govuk-body">
+      The Department for Education has teamed up with BT and mobile network operators to improve children’s internet access in two different ways:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        We’re giving them free access to BT wifi hotspots. BT will create a set of profiles that young people can activate through name/password combinations.
+      </li>
+      <li>
+        For anyone who can’t connect to a BT hotspot, we plan to boost data allowances on their mobile devices so they can access the internet without incurring data charges.
+      </li>
+    </ul>
+    <h2 class="govuk-heading-l">
+      Who can get help
+    </h2>
+    <p class="govuk-body">
+      Increased internet access is available to children from early years up to 16, and care leavers up to 25 if they:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        don’t have access to a <a class="govuk-link" href="https://www.ofcom.org.uk/phones-telecoms-and-internet/advice-for-consumers/advice/broadband-speeds/broadband-basics">fixed broadband connection</a>
+      </li>
+      <li>
+        cannot afford the additional data needed to access educational resources or social care services
+      </li>
+    </ul>
+    <h2 class="govuk-heading-l">
+      Accessing BT hotspots
+    </h2>
+    <p class="govuk-body">
+      The Department for Education has allocated a number of BT hotspot profiles to trusts and local authorities.
+    </p>
+    <p class="govuk-body">
+      Once trusts and local authorities confirm they want these, they’ll receive profile details which they can pass on to schools to distribute.
+    </p>
+    <p class="govuk-body">
+      Schools should only distribute the profiles to eligible young people who have access to BT hotspots.
+    </p>
+    <p class="govuk-body">
+      If trusts and local authorities think their initial allocation isn’t sufficient, they can request more.
+    </p>
+    <h2 class="govuk-heading-l">
+      There’s technical support
+    </h2>
+    <p class="govuk-body">
+      BT are offering technical support to young people using the hotspots.
+    </p>
+    <p class="govuk-body">
+      Their free help desk is open from 8am until 8pm on 0800 587 9983.
+    </p>
+    <h2 class="govuk-heading-l">
+      For young people who can’t connect to BT hotspots
+    </h2>
+    <p class="govuk-body">
+      We want to support young people who can’t connect to a BT hotspot. One possible solution is increasing data allowances on young people’s mobile devices so they can access the internet without incurring data charges. There will be more information about this once we confirm our plans.
+    </p>
+  </div>
 </div>
 
 {% endblock %}
