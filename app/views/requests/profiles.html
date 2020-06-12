@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% set title = "How many young people are eligible?" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/requests"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <form method="post" action="/requests/profiles-summary" class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      How many young people are&nbsp;eligible?
+    </h1>
+
+    {{ govukInput({
+      label: {
+        text: "Number of young people who are eligible"
+      },
+      id: "total-eligible",
+      name: "total-eligible",
+      classes: "govuk-input--width-4"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Number of those who can access a BT hotspot"
+      },
+      id: "total-hotspot",
+      name: "total-hotspot",
+      classes: "govuk-input--width-4"
+    }) }}
+
+    {{ govukButton({
+      html: 'Save'
+    }) }}
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% set title = "Check your answers before submitting" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/requests"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Number of eligible"
+          },
+          value: {
+            text: data['total-eligible']
+          },
+          actions: {
+            items: [
+              {
+                href: "/requests/profiles",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Number who can access a BT hotspot"
+          },
+          value: {
+            text: data['total-hotspot']
+          },
+          actions: {
+            items: [
+              {
+                href: "/requests/profiles",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      html: 'Finish'
+    }) }}
+  </div>
+</div>
+{% endblock %}
