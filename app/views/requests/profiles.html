@@ -19,19 +19,15 @@
       label: {
         text: "Number of young people who are eligible"
       },
-      id: "total-eligible",
-      name: "total-eligible",
       classes: "govuk-input--width-4"
-    }) }}
+    } | decorateFormAttributes('total-eligible') )}}
 
     {{ govukInput({
       label: {
         text: "Number of those who can access a BT hotspot"
       },
-      id: "total-hotspot",
-      name: "total-hotspot",
       classes: "govuk-input--width-4"
-    }) }}
+    } | decorateFormAttributes('total-hotspot')) }}
 
     {{ govukButton({
       html: 'Save'
