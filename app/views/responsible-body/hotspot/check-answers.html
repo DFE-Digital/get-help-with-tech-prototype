@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
-{% set title = "Check your answers before confirming" %}
+{% set title = "Check your answers" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/requests/new"
+    href: "/responsible-body/hotspot"
   }) }}
 {% endblock %}
 
@@ -16,18 +16,19 @@
     </h1>
 
     {{ govukSummaryList({
+      classes: "govuk-summary-list--wide-terms",
       rows: [
         {
           key: {
-            text: "Name"
+            text: "Number eligible"
           },
           value: {
-            text: data['name']
+            text: data['total-eligible']
           },
           actions: {
             items: [
               {
-                href: "/requests/new",
+                href: "/responsible-body/hotspot",
                 text: "Change",
                 visuallyHiddenText: "name"
               }
@@ -36,32 +37,15 @@
         },
         {
           key: {
-            text: "Mobile number"
+            text: "Number who can access a BT hotspot"
           },
           value: {
-            text: data['mobile-number']
+            text: data['total-hotspot']
           },
           actions: {
             items: [
               {
-                href: "/requests/new",
-                text: "Change",
-                visuallyHiddenText: "name"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Mobile network"
-          },
-          value: {
-            text: data['mobile-network']
-          },
-          actions: {
-            items: [
-              {
-                href: "/requests/new",
+                href: "/responsible-body/hotspot",
                 text: "Change",
                 visuallyHiddenText: "name"
               }
@@ -71,11 +55,9 @@
       ]
     }) }}
 
-    <p>These details will be passed to {{ data['mobile-network'] }}</p>
-
     {{ govukButton({
-      text: 'Confirm request',
-      href: '/requests?finish-profiles=true'
+      text: 'Submit',
+      href: '/responsible-body?finish-profiles=true'
     }) }}
   </div>
 </div>

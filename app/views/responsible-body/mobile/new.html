@@ -4,13 +4,13 @@
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/requests/mobile"
+    href: "/responsible-body/mobile/new"
   }) }}
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <form method="post" action="/requests/mobile-check" class="govuk-grid-column-two-thirds">
+  <form method="post" action="/responsible-body/mobile/check-answers" class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>

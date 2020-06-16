@@ -4,7 +4,7 @@
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/requests"
+    href: "/responsible-body"
   }) }}
 {% endblock %}
 
@@ -17,7 +17,7 @@
 
     {{ govukButton({
       text: 'Request data for someone',
-      href: '/requests/new'
+      href: '/responsible-body/mobile/new'
     }) }}
 
     {% if data['mobile-number'] %}
