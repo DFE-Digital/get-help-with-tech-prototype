@@ -24,3 +24,15 @@ $govuk-assets-path: '/govuk/assets/';
     width: 30%;
   }
 }
+
+.requests-table {
+  .govuk-table__header,
+  .govuk-table__cell {
+    vertical-align: middle;
+  }
+
+  .govuk-table__header {
+    border-width: 2px;
+    border-color: govuk-colour("black");
+  }
+}
