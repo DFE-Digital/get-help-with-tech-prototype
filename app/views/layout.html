@@ -30,6 +30,7 @@
 {% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
 
 {% from "_components/task-list/macro.njk"      import appTaskList %}
+{% from "_components/banner/macro.njk"         import appBanner %}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -62,9 +63,9 @@
   {% include "includes/cookie-banner.html" %}
   {# Set serviceName in config.js. #}
   {{ govukHeader({
-    homepageUrl: "/",
+    homepageUrl: "/responsible-body",
     serviceName: serviceName,
-    serviceUrl: "/",
+    serviceUrl: "/responsible-body",
     containerClasses: "govuk-width-container",
     navigation: [
       {

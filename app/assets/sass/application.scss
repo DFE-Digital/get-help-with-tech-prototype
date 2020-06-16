@@ -8,6 +8,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "lib/extensions/extensions";
 
 // Components that aren't in Frontend
+@import "components/banner";
 @import "components/task-list";
 @import "components/related-items";
 @import "components/cookie-banner";
