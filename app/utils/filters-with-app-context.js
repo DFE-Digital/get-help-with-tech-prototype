@@ -9,6 +9,7 @@ module.exports = (nunjucksAppEnv, app) => {
       if (obj.items !== undefined) {
         obj.items = obj.items.map(item => {
           var checked = ''
+          var selected = ''
           if (typeof item.value === 'undefined') {
             item.value = item.text
           }
@@ -17,15 +18,18 @@ module.exports = (nunjucksAppEnv, app) => {
           if (Array.isArray(storedValue)) {
             if (storedValue.indexOf(item.value) !== -1) {
               checked = 'checked'
+              selected = 'selected'
             }
           } else {
             // The data is just a simple value, check it matches
             if (storedValue === item.value) {
               checked = 'checked'
+              selected = 'selected'
             }
           }
 
           item.checked = checked
+          item.selected = selected
           return item
         })
 

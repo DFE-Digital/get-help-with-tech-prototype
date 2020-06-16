@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "How many young people are eligible?" %}
+{% set title = "Check your answers" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -56,7 +56,7 @@
     }) }}
 
     {{ govukButton({
-      text: 'Submit request',
+      text: 'Submit',
       href: '/requests?finish-profiles=true'
     }) }}
   </div>

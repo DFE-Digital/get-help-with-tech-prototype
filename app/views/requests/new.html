@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+{% set title = "Who needs the extra mobile data?" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/requests/mobile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <form method="post" action="/requests/mobile-check" class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    {{ govukInput({
+      label: {
+        text: "Name of the eligible young person",
+        classes: "govuk-label--m"
+      }
+    } | decorateFormAttributes('name') )}}
+
+    {{ govukInput({
+      label: {
+        text: "Mobile phone number",
+        classes: "govuk-label--m"
+      },
+      hint: {
+        text: 'All UK mobile numbers begin with ‘07’'
+      }
+    } | decorateFormAttributes('mobile-number') )}}
+
+    {{ govukSelect({
+      label: {
+        text: "Mobile network",
+        classes: "govuk-label--m"
+      },
+      items: [
+        { text: "" },
+        { text: "1pMobile" },
+        { text: "360Coms Telecom" },
+        { text: "365 Mobile" },
+        { text: "AfriMobile" },
+        { text: "AlwaysOnline Wireless" },
+        { text: "Anywhere Care Ownfone (formerly Age UK Ownfone" },
+        { text: "Anywhere Sim" },
+        { text: "Asda Mobile" },
+        { text: "Auracall Travel Talk" },
+        { text: "Axis Telecom" },
+        { text: "BT Mobile" },
+        { text: "BT Onephone (BTOP" },
+        { text: "C4C Mobile" },
+        { text: "Call &amp; Give" },
+        { text: "Calteq" },
+        { text: "Champions Mobile" },
+        { text: "CMLink" },
+        { text: "CTExcel" },
+        { text: "Ctrl Mobile" },
+        { text: "CUniq" },
+        { text: "Ecotalk" },
+        { text: "ETS Mobile" },
+        { text: "Fonome Mobile" },
+        { text: "FreedomPop" },
+        { text: "Gamma Telecom" },
+        { text: "Gemini Mobile" },
+        { text: "giffgaff" },
+        { text: "Global" },
+        { text: "Globalgig" },
+        { text: "HP Mobile Connect" },
+        { text: "i3 Mobile" },
+        { text: "iD Mobile" },
+        { text: "JOi Telecom" },
+        { text: "Jump" },
+        { text: "Just Utilities" },
+        { text: "KC Mobile" },
+        { text: "Lebara Mobile" },
+        { text: "Lycamobile" },
+        { text: "Meem Mobile" },
+        { text: "NordTelekom" },
+        { text: "Now PAYG" },
+        { text: "Pebble Mobile Network" },
+        { text: "Plusnet Mobile" },
+        { text: "Rok Mobile" },
+        { text: "RWG Mobile" },
+        { text: "Sky Mobile" },
+        { text: "SMARTY" },
+        { text: "Superdrug Mobile" },
+        { text: "Talk Home Mobile" },
+        { text: "Talkmobile" },
+        { text: "TalkTalk Mobile" },
+        { text: "TalkXtra Mobile" },
+        { text: "Telecom Plus" },
+        { text: "Telfoni" },
+        { text: "Tesco Mobile" },
+        { text: "The Phone Co-op" },
+        { text: "Toggle Mobile" },
+        { text: "Torica Mobile" },
+        { text: "Truphone" },
+        { text: "Utilita" },
+        { text: "Vectone Mobile" },
+        { text: "Virgin Mobile" },
+        { text: "Vivio" },
+        { text: "VOXI" },
+        { text: "White Mobile" },
+        { text: "XLN Telecom" },
+        { text: "Zevvle" }
+      ]
+    } | decorateFormAttributes('mobile-network')) }}
+
+    {{ govukButton({
+      html: 'Continue'
+    }) }}
+  </form>
+</div>
+{% endblock %}

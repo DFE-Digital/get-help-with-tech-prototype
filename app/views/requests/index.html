@@ -9,15 +9,165 @@
       {{ title }}
     </h1>
 
-    <h2 class="govuk-heading-m">
-      <a href="/requests/profiles">Tell us how many young people are eligible</a>
-    </h2>
-    <p class="govuk-body">We need to know how many people are eligible, and how many of them can access a BT hotspot. We’ll use this information to calculate how many BT hotspot profiles to send&nbsp;you.</p>
+    <p class="govuk-body">
+      Increased internet access is available to children from early years up to 16, and care leavers up to 25 if they:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        don’t have access to a <a class="govuk-link" href="https://www.ofcom.org.uk/phones-telecoms-and-internet/advice-for-consumers/advice/broadband-speeds/broadband-basics">fixed broadband connection</a>
+      </li>
+      <li>
+        cannot afford the additional data needed to access educational resources or social care services
+      </li>
+    </ul>
 
-    <h2 class="govuk-heading-m">
-      <a href="/requests/profiles">Request mobile data for a young person</a>
+    <h2 class="govuk-heading-m govuk-!-font-size-27 govuk-!-margin-bottom-4">
+      <span class="govuk-caption-m">Step 1</span>
+      {% if data['total-eligible'] %}
+        How many young people are eligible?
+      {% else %}
+        <a href="/requests/profiles">How many young people are eligible?</a>
+      {% endif %}
     </h2>
-    <p class="govuk-body">Give us their mobile number and network details and we’ll request additional data for them. How much data they get will depend on their network.</p>
+    <div class="govuk-!-margin-bottom-4">
+      {% if data['total-eligible'] %}
+        {{ govukTag({ text: "Completed" })}}
+      {% else %}
+        {{ govukTag({
+          text: "Not started yet",
+          classes: "govuk-tag--grey"
+        }) }}
+      {% endif %}
+    </div>
+    {% if data['total-eligible'] %}
+      {{ govukSummaryList({
+        classes: "govuk-summary-list--wide-terms",
+        rows: [
+          {
+            key: {
+              text: "Eligible young people"
+            },
+            value: {
+              text: data['total-eligible']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Number who can see a BT hotspot"
+            },
+            value: {
+              text: data['total-hotspot']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+    {% else %}
+      <p class="govuk-body">Tell us how many young people are eligible for increased internet access, and how many of them can access a BT hotspot. We’ll use this information to calculate how many BT hotspot logins to send&nbsp;you.</p>
+    {% endif %}
+
+    <hr class="govuk-section-break govuk-section-break--m">
+
+    <h2 class="govuk-heading-m govuk-!-font-size-27 govuk-!-margin-bottom-4">
+      <span class="govuk-caption-m">Step 2</span>
+      <a href="/requests/mobile">Request extra mobile data</a>
+    </h2>
+    <div class="govuk-!-margin-bottom-4">
+      {% if data['total-eligible'] %}
+        {{ govukTag({
+          text: "1 request",
+          classes: "govuk-tag--blue"
+        }) }}
+      {% else %}
+        {{ govukTag({
+          text: "Not started yet",
+          classes: "govuk-tag--grey"
+        }) }}
+      {% endif %}
+    </div>
+    <p class="govuk-body">Give us mobile numbers and network details and we’ll request extra data for them. How much data someone gets will depend on their network.</p>
+
+
+
+
+    <!-- <h2 class="govuk-heading-l">
+      How many young people are&nbsp;eligible?</a>
+    </h2>
+    {% if data['total-eligible'] %}
+      <p>We’ll use the following information to calculate how many BT hotspot logins to send&nbsp;you:</p>
+      {{ govukSummaryList({
+        classes: "govuk-summary-list--wide-terms",
+        rows: [
+          {
+            key: {
+              text: "Eligible young people"
+            },
+            value: {
+              text: data['total-eligible']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/requests/profiles",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Number who can see a BT hotspot"
+            },
+            value: {
+              text: data['total-hotspot']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/requests/profiles",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+    {% else %}
+      <h2 class="govuk-heading-m">
+        <a href="/requests/profiles-check">How many young people are eligible?</a>
+      </h2>
+      <p class="govuk-body">We need to know how many people are eligible, and how many of them can access a BT hotspot. We’ll use this information to calculate how many BT hotspot logins to send&nbsp;you.</p>
+    {% endif %}
+
+    <hr class="govuk-section-break govuk-section-break--l">
+
+    <h2 class="govuk-heading-l">
+      Request mobile data for young people
+    </h2>
+    <p class="govuk-body">Give us mobile numbers and network details and we’ll request additional data for them. How much data someone will get depends on their network.</p>
+
+    <p>
+      <a href="/requests/profiles">Make a new request</a>
+    </p> -->
   </div>
 </div>
 {% endblock %}

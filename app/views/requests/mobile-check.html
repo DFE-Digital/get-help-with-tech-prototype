@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
-{% set title = "How many young people are eligible?" %}
+{% set title = "Check your answers before confirming" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/requests/profiles"
+    href: "/requests/new"
   }) }}
 {% endblock %}
 
@@ -16,19 +16,18 @@
     </h1>
 
     {{ govukSummaryList({
-      classes: "govuk-summary-list--wide-terms",
       rows: [
         {
           key: {
-            text: "Number eligible"
+            text: "Name"
           },
           value: {
-            text: data['total-eligible']
+            text: data['name']
           },
           actions: {
             items: [
               {
-                href: "/requests/profiles",
+                href: "/requests/new",
                 text: "Change",
                 visuallyHiddenText: "name"
               }
@@ -37,15 +36,32 @@
         },
         {
           key: {
-            text: "Number who can access a BT hotspot"
+            text: "Mobile number"
           },
           value: {
-            text: data['total-hotspot']
+            text: data['mobile-number']
           },
           actions: {
             items: [
               {
-                href: "/requests/profiles",
+                href: "/requests/new",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Mobile network"
+          },
+          value: {
+            text: data['mobile-network']
+          },
+          actions: {
+            items: [
+              {
+                href: "/requests/new",
                 text: "Change",
                 visuallyHiddenText: "name"
               }
@@ -55,8 +71,10 @@
       ]
     }) }}
 
+    <p>These details will be passed to {{ data['mobile-network'] }}</p>
+
     {{ govukButton({
-      text: 'Submit request',
+      text: 'Confirm request',
       href: '/requests?finish-profiles=true'
     }) }}
   </div>

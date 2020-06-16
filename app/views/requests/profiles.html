@@ -10,21 +10,23 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-  <form method="post" action="/requests/profiles-summary" class="govuk-grid-column-two-thirds">
+  <form method="post" action="/requests/profiles-check" class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
       How many young people are&nbsp;eligible?
     </h1>
 
     {{ govukInput({
       label: {
-        text: "Number of young people who are eligible"
+        text: "Number of young people who are eligible",
+        classes: "govuk-label--m"
       },
       classes: "govuk-input--width-4"
     } | decorateFormAttributes('total-eligible') )}}
 
     {{ govukInput({
       label: {
-        text: "Number of those who can access a BT hotspot"
+        text: "Number of those who can access a BT hotspot",
+        classes: "govuk-label--m"
       },
       classes: "govuk-input--width-4"
     } | decorateFormAttributes('total-hotspot')) }}
