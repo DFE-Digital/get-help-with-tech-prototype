@@ -36,6 +36,40 @@
         },
         {
           key: {
+            text: "Are they the account holder?"
+          },
+          value: {
+            text: data['account-holder']
+          },
+          actions: {
+            items: [
+              {
+                href: "/responsible-body/mobile/new",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Account holder"
+          },
+          value: {
+            text: data['account-holder-name']
+          },
+          actions: {
+            items: [
+              {
+                href: "/responsible-body/mobile/new",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        } if data['account-holder'] == 'No',
+        {
+          key: {
             text: "Mobile number"
           },
           value: {

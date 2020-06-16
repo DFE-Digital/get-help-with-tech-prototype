@@ -22,6 +22,34 @@
       }
     } | decorateFormAttributes('name') )}}
 
+    {% set notAccountHolderHtml %}
+      {{ govukInput({
+        label: {
+          text: "Name of the account holder"
+        }
+      } | decorateFormAttributes('account-holder-name') )}}
+    {% endset %}
+
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: "Are they the account holder?",
+          classes: "govuk-label--m"
+        }
+      },
+      items: [
+        {
+          text: "Yes"
+        },
+        {
+          text: "No",
+          conditional: {
+            html: notAccountHolderHtml
+          }
+        }
+      ]
+    } | decorateFormAttributes('account-holder') ) }}
+
     {{ govukInput({
       label: {
         text: "Mobile phone number",

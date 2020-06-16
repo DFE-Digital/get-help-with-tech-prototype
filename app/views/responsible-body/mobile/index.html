@@ -25,26 +25,34 @@
       text: 'Request data for someone',
       href: '/responsible-body/mobile/new'
     }) }}
-
-    {% if data['mobile-number'] %}
-      <h2 class="govuk-heading-m">Your requests</h2>
-      <table class="govuk-table">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th class="govuk-table__header">Name</th>
-            <th class="govuk-table__header">Mobile number</th>
-            <th class="govuk-table__header">Mobile Network</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">{{ data['name'] }}</td>
-            <td class="govuk-table__cell">{{ data['mobile-number'] }}</td>
-            <td class="govuk-table__cell">{{ data['mobile-network'] }}</td>
-          </tr>
-        </tbody>
-      </table>
-    {% endif %}
   </div>
 </div>
+
+{% if data['mobile-number'] %}
+  <h2 class="govuk-heading-m">Your requests</h2>
+  <table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header">Young person’s name</th>
+        <th class="govuk-table__header">Account holder</th>
+        <th class="govuk-table__header">Mobile number</th>
+        <th class="govuk-table__header">Mobile Network</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">{{ data['name'] }}</td>
+        <td class="govuk-table__cell">
+          {% if data['account-holder'] == "No" %}
+            {{ data['account-holder-name'] }}
+          {% else %}
+            –
+          {% endif %}
+        </td>
+        <td class="govuk-table__cell">{{ data['mobile-number'] }}</td>
+        <td class="govuk-table__cell">{{ data['mobile-network'] }}</td>
+      </tr>
+    </tbody>
+  </table>
+{% endif %}
 {% endblock %}
