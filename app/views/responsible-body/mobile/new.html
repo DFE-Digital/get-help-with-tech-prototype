@@ -17,38 +17,13 @@
 
     {{ govukInput({
       label: {
-        text: "Name of the eligible young person",
+        text: "Account holder name",
         classes: "govuk-label--m"
+      },
+      hint: {
+        html: "An account holder must be over 18.<br />Do not enter a child’s name."
       }
     } | decorateFormAttributes('name') )}}
-
-    {% set notAccountHolderHtml %}
-      {{ govukInput({
-        label: {
-          text: "Name of the account holder"
-        }
-      } | decorateFormAttributes('account-holder-name') )}}
-    {% endset %}
-
-    {{ govukRadios({
-      fieldset: {
-        legend: {
-          text: "Are they the account holder?",
-          classes: "govuk-label--m"
-        }
-      },
-      items: [
-        {
-          text: "Yes"
-        },
-        {
-          text: "No",
-          conditional: {
-            html: notAccountHolderHtml
-          }
-        }
-      ]
-    } | decorateFormAttributes('account-holder') ) }}
 
     {{ govukInput({
       label: {
