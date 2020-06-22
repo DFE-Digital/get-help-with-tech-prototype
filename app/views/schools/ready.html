@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% set title = "Are they ready to answer some questions?" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: paths.back
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body-l">Do you have them on the phone now?</p>
+
+    {{ govukButton({
+      html: 'Yes, continue'
+    }) }}
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% set title = "Success" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: paths.back
+  }) }}
+{% endblock %}
+
+{% block content %}
+{{ govukPanel({
+  titleText: "Success",
+  html: "We have requested data from " + data['network']
+}) }}
+
+<div class="govuk-grid-row">
+  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l govuk-!-margin-top-6">What next?</h2>
+
+    <p>They will receive a text message from their network when their data has been activated.</p>
+
+    {{ govukButton({
+      html: 'Finish'
+    }) }}
+  </form>
+</div>
+{% endblock %}

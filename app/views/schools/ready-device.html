@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% set title = "Do they have a device with them?" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: paths.back
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p>The device might be a laptop, desktop computer or tablet.</p>
+
+    {{ govukRadios({
+        items: [
+          {
+            text: 'Yes, they have a device'
+          },
+          {
+            text: 'No'
+          }
+        ]
+    } | decorateFormAttributes('device-ready') ) }}
+
+    {{ govukButton({
+      html: 'Continue'
+    }) }}
+  </form>
+</div>
+{% endblock %}

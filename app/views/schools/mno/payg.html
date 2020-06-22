@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% set title = "Are they on Pay as you go or a contract?" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: paths.back
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: title,
+          isPageHeading: true,
+          classes: "govuk-label--xl govuk-!-margin-bottom-6"
+        }
+      },
+      items: [
+        {
+          text: "Pay as you go"
+        },
+        {
+          text: "Contract"
+        }
+      ]
+    } | decorateFormAttributes('contract-type') ) }}
+
+    {{ govukButton({
+      html: 'Continue'
+    }) }}
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% set title = "What’s their mobile number?" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: paths.back
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+    {{ govukInput({
+      label: {
+        text: "Mobile phone number",
+        classes: "govuk-label--m"
+      },
+      hint: {
+        text: 'All UK mobile numbers begin with ‘07’'
+      }
+    } | decorateFormAttributes('mobile-number') )}}
+
+    {{ govukButton({
+      html: 'Continue'
+    }) }}
+  </form>
+</div>
+{% endblock %}

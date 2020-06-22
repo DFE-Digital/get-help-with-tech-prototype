@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% set title = "There’s an offer they can use" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: paths.back
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+    <p>{{ data['network'] }} can give them:</p>
+
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      <li>20GB of data per month for free</li>
+      <li>data for 3 months until November 2020</li>
+    </ul>
+
+    {{ govukButton({
+      text: 'Continue',
+      href: paths.next
+    }) }}
+  </div>
+</div>
+{% endblock %}

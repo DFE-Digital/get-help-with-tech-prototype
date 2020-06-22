@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% set title = "Who are you about to talk to?" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({ href: paths.back }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    {{ govukInput({
+      label: {
+        text: "Name of young person",
+        classes: "govuk-label--m"
+      }
+    } | decorateFormAttributes('young-person-name') )}}
+
+    {{ govukInput({
+      label: {
+        text: "Their phone number",
+        classes: "govuk-label--m"
+      },
+      classes: "govuk-input--width-10"
+    } | decorateFormAttributes('young-person-number') )}}
+
+    {{ govukButton({
+      html: 'Continue'
+    }) }}
+  </form>
+</div>
+{% endblock %}
