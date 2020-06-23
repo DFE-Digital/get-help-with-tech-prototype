@@ -28,7 +28,7 @@
   </div>
 </div>
 
-{% if data['mobile-number'] %}
+{% if dataValue(["responsible-body", "mobile"]) %}
   <h2 class="govuk-heading-m">Your requests</h2>
   <table class="govuk-table">
     <thead class="govuk-table__head">
@@ -39,11 +39,13 @@
       </tr>
     </thead>
     <tbody class="govuk-table__body">
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell">{{ data['name'] }}</td>
-        <td class="govuk-table__cell">{{ data['mobile-number'] }}</td>
-        <td class="govuk-table__cell">{{ data['mobile-network'] }}</td>
-      </tr>
+      {% for id, request in dataValue(["responsible-body", "mobile"]) %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ request['name'] }}</td>
+          <td class="govuk-table__cell">{{ request['mobile-number'] }}</td>
+          <td class="govuk-table__cell">{{ request['mobile-network'] }}</td>
+        </tr>
+      {% endfor %}
     </tbody>
   </table>
 {% endif %}
