@@ -22,7 +22,7 @@
     href: '/public/images/sample.csv'
 }) }}
 
-<h2 class="govuk-heading-l govuk-!-margin-top-4">4 requests</h2>
+<h2 class="govuk-heading-l govuk-!-margin-top-4">{{ data.mno.requests | length }} requests</h2>
 
 <table class="govuk-table requests-table">
   <thead class="govuk-table__head">
@@ -42,82 +42,22 @@
     </tr>
   </thead>
   <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="row-1" name="row" type="checkbox" value="row-1">
-          <label class="govuk-label govuk-checkboxes__label" for="row-1">
-            Dusty McQueen
-          </label>
-        </div>
-      </td>
-      <td class="govuk-table__cell">07912345678</td>
-      <td class="govuk-table__cell">16 June 2020</td>
-      <td class="govuk-table__cell">
-        {{ govukTag({
-          text: "New",
-          classes: "govuk-tag--blue"
-        }) }}
-      </td>
-      <td class="govuk-table__cell"><a href="#">Report a problem</a></td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="row-2" name="row" type="checkbox" value="row-2">
-          <label class="govuk-label govuk-checkboxes__label" for="row-2">
-            Cruz Dipper
-          </label>
-        </div>
-      </td>
-      <td class="govuk-table__cell">07702345678</td>
-      <td class="govuk-table__cell">16 June 2020</td>
-      <td class="govuk-table__cell">
-        {{ govukTag({
-          text: "In progress",
-          classes: "govuk-tag--yellow"
-        }) }}
-      </td>
-      <td class="govuk-table__cell"><a href="#">Report a problem</a></td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="row-3" name="row" type="checkbox" value="row-3">
-          <label class="govuk-label govuk-checkboxes__label" for="row-3">
-            Hudson Hicks
-          </label>
-        </div>
-      </td>
-      <td class="govuk-table__cell">07800345678</td>
-      <td class="govuk-table__cell">16 June 2020</td>
-      <td class="govuk-table__cell">
-        {{ govukTag({
-          text: "Complete",
-          classes: "govuk-tag--green"
-        }) }}
-      </td>
-      <td class="govuk-table__cell"><a href="#">Report a problem</a></td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="row-4" name="row" type="checkbox" value="row-4">
-          <label class="govuk-label govuk-checkboxes__label" for="row-4">
-            Luigi Windmaker
-          </label>
-        </div>
-      </td>
-      <td class="govuk-table__cell">07801345678</td>
-      <td class="govuk-table__cell">16 June 2020</td>
-      <td class="govuk-table__cell">
-        {{ govukTag({
-          text: "Not valid",
-          classes: "govuk-tag--red"
-        }) }}
-      </td>
-      <td class="govuk-table__cell"><a href="#">Report a problem</a></td>
-    </tr>
+    {% for request in data.mno.requests %}
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="row-1" name="row" type="checkbox" value="row-1">
+            <label class="govuk-label govuk-checkboxes__label" for="row-1">
+              {{ request.name }}
+            </label>
+          </div>
+        </td>
+        <td class="govuk-table__cell">{{ request.number }}</td>
+        <td class="govuk-table__cell">{{ request.date }}</td>
+        <td class="govuk-table__cell">{{ govukTag(request.tag) }}</td>
+        <td class="govuk-table__cell"><a href="#">Report a problem</a></td>
+      </tr>
+    {% endfor %}
   </tbody>
 </table>
 

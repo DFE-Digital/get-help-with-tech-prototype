@@ -1,10 +1,13 @@
+const helpers = require('./helpers')
+
 // Add Nunjucks filters with access to app, req and res
 module.exports = (nunjucksAppEnv, app) => {
   app.use((req, res, next) => {
     // Add name, value, id, idPrefix and checked attributes to GOVUK form inputs
-    // Generate the attributes based on the application ID and the section they’re in
-    nunjucksAppEnv.addFilter('decorateFormAttributes', (obj, name) => {
-      var storedValue = req.session.data[name]
+    // Generate the attributes based on where they are stored in the data object
+    nunjucksAppEnv.addFilter('decorateFormAttributes', (obj, sections) => {
+      sections = Array.isArray(sections) ? sections : [sections]
+      var storedValue = helpers.getDataValue(req.session.data, sections)
 
       if (obj.items !== undefined) {
         obj.items = obj.items.map(item => {
@@ -33,14 +36,24 @@ module.exports = (nunjucksAppEnv, app) => {
           return item
         })
 
-        obj.idPrefix = name
+        obj.idPrefix = sections.join('-')
       } else {
         obj.value = storedValue
       }
 
-      obj.id = name
-      obj.name = name
+      obj.id = sections.join('-')
+      obj.name = sections.map(s => `[${s}]`).join('')
       return obj
+    })
+
+    // Retrieve the value of something
+    // Designed as a replacement to `data[thing][thing]`
+    nunjucksAppEnv.addGlobal('dataValue', (sections) => {
+      if (sections && !Array.isArray(sections)) {
+        sections = [sections]
+      }
+
+      return helpers.getDataValue(req.session.data, sections)
     })
 
     next()
