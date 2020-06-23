@@ -17,19 +17,19 @@ function nextAndBackPaths (paths, currentPath, query) {
 
 function schoolWizardPaths (req) {
   var paths = [
-    '/schools',
-    '/schools/who',
-    '/schools/ready',
-    '/schools/eligible',
-    '/schools/ready-device',
-    '/schools/connect-bt',
-    '/schools/connect-bt-elsewhere',
-    '/schools/send-login',
-    '/schools/login-sent',
-    '/schools/login-to-bt',
-    '/schools/confirm-access',
-    '/schools/success',
-    '/schools'
+    '/family',
+    '/family/who',
+    '/family/ready',
+    '/family/eligible',
+    '/family/ready-device',
+    '/family/connect-bt',
+    '/family/connect-bt-elsewhere',
+    '/family/send-login',
+    '/family/login-sent',
+    '/family/login-to-bt',
+    '/family/confirm-access',
+    '/family/success',
+    '/family'
   ]
 
   return nextAndBackPaths(paths, req.path, originalQuery(req))
@@ -37,15 +37,15 @@ function schoolWizardPaths (req) {
 
 function schoolMnoWizardPaths (req) {
   var paths = [
-    '/schools/mno/no-bt',
-    '/schools/mno/network',
-    '/schools/mno/payg',
-    '/schools/mno/network-offer',
-    '/schools/mno/number',
-    '/schools/mno/account-holder-name',
-    '/schools/mno/privacy',
-    '/schools/mno/success',
-    '/schools'
+    '/family/mno/no-bt',
+    '/family/mno/network',
+    '/family/mno/payg',
+    '/family/mno/network-offer',
+    '/family/mno/number',
+    '/family/mno/account-holder-name',
+    '/family/mno/privacy',
+    '/family/mno/success',
+    '/family'
   ]
 
   return nextAndBackPaths(paths, req.path, originalQuery(req))
