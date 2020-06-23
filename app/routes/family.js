@@ -1,4 +1,4 @@
-var {
+const {
   schoolWizardPaths,
   schoolMnoWizardPaths
 } = require('../utils/wizard-paths')

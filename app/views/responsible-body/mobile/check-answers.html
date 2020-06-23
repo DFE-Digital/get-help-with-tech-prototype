@@ -22,7 +22,7 @@
             text: "Account holder"
           },
           value: {
-            text: data['name']
+            text: dataValue(["responsible-body", "mobile", mobileId, "name"])
           },
           actions: {
             items: [
@@ -39,7 +39,7 @@
             text: "Mobile number"
           },
           value: {
-            text: data['mobile-number']
+            text: dataValue(["responsible-body", "mobile", mobileId, "mobile-number"])
           },
           actions: {
             items: [
@@ -56,7 +56,7 @@
             text: "Mobile network"
           },
           value: {
-            text: data['mobile-network']
+            text: dataValue(["responsible-body", "mobile", mobileId, "mobile-network"])
           },
           actions: {
             items: [
@@ -71,7 +71,7 @@
       ]
     }) }}
 
-    <p>These details will be passed to {{ data['mobile-network'] }}</p>
+    <p>These details will be passed to {{ dataValue(["responsible-body", "mobile", mobileId, "mobile-network"]) }}</p>
 
     {{ govukButton({
       text: 'Confirm request',

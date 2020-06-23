@@ -46,6 +46,16 @@ module.exports = (nunjucksAppEnv, app) => {
       return obj
     })
 
+    // Retrieve the value of something
+    // Designed as a replacement to `data[thing][thing]`
+    nunjucksAppEnv.addGlobal('dataValue', (sections) => {
+      if (sections && !Array.isArray(sections)) {
+        sections = [sections]
+      }
+
+      return helpers.getDataValue(req.session.data, sections)
+    })
+
     next()
   })
 }

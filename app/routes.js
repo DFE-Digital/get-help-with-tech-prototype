@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
+require('./routes/responsible-body')(router)
 require('./routes/family')(router)
 
 router.post('/account', (req, res) => {

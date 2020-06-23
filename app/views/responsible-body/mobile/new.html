@@ -10,7 +10,7 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-  <form method="post" action="/responsible-body/mobile/check-answers" class="govuk-grid-column-two-thirds">
+  <form method="post" action="/responsible-body/mobile/{{ mobileId }}/check-answers" class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
@@ -33,7 +33,7 @@
       hint: {
         text: 'All UK mobile numbers begin with ‘07’'
       }
-    } | decorateFormAttributes('mobile-number') )}}
+    } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "mobile-number"]) )}}
 
     {{ govukSelect({
       label: {
@@ -114,7 +114,7 @@
         { text: "XLN Telecom" },
         { text: "Zevvle" }
       ]
-    } | decorateFormAttributes('mobile-network')) }}
+    } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "mobile-network"])) }}
 
     {{ govukButton({
       html: 'Continue'
