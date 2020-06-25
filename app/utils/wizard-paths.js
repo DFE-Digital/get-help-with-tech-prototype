@@ -3,16 +3,42 @@ function originalQuery (req) {
   return originalQueryString ? `?${originalQueryString}` : ''
 }
 
-function nextAndBackPaths (paths, currentPath, query) {
-  var index = paths.indexOf(currentPath)
-  var next = paths[index + 1] || ''
-  var back = paths[index - 1] || ''
+function nextAndBackPaths (paths, req) {
+  const currentPath = req.path
+  const query = originalQuery(req)
+  const data = req.session.data
+  const index = paths.indexOf(currentPath)
+  const next = paths[index + 1] || ''
+  let back = paths[index - 1] || ''
+
+  if (currentPath === data['forked-to']) {
+    back = data['forked-from']
+  }
 
   return {
-    next: /confirm|edit/.test(next) ? next : next + query,
-    back: /confirm|edit/.test(back) ? back : back + query,
-    current: /confirm|edit/.test(back) ? currentPath : currentPath + query
+    next: next + query,
+    back: back + query,
+    current: currentPath + query
   }
+}
+
+function nextForkPath (forks, req) {
+  const currentPath = req.path
+  const data = req.session.data
+  const fork = forks[currentPath]
+
+  if (fork) {
+    for (const [key, condition] of Object.entries(fork)) {
+      if (data[key] === condition.answer) {
+        data['forked-from'] = currentPath
+        data['forked-to'] = condition.path
+
+        return condition.path
+      }
+    }
+  }
+
+  return false
 }
 
 function schoolWizardPaths (req) {
@@ -32,7 +58,20 @@ function schoolWizardPaths (req) {
     '/family'
   ]
 
-  return nextAndBackPaths(paths, req.path, originalQuery(req))
+  return nextAndBackPaths(paths, req)
+}
+
+function schoolWizardForks (req) {
+  var forks = {
+    '/family/eligible': {
+      eligibility: {
+        answer: 'No',
+        path: '/family/mno/no-bt'
+      }
+    }
+  }
+
+  return nextForkPath(forks, req)
 }
 
 function schoolMnoWizardPaths (req) {
@@ -48,10 +87,11 @@ function schoolMnoWizardPaths (req) {
     '/family'
   ]
 
-  return nextAndBackPaths(paths, req.path, originalQuery(req))
+  return nextAndBackPaths(paths, req)
 }
 
 module.exports = {
   schoolWizardPaths,
+  schoolWizardForks,
   schoolMnoWizardPaths
 }
