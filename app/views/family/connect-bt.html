@@ -1,16 +1,30 @@
 {% extends "_wizard-form.html" %}
-{% set title = "Can they connect to a BT Wifi network?" %}
+{% set title = "Try connecting to a BT Wifi network" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
 
-  <p>From where they want to work, can they see a BT wifi network?</p>
+  <p>To connect to a BT Wifi network they should:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>click on the wi-fi icon on their device</li>
+    <li>look for a network named BTWi-fi or _BTWi-fi from the list of available
+networks</li>
+    <li>click Connect</li>
+  </ul>
 
-  <p>[Instructions]</p>
+  <p>They can tick ‘Connect automatically’ to avoid repeating this step next time.</p>
+
+  <p class="govuk-!-margin-bottom-8">They can text SCHOOL to 12345 to receive a connection guide.</p>
 
   {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: 'Can they connect to a BT Wifi network?',
+          classes: "govuk-label--l govuk-!-margin-bottom-4"
+        }
+      },
       items: [
         {
           text: 'Yes, they have connected to the network'
