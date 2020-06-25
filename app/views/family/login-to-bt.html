@@ -1,14 +1,30 @@
 {% extends "_wizard-form.html" %}
-{% set title = "Can they log in to their BT wifi network?" %}
+{% set title = "Try to log in to BT" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
 
-  <p>[Instructions]</p>
+  <p>To log in they should:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>open their internet browser (for example Internet Explorer, Google Chrome or Firefox)</li>
+    <li>type www.btwifi.com:8443 in the address bar and press Enter</li>
+    <li>accept cookies by clicking Ok</li>
+    <li>they’ll see a page with prices on, they can ignore these as their internet access is free</li>
+    <li>when asked ‘Are you a BT or Fon customer?’ answer BT Wi-fi</li>
+    <li>enter the provided username and password</li>
+  </ul>
+
+  <p class="govuk-!-margin-bottom-8">They can text SCHOOL to 12345 to receive a connection guide.</p>
 
   {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: 'Can they log in to their BT wifi network?',
+        classes: "govuk-label--l govuk-!-margin-bottom-4"
+      }
+    },
     items: [
       {
         text: 'Yes'
