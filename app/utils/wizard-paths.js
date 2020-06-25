@@ -72,6 +72,14 @@ function schoolWizardPaths (req) {
 
 function schoolWizardForks (req) {
   var forks = {
+    '/family/eligible': {
+      eligible: {
+        values: [
+          'Yes'
+        ],
+        path: '/family/not-eligible'
+      }
+    },
     '/family/connect-bt-elsewhere': {
       'connect-bt-elsewhere': {
         values: [

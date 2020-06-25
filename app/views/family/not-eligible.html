@@ -1,0 +1,18 @@
+{% extends "_wizard-form.html" %}
+{% set title = "They are not eligible for this offer" %}
+{% set notStandardForm = true %}
+
+{% block primary %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {{ title }}
+      </h1>
+
+      {{ govukButton({
+        text: 'Finish',
+        href: '/family'
+      }) }}
+    </div>
+  </div>  
+{% endblock %}
