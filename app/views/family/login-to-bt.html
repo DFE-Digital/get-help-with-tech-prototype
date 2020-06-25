@@ -1,36 +1,21 @@
-{% extends "layout.html" %}
+{% extends "_wizard-form.html" %}
 {% set title = "Can they log in to their BT wifi network?" %}
-{% block pageTitle %}{{ title }}{% endblock %}
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: paths.back
-  }) }}
-{% endblock %}
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
 
-{% block content %}
-<div class="govuk-grid-row">
-  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      {{ title }}
-    </h1>
+  <p>[Instructions]</p>
 
-    <p>[Instructions]</p>
-
-    {{ govukRadios({
-      items: [
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'No'
-        }
-      ]
-    } | decorateFormAttributes('login-received') ) }}
-
-    {{ govukButton({
-      html: 'Continue'
-    }) }}
-  </form>
-</div>
+  {{ govukRadios({
+    items: [
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'No'
+      }
+    ]
+  } | decorateFormAttributes('login-to-bt') ) }}
 {% endblock %}

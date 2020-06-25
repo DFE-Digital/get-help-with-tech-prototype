@@ -1,43 +1,28 @@
-{% extends "layout.html" %}
+{% extends "_wizard-form.html" %}
 {% set title = "Confirm they can access the internet" %}
-{% block pageTitle %}{{ title }}{% endblock %}
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: paths.back
-  }) }}
-{% endblock %}
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
 
-{% block content %}
-<div class="govuk-grid-row">
-  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      {{ title }}
-    </h1>
+  <p>On their device, ask them to visit this page and follow the instructions there:</p>
+  <p class='govuk-inset-text govuk-!-font-weight-bold'>https://get-help-with-tech.education.gov.uk/confirm/12345678</p>
 
-    <p>On their device, ask them to visit this page and follow the instructions there:</p>
-    <p class='govuk-inset-text govuk-!-font-weight-bold'>https://get-help-with-tech.education.gov.uk/confirm/12345678</p>
-
-    {{ govukRadios({
-      fieldset: {
-        legend: {
-          text: 'Could they load the page and complete the form?',
-          classes: 'govuk-fieldset__legend--m'
-        }
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: 'Could they load the page and complete the form?',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    items: [
+      {
+        text: 'Yes'
       },
-      items: [
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'No'
-        }
-      ]
-    } | decorateFormAttributes('login-received') ) }}
-
-    {{ govukButton({
-      html: 'Continue'
-    }) }}
-  </form>
-</div>
+      {
+        text: 'No'
+      }
+    ]
+  } | decorateFormAttributes('confirm-access') ) }}
 {% endblock %}

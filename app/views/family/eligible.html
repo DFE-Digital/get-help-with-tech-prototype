@@ -1,34 +1,19 @@
-{% extends "layout.html" %}
+{% extends "_wizard-form.html" %}
 {% set title = "Do they already have fixed broadband at home?" %}
-{% block pageTitle %}{{ title }}{% endblock %}
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: paths.back
-  }) }}
-{% endblock %}
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
 
-{% block content %}
-<div class="govuk-grid-row">
-  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      {{ title }}
-    </h1>
-
-    {{ govukRadios({
-        items: [
-          {
-            text: 'Yes'
-          },
-          {
-            text: 'No'
-          }
-        ]
-    } | decorateFormAttributes('eligibility') ) }}
-
-    {{ govukButton({
-      html: 'Continue'
-    }) }}
-  </form>
-</div>
+  {{ govukRadios({
+      items: [
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'No'
+        }
+      ]
+  } | decorateFormAttributes('eligible') ) }}
 {% endblock %}

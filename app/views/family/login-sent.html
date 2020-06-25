@@ -1,20 +1,40 @@
-{% extends "layout.html" %}
-{% set title = "We’ve sent them a username and password by text" %}
-{% block pageTitle %}{{ title }}{% endblock %}
+{% extends "_wizard-form.html" %}
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: paths.back
-  }) }}
-{% endblock %}
+{% if data['send-login'] == 'email' %}
+  {% set title = "We’ve sent them a username and password by email" %}
+{% elif data['send-login'] == 'phone' %}
+  {% set title = "Give them this username and password" %}
+{% else %}
+  {% set title = "We’ve sent them a username and password by text" %}
+{% endif %}
 
-{% block content %}
-<div class="govuk-grid-row">
-  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      {{ title }}
-    </h1>
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
 
+  {% if data['send-login'] == 'phone' %}
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Username"
+        },
+        value: {
+          text: "12EFR4567"
+        }
+      },
+      {
+        key: {
+          text: "Password"
+        },
+        value: {
+          text: "57UIOLKP"
+        }
+      }
+    ]
+    }) }}
+  {% else %}
     {{ govukRadios({
       fieldset: {
         legend: {
@@ -27,10 +47,10 @@
           text: 'Yes'
         },
         {
-          text: 'No – try sending another text'
+          text: 'No – send again by text'
         },
         {
-          text: 'No – try sending again by email'
+          text: 'No – send again by email'
         },
         {
           text: 'No – read out over the phone',
@@ -40,10 +60,5 @@
         }
       ]
     } | decorateFormAttributes('login-received') ) }}
-
-    {{ govukButton({
-      html: 'Continue'
-    }) }}
-  </form>
-</div>
+  {% endif %}
 {% endblock %}

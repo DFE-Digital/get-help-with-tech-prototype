@@ -1,43 +1,28 @@
-{% extends "layout.html" %}
+{% extends "_wizard-form.html" %}
 {% set title = "Can they connect from a different room?" %}
-{% block pageTitle %}{{ title }}{% endblock %}
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: paths.back
-  }) }}
-{% endblock %}
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
 
-{% block content %}
-<div class="govuk-grid-row">
-  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      {{ title }}
-    </h1>
-
-    {{ govukRadios({
-        items: [
-          {
-            text: 'Yes, they have connected to the network from a different room'
-          },
-          {
-            text: 'Yes, but this location isn’t suitable for working'
-          },
-          {
-            text: 'No, they can’t move their device (eg desktop computer)'
-          },
-          {
-            text: 'No, they could see a BT wifi network but couldn’t connect'
-          },
-          {
-            text: 'No, there was no BT wifi network available'
-          }
-        ]
-    } | decorateFormAttributes('connect-bt-elsewhere') ) }}
-
-    {{ govukButton({
-      html: 'Continue'
-    }) }}
-  </form>
-</div>
+  {{ govukRadios({
+      items: [
+        {
+          text: 'Yes, they have connected to the network from a different room'
+        },
+        {
+          text: 'Yes, but this location isn’t suitable for working'
+        },
+        {
+          text: 'No, they can’t move their device (eg desktop computer)'
+        },
+        {
+          text: 'No, they could see a BT wifi network but couldn’t connect'
+        },
+        {
+          text: 'No, there was no BT wifi network available'
+        }
+      ]
+  } | decorateFormAttributes('connect-bt-elsewhere') ) }}
 {% endblock %}

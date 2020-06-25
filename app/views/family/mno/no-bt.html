@@ -1,42 +1,27 @@
-{% extends "layout.html" %}
+{% extends "_wizard-form.html" %}
 {% set title = "They can’t benefit from a BT hotspot" %}
-{% block pageTitle %}{{ title }}{% endblock %}
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: paths.back
-  }) }}
-{% endblock %}
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
 
-{% block content %}
-<div class="govuk-grid-row">
-  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      {{ title }}
-    </h1>
+  <p class="govuk-!-margin-bottom-6">Because there is no suitable BT Wifi network available in their household, we will now try to request extra mobile data for them.</p>
 
-    <p class="govuk-!-margin-bottom-6">Because there is no suitable BT Wifi network available in their household, we will now try to request extra mobile data for them.</p>
-
-    {{ govukRadios({
-        fieldset: {
-          legend: {
-            text: 'Do they have a smart phone?',
-            classes: 'govuk-fieldset__legend--m'
-          }
+  {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: 'Do they have a smart phone?',
+          classes: 'govuk-fieldset__legend--m'
+        }
+      },
+      items: [
+        {
+          text: 'Yes'
         },
-        items: [
-          {
-            text: 'Yes'
-          },
-          {
-            text: 'No'
-          }
-        ]
-    } | decorateFormAttributes('has-smart-phone') ) }}
-
-    {{ govukButton({
-      html: 'Continue'
-    }) }}
-  </form>
-</div>
+        {
+          text: 'No'
+        }
+      ]
+  } | decorateFormAttributes('has-smart-phone') ) }}
 {% endblock %}
