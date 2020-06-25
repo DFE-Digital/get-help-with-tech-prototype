@@ -29,7 +29,9 @@ function nextForkPath (forks, req) {
 
   if (fork) {
     for (const [key, condition] of Object.entries(fork)) {
-      if (data[key] === condition.answer) {
+      const values = Array.isArray(condition.values) ? condition.values : [condition.values]
+
+      if (values.includes(data[key])) {
         data['forked-from'] = currentPath
         data['forked-to'] = condition.path
 
@@ -63,9 +65,15 @@ function schoolWizardPaths (req) {
 
 function schoolWizardForks (req) {
   var forks = {
-    '/family/eligible': {
-      eligibility: {
-        answer: 'No',
+    '/family/connect-bt-elsewhere': {
+      'connect-bt-elsewhere': {
+        values: [
+          'No, there was no BT wifi network available',
+          'Yes, but this location isn’t suitable for working',
+          'No, they can’t move their device (eg desktop computer)',
+          'No, they could see a BT wifi network but couldn’t connect',
+          'No, there was no BT wifi network available'
+        ],
         path: '/family/mno/no-bt'
       }
     }
