@@ -11,8 +11,15 @@ function nextAndBackPaths (paths, req) {
   const next = paths[index + 1] || ''
   let back = paths[index - 1] || ''
 
+  // Point back to where we forked from
   if (currentPath === data['forked-to']) {
     back = data['forked-from']
+  }
+
+  // Remove the saved fork if we return to it
+  if (currentPath === data['forked-from'] && req.method === 'GET') {
+    delete data['forked-from']
+    delete data['forked-to']
   }
 
   return {
@@ -75,6 +82,30 @@ function schoolWizardForks (req) {
           'No, there was no BT wifi network available'
         ],
         path: '/family/mno/no-bt'
+      }
+    },
+    '/family/login-to-bt': {
+      'login-to-bt': {
+        values: [
+          'No'
+        ],
+        path: '/family/mno/no-bt'
+      }
+    },
+    '/family/confirm-access': {
+      'confirm-access': {
+        values: [
+          'No'
+        ],
+        path: '/family/mno/no-bt'
+      }
+    },
+    '/family/connect-bt': {
+      'connect-bt': {
+        values: [
+          'Yes, they have connected to the network'
+        ],
+        path: '/family/send-login'
       }
     }
   }
