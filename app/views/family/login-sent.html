@@ -1,34 +1,64 @@
 {% extends "_wizard-form.html" %}
-{% set title = "We’ve sent them a username and password by text" %}
+
+{% if data['send-login'] == 'email' %}
+  {% set title = "We’ve sent them a username and password by email" %}
+{% elif data['send-login'] == 'phone' %}
+  {% set title = "Give them this username and password" %}
+{% else %}
+  {% set title = "We’ve sent them a username and password by text" %}
+{% endif %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
 
-  {{ govukRadios({
-    fieldset: {
-      legend: {
-        text: 'Have they received them?',
-        classes: 'govuk-fieldset__legend--m'
-      }
-    },
-    items: [
+  {% if data['send-login'] == 'phone' %}
+  {{ govukSummaryList({
+    rows: [
       {
-        text: 'Yes'
+        key: {
+          text: "Username"
+        },
+        value: {
+          text: "12EFR4567"
+        }
       },
       {
-        text: 'No – try sending another text'
-      },
-      {
-        text: 'No – try sending again by email'
-      },
-      {
-        text: 'No – read out over the phone',
-        hint: {
-          text: 'Letters in the username and password may be difficult to hear over the phone, for example ‘ffdeeg123!’'
+        key: {
+          text: "Password"
+        },
+        value: {
+          text: "57UIOLKP"
         }
       }
     ]
-  } | decorateFormAttributes('login-received') ) }}
+    }) }}
+  {% else %}
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: 'Have they received them?',
+          classes: 'govuk-fieldset__legend--m'
+        }
+      },
+      items: [
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'No – send again by text'
+        },
+        {
+          text: 'No – send again by email'
+        },
+        {
+          text: 'No – read out over the phone',
+          hint: {
+            text: 'Letters in the username and password may be difficult to hear over the phone, for example ‘ffdeeg123!’'
+          }
+        }
+      ]
+    } | decorateFormAttributes('login-received') ) }}
+  {% endif %}
 {% endblock %}
