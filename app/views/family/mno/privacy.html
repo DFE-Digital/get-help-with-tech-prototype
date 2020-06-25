@@ -1,34 +1,19 @@
-{% extends "layout.html" %}
+{% extends "_wizard-form.html" %}
 {% set title = "Can we pass these details on to their network?" %}
-{% block pageTitle %}{{ title }}{% endblock %}
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: paths.back
-  }) }}
-{% endblock %}
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-{% block content %}
-<div class="govuk-grid-row">
-  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">{{ title }}</h1>
+  <p>[Privacy details]</p>
 
-    <p>[Privacy details]</p>
-
-    {{ govukRadios({
-      items: [
-        {
-          text: "Yes"
-        },
-        {
-          text: "No"
-        }
-      ]
-    } | decorateFormAttributes('privacy-ok') ) }}
-
-    {{ govukButton({
-      html: 'Continue'
-    }) }}
-  </form>
-</div>
+  {{ govukRadios({
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes('privacy-ok') ) }}
 {% endblock %}

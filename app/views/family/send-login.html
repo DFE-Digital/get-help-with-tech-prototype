@@ -1,43 +1,28 @@
-{% extends "layout.html" %}
+{% extends "_wizard-form.html" %}
 {% set title = "How do they want to receive their username and password?" %}
-{% block pageTitle %}{{ title }}{% endblock %}
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: paths.back
-  }) }}
-{% endblock %}
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
 
-{% block content %}
-<div class="govuk-grid-row">
-  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      {{ title }}
-    </h1>
-
-    {{ govukRadios({
-        items: [
-          {
-            text: 'Send in a text message',
-            hint: {
-              text: 'We will send a username and password to ' + data['young-person-number']
-            }
-          },
-          {
-            text: 'Send by email'
-          },
-          {
-            text: 'Read out over the phone',
-            hint: {
-              text: 'Letters in the username and password may be difficult to hear over the phone, for example ‘ffdeeg123!’'
-            }
+  {{ govukRadios({
+      items: [
+        {
+          text: 'Send in a text message',
+          hint: {
+            text: 'We will send a username and password to ' + data['young-person-number']
           }
-        ]
-    } | decorateFormAttributes('send-login') ) }}
-
-    {{ govukButton({
-      html: 'Continue'
-    }) }}
-  </form>
-</div>
+        },
+        {
+          text: 'Send by email'
+        },
+        {
+          text: 'Read out over the phone',
+          hint: {
+            text: 'Letters in the username and password may be difficult to hear over the phone, for example ‘ffdeeg123!’'
+          }
+        }
+      ]
+  } | decorateFormAttributes('send-login') ) }}
 {% endblock %}

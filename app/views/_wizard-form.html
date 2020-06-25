@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: paths.back
+  }) }}
+{% endblock %}
+
+{% block content %}
+  {% if notStandardForm %}
+    {% block primary %}{% endblock %}
+  {% else %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form method="post" action="{{ paths.next }}">
+          {% block form %}{% endblock %}
+
+          {{ govukButton({
+            html: 'Continue'
+          }) }}
+        </form>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}

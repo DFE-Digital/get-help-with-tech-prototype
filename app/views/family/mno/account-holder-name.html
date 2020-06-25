@@ -1,31 +1,16 @@
-{% extends "layout.html" %}
+{% extends "_wizard-form.html" %}
 {% set title = "Who’s the account holder?" %}
-{% block pageTitle %}{{ title }}{% endblock %}
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: paths.back
-  }) }}
-{% endblock %}
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-{% block content %}
-<div class="govuk-grid-row">
-  <form method="post" action="{{ paths.next }}" class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">{{ title }}</h1>
-
-    {{ govukInput({
-      label: {
-        text: "Account holder name",
-        classes: "govuk-label--m"
-      },
-      hint: {
-        html: "An account holder must be over 18.<br />Do not enter a child’s name."
-      }
-    } | decorateFormAttributes('account-holder-name') )}}
-
-    {{ govukButton({
-      html: 'Continue'
-    }) }}
-  </form>
-</div>
+  {{ govukInput({
+    label: {
+      text: "Account holder name",
+      classes: "govuk-label--m"
+    },
+    hint: {
+      html: "An account holder must be over 18.<br />Do not enter a child’s name."
+    }
+  } | decorateFormAttributes('account-holder-name') )}}
 {% endblock %}
