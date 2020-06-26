@@ -9,6 +9,10 @@ module.exports = router => {
     res.redirect(`/responsible-body/mobile/${id}/new`)
   })
 
+  router.all('/responsible-body/mobile/bulk/:view', function (req, res) {
+    res.render(`responsible-body/mobile/bulk/${req.params.view}`)
+  })
+
   router.all('/responsible-body/mobile/:mobileId/:view', function (req, res) {
     res.render(`responsible-body/mobile/${req.params.view}`, { mobileId: req.params.mobileId })
   })

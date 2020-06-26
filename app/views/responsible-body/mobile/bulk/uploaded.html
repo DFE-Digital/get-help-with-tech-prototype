@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% set title = "We’ve processed your spreadsheet" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/responsible-body/mobile/bulk"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p>We found 47 rows in your spreadsheet:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>4 were previously uploaded</li>
+      <li>3 contain errors</li>
+      <li>40 were uploaded successfully</li>
+    </ul>
+  </div>
+</div>
+
+<h2 class="govuk-heading-l govuk-!-margin-top-4">3 requests contain errors</h2>
+
+<div class="govuk-form-group--error">
+  <p class="govuk-error-message">Fix the errors in your spreadsheet and try uploading again</p>
+
+  <table class="govuk-table requests-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header">
+          Account holder
+        </th>
+        <th class="govuk-table__header">Error</th>
+        <th class="govuk-table__header">Mobile network</th>
+        <th class="govuk-table__header">Mobile number</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          {{ data.mno.requests[10].name }}
+        </td>
+        <td class="govuk-table__cell">
+          <span class="govuk-error-message govuk-!-margin-bottom-0">Not a mobile number</span>
+        </td>
+        <td class="govuk-table__cell">O2</td>
+        <td class="govuk-table__cell">01234 321456</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          {{ data.mno.requests[15].name }}
+        </td>
+        <td class="govuk-table__cell">
+          <span class="govuk-error-message govuk-!-margin-bottom-0">Not a known network</span>
+        </td>
+        <td class="govuk-table__cell">Upsum Mobile</td>
+        <td class="govuk-table__cell">07123456789</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          {{ data.mno.requests[20].name }}
+        </td>
+        <td class="govuk-table__cell ">
+          <span class="govuk-error-message govuk-!-margin-bottom-0">No mobile number provided</span>
+        </td>
+        <td class="govuk-table__cell">Sky mobile</td>
+        <td class="govuk-table__cell"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="govuk-heading-l govuk-!-margin-top-4">{{ data.mno.requests | length }} requests uploaded</h2>
+<table class="govuk-table requests-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header">
+        Account holder
+      </th>
+      <th class="govuk-table__header">Mobile network</th>
+      <th class="govuk-table__header">Mobile number</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    {% for request in data.mno.requests %}
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          {{ request.name }}
+        </td>
+        <td class="govuk-table__cell">{{ request.network }}</td>
+        <td class="govuk-table__cell">{{ request.number }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{{ govukButton({
+  text: 'Finish',
+  href: '/responsible-body/mobile'
+}) }}
+{% endblock %}
