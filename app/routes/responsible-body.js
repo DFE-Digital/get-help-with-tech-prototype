@@ -13,7 +13,11 @@ module.exports = router => {
     res.render(`responsible-body/mobile/bulk/${req.params.view}`)
   })
 
-  router.all('/responsible-body/mobile/:mobileId/:view', function (req, res) {
-    res.render(`responsible-body/mobile/${req.params.view}`, { mobileId: req.params.mobileId })
+  router.all('/responsible-body/mobile/:mobileId/new', function (req, res) {
+    res.render('responsible-body/mobile/new', { mobileId: req.params.mobileId })
+  })
+
+  router.all('/responsible-body/mobile/:mobileId/check-answers', function (req, res) {
+    res.render('responsible-body/mobile/check-answers', { mobileId: req.params.mobileId })
   })
 }
