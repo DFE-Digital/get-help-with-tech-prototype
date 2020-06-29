@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% set title = "Users who can request extra mobile data on behalf of households" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/responsible-body/mobile/new"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    {{ govukButton({
+      text: 'Invite a new user',
+      href: '/responsible-body/mobile/invite/new'
+    }) }}
+  </div>
+</div>
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header">Name</th>
+      <th class="govuk-table__header">Organisation</th>
+      <th class="govuk-table__header">Requests made</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    {% for user in data['responsible-body']['school-users'] %}
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          <strong>{{ user.name }}</strong><br />
+          {{ user.email }}
+        </td>
+        <td class="govuk-table__cell">{{ user.org }}</td>
+        <td class="govuk-table__cell">
+          <a href="#">{{ user.requests }} requests</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
