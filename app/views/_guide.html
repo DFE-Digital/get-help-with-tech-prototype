@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Increasing children’s internet access</span>
+      Guide to collecting mobile information
+    </h1>
+
+    <h2 class="govuk-heading-s">Contents</h2>
+    <ol class="govuk-list govuk-list--bullet">
+      {% for item in navigation.contents %}
+        <li>
+          {% if item.href %}
+            <a href="{{ item.href }}">{{ item.text}}</a>
+          {% else %}
+            {{ item.text }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    {% filter markdownToHTML %}
+      {% block markdown %}{% endblock %}
+    {% endfilter %}
+
+    {% if navigation.next or navigation.prev %}
+      <hr class="govuk-section-break govuk-section-break--m">
+    {% endif %}
+
+    {% if navigation.next %}
+      <a href="{{ navigation.next.href }}" class="guide-next-prev-link">
+        <strong class="govuk-heading-m govuk-!-margin-bottom-1">
+          <svg class="guide-next-prev-icon guide-next-prev-icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+            <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+          </svg>
+          Next
+        </strong>
+        <p class="guide-next-prev-description">
+          {{ navigation.next.text }}
+        </p>
+      </a>
+    {% endif %}
+
+    {% if navigation.prev %}
+      {% if navigation.next %}
+        <hr class="govuk-section-break govuk-section-break--m">
+      {% endif %}
+      <a href="{{ navigation.prev.href }}" class="guide-next-prev-link">
+        <strong class="govuk-heading-m govuk-!-margin-bottom-1">
+          <svg class="guide-next-prev-icon guide-next-prev-icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+              <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+            </svg>
+          Previous
+        </strong>
+        <p class="guide-next-prev-description">
+          {{ navigation.prev.text }}
+        </p>
+      </a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

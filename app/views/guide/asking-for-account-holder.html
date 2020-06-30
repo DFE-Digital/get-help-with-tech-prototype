@@ -1,19 +1,5 @@
-{% extends "_markdown.html" %}
+{% extends "_guide.html" %}
 {% set title = "Asking for account holder name and mobile number" %}
-
-{% block pageNavigation %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Guide to collecting mobile information",
-        href: "/guide"
-      },
-      {
-        text: title
-      }
-    ]
-  }) }}
-{% endblock %}
 
 {% block markdown %}
 # {{ title }}
