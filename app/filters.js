@@ -1,3 +1,5 @@
+const marked = require('marked')
+
 module.exports = function (env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -6,6 +8,17 @@ module.exports = function (env) {
    * @type {Object}
    */
   var filters = {}
+
+  filters.markdownToHTML = function (str) {
+    if (str === undefined) {
+      return ''
+    }
+
+    // Ignore leading indentation
+    // const t = text.replace(/^\s+/gm, '\n')
+
+    return env.filters.safe(`<div class="markdown">${marked(str)}</div>`)
+  }
 
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:

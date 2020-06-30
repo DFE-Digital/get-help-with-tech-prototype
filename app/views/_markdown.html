@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+  {% filter safe %}
+    {% filter markdownToHTML %}
+      {% block markdown %}{% endblock %}
+    {% endfilter %}
+  {% endfilter %}
+{% endblock %}
