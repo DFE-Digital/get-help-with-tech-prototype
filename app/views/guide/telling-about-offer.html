@@ -6,4 +6,87 @@ If they are on a network not shown then we cannot give them more mobile data.
 
 {% endblock %}
 
+{% block html %}
+{{ govukAccordion({
+  id: "accordion-default",
+  items: [
+    {
+      heading: {
+        text: "BT Mobile"
+      },
+      content: {
+        html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+      }
+    },
+    {
+      heading: {
+        text: "BT Plusnet"
+      },
+      content: {
+        html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+      }
+    },
+      {
+      heading: {
+        text: "EE"
+      },
+      content: {
+        html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+      }
+    },
+      {
+      heading: {
+        text: "GiffGaff"
+      },
+      content: {
+        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+      }
+    },
+    {
+      heading: {
+        text: "O2"
+      },
+      content: {
+        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+      }
+    },
+    {
+      heading: {
+        text: "Tesco Mobile"
+      },
+      content: {
+        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+      }
+    },
+    {
+      heading: {
+        text: "Three"
+      },
+      content: {
+        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+      }
+    }, {
+      heading: {
+        text: "Sky Mobile"
+      },
+      content: {
+        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+      }
+    }, {
+      heading: {
+        text: "Virgin Mobile"
+      },
+      content: {
+        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+      }
+    }, {
+      heading: {
+        text: "Vodafone"
+      },
+      content: {
+        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+      }
+    }
+  ]
+}) }}
 {% endblock %}
