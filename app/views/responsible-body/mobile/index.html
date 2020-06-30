@@ -25,11 +25,18 @@
       text: 'Request data for someone',
       href: '/responsible-body/mobile/new'
     }) }}
+
+    <p>You can also upload multiple requests at once using a spreadsheet:</p>
+
+    <ol class="govuk-list govuk-list--number">
+      <li><a href="#">Download the spreadsheet template</a></li>
+      <li><a href="/responsible-body/mobile/bulk">Upload completed spreadsheet</a></li>
+    </ol>
   </div>
 </div>
 
 {% if dataValue(["responsible-body", "mobile"]) %}
-  <h2 class="govuk-heading-m">Your requests</h2>
+  <h2 class="govuk-heading-l govuk-!-margin-top-6">Your requests</h2>
   <table class="govuk-table">
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">

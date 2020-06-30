@@ -16,6 +16,16 @@ function generateFakeRequests (count) {
         { text: 'In progress', classes: 'govuk-tag--yellow' },
         { text: 'Not valid', classes: 'govuk-tag--red' },
         { text: 'Complete', classes: 'govuk-tag--green' }
+      ]),
+      network: faker.random.arrayElement([
+        'Three', 'Three',
+        'O2', 'O2', 'O2',
+        'GiffGaff',
+        'Vodafone', 'Vodafone',
+        'EE',
+        'Sky mobile',
+        'Virgin mobile',
+        'BT mobile'
       ])
     })
   }

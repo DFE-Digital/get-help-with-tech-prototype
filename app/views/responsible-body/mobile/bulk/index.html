@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% set title = "Upload a spreadsheet of extra data requests" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/responsible-body/mobile"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<!-- {{ appBanner({
+  html: "<h2 class=\"govuk-heading-m\">We’ve received your request</h2>",
+  type: "success",
+  icon: false
+}) }} -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p>You must upload a spreadsheet based on <a href="#">the template we provided</a>.</p>
+
+    <p>It will have columns for:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+      <li>account holder name</li>
+      <li>mobile phone number</li>
+      <li>network</li>
+      <li>pay as you go or contract</li>
+      <li>confirming the account holder has read the privacy statement</li>
+    </ul>
+
+    {{ govukFileUpload({
+      id: 'upload',
+      name: 'upload',
+      label: {
+        text: 'Pick a spreadsheet file',
+        classes: 'govuk-label--m'
+      }
+    }) }}
+
+    {{ govukButton({
+      text: 'Upload requests',
+      href: '/responsible-body/mobile/bulk/uploaded'
+    }) }}
+  </div>
+</div>
+{% endblock %}
