@@ -13,7 +13,7 @@ function guideNavigation (req) {
       href: '/guide/asking-for-network'
     },
     {
-      text: 'Telling someone about their offer',
+      text: 'Tell someone about their offer',
       href: '/guide/telling-about-offer'
     },
     {
@@ -25,10 +25,11 @@ function guideNavigation (req) {
   const currentItemIndex = contents.findIndex(item => item.href === req.originalUrl)
   const next = contents[currentItemIndex + 1] || false
   const prev = contents[currentItemIndex - 1] || false
+  const title = contents[currentItemIndex].text
 
   delete contents[currentItemIndex].href
 
-  return { contents, next, prev }
+  return { contents, next, prev, title }
 }
 
 /**

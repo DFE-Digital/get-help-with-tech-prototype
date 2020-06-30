@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block pageTitle %}{{ title }}{% endblock %}
+{% block pageTitle %}{{ navigation.title }}{% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
@@ -24,6 +24,7 @@
 
     <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
+    <h2 class="govuk-heading-l">{{ navigation.title }}</h2>
     {% filter markdownToHTML %}
       {% block markdown %}{% endblock %}
     {% endfilter %}
