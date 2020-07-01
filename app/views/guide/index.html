@@ -24,6 +24,7 @@ To request extra mobile data for an eligible person we need you to collect:
 * whether they are on a contract or Pay as you go
 * permission to share these details with the Department for Education and the mobile network
 
+{% if data.features['bulk-upload'] %}
 ### Where to put this information
 
 Use one of the following template spreadsheets:
@@ -32,5 +33,6 @@ Use one of the following template spreadsheets:
 * [Google Sheets spreadsheet](#)
 
 Return your completed spreadsheets to email@email.com
+{% endif %}
 
 {% endblock %}
