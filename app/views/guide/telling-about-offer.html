@@ -13,6 +13,15 @@ You should tell them:
 ### Offer details
 {% endblock %}
 
+{% set genericOfferDetailsMarkdown %}
+[placeholder offer details]
+
+* The recipient will get unlimited data until the end of 2020.
+* The offer is available to both Pay Monthly and Pay-As-You-Go customers.
+* A text message will be sent to the nominated device once the additional data has been added to the account.
+* The network will aim to process the request within 5 days.
+{% endset %}
+
 {% block html %}
 {{ govukAccordion({
   id: "accordion-default",
@@ -22,7 +31,7 @@ You should tell them:
         text: "BT Mobile"
       },
       content: {
-        html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+        html: genericOfferDetailsMarkdown | markdownToHTML
       }
     },
     {
@@ -30,7 +39,7 @@ You should tell them:
         text: "BT Plusnet"
       },
       content: {
-        html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+        html: genericOfferDetailsMarkdown | markdownToHTML
       }
     },
       {
@@ -38,7 +47,7 @@ You should tell them:
         text: "EE"
       },
       content: {
-        html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+        html: genericOfferDetailsMarkdown | markdownToHTML
       }
     },
       {
@@ -46,7 +55,7 @@ You should tell them:
         text: "GiffGaff"
       },
       content: {
-        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+        html: genericOfferDetailsMarkdown | markdownToHTML
       }
     },
     {
@@ -54,7 +63,7 @@ You should tell them:
         text: "O2"
       },
       content: {
-        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+        html: genericOfferDetailsMarkdown | markdownToHTML
       }
     },
     {
@@ -62,7 +71,7 @@ You should tell them:
         text: "Tesco Mobile"
       },
       content: {
-        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+        html: genericOfferDetailsMarkdown | markdownToHTML
       }
     },
     {
@@ -70,35 +79,35 @@ You should tell them:
         text: "Three"
       },
       content: {
-        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+        html: genericOfferDetailsMarkdown | markdownToHTML
       }
     }, {
       heading: {
         text: "Sky Mobile"
       },
       content: {
-        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+        html: genericOfferDetailsMarkdown | markdownToHTML
       }
     }, {
       heading: {
         text: "Virgin Mobile"
       },
       content: {
-        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+        html: genericOfferDetailsMarkdown | markdownToHTML
       }
     }, {
       heading: {
         text: "Vodafone"
       },
       content: {
-        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+        html: genericOfferDetailsMarkdown | markdownToHTML
       }
     }, {
       heading: {
         text: "Another network"
       },
       content: {
-        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+        html: "<p>No offer is available</p>" 
       }
     }
   ]
