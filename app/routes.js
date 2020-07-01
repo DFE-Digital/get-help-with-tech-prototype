@@ -3,6 +3,7 @@ const router = express.Router()
 
 require('./routes/responsible-body')(router)
 require('./routes/family')(router)
+require('./routes/guide')(router)
 
 router.post('/account', (req, res) => {
   const hasAccount = req.session.data['has-account']

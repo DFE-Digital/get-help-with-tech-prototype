@@ -1,0 +1,115 @@
+{% extends "_guide.html" %}
+{% block markdown %}
+
+What data someone will get depends on their mobile network. Some networks can’t offer data to Pay as you go (PAYG) customers.
+
+You should tell them:
+* if there is an offer they can use (or if there is no offer available)
+* the details of that offer
+* that they’ll receive a text message when their free data has been activated
+* when their free data will end
+* that this data can be used when tethering a mobile phone to another device for internet access
+
+### Offer details
+{% endblock %}
+
+{% set genericOfferDetailsMarkdown %}
+[placeholder offer details]
+
+* The recipient will get unlimited data until the end of 2020.
+* The offer is available to both Pay Monthly and Pay-As-You-Go customers.
+* A text message will be sent to the nominated device once the additional data has been added to the account.
+* The network will aim to process the request within 5 days.
+{% endset %}
+
+{% block html %}
+{{ govukAccordion({
+  id: "accordion-default",
+  items: [
+    {
+      heading: {
+        text: "BT Mobile"
+      },
+      content: {
+        html: genericOfferDetailsMarkdown | markdownToHTML
+      }
+    },
+    {
+      heading: {
+        text: "BT Plusnet"
+      },
+      content: {
+        html: genericOfferDetailsMarkdown | markdownToHTML
+      }
+    },
+      {
+      heading: {
+        text: "EE"
+      },
+      content: {
+        html: genericOfferDetailsMarkdown | markdownToHTML
+      }
+    },
+      {
+      heading: {
+        text: "GiffGaff"
+      },
+      content: {
+        html: genericOfferDetailsMarkdown | markdownToHTML
+      }
+    },
+    {
+      heading: {
+        text: "O2"
+      },
+      content: {
+        html: genericOfferDetailsMarkdown | markdownToHTML
+      }
+    },
+    {
+      heading: {
+        text: "Tesco Mobile"
+      },
+      content: {
+        html: genericOfferDetailsMarkdown | markdownToHTML
+      }
+    },
+    {
+      heading: {
+        text: "Three"
+      },
+      content: {
+        html: genericOfferDetailsMarkdown | markdownToHTML
+      }
+    }, {
+      heading: {
+        text: "Sky Mobile"
+      },
+      content: {
+        html: genericOfferDetailsMarkdown | markdownToHTML
+      }
+    }, {
+      heading: {
+        text: "Virgin Mobile"
+      },
+      content: {
+        html: genericOfferDetailsMarkdown | markdownToHTML
+      }
+    }, {
+      heading: {
+        text: "Vodafone"
+      },
+      content: {
+        html: genericOfferDetailsMarkdown | markdownToHTML
+      }
+    }, {
+      heading: {
+        text: "Another network"
+      },
+      content: {
+        html: "<p>No offer is available</p>" 
+      }
+    }
+  ]
+}) }}
+{% endblock %}

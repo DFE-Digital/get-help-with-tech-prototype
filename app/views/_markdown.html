@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% filter markdownToHTML %}
+      {% block markdown %}{% endblock %}
+    {% endfilter %}
+
+    {% if prev %}
+      <p>
+        <a href="{{ prev.href }}">{{ prev.text }}</a>
+      </p>
+    {% endif %}
+
+    {% if next %}
+      <p>
+        <a href="{{ next.href }}">{{ next.text }}</a>
+      </p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
