@@ -29,14 +29,14 @@
 
     <h2 class="govuk-heading-m govuk-!-font-size-27 govuk-!-margin-bottom-4">
       <span class="govuk-caption-m">Step 1</span>
-      {% if data['total-eligible'] %}
+      {% if data['total-eligible'] or not data.features['give-bt-numbers'] %}
         How many young people are eligible?
       {% else %}
         <a href="/responsible-body/hotspot">How many young people are eligible?</a>
       {% endif %}
     </h2>
     <div class="govuk-!-margin-bottom-4">
-      {% if data['total-eligible'] %}
+      {% if data['total-eligible'] or not data.features['give-bt-numbers'] %}
         {{ govukTag({ text: "Completed" })}}
       {% else %}
         {{ govukTag({
@@ -45,7 +45,7 @@
         }) }}
       {% endif %}
     </div>
-    {% if data['total-eligible'] %}
+    {% if data['total-eligible']  or not data.features['give-bt-numbers'] %}
       {{ govukSummaryList({
         classes: "govuk-summary-list--wide-terms",
         rows: [
@@ -54,7 +54,7 @@
               text: "Eligible young people"
             },
             value: {
-              text: data['total-eligible']
+              text: data['total-eligible'] if data.features['give-bt-numbers'] else 300
             },
             actions: {
               items: [
@@ -64,14 +64,14 @@
                   visuallyHiddenText: "name"
                 }
               ]
-            }
+            } if data.features['give-bt-numbers']
           },
           {
             key: {
               text: "Number who can see a BT hotspot"
             },
             value: {
-              text: data['total-hotspot']
+              text: data['total-hotspot'] if data.features['give-bt-numbers'] else 150
             },
             actions: {
               items: [
@@ -81,7 +81,7 @@
                   visuallyHiddenText: "name"
                 }
               ]
-            }
+            } if data.features['give-bt-numbers']
           }
         ]
       }) }}

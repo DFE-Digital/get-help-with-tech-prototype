@@ -2,6 +2,11 @@ const fakeMnoRequests = require('./fake-mno-requests')
 const fakeSchoolUsers = require('./fake-school-users')
 
 module.exports = {
+  features: {
+    'give-bt-numbers': false,
+    'sign-up': false,
+    'bulk-upload': false
+  },
   mno: {
     requests: fakeMnoRequests
   },

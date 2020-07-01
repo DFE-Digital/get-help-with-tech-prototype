@@ -26,12 +26,13 @@
       href: '/responsible-body/mobile/new'
     }) }}
 
-    <p>You can also upload multiple requests at once using a spreadsheet:</p>
-
-    <ol class="govuk-list govuk-list--number">
-      <li><a href="#">Download the spreadsheet template</a></li>
-      <li><a href="/responsible-body/mobile/bulk">Upload completed spreadsheet</a></li>
-    </ol>
+    {% if data.features['bulk-upload'] %}
+      <p>You can also upload multiple requests at once using a spreadsheet:</p>
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="#">Download the spreadsheet template</a></li>
+        <li><a href="/responsible-body/mobile/bulk">Upload completed spreadsheet</a></li>
+      </ol>
+    {% endif %}
   </div>
 </div>
 

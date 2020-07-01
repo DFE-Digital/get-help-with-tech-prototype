@@ -12,7 +12,7 @@
 <div class="govuk-grid-row">
   <form method="post" action="/responsible-body/mobile/{{ mobileId }}/check-answers" class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
-      {{ title }}
+      Who needs the extra mobile&nbsp;data?
     </h1>
 
     {{ govukInput({
@@ -21,7 +21,7 @@
         classes: "govuk-label--m"
       },
       hint: {
-        html: "An account holder must be over 18.<br />Do not enter a child’s name."
+        html: "The account holder for a pay monthly contract must be over 18"
       }
     } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "name"]) )}}
 
@@ -35,86 +35,123 @@
       }
     } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "mobile-number"]) )}}
 
-    {{ govukSelect({
-      label: {
-        text: "Mobile network",
-        classes: "govuk-label--m"
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: "Mobile network",
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      hint: {
+        text: 'Only mobile networks participating in the service are listed',
+        classes: 'govuk-!-margin-bottom-3'
       },
       items: [
-        { text: "" },
-        { text: "1pMobile" },
-        { text: "360Coms Telecom" },
-        { text: "365 Mobile" },
-        { text: "AfriMobile" },
-        { text: "AlwaysOnline Wireless" },
-        { text: "Anywhere Care Ownfone (formerly Age UK Ownfone" },
-        { text: "Anywhere Sim" },
-        { text: "Asda Mobile" },
-        { text: "Auracall Travel Talk" },
-        { text: "Axis Telecom" },
-        { text: "BT Mobile" },
-        { text: "BT Onephone (BTOP" },
-        { text: "C4C Mobile" },
-        { text: "Call &amp; Give" },
-        { text: "Calteq" },
-        { text: "Champions Mobile" },
-        { text: "CMLink" },
-        { text: "CTExcel" },
-        { text: "Ctrl Mobile" },
-        { text: "CUniq" },
-        { text: "Ecotalk" },
-        { text: "EE" },
-        { text: "ETS Mobile" },
-        { text: "Fonome Mobile" },
-        { text: "FreedomPop" },
-        { text: "Gamma Telecom" },
-        { text: "Gemini Mobile" },
-        { text: "giffgaff" },
-        { text: "Global" },
-        { text: "Globalgig" },
-        { text: "HP Mobile Connect" },
-        { text: "i3 Mobile" },
-        { text: "iD Mobile" },
-        { text: "JOi Telecom" },
-        { text: "Jump" },
-        { text: "Just Utilities" },
-        { text: "KC Mobile" },
-        { text: "Lebara Mobile" },
-        { text: "Lycamobile" },
-        { text: "Meem Mobile" },
-        { text: "NordTelekom" },
-        { text: "Now PAYG" },
-        { text: "O2" },
-        { text: "Pebble Mobile Network" },
-        { text: "Plusnet Mobile" },
-        { text: "Rok Mobile" },
-        { text: "RWG Mobile" },
-        { text: "Sky Mobile" },
-        { text: "SMARTY" },
-        { text: "Superdrug Mobile" },
-        { text: "Talk Home Mobile" },
-        { text: "Talkmobile" },
-        { text: "TalkTalk Mobile" },
-        { text: "TalkXtra Mobile" },
-        { text: "Telecom Plus" },
-        { text: "Telfoni" },
-        { text: "Tesco Mobile" },
-        { text: "The Phone Co-op" },
-        { text: "Three" },
-        { text: "Toggle Mobile" },
-        { text: "Torica Mobile" },
-        { text: "Truphone" },
-        { text: "Utilita" },
-        { text: "Vodafone" },
-        { text: "Vectone Mobile" },
-        { text: "Virgin Mobile" },
-        { text: "Vivio" },
-        { text: "VOXI" },
-        { text: "White Mobile" },
-        { text: "XLN Telecom" },
-        { text: "Zevvle" }
+        {
+          text: "BT Mobile",
+          hint: {
+            text: 'May offer data when service launches'
+          }
+        },
+        {
+          text: "BT Plusnet",
+          hint: {
+            text: 'May offer data when service launches'
+          }
+        },
+        {
+          text: "EE",
+          hint: {
+            text: 'Offers data now'
+          }
+        },
+        {
+          text: "Giff Gaff",
+          hint: {
+            text: 'May offer data when service launches'
+          }
+        },
+        {
+          text: "O2",
+          hint: {
+            text: 'May offer data when service launches'
+          }
+        },
+        {
+          text: "Tesco Mobile",
+          hint: {
+            text: 'May offer data when service launches'
+          }
+        },
+        {
+          text: "Three",
+          hint: {
+            text: 'Offers data now'
+          }
+        },
+        {
+          text: "Smarty",
+          hint: {
+            text: 'Offers data now'
+          }
+        },
+        {
+          text: "Sky Mobile",
+          hint: {
+            text: 'May offer data when service launches'
+          }
+        },
+        {
+          text: "Virgin Mobile",
+          hint: {
+            text: 'Offers data now. Does not support Pay as you go customers.'
+          }
+        },
+        {
+          text: "Vodafone",
+          hint: {
+            text: 'May offer data when service launches'
+          }
+        }
       ]
     } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "mobile-network"])) }}
+
+    {{ govukCheckboxes({
+      fieldset: {
+        legend: {
+          text: "Has the account holder agreed with the privacy statement?",
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      hint: {
+        html: '<p class="govuk-hint">Account holders must allow us to:</p><ul class="govuk-hint govuk-list govuk-list--bullet">
+  <li>store their data</li>
+  <li>share their data with their mobile network provider</li>
+</ul><p class="govuk-hint"><a href="#">View privacy statement</a></p>'
+      },
+      items: [
+        {
+          text: "Yes, they agree with the privacy statement"
+        }
+      ]
+    } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "privacy"])) }}
+
+    <!-- {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: "Are they a Pay as you go (PAYG) customer?",
+          classes: "govuk-label--m"
+        }
+      },
+      items: [
+        {
+          text: "Yes"
+        },
+        {
+          text: "No"
+        }
+      ]
+    }) }} -->
 
     {{ govukButton({
       html: 'Continue'
