@@ -8,6 +8,18 @@
   }) }}
 {% endblock %}
 
+{% set markdown %}
+This pilot is open to families with children from early years up to 16, and care leavers up to 25 if they:
+
+* don’t have access to a fixed broadband connection
+* cannot afford the additional data needed to access educational resources or social care services
+* cannot access a BT hotspot
+* are an existing customer of a participating mobile network operator
+
+[Read our guide on collecting mobile information](/guide)
+
+{% endset %}
+
 {% block content %}
 <!-- {{ appBanner({
   html: "<h2 class=\"govuk-heading-m\">We’ve received your request</h2>",
@@ -21,9 +33,12 @@
       {{ title }}
     </h1>
 
+    {{ markdown | markdownToHTML }}
+
     {{ govukButton({
       text: 'Request data for someone',
-      href: '/responsible-body/mobile/new'
+      href: '/responsible-body/mobile/new',
+      classes: 'govuk-!-margin-top-5'
     }) }}
 
     {% if data.features['bulk-upload'] %}

@@ -10,11 +10,15 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-  <form method="post" action="/responsible-body/mobile/{{ mobileId }}/check-answers" class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
       Who needs the extra mobile&nbsp;data?
     </h1>
+  </div>
+</div>
 
+<div class="govuk-grid-row">
+  <form method="post" action="/responsible-body/mobile/{{ mobileId }}/check-answers" class="govuk-grid-column-two-thirds">
     {{ govukInput({
       label: {
         text: "Account holder name",
@@ -157,5 +161,13 @@
       html: 'Continue'
     }) }}
   </form>
+  <div class="govuk-grid-column-one-third">
+    {{ appRelated({
+      title: "Guidance",
+      content: {
+        html: "<a href=\"/guide\">Read our guide on collecting mobile information</a>"
+      }
+    }) }}
+  </div>
 </div>
 {% endblock %}
