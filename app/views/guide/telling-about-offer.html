@@ -1,9 +1,16 @@
 {% extends "_guide.html" %}
 {% block markdown %}
-If their network is in the list below, tell them the details of what they’ll get.
 
-If they are on a network not shown then we cannot give them more mobile data.
+What data someone will get depends on their mobile network. Some networks can’t offer data to Pay as you go (PAYG) customers.
 
+You should tell them:
+* if there is an offer they can use (or if there is no offer available)
+* the details of that offer
+* that they’ll receive a text message when their free data has been activated
+* when their free data will end
+* that this data can be used when tethering a mobile phone to another device for internet access
+
+### Offer details
 {% endblock %}
 
 {% block html %}
@@ -82,6 +89,13 @@ If they are on a network not shown then we cannot give them more mobile data.
     }, {
       heading: {
         text: "Vodafone"
+      },
+      content: {
+        html: "<p class='govuk-body'>This is the content for How people read.</p>"
+      }
+    }, {
+      heading: {
+        text: "Another network"
       },
       content: {
         html: "<p class='govuk-body'>This is the content for How people read.</p>"

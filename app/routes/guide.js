@@ -13,7 +13,7 @@ function guideNavigation (req) {
       href: '/guide/asking-for-network'
     },
     {
-      text: 'Tell someone about their offer',
+      text: 'Telling them about their offer',
       href: '/guide/telling-about-offer'
     },
     {
