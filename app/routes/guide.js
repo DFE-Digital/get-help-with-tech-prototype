@@ -5,16 +5,16 @@ function guideNavigation (req) {
       href: '/guide'
     },
     {
-      text: 'Asking for account holder name and mobile number',
-      href: '/guide/asking-for-account-holder'
-    },
-    {
       text: 'Asking for mobile network, contracts and Pay as you go (PAYG)',
       href: '/guide/asking-for-network'
     },
     {
       text: 'Telling them about their offer',
       href: '/guide/telling-about-offer'
+    },
+    {
+      text: 'Asking for account holder name and mobile number',
+      href: '/guide/asking-for-account-holder'
     },
     {
       text: 'Privacy and collecting permission to share someone’s details',
