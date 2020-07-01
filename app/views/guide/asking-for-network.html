@@ -6,5 +6,7 @@ Find out the following from the account holder:
 * what their mobile network is
 * whether they’re on a monthly contract or they pay as they go
 
-Record this information in the spreadsheet. 
+{% if data.features['bulk-upload'] %}
+Record this information in the spreadsheet.
+{% endif %}
 {% endblock %}

@@ -4,5 +4,7 @@ The recipient of the offer needs to confirm they understand how we’ll use thei
 
 [Privacy statement]
 
+{% if data.features['bulk-upload'] %}
 Once you’ve done this, complete the privacy column in the spreadsheet.
+{% endif %}
 {% endblock %}

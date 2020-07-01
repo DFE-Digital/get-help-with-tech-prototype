@@ -6,7 +6,9 @@ Find out the following from the account holder:
 * their name
 * their mobile phone number (this should always start with ‘07’)
 
+{% if data.features['bulk-upload'] %}
 Record this information in the spreadsheet.
+{% endif %}
 
 We need these details to arrange the increase in data with the relevant mobile network.
 
