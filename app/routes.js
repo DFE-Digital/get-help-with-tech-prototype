@@ -5,10 +5,6 @@ require('./routes/responsible-body')(router)
 require('./routes/family')(router)
 require('./routes/guide')(router)
 
-router.get('/', (req, res) => {
-  res.redirect('/pages/about-bt-wifi')
-})
-
 router.post('/account', (req, res) => {
   const hasAccount = req.session.data['has-account']
 
