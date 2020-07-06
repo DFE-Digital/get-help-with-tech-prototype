@@ -123,19 +123,13 @@
     {{ govukCheckboxes({
       fieldset: {
         legend: {
-          text: "Has the account holder agreed with the privacy statement?",
+          text: "Has someone shared the privacy statement with the account holder?",
           classes: "govuk-fieldset__legend--m"
         }
       },
-      hint: {
-        html: '<p class="govuk-hint">Account holders must allow us to:</p><ul class="govuk-hint govuk-list govuk-list--bullet">
-  <li>store their data</li>
-  <li>share their data with their mobile network provider</li>
-</ul><p class="govuk-hint"><a href="#">View privacy statement</a></p>'
-      },
       items: [
         {
-          text: "Yes, they agree with the privacy statement"
+          text: "Yes, the privacy statement has been shared"
         }
       ]
     } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "privacy"])) }}
