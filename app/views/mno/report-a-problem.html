@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% set title = "Report a problem" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/mno"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<!-- 001 - Incorrect phone number
+002 - No match for number
+003 - No match for account name
+004 - No match for address
+005 - No match for post code
+006 - Account not eligible
+007 - Account no longer on network -->
+
+{% set reasonHtml %}
+  {{ govukTextarea({
+    label: {
+      text: 'What is the problem?',
+      classes: ''
+    }
+  } | decorateFormAttributes(['mno', 'problem-reason']) ) }}
+{% endset %}
+
+{% set whyNotEligibleHtml %}
+  {{ govukTextarea({
+    label: {
+      text: 'Why is this account not eligible?',
+      classes: ''
+    }
+  } | decorateFormAttributes(['mno', 'problem-not-eligible-reason']) ) }}
+{% endset %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          html: '<span class="govuk-caption-xl">Arnulfo Conn – 07827889819</span>' + title + '',
+          isPageHeading: true,
+          classes: "govuk-label--xl govuk-!-margin-bottom-6"
+        }
+      },
+      items: [
+        {
+          text: "This is not a valid mobile number"
+        },
+        {
+          text: "We couldn’t find an account with this number"
+        },
+        {
+          text: "We couldn’t find an account with this name"
+        },
+        {
+          text: "This account is not eligible",
+          conditional: {
+            html: whyNotEligibleHtml
+          }
+        },
+        {
+          text: "This account is no longer on our network"
+        },
+        {
+          divider: "or"
+        },
+        {
+          text: "Another reason",
+          conditional: {
+            html: reasonHtml
+          }
+        }
+      ]
+    } | decorateFormAttributes(['mno', 'problem']) ) }}
+
+    {{ govukButton({
+      html: 'Report problem'
+    }) }}
+  </div>
+</div>
+{% endblock %}
