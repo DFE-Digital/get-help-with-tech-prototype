@@ -70,6 +70,23 @@
         },
         {
           key: {
+            text: "Pay monthly or pay as you go"
+          },
+          value: {
+            text: dataValue(["responsible-body", "mobile", mobileId, "mobile-contract-type"])
+          },
+          actions: {
+            items: [
+              {
+                href: "/responsible-body/mobile/new",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
             text: "Privacy"
           },
           value: {

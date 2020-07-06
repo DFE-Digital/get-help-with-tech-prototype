@@ -120,6 +120,23 @@
       ]
     } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "mobile-network"])) }}
 
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: 'Pay monthly or pay as you go (PAYG)?',
+          classes: "govuk-label--m"
+        }
+      },
+      items: [
+        {
+          text: "Pay monthly"
+        },
+        {
+          text: "Pay as you go (PAYG)"
+        }
+      ]
+    } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "mobile-contract-type"]) ) }}
+
     {{ govukCheckboxes({
       fieldset: {
         legend: {
