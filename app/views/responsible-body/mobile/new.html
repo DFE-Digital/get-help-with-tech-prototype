@@ -4,7 +4,7 @@
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/responsible-body/mobile"
+    href: "/responsible-body/mobile/type" if data.features['bulk-upload'] else "/responsible-body/mobile"
   }) }}
 {% endblock %}
 

@@ -9,6 +9,14 @@ module.exports = router => {
     res.redirect(`/responsible-body/mobile/${id}/new`)
   })
 
+  router.post('/responsible-body/mobile/type', function (req, res) {
+    if (req.body['responsible-body'].type === 'Multiple requests using a spreadsheet') {
+      res.redirect('/responsible-body/mobile/bulk')
+    } else {
+      res.redirect('/responsible-body/mobile/new')
+    }
+  })
+
   router.all('/responsible-body/mobile/bulk/:view', function (req, res) {
     res.render(`responsible-body/mobile/bulk/${req.params.view}`)
   })

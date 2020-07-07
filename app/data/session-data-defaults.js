@@ -5,7 +5,7 @@ module.exports = {
   features: {
     'give-bt-numbers': false,
     'sign-up': false,
-    'bulk-upload': false
+    'bulk-upload': true
   },
   mno: {
     requests: fakeMnoRequests
