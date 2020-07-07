@@ -46,8 +46,8 @@
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="row-1" name="row" type="checkbox" value="row-1">
-            <label class="govuk-label govuk-checkboxes__label" for="row-1">
+            <input class="govuk-checkboxes__input" id="row-{{ loop.index }}" name="row" type="checkbox" value="row-{{ loop.index }}">
+            <label class="govuk-label govuk-checkboxes__label" for="row-{{ loop.index }}">
               {{ request.name }}
             </label>
           </div>
@@ -55,7 +55,13 @@
         <td class="govuk-table__cell">{{ request.number }}</td>
         <td class="govuk-table__cell">{{ request.date }}</td>
         <td class="govuk-table__cell">{{ govukTag(request.tag) }}</td>
-        <td class="govuk-table__cell"><a href="/mno/report-a-problem">Report a problem</a></td>
+        <td class="govuk-table__cell">
+          {% if request.tag.classes == 'govuk-tag--red' %}
+            <a href="/mno/report-a-problem">Change problem</a>
+          {% elseif request.tag.text != 'Complete' %}
+            <a href="/mno/report-a-problem">Report a problem</a>
+          {% endif %}
+        </td>
       </tr>
     {% endfor %}
   </tbody>
