@@ -15,4 +15,11 @@ router.post('/account', (req, res) => {
   }
 })
 
+router.get('/sign-out', (req, res) => {
+  delete req.session.data['sign-in-email-address-rb']
+  delete req.session.data['sign-in-email-address-mno']
+
+  res.redirect('/')
+})
+
 module.exports = router

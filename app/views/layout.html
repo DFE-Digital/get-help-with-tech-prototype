@@ -60,20 +60,34 @@
   {% endblock %}
 {% endblock %}
 
+{% if data['sign-in-email-address-rb'] %}
+  {% if data.features['only-bt'] %}
+    {% set homepage = '/responsible-body/hotspot/download' %}
+  {% else %}
+    {% set homepage = '/responsible-body' %}
+  {% endif %}
+{% else %}
+  {% set homepage = '/' %}
+{% endif %}
+
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {# Set serviceName in config.js. #}
   {{ govukHeader({
-    homepageUrl: "/responsible-body",
+    homepageUrl: homepage,
     serviceName: serviceName,
-    serviceUrl: "/responsible-body",
+    serviceUrl: homepage,
     containerClasses: "govuk-width-container",
     navigation: [
       {
-        href: "#",
-        text: "Sign out"
+        href: "/",
+        text: "Guidance"
+      },
+      {
+        href: "/sign-out" if data['sign-in-email-address-rb'] else "/account/sign-in-responsible-body",
+        text: "Sign out" if data['sign-in-email-address-rb'] else "Sign in"
       }
-    ] if false
+    ]
   }) }}
 {% endblock %}
 
