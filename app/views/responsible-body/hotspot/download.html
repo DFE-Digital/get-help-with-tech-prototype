@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% set title = "Download your BT hotspot log-ins" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+{% set downloadAgain = data['downloaded'] == 'yes' %}
+
+{% block pageNavigation %}
+  {% if not data.features['only-bt'] %}
+    {{ govukBackLink({
+      href: "/responsible-body"
+    }) }}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Download your BT hotspot&nbsp;log-ins{% if downloadAgain %} again{% endif %}</h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/responsible-body/download" method="post">
+
+      <p class="govuk-body-l">You’ve been allocated 300 log-ins to pass on to schools and families.</p>
+
+      <p>A log-in is a username and password. BT calls these ‘vouchers’.</p>
+
+      <p>Your allocation was calculated based on school census data and free school meal (FSM) data. The Department for Education has a total of 10,000 BT log-ins to distribute across England.</p>
+
+      <p>Log-ins will be downloaded as a spreadsheet (CSV file).</p>
+
+      <input type="hidden" name="downloaded" value="yes" />
+
+      {{ govukButton({
+        classes: 'govuk-!-margin-top-4',
+        html: 'Download again' if downloadAgain else 'Download log-ins'
+      }) }}
+    </form>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {{ appRelated({
+      title: "Guidance",
+      items: [
+        {
+          href: '#',
+          text: 'Guide to distributing log-ins'
+        },
+        {
+          href: '#',
+          text: 'More about free access to BT wifi hotspots'
+        }
+      ]
+    }) }}
+  </div>
+</div>
+{% endblock %}
