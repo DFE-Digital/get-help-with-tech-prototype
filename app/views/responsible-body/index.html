@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Tell us who needs internet access" %}
+{% set title = "Increase children’s internet access" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block content %}
@@ -15,96 +15,29 @@
       {{ title }}
     </h1>
 
-    <p class="govuk-body">
-      Increased internet access is available to children from early years up to 16, and care leavers up to 25 if they:
-    </p>
+    <p>Use this service to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>
-        don’t have access to a <a class="govuk-link" href="https://www.ofcom.org.uk/phones-telecoms-and-internet/advice-for-consumers/advice/broadband-speeds/broadband-basics">fixed broadband connection</a>
-      </li>
-      <li>
-        cannot afford the additional data needed to access educational resources or social care services
-      </li>
+      <li>download log-ins for BT wifi hotspots so you can give them out</li>
+      <li>request extra mobile data for children’s mobile devices</li>
     </ul>
 
-    <h2 class="govuk-heading-m govuk-!-font-size-27 govuk-!-margin-bottom-4">
-      <span class="govuk-caption-m">Step 1</span>
-        <a href="/responsible-body/hotspot/download">Download your BT hotspot&nbsp;log-ins</a>
+    <h2 class="govuk-heading-l">Give free access to wifi hotspots</h2>
+
+    <p class="govuk-body">We’ve allocated 300 BT hotspot log-ins for you to pass on to schools and families. A log-in is a username and password. BT calls these ‘vouchers’.</p>
+
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
+      <a href="/responsible-body/hotspot/download">Download log-ins for BT wifi hotspots</a>
     </h2>
-    <div class="govuk-!-margin-bottom-4">
-      {% if data['downloaded'] == 'yes' %}
-        {{ govukTag({ text: "Downloaded" })}}
-      {% else %}
-        {{ govukTag({
-          text: "Not started yet",
-          classes: "govuk-tag--grey"
-        }) }}
-      {% endif %}
-    </div>
-    {% if data['total-eligible'] %}
-      {{ govukSummaryList({
-        classes: "govuk-summary-list--wide-terms",
-        rows: [
-          {
-            key: {
-              text: "Eligible young people"
-            },
-            value: {
-              text: data['total-eligible'] if data.features['give-bt-numbers'] else 300
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            } if data.features['give-bt-numbers']
-          },
-          {
-            key: {
-              text: "Number who can see a BT hotspot"
-            },
-            value: {
-              text: data['total-hotspot'] if data.features['give-bt-numbers'] else 150
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            } if data.features['give-bt-numbers']
-          }
-        ]
-      }) }}
-    {% else %}
-      <p class="govuk-body">We’ve allocated 300 BT hotspot log-ins for you to pass on to schools and families. A log-in is a username and password. BT calls these ‘vouchers’.</p>
-    {% endif %}
 
-    <hr class="govuk-section-break govuk-section-break--m">
+    <hr class="govuk-section-break govuk-section-break--l">
 
-    <h2 class="govuk-heading-m govuk-!-font-size-27 govuk-!-margin-bottom-4">
-      <span class="govuk-caption-m">Step 2</span>
+    <h2 class="govuk-heading-l">Increase data allowances</h2>
+
+    <p class="govuk-body">Give us mobile numbers and network details and we’ll request extra data for these devices. How much data someone gets will depend on their network.</p>
+
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
       <a href="/responsible-body/mobile">Request extra mobile data</a>
     </h2>
-    <div class="govuk-!-margin-bottom-4">
-      {% if data['total-eligible'] %}
-        {{ govukTag({
-          text: "1 request",
-          classes: "govuk-tag--blue"
-        }) }}
-      {% else %}
-        {{ govukTag({
-          text: "Not started yet",
-          classes: "govuk-tag--grey"
-        }) }}
-      {% endif %}
-    </div>
-    <p class="govuk-body">Give us mobile numbers and network details and we’ll request extra data for these devices. How much data someone gets will depend on their network.</p>
   </div>
 </div>
 {% endblock %}
