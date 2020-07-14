@@ -22,20 +22,27 @@
   <div class="govuk-grid-column-two-thirds">
     <form action="/responsible-body/download" method="post">
 
-      <p class="govuk-body-l">You’ve been allocated 300 log-ins to pass on to schools and families.</p>
+      <h2 class="govuk-heading-l">Your allocation</h2>
 
-      <p>A log-in is a username and password. BT calls these ‘vouchers’.</p>
+      <p class="govuk-body">You’ve been allocated 300 log-ins to pass on to schools and families. A log-in is a username and password. BT calls these ‘vouchers’.</p>
 
       <p>Your allocation was calculated based on school census data and free school meal (FSM) data. The Department for Education has a total of 10,000 BT log-ins to distribute across England.</p>
 
-      <p>Log-ins will be downloaded as a spreadsheet (CSV file).</p>
+      <h2 class="govuk-heading-l">Distributing log-ins</h2>
 
-      <input type="hidden" name="downloaded" value="yes" />
+      <p>Not everyone in need will be able to access a BT hotspot, so schools should find out who the vouchers will work for before giving them out.</p>
+
+      <p>
+        <a href="#">Read our guide for distributing vouchers to families</a>
+      </p>
+
+      <h2 class="govuk-heading-l">Download</h2>
 
       {{ govukButton({
-        classes: 'govuk-!-margin-top-4',
         html: 'Download again' if downloadAgain else 'Download log-ins'
       }) }}
+
+      <p>Log-ins will be downloaded as a spreadsheet (CSV file).</p>
     </form>
   </div>
   <div class="govuk-grid-column-one-third">
@@ -44,7 +51,7 @@
       items: [
         {
           href: '#',
-          text: 'Guide to distributing log-ins'
+          text: 'Guide to distributing vouchers'
         },
         {
           href: '#',
