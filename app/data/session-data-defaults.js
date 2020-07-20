@@ -3,9 +3,8 @@ const fakeSchoolUsers = require('./fake-school-users')
 
 module.exports = {
   features: {
-    'give-bt-numbers': false,
     'sign-up': false,
-    'bulk-upload': false,
+    'bulk-upload': true,
     'only-bt': false
   },
   mno: {

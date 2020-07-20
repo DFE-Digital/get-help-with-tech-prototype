@@ -10,7 +10,7 @@ module.exports = router => {
   })
 
   router.post('/responsible-body/mobile/type', function (req, res) {
-    if (req.body['responsible-body'].type === 'Multiple requests using a spreadsheet') {
+    if (req.body['responsible-body'].type === 'Using a spreadsheet') {
       res.redirect('/responsible-body/mobile/bulk')
     } else {
       res.redirect('/responsible-body/mobile/new')

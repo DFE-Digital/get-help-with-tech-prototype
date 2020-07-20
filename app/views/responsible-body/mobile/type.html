@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "How many requests are you making?" %}
+{% set title = "How would you like to submit information?" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -22,10 +22,10 @@
       },
       items: [
         {
-          text: "One request"
+          text: "Manually (entering details one at a time)"
         },
         {
-          text: "Multiple requests using a spreadsheet"
+          text: "Using a spreadsheet"
         }
       ]
     } | decorateFormAttributes(["responsible-body", "type"])) }}
