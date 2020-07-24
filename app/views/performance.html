@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+{% set title = "Service performance" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">
+  {{ title }}
+</h1>
+
+<h2 class="govuk-heading-l">Log-ins</h2>
+
+<div class="govuk-!-margin-bottom-4">
+  <div class="app-card app-card--blue">
+    <span class="app-card__count">35</span>
+    users have logged in
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-4">
+  <div class="govuk-grid-column-one-half">
+    <div class="app-card">
+      <span class="app-card__count">30</span>
+      different responsible bodies
+    </div>
+  </div>
+  <div class="govuk-grid-column-one-half">
+    <div class="app-card">
+      <span class="app-card__count">5</span>
+      different mobile network operators
+    </div>
+  </div>
+</div>
+
+<h2 class="govuk-heading-l govuk-!-margin-top-8">BT hotspots</h2>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-4">
+  <div class="govuk-grid-column-one-half">
+    <div class="app-card">
+      <span class="app-card__count">35</span>
+      vouchers activated
+    </div>
+  </div>
+  <div class="govuk-grid-column-one-half">
+    <div class="app-card">
+      <span class="app-card__count">5,200</span>
+      vouchers downloaded by 24 responsible bodies
+    </div>
+  </div>
+</div>
+
+<h2 class="govuk-heading-l govuk-!-margin-top-8">Mobile data requests</h2>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-4">
+  <div class="govuk-grid-column-full">
+    <div class="app-card app-card--blue">
+      <span class="app-card__count">20</span>
+      requests
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <div class="app-card">
+      <span class="app-card__secondary-count">5</span>
+      in progress
+    </div>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <div class="app-card app-card--red">
+      <span class="app-card__secondary-count">3</span>
+      not valid
+    </div>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <div class="app-card app-card--green">
+      <span class="app-card__secondary-count">17</span>
+    completed
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-top-4">
+  <div class="govuk-grid-column-one-half">
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Network</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Requests</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">EE</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Three</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Virgin</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">10</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Smarty</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">1</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
