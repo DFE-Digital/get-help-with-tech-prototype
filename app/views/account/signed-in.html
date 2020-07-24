@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% set title = 'You’re signed in' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <form action="/account/check-email-mno" method="post" class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+{% endblock %}
