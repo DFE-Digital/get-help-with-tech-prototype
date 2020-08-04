@@ -32,9 +32,8 @@
   <table class="govuk-table requests-table">
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
-        <th class="govuk-table__header">
-          Account holder
-        </th>
+        <th class="govuk-table__header">Row</th>
+        <th class="govuk-table__header">Account holder</th>
         <th class="govuk-table__header">Error</th>
         <th class="govuk-table__header">Mobile network</th>
         <th class="govuk-table__header">Mobile number</th>
@@ -42,6 +41,9 @@
     </thead>
     <tbody class="govuk-table__body">
       <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          Row 10
+        </td>
         <td class="govuk-table__cell">
           {{ data.mno.requests[10].name }}
         </td>
@@ -53,6 +55,9 @@
       </tr>
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">
+          Row 15
+        </td>
+        <td class="govuk-table__cell">
           {{ data.mno.requests[15].name }}
         </td>
         <td class="govuk-table__cell">
@@ -62,6 +67,9 @@
         <td class="govuk-table__cell">07123456789</td>
       </tr>
       <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          Row 20
+        </td>
         <td class="govuk-table__cell">
           {{ data.mno.requests[20].name }}
         </td>
@@ -79,9 +87,8 @@
 <table class="govuk-table requests-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th class="govuk-table__header">
-        Account holder
-      </th>
+      <th class="govuk-table__header">Row</th>
+      <th class="govuk-table__header">Account holder</th>
       <th class="govuk-table__header">Mobile network</th>
       <th class="govuk-table__header">Mobile number</th>
     </tr>
@@ -89,9 +96,8 @@
   <tbody class="govuk-table__body">
     {% for request in data.mno.requests %}
       <tr class="govuk-table__row">
-        <td class="govuk-table__cell">
-          {{ request.name }}
-        </td>
+        <td class="govuk-table__cell">Row {{ loop.index }}</td>
+        <td class="govuk-table__cell">{{ request.name }}</td>
         <td class="govuk-table__cell">{{ request.network }}</td>
         <td class="govuk-table__cell">{{ request.number }}</td>
       </tr>
