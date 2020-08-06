@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Users who can request extra mobile data on behalf of households" %}
+{% set title = "Who can order devices" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -16,8 +16,8 @@
     </h1>
 
     {{ govukButton({
-      text: 'Invite a new user',
-      href: '/responsible-body/mobile/invite/new-invite'
+      text: 'Give access to someone',
+      href: '/responsible-body/invite/new-invite'
     }) }}
   </div>
 </div>
@@ -27,7 +27,7 @@
     <tr class="govuk-table__row">
       <th class="govuk-table__header">Name</th>
       <th class="govuk-table__header">Organisation</th>
-      <th class="govuk-table__header">Requests made</th>
+
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -35,12 +35,10 @@
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">
           <strong>{{ user.name }}</strong><br />
-          {{ user.email }}
+          {{ user.email }}<br />
+          {{ user.number }}
         </td>
         <td class="govuk-table__cell">{{ user.org }}</td>
-        <td class="govuk-table__cell">
-          <a href="#">{{ user.requests }} requests</a>
-        </td>
       </tr>
     {% endfor %}
   </tbody>
