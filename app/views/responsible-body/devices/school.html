@@ -40,11 +40,15 @@
             classes: "govuk-label--m" if hasDevolvedAll
           }
         } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-number"]) )}}
+
+        {{ govukWarningText({
+          text: 'We’ll email them straight away',
+          iconFallbackText: 'Warning'
+        }) }}
       {% endset %}
 
       {% set conditionalHtml %}
         <h2 class="govuk-heading-m">Who should we contact at the school?</h2>
-
         {{ contactFields | safe }}
       {% endset %}
 
