@@ -12,31 +12,42 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {{ govukRadios({
-        fieldset: {
-          legend: {
-            text: title,
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-4"
-          }
-        },
+    <form action="/responsible-body/devices/devolve" method="post">
+      <h1 class="govuk-heading-xl">
+        {{ title }}
+      </h1>
+
+      {% set moreHtml %}
+        <p>We recommend delegating responsibility to schools. They can manage orders directly, meaning children can access remote education more quickly.</p>
+      {% endset %}
+
+      {{ govukRadios({
         items: [
           {
-            text: 'Schools will manage their own orders'
+            text: 'Schools will manage their own orders',
+            value: 'schools'
           },
           {
-            text: 'Some orders will be managed centrally'
+            text: 'Some orders will be managed centrally',
+            value: 'mixed',
+            conditional: {
+              html: moreHtml
+            }
           },
           {
-            text: 'All orders will be managed centrally'
+            text: 'All orders will be managed centrally',
+            value: 'central',
+            conditional: {
+              html: moreHtml
+            }
           }
         ]
-    } | decorateFormAttributes('who-orders-laptops') ) }}
+      } | decorateFormAttributes('who-orders-laptops') ) }}
 
-    {{ govukButton({
-      text: 'Continue',
-      href: '/responsible-body/devices/schools'
-    }) }}
+      {{ govukButton({
+        text: 'Continue'
+      }) }}
+    </form>
   </div>
 </div>
 {% endblock %}

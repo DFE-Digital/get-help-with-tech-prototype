@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
-{% set title = "Tell us who to contact about ordering devices" %}
+{% set title = "Who can order devices" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/responsible-body"
+    href: "/responsible-body/devices/devolve"
   }) }}
 {% endblock %}
 
@@ -15,10 +15,7 @@
       {{ title }}
     </h1>
 
-    {{ govukButton({
-      text: 'Tell us about someone new',
-      href: '/responsible-body/invite/new-contact'
-    }) }}
+    <p class="govuk-body-l">You are managing devices centrally. All devices must be delivered to schools.</p>
   </div>
 </div>
 
@@ -26,8 +23,6 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th class="govuk-table__header">Name</th>
-      <th class="govuk-table__header">Organisation</th>
-
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -38,10 +33,14 @@
           {{ user.email }}<br />
           {{ user.number }}
         </td>
-        <td class="govuk-table__cell">{{ user.org }}</td>
       </tr>
     {% endfor %}
   </tbody>
 </table>
+
+{{ govukButton({
+  text: 'Tell us about someone new',
+  href: '/responsible-body/devices/invite/new'
+}) }}
 
 {% endblock %}

@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% set title = "Give someone access to order devices" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/responsible-body/devices/invite"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/responsible-body/mobile/invite" method="post">
+      <h1 class="govuk-heading-xl">
+        {{ title }}
+      </h1>
+
+      <!-- <p>Give access to people who:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>are planning the response to a local lockdown</li>
+        <li>understand what devices are needed and who they will be for</li>
+        <li>know how to configure the devices</li>
+      </ul>
+
+      <p class="govuk-!-margin-bottom-8">Examples might include headteachers, deputy heads and IT leads.</p> -->
+
+      {{ govukInput({
+        label: {
+          text: "Name",
+          classes: "govuk-label--m"
+        }
+      } | decorateFormAttributes(["responsible-body", "new-invite-name"]) )}}
+
+      {{ govukInput({
+        label: {
+          text: "Email address",
+          classes: "govuk-label--m"
+        }
+      } | decorateFormAttributes(["responsible-body", "new-invite-email-address"]) )}}
+
+      {{ govukInput({
+        classes: "govuk-input--width-10",
+        label: {
+          text: "Telephone number",
+          classes: "govuk-label--m"
+        }
+      } | decorateFormAttributes(["responsible-body", "new-invite-number"]) )}}
+
+      {{ govukButton({
+          html: 'Send invite'
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

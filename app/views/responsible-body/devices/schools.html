@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
-{% set title = "Give us contact details for each school" %}
+{% set hasDevolvedAll = data['who-orders-laptops'] == 'schools' %}
+{% set title = "Give us contact details for each school" if hasDevolvedAll else "Tell us who will manage orders of devices for each school"%}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -16,20 +17,20 @@
       {{ title }}
     </h1>
 
-    <p>Give access to people who:</p>
+    <!-- <p>Give access to people who:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>are planning the response to a local lockdown</li>
       <li>understand what devices are needed and who they will be for</li>
       <li>know how to configure the devices</li>
     </ul>
 
-    <p class="govuk-!-margin-bottom-8">Examples might include headteachers, deputy heads and IT leads.</p>
+    <p class="govuk-!-margin-bottom-8">Examples might include headteachers, deputy heads and IT leads.</p> -->
 
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th class="govuk-table__header">School name</th>
-          <th class="govuk-table__header">Status</th>
+          <th class="govuk-table__header" style="width: 200px">Status</th>
         </tr>
       </thead>
       <tbody class="govuk-table__body">
@@ -38,7 +39,17 @@
           <td class="govuk-table__cell">
             <a href="/responsible-body/devices/schools/{{ school.URN }}">{{ school.name }}</a>
           </td>
-          <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">Not started</span></td>
+          <td class="govuk-table__cell">
+            {% if data['responsible-body'][school.URN] %}
+              {% if data['responsible-body'][school.URN].who == 'central' %}
+                <span class="govuk-tag govuk-tag--orange">Central</span>
+              {% else %}
+                <span class="govuk-tag govuk-tag--complete">School contacted</span>
+              {% endif %}
+            {% else %}
+              <span class="govuk-tag govuk-tag--grey">Not started</span>
+            {% endif %}
+          </td>
         </tr>
         {% endfor %}
       </tbody>

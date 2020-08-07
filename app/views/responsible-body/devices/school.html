@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
-{% set title = "Contact details for " + school.name %}
+{% set hasDevolvedAll = data['who-orders-laptops'] == 'schools' %}
+
+{% set title = "Contact details for " + school.name if hasDevolvedAll else "Who will order devices for " + school.name + "?" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -11,48 +13,78 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/responsible-body/mobile/invite" method="post">
+    <form action="/responsible-body/devices/schools/{{ school.URN }}" method="post">
       <h1 class="govuk-heading-xl">
         {{ title }}
       </h1>
 
-      {{ govukInput({
-        label: {
-          text: "Name",
-          classes: "govuk-label--m"
-        }
-      } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-name"]) )}}
+      {% set contactFields %}
+        {{ govukInput({
+          label: {
+            text: "Name",
+            classes: "govuk-label--m" if hasDevolvedAll
+          }
+        } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-name"]) )}}
 
-      {{ govukInput({
-        classes: "govuk-input--width-10",
-        label: {
-          text: "Telephone number",
-          classes: "govuk-label--m"
-        }
-      } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-name"]) )}}
+        {{ govukInput({
+          label: {
+            text: "Email address",
+            classes: "govuk-label--m" if hasDevolvedAll
+          }
+        } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-email-address"]) )}}
 
-      {{ govukInput({
-        label: {
-          text: "Email address",
-          classes: "govuk-label--m"
-        }
-      } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-email-address"]) )}}
+        {{ govukInput({
+          classes: "govuk-input--width-10",
+          label: {
+            text: "Telephone number",
+            classes: "govuk-label--m" if hasDevolvedAll
+          }
+        } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-number"]) )}}
+      {% endset %}
+
+      {% set conditionalHtml %}
+        <h2 class="govuk-heading-m">Who should we contact at the school?</h2>
+
+        {{ contactFields | safe }}
+      {% endset %}
+
+      {% if hasDevolvedAll %}
+        {{ contactFields | safe }}
+      {% else %}
+        {{ govukRadios({
+          items: [
+            {
+              text: 'The school will manage their own orders',
+              value: 'school',
+              conditional: {
+                html: conditionalHtml
+              }
+            },
+            {
+              text: 'Orders will be managed centrally',
+              value: 'central'
+            }
+          ]
+        } | decorateFormAttributes(["responsible-body", school.URN, "who"]) ) }}
+      {% endif %}
 
       {{ govukButton({
-          html: 'Save and go to the next school',
-          classes: "govuk-!-margin-bottom-4 govuk-!-margin-top-6"
+        html: 'Save and go to the next school',
+        name: 'next',
+        value: true,
+        classes: "govuk-!-margin-bottom-4 govuk-!-margin-top-6"
       }) }}
 
       <p>or</p>
 
       {{ govukButton({
         text: "Save and return",
+        name: "return",
+        value: true,
         classes: "govuk-button--secondary"
       }) }}
 
-      <p>or</p>
-
-      <p><a href="#">Return to index without saving</a></p>
+      <p><a href="/responsible-body/devices/schools">Return to list of schools</a></p>
     </form>
   </div>
 </div>
