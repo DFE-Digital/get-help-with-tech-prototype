@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
-{% set hasDevolvedAll = data['who-orders-laptops'] == 'schools' %}
-{% set title = "Give us contact details for each school" if hasDevolvedAll else "Tell us who will manage orders of devices for each school"%}
+{% set devolvedAll = data['who-orders-laptops'] == 'schools' %}
+{% set title = "Give us contact details for each school" if devolvedAll else "Tell us who will manage orders for each school"%}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -17,43 +17,61 @@
       {{ title }}
     </h1>
 
-    <!-- <p>Give access to people who:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>are planning the response to a local lockdown</li>
-      <li>understand what devices are needed and who they will be for</li>
-      <li>know how to configure the devices</li>
-    </ul>
+    <p class="govuk-body-l">Schools will manage their own orders.</p>
+  </div>
+</div>
 
-    <p class="govuk-!-margin-bottom-8">Examples might include headteachers, deputy heads and IT leads.</p> -->
+<!-- <p>Give access to people who:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>are planning the response to a local lockdown</li>
+  <li>understand what devices are needed and who they will be for</li>
+  <li>know how to configure the devices</li>
+</ul>
 
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header">School name</th>
-          <th class="govuk-table__header" style="width: 200px">Status</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        {% for school in data.schools %}
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="/responsible-body/devices/schools/{{ school.URN }}">{{ school.name }}</a>
-          </td>
+<p class="govuk-!-margin-bottom-8">Examples might include headteachers, deputy heads and IT leads.</p> -->
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header">School name</th>
+      {% if not devolvedAll %}
+        <th class="govuk-table__header">Who’s managing orders?</th>
+      {% endif %}
+      <th class="govuk-table__header" style="width: 200px">Status</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    {% for school in data.schools %}
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          <a href="/responsible-body/devices/schools/{{ school.URN }}">{{ school.name }}</a>
+        </td>
+        {% if not devolvedAll %}
           <td class="govuk-table__cell">
             {% if data['responsible-body'][school.URN] %}
               {% if data['responsible-body'][school.URN].who == 'central' %}
-                <span class="govuk-tag govuk-tag--orange">Central</span>
+                Central management
               {% else %}
-                <span class="govuk-tag govuk-tag--complete">School contacted</span>
+                Managed by school
               {% endif %}
             {% else %}
-              <span class="govuk-tag govuk-tag--grey">Not started</span>
+              Unknown
             {% endif %}
           </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
+        {% endif %}
+        <td class="govuk-table__cell">
+          {% if data['responsible-body'][school.URN] %}
+            <span class="govuk-tag govuk-tag--completed">Completed</span>
+            <!-- <span class="govuk-tag govuk-tag--yellow">School contacted</span>
+            <span class="govuk-tag govuk-tag--blue">School signed in</span>
+            <span class="govuk-tag govuk-tag--completed">School ready</span> -->
+          {% else %}
+            <span class="govuk-tag govuk-tag--grey">Not started</span>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 {% endblock %}
