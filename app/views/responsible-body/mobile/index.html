@@ -3,8 +3,20 @@
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
-  {{ govukBackLink({
-    href: "/responsible-body"
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Get help with technology",
+        href: "/responsible-body"
+      },
+      {
+        text: "Get the internet",
+        href: "/responsible-body/internet"
+      },
+      {
+        text: title
+      }
+    ]
   }) }}
 {% endblock %}
 

@@ -3,8 +3,16 @@
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
-  {{ govukBackLink({
-    href: "/responsible-body"
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Get help with technology",
+        href: "/responsible-body"
+      },
+      {
+        text: "Get devices"
+      }
+    ]
   }) }}
 {% endblock %}
 
@@ -13,6 +21,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Get devices</span>
       {{ title }}
     </h1>
     <p>
