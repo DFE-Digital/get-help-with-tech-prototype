@@ -21,6 +21,11 @@
         <p>We recommend delegating responsibility to schools. They can manage orders directly, meaning children can access remote education more quickly.</p>
       {% endset %}
 
+      {% set mixedHtml %}
+        <p>You’ll need to tell us how orders for each school will be managed.</p>
+        <p>We recommend delegating responsibility to schools. They can manage orders directly, meaning children can access remote education more quickly.</p>
+      {% endset %}
+
       {{ govukRadios({
         items: [
           {
@@ -31,7 +36,7 @@
             text: 'Some orders will be managed centrally',
             value: 'mixed',
             conditional: {
-              html: moreHtml
+              html: mixedHtml
             }
           },
           {
