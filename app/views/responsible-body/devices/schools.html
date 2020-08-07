@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% set title = "Give us contact details for each school" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/responsible-body/devices/devolve"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p>Give access to people who:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>are planning the response to a local lockdown</li>
+      <li>understand what devices are needed and who they will be for</li>
+      <li>know how to configure the devices</li>
+    </ul>
+
+    <p class="govuk-!-margin-bottom-8">Examples might include headteachers, deputy heads and IT leads.</p>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header">School name</th>
+          <th class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% for school in data.schools %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <a href="/responsible-body/devices/schools/{{ school.URN }}">{{ school.name }}</a>
+          </td>
+          <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">Not started</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

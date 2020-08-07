@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% set title = "Tell us who will order laptops and tablets" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/responsible-body"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+    <p>
+      Give us details of people within each school who will be responsible for placing orders if required.
+    </p>
+    <p>
+      All nominated contacts will receive:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>access to this service to add and edit who can make orders in their school</li>
+      <li>access to the TechSource system for placing orders</li>
+      <li>detailed instructions for how to place an order in the event of a local coronavirus (COVID-19) outbreak that affects their school(s) or pupils</li>
+    </ul>
+
+    <p>Allocation of devices will be assessed at the time of ordering based on availability and the extent of coronavirus outbreaks.</p>
+
+    {{ govukButton({
+      text: 'Start now',
+      isStartButton: true,
+      classes: 'govuk-!-margin-top-6',
+      href: '/responsible-body/devices/devolve'
+    }) }}
+  </div>
+</div>
+{% endblock %}

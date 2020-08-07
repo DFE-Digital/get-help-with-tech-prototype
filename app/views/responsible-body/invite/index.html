@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
-{% set title = "Who can order devices" %}
+{% set title = "Tell us who to contact about ordering devices" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/responsible-body/mobile"
+    href: "/responsible-body"
   }) }}
 {% endblock %}
 
@@ -16,8 +16,8 @@
     </h1>
 
     {{ govukButton({
-      text: 'Give access to someone',
-      href: '/responsible-body/invite/new-invite'
+      text: 'Tell us about someone new',
+      href: '/responsible-body/invite/new-contact'
     }) }}
   </div>
 </div>

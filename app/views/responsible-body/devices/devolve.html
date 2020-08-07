@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% set title = "Who will order the laptops and tablets?" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/responsible-body/devices"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukRadios({
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-4"
+          }
+        },
+        items: [
+          {
+            text: 'Schools will manage their own orders'
+          },
+          {
+            text: 'Some orders will be managed centrally'
+          },
+          {
+            text: 'All orders will be managed centrally'
+          }
+        ]
+    } | decorateFormAttributes('who-orders-laptops') ) }}
+
+    {{ govukButton({
+      text: 'Continue',
+      href: '/responsible-body/devices/schools'
+    }) }}
+  </div>
+</div>
+{% endblock %}
