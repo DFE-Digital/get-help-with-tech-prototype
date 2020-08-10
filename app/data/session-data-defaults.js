@@ -3,6 +3,7 @@ const fakeSchoolUsers = require('./fake-school-users')
 const schoolsInLocalAuthority = require('./local-authority-schools')
 
 module.exports = {
+  rb: 'Croydon',
   features: {
     'sign-up': false,
     'bulk-upload': true,
