@@ -17,7 +17,11 @@
       {{ title }}
     </h1>
 
-    <p class="govuk-body-l">Schools will manage their own orders.</p>
+    {% if devolvedAll %}
+      <p class="govuk-body-l">Schools will manage their own orders.</p>
+    {% else %}
+      <p class="govuk-body-l">Some schools will manage their own orders.</p>
+    {% endif %}
   </div>
 </div>
 
