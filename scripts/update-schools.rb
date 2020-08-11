@@ -20,6 +20,7 @@ class UpdateSchoolsList
       }
     end
 
+    puts "Schools: #{schools.count}"
     update_local_authority_schools_file(schools)
   end
 

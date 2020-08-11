@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% set title = "Order devices now" %}
+{% set lockdown = false %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Get devices for your school",
+        href: "/school"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body-l">Order your devices now, do not delay.</p>
+    <p class="govuk-body-l govuk-!-margin-bottom-8">You can order 100 devices. They will arrive tomorrow if you order before 4pm.</p>
+
+    {{ govukButton({
+      html: 'Start now',
+      isStartButton: true,
+      href: '#'
+    }) }}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% set title = "You cannot order devices yet" %}
+{% set lockdown = false %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Get devices for your school",
+        href: "/school"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <!-- {{ govukWarningText({
+      text: 'Your school is not within a local lockdown',
+      iconFallbackText: 'Warning'
+    }) }} -->
+
+    <h2 class="govuk-heading-m">Ordering devices for children who are shielding</h2>
+
+    <p>If you need devices for children who are extremely clinically vulnerable and must continue shielding, contact us with details of how many devices you need: <a href="#">COVID.TECHNOLOGY@education.gov.uk</a>.</p>
+
+    <h2 class="govuk-heading-m">Ordering devices during a lockdown</h2>
+
+    <p>You can only order devices if:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>your school is closed because of a local lockdown</li>
+      <li>your school is partially closed to some year groups because of a local lockdown</li>
+    </ul>
+
+    <p>In the event of a local lockdown we’ll immediately notify you.</p>
+  </div>
+</div>
+{% endblock %}

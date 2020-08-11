@@ -30,4 +30,4 @@ function generateFakeUsers (count) {
   return requests
 }
 
-module.exports = generateFakeUsers(5)
+module.exports = generateFakeUsers(3)

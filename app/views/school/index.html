@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% set title = "Get devices for your school" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- {{ appBanner({
+  html: "<h2 class=\"govuk-heading-m\">Thank you. We’ve received your information.</h2>",
+  type: "success",
+  icon: false
+}) }} -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">{{ data.school }}</span>
+      {{ title }}
+    </h1>
+
+    <h2 class="govuk-heading-l govuk-!-font-size-27">
+      <a href="/school/devices/manage">Manage who can order devices</a>
+    </h2>
+    <p>Use this section to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>add users to this service</li>
+      <li>allow new users to order devices</li>
+      <li>edit existing users</li>
+    </ul>
+
+    <h2 class="govuk-heading-l govuk-!-font-size-27">
+      <a href="/school/devices/order">Order devices</a>
+    </h2>
+    <p>Use this section to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>access TechSource to order devices during a local lockdown</li>
+      <li>view your order history</li>
+    </ul>
+
+    <!-- <h2 class="govuk-heading-l govuk-!-font-size-27">
+      <a href="/school/devices/manage">Configure your devices</a>
+    </h2>
+    <p>Use this section to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>add users to this service</li>
+      <li>allow new users to order devices</li>
+      <li>edit existing users</li>
+    </ul> -->
+  </div>
+</div>
+{% endblock %}
