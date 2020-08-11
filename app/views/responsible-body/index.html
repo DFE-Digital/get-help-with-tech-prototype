@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Increase children’s internet access" %}
+{% set title = "Get help with technology" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block content %}
@@ -12,32 +12,30 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">{{ data.rb }}</span>
       {{ title }}
     </h1>
 
-    <p>Use this service to:</p>
+    <h2 class="govuk-heading-l govuk-!-font-size-27">
+      <a href="/responsible-body/devices">Get devices</a>
+    </h2>
+
+    <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>download log-ins for BT wifi hotspots so you can give them out</li>
-      <li>request extra data for mobile devices</li>
+      <li>manage how schools order devices</li>
+      <li>give contact details for each school</li>
+      <li>set up accounts for ordering devices through TechSource</li>
     </ul>
 
-    <h2 class="govuk-heading-l">Give free access to wifi hotspots</h2>
-
-    <p class="govuk-body">We’ve allocated 300 BT hotspot log-ins for you to pass on to schools and families. A log-in is a username and password. BT calls these ‘vouchers’.</p>
-
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
-      <a href="/responsible-body/hotspot/download">Download log-ins for BT wifi hotspots</a>
+    <h2 class="govuk-heading-l govuk-!-font-size-27">
+      <a href="/responsible-body/internet">Get the internet</a>
     </h2>
 
-    <hr class="govuk-section-break govuk-section-break--l">
-
-    <h2 class="govuk-heading-l">Increase data allowances</h2>
-
-    <p class="govuk-body">Give us mobile numbers and network details and we’ll request extra data for these devices. How much data someone gets will depend on their network.</p>
-
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-4">
-      <a href="/responsible-body/mobile">Request extra data for mobile devices</a>
-    </h2>
+    <p>Use this section to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>download BT wifi vouchers to distribute</li>
+      <li>request extra data for mobile devices</li>
+    </ul>
   </div>
 </div>
 {% endblock %}

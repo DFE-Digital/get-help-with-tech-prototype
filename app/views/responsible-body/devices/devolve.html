@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% set title = "Who will order the laptops and tablets?" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/responsible-body/devices"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/responsible-body/devices/devolve" method="post">
+      <h1 class="govuk-heading-xl">
+        {{ title }}
+      </h1>
+
+      {% set moreHtml %}
+        <p>We recommend delegating responsibility to schools. They can manage orders directly, meaning children can access remote education more quickly.</p>
+      {% endset %}
+
+      {% set mixedHtml %}
+        <p>You’ll need to tell us how orders for each school will be managed.</p>
+        <p>We recommend delegating responsibility to schools. They can manage orders directly, meaning children can access remote education more quickly.</p>
+      {% endset %}
+
+      {{ govukRadios({
+        items: [
+          {
+            text: 'Schools will manage their own orders',
+            value: 'schools'
+          },
+          {
+            text: 'Some orders will be managed centrally',
+            value: 'mixed',
+            conditional: {
+              html: mixedHtml
+            }
+          },
+          {
+            text: 'All orders will be managed centrally',
+            value: 'central',
+            conditional: {
+              html: moreHtml
+            }
+          }
+        ]
+      } | decorateFormAttributes('who-orders-laptops') ) }}
+
+      {{ govukButton({
+        text: 'Continue'
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

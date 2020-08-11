@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
-{% set title = "Invite a new user" %}
+{% set title = "Give someone access to order devices" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/responsible-body/mobile/invite"
+    href: "/responsible-body/devices/invite"
   }) }}
 {% endblock %}
 
@@ -16,7 +16,14 @@
         {{ title }}
       </h1>
 
-      <p>Allow someone to request extra mobile data on behalf of a young person. You will need to authorise each request they make.</p>
+      <!-- <p>Give access to people who:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>are planning the response to a local lockdown</li>
+        <li>understand what devices are needed and who they will be for</li>
+        <li>know how to configure the devices</li>
+      </ul>
+
+      <p class="govuk-!-margin-bottom-8">Examples might include headteachers, deputy heads and IT leads.</p> -->
 
       {{ govukInput({
         label: {
@@ -24,6 +31,8 @@
           classes: "govuk-label--m"
         }
       } | decorateFormAttributes(["responsible-body", "new-invite-name"]) )}}
+
+      <!-- Add in details about named contacts not generic ones -->
 
       {{ govukInput({
         label: {
@@ -33,11 +42,12 @@
       } | decorateFormAttributes(["responsible-body", "new-invite-email-address"]) )}}
 
       {{ govukInput({
+        classes: "govuk-input--width-10",
         label: {
-          text: "Organisation",
+          text: "Telephone number",
           classes: "govuk-label--m"
         }
-      } | decorateFormAttributes(["responsible-body", "new-invite-organisation"]) )}}
+      } | decorateFormAttributes(["responsible-body", "new-invite-number"]) )}}
 
       {{ govukButton({
           html: 'Send invite'

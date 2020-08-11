@@ -14,13 +14,15 @@ function generateFakeUsers (count) {
       name: `${firstName} ${lastName}`,
       email: `${firstName}.${lastName}@example.com`.toLowerCase(),
       date: dateFormat(faker.date.recent(), 'd mmmm h:MMtt'),
-      requests: faker.random.arrayElement([10, 23, 45, 65, 102, 9, 36, 39, 5]),
+      number: faker.random.arrayElement([faker.phone.phoneNumber('01### ######'), faker.phone.phoneNumber('07#########'), faker.phone.phoneNumber('020 #### ####')]),
       org: faker.random.arrayElement([
         'STEP Academy',
         'Learners Secondary School',
         'Basildon Catholic School',
         'St Mary’s',
-        'St John’s'
+        'St John’s',
+        'Pool Hayes Primary',
+        'Pool Hayes Academy'
       ])
     })
   }

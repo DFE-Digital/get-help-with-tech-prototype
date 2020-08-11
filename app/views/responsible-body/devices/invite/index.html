@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
-{% set title = "Users who can request extra mobile data on behalf of households" %}
+{% set title = "Who can order devices" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/responsible-body/mobile"
+    href: "/responsible-body/devices/devolve"
   }) }}
 {% endblock %}
 
@@ -15,10 +15,7 @@
       {{ title }}
     </h1>
 
-    {{ govukButton({
-      text: 'Invite a new user',
-      href: '/responsible-body/mobile/invite/new-invite'
-    }) }}
+    <p class="govuk-body-l">You are managing devices centrally. All devices must be delivered to schools.</p>
   </div>
 </div>
 
@@ -26,8 +23,6 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th class="govuk-table__header">Name</th>
-      <th class="govuk-table__header">Organisation</th>
-      <th class="govuk-table__header">Requests made</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -35,15 +30,17 @@
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">
           <strong>{{ user.name }}</strong><br />
-          {{ user.email }}
-        </td>
-        <td class="govuk-table__cell">{{ user.org }}</td>
-        <td class="govuk-table__cell">
-          <a href="#">{{ user.requests }} requests</a>
+          {{ user.email }}<br />
+          {{ user.number }}
         </td>
       </tr>
     {% endfor %}
   </tbody>
 </table>
+
+{{ govukButton({
+  text: 'Tell us about someone new',
+  href: '/responsible-body/devices/invite/new'
+}) }}
 
 {% endblock %}
