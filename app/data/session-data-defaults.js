@@ -4,6 +4,7 @@ const schoolsInLocalAuthority = require('./local-authority-schools')
 
 module.exports = {
   rb: 'Croydon',
+  school: 'Pool Hayes Primary',
   features: {
     'sign-up': false,
     'bulk-upload': true,
