@@ -1,0 +1,42 @@
+{% extends "_email.html" %}
+
+{% set title = "Get laptops and tablets for children who cannot attend school due to coronavirus" %}
+{% set to = "headteacher@school.gov.uk" %}
+
+{% block content %}
+  <h2 class="govuk-heading-m">{{ title }}</h2>
+  <p class="govuk-body">Dear {{ data['responsible-body']['school-users'][0].name }},</p>
+
+  <p>The Department for Education (DfE) is providing laptops and tablets to help children and families access remote education during the coronavirus (COVID-19) outbreak.</p>
+
+  <h2 class="govuk-heading-m">Get help with technology</h2>
+
+  <p>Your local authority ({{ data.rb }}) has given you access to the Get help with technology service. You can use this to:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>tell us who will order devices for your school</li>
+    <li>access TechSource to order devices during a lockdown</li>
+  </ul>
+
+  <p>You will receive a separate email from Computacentre with a username and password for TechSource.</p>
+
+  <h2 class="govuk-heading-m">Sign in</h2>
+  <p>Sign in using your email address ({{ to }}) to get started:</p>
+  <p><a href="#">https://get-help-with-tech.education.gov.uk/sign-in</a></p>
+
+  <p>Bookmark this page, you will need it if there is a local lockdown.</p>
+
+  <h2 class="govuk-heading-m">Tell us who will order your devices</h2>
+
+  <p>
+    Use this service to hive us details of people in your school who will be responsible for placing orders.
+  </p>
+  <p>
+    Everyone will receive:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>access to this service to add and edit who can make orders in their school</li>
+    <li>access to the TechSource system for placing orders</li>
+    <li>detailed instructions for how to place an order in the event of a local coronavirus (COVID-19) outbreak that affects their school(s) or pupils</li>
+    <li>notifications in the event of a local lockdown</li>
+  </ul>
+{% endblock %}
