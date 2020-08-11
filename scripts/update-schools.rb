@@ -12,11 +12,15 @@ class UpdateSchoolsList
     only_schools_with_allocations = la_schools.reject {|r| r['Total '] == '0' }
 
     schools = only_schools_with_allocations.sort_by { |r| r['Name'] }.map do |r|
+      total = Integer(r['Total '])
+      lower = total < 40 ? 0 : total - 40
+      upper = total < 40 ? total + 20 : total + 40
+
       {
         URN: Integer(r['URN']),
         name: r['Name'].gsub("'", "’"),
         la: r['LA'],
-        #total: r['Total ']
+        total: rand(Range.new(lower, upper))
       }
     end
 
@@ -48,7 +52,7 @@ class UpdateSchoolsList
   end
 
   def json_as_js_object(json)
-    json.gsub('"URN"', 'URN').gsub('"name"', 'name').gsub('"la"', 'la')
+    json.gsub('"URN"', 'URN').gsub('"name"', 'name').gsub('"la"', 'la').gsub('"total"', 'total')
   end
 end
 
