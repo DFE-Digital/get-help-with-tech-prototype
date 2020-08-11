@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% set title = "Who can order devices" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/school"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body-l">Up to 5 people can order devices.</p>
+
+    {% for user in data['responsible-body']['school-users'] %}
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-1">{{ user.name }}</h2>
+      <p class="govuk-!-margin-bottom-1">
+        {{ user.email }}<br />
+        {{ user.number }}<br />
+      </p>
+      <p>
+        <a href="#">Change</a>
+      </p>
+    {% endfor %}
+
+    {{ govukButton({
+      text: 'Add someone new',
+      href: '/school/devices/manage/new',
+      classes: 'govuk-!-margin-top-4'
+    }) }}
+  </div>
+</div>
+
+{% endblock %}
