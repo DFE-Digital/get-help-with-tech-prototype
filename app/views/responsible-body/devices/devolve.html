@@ -29,21 +29,24 @@
       {{ govukRadios({
         items: [
           {
-            text: 'Schools will manage their own orders',
-            value: 'schools'
+            text: 'Schools will manage their own orders (recommended)',
+            value: 'schools',
+            hint: {
+              text: 'We’ll email the headteachers of all ' + data.schools.length + ' schools with instructions.'
+            }
           },
           {
             text: 'Some orders will be managed centrally',
             value: 'mixed',
-            conditional: {
-              html: mixedHtml
+            hint: {
+              text: 'You’ll need to tell us how orders for each school will be managed.'
             }
           },
           {
             text: 'All orders will be managed centrally',
             value: 'central',
-            conditional: {
-              html: moreHtml
+            hint: {
+              text: 'You’ll need to order devices for every school. We recommend delegating responsibility to schools so they can manage orders directly, meaning children can access remote education more quickly.'
             }
           }
         ]
