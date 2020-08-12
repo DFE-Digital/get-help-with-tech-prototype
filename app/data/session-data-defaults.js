@@ -3,7 +3,7 @@ const fakeSchoolUsers = require('./fake-school-users')
 const schoolsInLocalAuthority = require('./local-authority-schools')
 
 module.exports = {
-  rb: 'Kent',
+  rb: 'Hampshire',
   school: 'Pool Hayes Primary',
   features: {
     'sign-up': false,

@@ -5,7 +5,7 @@ require 'JSON'
 
 class UpdateSchoolsList
   def run
-    responsible_body = 'Kent'
+    responsible_body = 'Hampshire'
     rows = CSV.read(csv_file_location, { headers: true })
     grouped_by_responsible_body = rows.group_by { |r| r['LA'] }
     la_schools = grouped_by_responsible_body[responsible_body]
@@ -25,10 +25,32 @@ class UpdateSchoolsList
     end
 
     puts "Schools: #{schools.count}"
+    puts "Enriching..."
+    enrich_schools_data(schools)
+
+    puts "Schools: #{schools.count}"
     update_local_authority_schools_file(schools)
   end
 
   private
+
+  def enrich_schools_data(schools)
+    urns = schools.map {|s| s[:URN] }
+    data_rows = CSV.read(schools_data_csv_file_location, { headers: true, converters: :numeric, encoding: 'windows-1251:utf-8' })
+
+    schools.each do |school|
+      row = data_rows.find { |s| s['URN'] == school[:URN] }
+      puts row
+      school[:phase] = row['PhaseOfEducation (name)']
+      school[:type] = row['EstablishmentTypeGroup (name)']
+      school[:headteacher] = "#{row['HeadFirstName']} #{row['HeadLastName']}"
+      school[:fsm_percentage] = row['PercentageFSM']
+    end
+  end
+
+  def schools_data_csv_file_location
+    "scripts/edubasealldata.csv"
+  end
 
   def csv_file_location
     "scripts/wave2allocations.csv"
@@ -52,7 +74,15 @@ class UpdateSchoolsList
   end
 
   def json_as_js_object(json)
-    json.gsub('"URN"', 'URN').gsub('"name"', 'name').gsub('"la"', 'la').gsub('"total"', 'total')
+    json
+      .gsub('"URN"', 'URN')
+      .gsub('"name"', 'name')
+      .gsub('"la"', 'la')
+      .gsub('"total"', 'total')
+      .gsub('"phase"', 'phase')
+      .gsub('"type"', 'type')
+      .gsub('"headteacher"', 'headteacher')
+      .gsub('"fsm_percentage"', 'fsm_percentage')
   end
 end
 

@@ -12,3 +12,4 @@ node_modules/*
 .tmuxp.*
 package-lock.json
 wave2allocations.csv
+edubasealldata*
