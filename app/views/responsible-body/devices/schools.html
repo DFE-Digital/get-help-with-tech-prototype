@@ -1,6 +1,19 @@
 {% extends "layout.html" %}
-{% set devolvedAll = data['who-orders-laptops'] == 'schools' %}
-{% set title = "Give us contact details for each school" if devolvedAll else "Tell us who will manage orders for each school"%}
+{% switch data['who-orders-laptops'] %}
+  {% case 'schools' %}
+    {% set title = "Give us contact details for each school" %}
+    {% set description = "Schools will manage their own orders" %}
+    {% set devolvedAll = true %}
+  {% case 'central' %}
+    {% set title = "Schools you need to order devices for" %}
+    {% set description = "All device orders are managed centrally" %}
+    {% set centralAll = true %}
+  {% default %}
+    {% set title = "Tell us who will manage orders for each school" %}
+    {% set description = "Some schools will manage their own orders" %}
+    {% set someSchools = true %}
+{% endswitch %}
+
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -17,11 +30,7 @@
       {{ title }}
     </h1>
 
-    {% if devolvedAll %}
-      <p class="govuk-body-l">Schools will manage their own orders.</p>
-    {% else %}
-      <p class="govuk-body-l">Some schools will manage their own orders.</p>
-    {% endif %}
+    <p class="govuk-body-l">{{ description }}. <br /><a href="/responsible-body/devices/devolve">Change who orders devices</a>.</p>
   </div>
 </div>
 
@@ -37,11 +46,9 @@
 <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th class="govuk-table__header">School name</th>
-      <th class="govuk-table__header">Device allocation</th>
-      {% if not devolvedAll %}
-        <th class="govuk-table__header">Who’s managing orders?</th>
-      {% endif %}
+      <th class="govuk-table__header" style="width: 50%">School name</th>
+      <th class="govuk-table__header">Allocation</th>
+      <th class="govuk-table__header">Who orders?</th>
       <th class="govuk-table__header" style="width: 200px">Status</th>
     </tr>
   </thead>
@@ -55,19 +62,23 @@
         <td class="govuk-table__cell">
           {{ school.total }}
         </td>
-        {% if not devolvedAll %}
-          <td class="govuk-table__cell">
+        <td class="govuk-table__cell">
+          {% if someSchools %}
             {% if data['responsible-body'][school.URN] %}
               {% if data['responsible-body'][school.URN].who == 'central' %}
-                Central management
+                Local authority
               {% else %}
-                Managed by school
+                School
               {% endif %}
             {% else %}
               Unknown
             {% endif %}
-          </td>
-        {% endif %}
+          {% elseif centralAll %}
+            Local authority
+          {% else %}
+            School
+          {% endif %}
+        </td>
         <td class="govuk-table__cell">
           {% if data['responsible-body'][school.URN] %}
             <span class="govuk-tag govuk-tag--completed">Completed</span>

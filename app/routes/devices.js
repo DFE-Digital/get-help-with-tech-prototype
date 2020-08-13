@@ -5,12 +5,7 @@ const devicesPath = '/responsible-body/devices'
  */
 module.exports = router => {
   router.post(`${devicesPath}/devolve`, function (req, res) {
-    const who = req.session.data['who-orders-laptops']
-    if (who === 'schools' || who === 'mixed') {
-      res.redirect(`${devicesPath}/schools`)
-    } else {
-      res.redirect(`${devicesPath}/invite`)
-    }
+    res.redirect(`${devicesPath}/schools`)
   })
 
   router.post(`${devicesPath}/schools/:urn`, function (req, res) {
