@@ -27,6 +27,7 @@
       <li>set up accounts for ordering devices through TechSource</li>
     </ul>
 
+    {% if data.features['in-connectivity-pilots'] %}
     <h2 class="govuk-heading-l govuk-!-font-size-27">
       <a href="/responsible-body/internet">Get the internet</a>
     </h2>
@@ -36,6 +37,7 @@
       <li>download BT wifi vouchers to distribute</li>
       <li>request extra data for mobile devices</li>
     </ul>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
