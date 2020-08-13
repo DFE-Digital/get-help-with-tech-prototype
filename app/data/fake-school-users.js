@@ -1,6 +1,5 @@
 const faker = require('faker')
 const dateFormat = require('dateformat')
-
 faker.locale = 'en_GB'
 
 function generateFakeUsers (count) {
@@ -15,6 +14,7 @@ function generateFakeUsers (count) {
       name: `${firstName} ${lastName}`,
       email: `${firstName}.${lastName}@example.com`.toLowerCase(),
       date: dateFormat(faker.date.recent(), 'd mmmm h:MMtt'),
+      'last-sign-in': faker.random.arrayElement(['Never', 'Today', dateFormat(faker.date.recent(), 'd mmmm h:MMtt')]),
       number: faker.random.arrayElement([faker.phone.phoneNumber('01### ######'), faker.phone.phoneNumber('07#########'), faker.phone.phoneNumber('020 #### ####')]),
       org: faker.random.arrayElement([
         'STEP Academy',

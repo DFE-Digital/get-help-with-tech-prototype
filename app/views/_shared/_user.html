@@ -29,6 +29,14 @@
       value: {
         text: 'Yes' if user['order-devices'] else 'No'
       }
-    } if user.type == 'rb'
+    } if user.type == 'rb',
+    {
+      key: {
+        text: "Last sign in"
+      },
+      value: {
+        text: user['last-sign-in']
+      }
+    }
   ]
 }) }}
