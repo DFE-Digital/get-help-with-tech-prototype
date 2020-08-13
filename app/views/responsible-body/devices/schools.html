@@ -49,7 +49,8 @@
     {% for school in data.schools %}
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">
-          <a href="/responsible-body/devices/schools/{{ school.URN }}">{{ school.name }}</a>
+          <a href="/responsible-body/devices/schools/{{ school.URN }}">{{ school.name }}</a><br />
+          {{ school.phase }} ({{ school.type }})
         </td>
         <td class="govuk-table__cell">
           {{ school.total }}
