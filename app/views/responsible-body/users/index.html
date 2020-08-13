@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% set title = "Manage users" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Get help with technology",
+        href: "/responsible-body"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p>Everyone has the same level of access, they can:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      <li>add or edit existing users</li>
+      <li>order devices for centrally managed schools</li>
+      {% if data.features['in-connectivity-pilots'] %}
+        <li>download BT vouchers</li>
+        <li>make requests for mobile data</li>
+      {% endif %}
+    </ul>
+
+    {% for user in data['rb-users'] %}
+      {% include "_shared/_user.html" %}
+    {% endfor %}
+
+    {{ govukButton({
+      text: 'Invite a new user',
+      href: '/responsible-body/users/new'
+    }) }}
+  </div>
+</div>
+{% endblock %}

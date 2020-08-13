@@ -1,27 +1,20 @@
 {% extends "layout.html" %}
-{% set title = "Give someone access to order devices" %}
+{% set title = "Invite a new user" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/responsible-body/devices/invite"
+    href: "/responsible-body/users"
   }) }}
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/responsible-body/devices/invite" method="post">
+    <form action="/responsible-body/users" method="post">
       <h1 class="govuk-heading-xl">
         {{ title }}
       </h1>
-
-      <p>Give access to people who:</p>
-      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-        <li>are planning the response to a local lockdown</li>
-        <li>understand what devices are needed and who they will be for</li>
-        <li>know how to configure the devices</li>
-      </ul>
 
       {{ govukInput({
         label: {
@@ -30,12 +23,13 @@
         }
       } | decorateFormAttributes(["responsible-body", "new-invite-name"]) )}}
 
-      <!-- Add in details about named contacts not generic ones -->
-
       {{ govukInput({
         label: {
           text: "Email address",
           classes: "govuk-label--m"
+        },
+        hint: {
+          text: 'They’ll use this email address to sign in.<br />We’ll send them an email with all the details.' | safe
         }
       } | decorateFormAttributes(["responsible-body", "new-invite-email-address"]) )}}
 
@@ -46,6 +40,29 @@
           classes: "govuk-label--m"
         }
       } | decorateFormAttributes(["responsible-body", "new-invite-number"]) )}}
+
+      {{ govukRadios({
+        fieldset: {
+          legend: {
+            text: "Can they order devices for schools?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: 'TechSource is the website run by Computacenter that is used to order devices for schools.'
+        },
+        items: [
+          {
+            text: "Yes, create a TechSource account for them",
+            hint: {
+              text: "TechSource will send them an email containing sign in details when their account is created."
+            }
+          },
+          {
+            text: "No"
+          }
+        ]
+      } | decorateFormAttributes(["responsible-body", "can-order-devices"]) ) }}
 
       {{ govukButton({
           html: 'Send invite'
