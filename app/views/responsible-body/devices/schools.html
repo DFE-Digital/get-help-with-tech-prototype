@@ -73,7 +73,11 @@
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
             <a href="/responsible-body/devices/schools/{{ school.URN }}" class="js-open-on-submit">{{ school.name }}</a><br />
-            {{ school.phase }} ({{ school.type }})
+            {% if school.type == 'Special schools' %}
+              Special school
+            {% else %}
+              {{ school.phase }}
+            {% endif %}
           </td>
           <td class="govuk-table__cell">
             {{ school.total }}
