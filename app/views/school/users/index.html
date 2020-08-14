@@ -17,20 +17,13 @@
 
     <p class="govuk-body-l">Up to 5 people can order devices.</p>
 
-    {% for user in data['responsible-body']['school-users'] %}
-      <h2 class="govuk-heading-m govuk-!-margin-bottom-1">{{ user.name }}</h2>
-      <p class="govuk-!-margin-bottom-1">
-        {{ user.email }}<br />
-        {{ user.number }}<br />
-      </p>
-      <p>
-        <a href="#">Change</a>
-      </p>
+    {% for user in data['school-users'] %}
+      {% include "_shared/_user.html" %}
     {% endfor %}
 
     {{ govukButton({
       text: 'Add someone new',
-      href: '/school/devices/manage/new',
+      href: '/school/users/new',
       classes: 'govuk-!-margin-top-4'
     }) }}
   </div>

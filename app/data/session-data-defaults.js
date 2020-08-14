@@ -1,5 +1,6 @@
 const fakeMnoRequests = require('./fake-mno-requests')
 const fakeSchoolUsers = require('./fake-school-users')
+const fakeRBUsers = require('./fake-rb-users')
 const schoolsInLocalAuthority = require('./local-authority-schools')
 
 module.exports = {
@@ -9,13 +10,13 @@ module.exports = {
     'sign-up': false,
     'bulk-upload': true,
     'only-bt': false,
+    'in-connectivity-pilots': false,
     mno: false
   },
   mno: {
     requests: fakeMnoRequests
   },
-  'responsible-body': {
-    'school-users': fakeSchoolUsers
-  },
+  'school-users': fakeSchoolUsers,
+  'rb-users': fakeRBUsers,
   schools: schoolsInLocalAuthority
 }
