@@ -27,7 +27,13 @@ class UpdateSchoolsList
     puts "Schools: #{schools.count}"
     puts "Enriching..."
     enrich_schools_data(schools)
-    update_local_authority_schools_file(schools)
+
+    only_la_schools = schools.keep_if do |s|
+      ['Local authority maintained schools', 'Special schools'].include? s[:type]
+    end
+
+    puts "LA schools: #{only_la_schools.count}"
+    update_local_authority_schools_file(only_la_schools)
   end
 
   private
