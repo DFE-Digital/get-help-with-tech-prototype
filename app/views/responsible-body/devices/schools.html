@@ -38,7 +38,21 @@
   {{ title }}
 </h1>
 
-<h2 class="govuk-heading-l">{{ data.schools.length }} schools</h2>
+{% set missingSchools %}
+  <p>This is a list of all local authority maintained and special schools.</p>
+  <p>Contact support at <a href="#">COVID.TECHNOLOGY@education.gov.uk</a> to add a missing school.</p>
+{% endset %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{ data.schools.length }} schools</h2>
+    {{ govukDetails({
+      summaryText: "Is there a school missing from this list?",
+      html: missingSchools
+    }) }}
+  </div>
+</div>
+
 
 <div data-module="filterable-table">
   <form class="app-filter-container">
