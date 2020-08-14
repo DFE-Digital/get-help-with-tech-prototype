@@ -1,7 +1,47 @@
 {% extends "layout.html" %}
 {% set hasDevolvedAll = data['who-orders-laptops'] == 'schools' %}
 {% set hasCentralAll = data['who-orders-laptops'] == 'central' %}
-{% set title = "Who will order devices for " + school.name + "?" %}
+{% set hasSetContactDetails = data['responsible-body'][school.URN]['person-type'] %}
+
+{% if hasSetContactDetails %}
+  {% set isHeadteacher = data['responsible-body'][school.URN]['person-type'] == 'headteacher' %}
+  {% set emailAddress %}
+    {% if isHeadteacher %}
+      {{ school.headteacher_email }}
+    {% else %}
+      {{ data['responsible-body'][school.URN]['new-invite-email-address'] }}
+    {% endif %}
+  {% endset %}
+
+  {% set schoolContactHtml %}
+    {% if isHeadteacher %}
+      {{ school.headteacher }}<br />
+      {{ school.headteacher_email }}
+    {% else %}
+      {{ data['responsible-body'][school.URN]['new-invite-name'] }}<br />
+      {{ data['responsible-body'][school.URN]['new-invite-email-address'] }}<br />
+      {{ data['responsible-body'][school.URN]['new-invite-number'] }}
+    {% endif %}
+  {% endset %}
+{% endif %}
+
+{% set whoOrders %}
+  {% if data['responsible-body'][school.URN] %}
+    {% if data['responsible-body'][school.URN].who == 'central' %}
+      The local authority orders devices
+    {% else %}
+      The school orders devices
+    {% endif %}
+  {% elseif hasCentralAll %}
+    The local authority orders devices
+  {% elseif hasDevolvedAll %}
+    The school orders devices
+  {% else %}
+    Unknown
+  {% endif %}
+{% endset %}
+
+{% set title = school.name %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -11,20 +51,87 @@
 {% endblock %}
 
 {% block content %}
+
+{{ appBanner({
+  html: "<h2 class=\"govuk-heading-m\">Saved. We’ve emailed " + emailAddress + "</h2>",
+  type: "success",
+  icon: false
+}) if success }}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form action="/responsible-body/devices/schools/{{ school.URN }}" method="post">
-      <h1 class="govuk-heading-xl">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
         {{ title }}
       </h1>
 
+      <div class="govuk-inset-text govuk-!-padding-top-0">
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-0 govuk-!-margin-top-0',
+          rows: [
+            {
+              key: {
+                text: "Allocation"
+              },
+              value: {
+                text: school.total + ' devices'
+              }
+            },
+            {
+              key: {
+                text: "Type of school"
+              },
+              value: {
+                text: "Special school" if school.type == 'Special schools' else school.phase + ' school'
+              }
+            },
+            {
+              key: {
+                text: "Who orders?"
+              },
+              value: {
+                text: whoOrders
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "School contact"
+              },
+              value: {
+                html: schoolContactHtml
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            } if hasSetContactDetails
+          ]
+        }) }}
+      </div>
+
       {% set contactFields %}
-        <p>Give access to people who:</p>
-        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-          <li>are planning the response to a local lockdown</li>
-          <li>understand what devices are needed and who they will be for</li>
-          <li>know how to configure the devices</li>
-        </ul>
+        <div class="govuk-!-margin-top-3">
+          <p>Nominate someone who:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>is planning the response to a local lockdown</li>
+            <li>understands what devices are needed and who they will be for</li>
+            <li>knows how to configure the devices</li>
+          </ul>
+        </div>
 
         {{ govukInput({
           label: {
@@ -44,52 +151,45 @@
             text: "Telephone number"
           }
         } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-number"]) )}}
-
-        {{ govukWarningText({
-          text: 'We’ll email them straight away',
-          iconFallbackText: 'Warning'
-        }) }}
       {% endset %}
 
-      {% set conditionalHtml %}
-        <h2 class="govuk-heading-m">Who should we contact at the school?</h2>
-        {{ contactFields | safe }}
-      {% endset %}
+      {% if hasDevolvedAll %}
+        {% if not hasSetContactDetails %}
+          {{ govukRadios({
+            fieldset: {
+              legend: {
+                text: "Who can we contact at the school?",
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                text: 'Headteacher',
+                value: 'headteacher',
+                hint: {
+                  text: school.headteacher + ' (' + school.headteacher_email + ')'
+                }
+              },
+              {
+                text: 'Someone else',
+                value: 'someone',
+                conditional: {
+                  html: contactFields
+                }
+              }
+            ]
+          } | decorateFormAttributes(["responsible-body", school.URN, "person-type"]) ) }}
 
-      {{ govukRadios({
-        items: [
-          {
-            text: 'The school will manage their own orders',
-            value: 'school',
-            checked: true if hasDevolvedAll,
-            conditional: {
-              html: conditionalHtml
-            }
-          },
-          {
-            text: 'Orders will be managed centrally',
-            checked: true if hasCentralAll,
-            value: 'central'
-          }
-        ]
-      } | decorateFormAttributes(["responsible-body", school.URN, "who"]) ) }}
-
-      <!-- {{ govukButton({
-        html: 'Save and go to the next school',
-        name: 'next',
-        value: true,
-        classes: "govuk-!-margin-bottom-4 govuk-!-margin-top-6"
-      }) }}
-
-      <p>or</p> -->
-
-      {{ govukButton({
-        text: "Save",
-        name: "return",
-        value: true
-      }) }}
-
-      <p>or</p>
+          {{ govukButton({
+            text: "Save and send email"
+          }) }}
+        {% endif %}
+      {% else %}
+        <h2 class="govuk-heading-l">Will they be ordering Chromebooks?</h2>
+        <div class="govuk-inset-text">
+          Feature not yet available in prototype
+        </div>
+      {% endif %}
 
       <p><a href="/responsible-body/devices/schools">Return to list of schools</a></p>
     </form>

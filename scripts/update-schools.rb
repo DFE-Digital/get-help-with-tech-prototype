@@ -47,6 +47,7 @@ class UpdateSchoolsList
       school[:phase] = row['PhaseOfEducation (name)']
       school[:type] = row['EstablishmentTypeGroup (name)']
       school[:headteacher] = "#{row['HeadFirstName']} #{row['HeadLastName']}"
+      school[:headteacher_email] = "#{row['HeadFirstName']}.#{row['HeadLastName']}@school.gov.uk".downcase
       school[:fsm_percentage] = row['PercentageFSM']
     end
   end
@@ -85,6 +86,7 @@ class UpdateSchoolsList
       .gsub('"phase"', 'phase')
       .gsub('"type"', 'type')
       .gsub('"headteacher"', 'headteacher')
+      .gsub('"headteacher_email"', 'headteacher_email')
       .gsub('"fsm_percentage"', 'fsm_percentage')
   end
 end
