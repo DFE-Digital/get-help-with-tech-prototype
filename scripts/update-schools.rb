@@ -27,8 +27,6 @@ class UpdateSchoolsList
     puts "Schools: #{schools.count}"
     puts "Enriching..."
     enrich_schools_data(schools)
-
-    puts "Schools: #{schools.count}"
     update_local_authority_schools_file(schools)
   end
 
@@ -40,7 +38,6 @@ class UpdateSchoolsList
 
     schools.each do |school|
       row = data_rows.find { |s| s['URN'] == school[:URN] }
-      puts row
       school[:phase] = row['PhaseOfEducation (name)']
       school[:type] = row['EstablishmentTypeGroup (name)']
       school[:headteacher] = "#{row['HeadFirstName']} #{row['HeadLastName']}"
