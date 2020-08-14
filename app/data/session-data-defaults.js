@@ -4,13 +4,13 @@ const fakeRBUsers = require('./fake-rb-users')
 const schoolsInLocalAuthority = require('./local-authority-schools')
 
 module.exports = {
-  rb: 'Hertfordshire',
+  rb: 'Plymouth',
   school: 'Pool Hayes Primary',
   features: {
     'sign-up': false,
     'bulk-upload': true,
     'only-bt': false,
-    'in-connectivity-pilots': false,
+    'in-connectivity-pilots': true,
     mno: false
   },
   mno: {
