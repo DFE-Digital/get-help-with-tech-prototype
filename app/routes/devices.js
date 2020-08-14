@@ -5,7 +5,7 @@ const devicesPath = '/responsible-body/devices'
  */
 module.exports = router => {
   router.post(`${devicesPath}/devolve`, function (req, res) {
-    res.redirect(`${devicesPath}/schools`)
+    res.redirect(`${devicesPath}/next`)
   })
 
   router.post(`${devicesPath}/schools/:urn`, function (req, res) {

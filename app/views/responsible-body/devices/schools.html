@@ -14,58 +14,52 @@
     {% set someSchools = true %}
 {% endswitch %}
 
+{% set title = "Schools that will need devices" %}
+
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
-  {{ govukBackLink({
-    href: "/responsible-body/devices/devolve"
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Get help with technology",
+        href: "/responsible-body"
+      },
+      {
+        text: "Get devices"
+      }
+    ]
   }) }}
 {% endblock %}
 
 {% block content %}
+<h1 class="govuk-heading-xl">
+  <span class="govuk-caption-xl">Get devices</span>
+  {{ title }}
+</h1>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      {{ title }}
-    </h1>
-
-    <!-- <p class="govuk-body-l">{{ description }}. <br /><a href="/responsible-body/devices/devolve">Change who orders devices</a>.</p> -->
-  </div>
-</div>
-
-<!-- <p>Give access to people who:</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>are planning the response to a local lockdown</li>
-  <li>understand what devices are needed and who they will be for</li>
-  <li>know how to configure the devices</li>
-</ul>
-
-<p class="govuk-!-margin-bottom-8">Examples might include headteachers, deputy heads and IT leads.</p> -->
+<h2 class="govuk-heading-l">{{ data.schools.length }} schools</h2>
 
 <div data-module="filterable-table">
+  <form class="app-filter-container">
+    <div class="govuk-form-group govuk-!-margin-top-1 govuk-!-margin-bottom-4">
+      <label class="govuk-label govuk-label--s" for="filter">
+        Filter the list of schools
+      </label>
+      <div id="account-number-hint" class="govuk-hint">
+        Try searching for “Secondary” or a status like “Needs a contact”
+      </div>
+      <input class="govuk-input js-filter-table-input" id="filter" name="filter" type="text">
+    </div>
+  </form>
+
   <table class="govuk-table">
-    <caption class="govuk-table__caption">
-      <span class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-2">{{ data.schools.length }} schools</span>
-    </caption>
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
         <th class="govuk-table__header" style="width: 50%">School</th>
         <th class="govuk-table__header">Allocation</th>
         <th class="govuk-table__header">Who orders?</th>
         <th class="govuk-table__header" style="width: 200px">Status</th>
-      </tr>
-      <tr>
-        <th class="govuk-table__header" colspan="4">
-          <form>
-            <div class="govuk-form-group govuk-!-margin-top-1 govuk-!-margin-bottom-1">
-              <label class="govuk-visually-hidden" for="filter">
-                Filter schools
-              </label>
-              <input placeholder="Search list of schools" class="govuk-input js-filter-table-input" id="filter" name="filter" type="text">
-            </div>
-          </form>
-        </th>
       </tr>
     </thead>
     <tbody class="govuk-table__body">
@@ -100,7 +94,7 @@
           <td class="govuk-table__cell">
             {% if data['responsible-body'][school.URN] %}
               {% if data['responsible-body'][school.URN].who == 'central' %}
-                <span class="govuk-tag govuk-tag--completed">Completed</span>
+                <span class="govuk-tag govuk-tag--completed">Ready</span>
               {% else %}
                 <span class="govuk-tag govuk-tag--yellow">School contacted</span>
               {% endif %}
@@ -109,7 +103,7 @@
               <span class="govuk-tag govuk-tag--completed">School ready</span> -->
             {% else %}
               {% if centralAll %}
-                <span class="govuk-tag govuk-tag--completed">Completed</span>
+                <span class="govuk-tag govuk-tag--grey">Needs information</span>
               {% else %}
                 <span class="govuk-tag govuk-tag--grey">Needs a contact</span>
               {% endif %}

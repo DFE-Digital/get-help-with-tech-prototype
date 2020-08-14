@@ -27,6 +27,12 @@ $govuk-assets-path: '/govuk/assets/';
   }
 }
 
+.app-filter-container {
+  background-color:  govuk-colour("light-grey");
+  padding: govuk-spacing(2) govuk-spacing(3) govuk-spacing(1);
+  margin-bottom: govuk-spacing(2);
+}
+
 .requests-table {
   .govuk-table__header,
   .govuk-table__cell {

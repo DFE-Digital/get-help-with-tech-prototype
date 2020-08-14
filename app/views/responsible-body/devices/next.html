@@ -2,12 +2,36 @@
 
 {% switch data['who-orders-laptops'] %}
   {% case 'schools' %}
-    {% set title = "Most schools will manage their own orders" %}
-    {% set description = "Schools will manage their own orders" %}
+    {% set title = "Each school will manage their own orders" %}
+    {% set description %}
+      <p>We’ve set each school as managing their own orders. If a school cannot order its own devices, you can change this setting on a school by school basis.</p>
+
+      <h2 class="govuk-heading-m">What you need to do now</h2>
+
+      <p>For each school we need you to nominate a contact. Each contact will be able to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>manage who can order devices for their school</li>
+        <li>order devices for their schools</li>
+      </ul>
+
+      <p>We’ll email everyone you nominate with instructions on how to order devices and what to do during a lockdown.</p>
+
+      <p>If a school doesn’t respond, we’ll ask you to chase them or give us new conctact details.</p>
+    {% endset %}
     {% set devolvedAll = true %}
   {% case 'central' %}
-    {% set title = "Schools you’ll need to order devices for" %}
-    {% set description = "All device orders are managed centrally" %}
+  {% set title = "All orders will be managed centrally" %}
+  {% set description %}
+    <p>We’ve set each school as having their orders managed centrally. If a school needs to order its own devices, you can change this setting on a school by school basis.</p>
+
+    <h2 class="govuk-heading-m">What you need to do now</h2>
+
+    <p>For each school you’ll need to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>find out if they want Chromebooks</li>
+      <li>give details of the school domain and recovery email address needed to configure them</li>
+    </ul>
+  {% endset %}
     {% set centralAll = true %}
   {% default %}
     {% set title = "Tell us who will manage orders for each school" %}
@@ -25,19 +49,24 @@
 
 {% block content %}
 
+{{ appBanner({
+  html: "
+    <h2 class=\"govuk-heading-m\">We’ve saved your choice</h2>
+",
+  type: "success",
+  icon: false
+}) }}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
         {{ title }}
       </h1>
 
-      <p>For every school that will manage their own orders we will:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>email the headteacher with instructions on how to order</li>
-      </ul>
-
+      {{ description | safe }}
       {{ govukButton({
-        text: 'Continue',
+        text: 'Go to your list of schools',
+        classes: 'govuk-!-margin-top-6',
         href: '/responsible-body/devices/schools'
       }) }}
   </div>

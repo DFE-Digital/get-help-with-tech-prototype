@@ -17,42 +17,35 @@
         {{ title }}
       </h1>
 
-      {% set moreHtml %}
-        <p>We recommend delegating responsibility to schools. They can manage orders directly, meaning children can access remote education more quickly.</p>
-      {% endset %}
-
-      {% set mixedHtml %}
-        <p>You’ll need to tell us how orders for each school will be managed.</p>
-        <p>We recommend delegating responsibility to schools. They can manage orders directly, meaning children can access remote education more quickly.</p>
-      {% endset %}
+      <p>You can change this setting for each school later.</p>
 
       {{ govukRadios({
         items: [
           {
-            html: '<span class="govuk-!-font-weight-bold">Schools will manage their own orders (recommended)</span>',
+            html: '<span class="govuk-!-font-weight-bold">Most schools will manage their own orders (recommended)</span>',
             value: 'schools',
             hint: {
-              text: 'We’ll need contact details for each school'
+              html: 'We’ll need contact details for each school'
             }
           },
           {
             html: '<span class="govuk-!-font-weight-bold">Some orders will be managed centrally</span>',
             value: 'mixed',
             hint: {
-              text: 'You’ll need to tell us how orders for each school will be managed'
+              html: 'You’ll need to tell us how orders for each school will be managed'
             }
-          },
+          } if false,
           {
-            html: '<span class="govuk-!-font-weight-bold">Orders will be managed centrally</span>',
+            html: '<span class="govuk-!-font-weight-bold">Most orders will be managed centrally</span>',
             value: 'central',
             hint: {
-              text: 'You’ll need to order devices for each school.<br>We recommend delegating responsibility to schools. They can manage orders directly, meaning children can access remote education more quickly.' | safe
+              html: 'You’ll need to order devices for all schools and give technical settings for any school that wants to order Chromebooks.<br>' | safe
             }
           }
         ]
       } | decorateFormAttributes('who-orders-laptops') ) }}
 
-      <p>You can change this setting for each school.</p>
+      <p>We recommend delegating responsibility to schools. They can manage orders directly, meaning children can access remote education more quickly.</p>
 
       {{ govukButton({
         text: 'Continue'
