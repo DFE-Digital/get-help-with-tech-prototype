@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% set hasDevolvedAll = data['who-orders-laptops'] == 'schools' %}
-
-{% set title = "Contact details for " + school.name if hasDevolvedAll else "Who will order devices for " + school.name + "?" %}
+{% set hasCentralAll = data['who-orders-laptops'] == 'central' %}
+{% set title = "Who will order devices for " + school.name + "?" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -28,23 +28,20 @@
 
         {{ govukInput({
           label: {
-            text: "Name",
-            classes: "govuk-label--m" if hasDevolvedAll
+            text: "Name"
           }
         } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-name"]) )}}
 
         {{ govukInput({
           label: {
-            text: "Email address",
-            classes: "govuk-label--m" if hasDevolvedAll
+            text: "Email address"
           }
         } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-email-address"]) )}}
 
         {{ govukInput({
           classes: "govuk-input--width-10",
           label: {
-            text: "Telephone number",
-            classes: "govuk-label--m" if hasDevolvedAll
+            text: "Telephone number"
           }
         } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-number"]) )}}
 
@@ -59,41 +56,40 @@
         {{ contactFields | safe }}
       {% endset %}
 
-      {% if hasDevolvedAll %}
-        {{ contactFields | safe }}
-      {% else %}
-        {{ govukRadios({
-          items: [
-            {
-              text: 'The school will manage their own orders',
-              value: 'school',
-              conditional: {
-                html: conditionalHtml
-              }
-            },
-            {
-              text: 'Orders will be managed centrally',
-              value: 'central'
+      {{ govukRadios({
+        items: [
+          {
+            text: 'The school will manage their own orders',
+            value: 'school',
+            checked: true if hasDevolvedAll,
+            conditional: {
+              html: conditionalHtml
             }
-          ]
-        } | decorateFormAttributes(["responsible-body", school.URN, "who"]) ) }}
-      {% endif %}
+          },
+          {
+            text: 'Orders will be managed centrally',
+            checked: true if hasCentralAll,
+            value: 'central'
+          }
+        ]
+      } | decorateFormAttributes(["responsible-body", school.URN, "who"]) ) }}
 
-      {{ govukButton({
+      <!-- {{ govukButton({
         html: 'Save and go to the next school',
         name: 'next',
         value: true,
         classes: "govuk-!-margin-bottom-4 govuk-!-margin-top-6"
       }) }}
 
-      <p>or</p>
+      <p>or</p> -->
 
       {{ govukButton({
-        text: "Save and return",
+        text: "Save",
         name: "return",
-        value: true,
-        classes: "govuk-button--secondary"
+        value: true
       }) }}
+
+      <p>or</p>
 
       <p><a href="/responsible-body/devices/schools">Return to list of schools</a></p>
     </form>

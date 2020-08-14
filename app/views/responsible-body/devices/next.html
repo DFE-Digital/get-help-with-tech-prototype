@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% switch data['who-orders-laptops'] %}
+  {% case 'schools' %}
+    {% set title = "Most schools will manage their own orders" %}
+    {% set description = "Schools will manage their own orders" %}
+    {% set devolvedAll = true %}
+  {% case 'central' %}
+    {% set title = "Schools you’ll need to order devices for" %}
+    {% set description = "All device orders are managed centrally" %}
+    {% set centralAll = true %}
+  {% default %}
+    {% set title = "Tell us who will manage orders for each school" %}
+    {% set description = "Some schools will manage their own orders" %}
+    {% set someSchools = true %}
+{% endswitch %}
+
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/responsible-body/devices/devolve"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {{ title }}
+      </h1>
+
+      <p>For every school that will manage their own orders we will:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>email the headteacher with instructions on how to order</li>
+      </ul>
+
+      {{ govukButton({
+        text: 'Continue',
+        href: '/responsible-body/devices/schools'
+      }) }}
+  </div>
+</div>
+{% endblock %}

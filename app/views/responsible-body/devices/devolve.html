@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Who will order the laptops and tablets?" %}
+{% set title = "Who will order a school’s laptops and tablets?" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -29,25 +29,30 @@
       {{ govukRadios({
         items: [
           {
-            text: 'Schools will manage their own orders',
-            value: 'schools'
-          },
-          {
-            text: 'Some orders will be managed centrally',
-            value: 'mixed',
-            conditional: {
-              html: mixedHtml
+            html: '<span class="govuk-!-font-weight-bold">Schools will manage their own orders (recommended)</span>',
+            value: 'schools',
+            hint: {
+              text: 'We’ll need contact details for each school'
             }
           },
           {
-            text: 'All orders will be managed centrally',
+            html: '<span class="govuk-!-font-weight-bold">Some orders will be managed centrally</span>',
+            value: 'mixed',
+            hint: {
+              text: 'You’ll need to tell us how orders for each school will be managed'
+            }
+          },
+          {
+            html: '<span class="govuk-!-font-weight-bold">Orders will be managed centrally</span>',
             value: 'central',
-            conditional: {
-              html: moreHtml
+            hint: {
+              text: 'You’ll need to order devices for each school.<br>We recommend delegating responsibility to schools. They can manage orders directly, meaning children can access remote education more quickly.' | safe
             }
           }
         ]
       } | decorateFormAttributes('who-orders-laptops') ) }}
+
+      <p>You can change this setting for each school.</p>
 
       {{ govukButton({
         text: 'Continue'

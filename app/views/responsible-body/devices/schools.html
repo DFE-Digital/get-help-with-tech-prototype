@@ -5,7 +5,7 @@
     {% set description = "Schools will manage their own orders" %}
     {% set devolvedAll = true %}
   {% case 'central' %}
-    {% set title = "Schools you need to order devices for" %}
+    {% set title = "Schools you’ll need to order devices for" %}
     {% set description = "All device orders are managed centrally" %}
     {% set centralAll = true %}
   {% default %}
@@ -30,7 +30,7 @@
       {{ title }}
     </h1>
 
-    <p class="govuk-body-l">{{ description }}. <br /><a href="/responsible-body/devices/devolve">Change who orders devices</a>.</p>
+    <!-- <p class="govuk-body-l">{{ description }}. <br /><a href="/responsible-body/devices/devolve">Change who orders devices</a>.</p> -->
   </div>
 </div>
 
@@ -43,7 +43,11 @@
 
 <p class="govuk-!-margin-bottom-8">Examples might include headteachers, deputy heads and IT leads.</p> -->
 
+
 <table class="govuk-table">
+  <caption class="govuk-table__caption">
+    <span class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-2">{{ data.schools.length }} schools</span>
+  </caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th class="govuk-table__header" style="width: 50%">School</th>
@@ -63,30 +67,36 @@
           {{ school.total }}
         </td>
         <td class="govuk-table__cell">
-          {% if someSchools %}
-            {% if data['responsible-body'][school.URN] %}
-              {% if data['responsible-body'][school.URN].who == 'central' %}
-                Local authority
-              {% else %}
-                School
-              {% endif %}
+          {% if data['responsible-body'][school.URN] %}
+            {% if data['responsible-body'][school.URN].who == 'central' %}
+              Local authority
             {% else %}
-              Unknown
+              School
             {% endif %}
           {% elseif centralAll %}
             Local authority
-          {% else %}
+          {% elseif devolvedAll %}
             School
+          {% else %}
+            Unknown
           {% endif %}
         </td>
         <td class="govuk-table__cell">
           {% if data['responsible-body'][school.URN] %}
-            <span class="govuk-tag govuk-tag--completed">Completed</span>
+            {% if data['responsible-body'][school.URN].who == 'central' %}
+              <span class="govuk-tag govuk-tag--completed">Completed</span>
+            {% else %}
+              <span class="govuk-tag govuk-tag--yellow">School contacted</span>
+            {% endif %}
             <!-- <span class="govuk-tag govuk-tag--yellow">School contacted</span>
             <span class="govuk-tag govuk-tag--blue">School signed in</span>
             <span class="govuk-tag govuk-tag--completed">School ready</span> -->
           {% else %}
-            <span class="govuk-tag govuk-tag--grey">Not started</span>
+            {% if centralAll %}
+              <span class="govuk-tag govuk-tag--completed">Completed</span>
+            {% else %}
+              <span class="govuk-tag govuk-tag--grey">Needs a contact</span>
+            {% endif %}
           {% endif %}
         </td>
       </tr>

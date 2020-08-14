@@ -11,8 +11,8 @@ module.exports = (nunjucksAppEnv, app) => {
 
       if (obj.items !== undefined) {
         obj.items = obj.items.map(item => {
-          var checked = ''
-          var selected = ''
+          var checked = storedValue ? '' : item.checked
+          var selected = storedValue ? '' : item.selected
           if (typeof item.value === 'undefined') {
             item.value = item.text
           }
