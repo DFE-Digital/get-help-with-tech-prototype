@@ -1,44 +1,4 @@
 {% extends "layout.html" %}
-{% set hasSetContactDetails = data['responsible-body'][school.URN]['person-type'] %}
-
-{% if hasSetContactDetails %}
-  {% set isHeadteacher = data['responsible-body'][school.URN]['person-type'] == 'headteacher' %}
-  {% set emailAddress %}
-    {% if isHeadteacher %}
-      {{ school.headteacher_email }}
-    {% else %}
-      {{ data['responsible-body'][school.URN]['new-invite-email-address'] }}
-    {% endif %}
-  {% endset %}
-
-  {% set schoolContactHtml %}
-    {% if isHeadteacher %}
-      {{ school.headteacher }}<br />
-      {{ school.headteacher_email }}
-    {% else %}
-      {{ data['responsible-body'][school.URN]['new-invite-name'] }}<br />
-      {{ data['responsible-body'][school.URN]['new-invite-email-address'] }}<br />
-      {{ data['responsible-body'][school.URN]['new-invite-number'] }}
-    {% endif %}
-  {% endset %}
-{% endif %}
-
-{% set whoOrders %}
-  {% if data['responsible-body'][school.URN] %}
-    {% if data['responsible-body'][school.URN].who == 'central' %}
-      The local authority orders devices
-    {% else %}
-      The school orders devices
-    {% endif %}
-  {% elseif hasCentralAll %}
-    The local authority orders devices
-  {% elseif hasDevolvedAll %}
-    The school orders devices
-  {% else %}
-    Unknown
-  {% endif %}
-{% endset %}
-
 {% set title = school.name %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
@@ -48,8 +8,16 @@
   }) }}
 {% endblock %}
 
-{% block content %}
+{% set schoolContactHtml %}
+  {% if isHeadteacher %}Headteacher: {% endif %}
+  {{ name }}
+  <br />{{ emailAddress }}
+  {% if number %}
+    <br />{{ number }}
+  {% endif %}
+{% endset %}
 
+{% block content %}
 {{ appBanner({
   html: "<h2 class=\"govuk-heading-m\">Saved. We’ve emailed " + emailAddress + "</h2>",
   type: "success",
@@ -189,9 +157,10 @@
         </div>
       {% endif %}
 
-      <p><a href="/responsible-body/devices/schools">Return to list of schools</a></p>
+      <p>
+        <a href="/responsible-body/devices/schools">Return to list of schools</a>
+      </p>
     </form>
   </div>
 </div>
-
 {% endblock %}

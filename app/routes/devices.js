@@ -1,10 +1,11 @@
+const getKeypath = require('keypather/get')
 const devicesPath = '/responsible-body/devices'
 
 /**
  * Guide routes
  */
 module.exports = router => {
-  router.all(['/responsible-body/devices', '/responsible-body/devices*'], function (req, res, next) {
+  router.all([devicesPath, `${devicesPath}*`], function (req, res, next) {
     const data = req.session.data
     res.locals.hasDevolvedAll = data['who-orders-laptops'] === 'schools'
     res.locals.hasCentralAll = data['who-orders-laptops'] === 'central'
@@ -16,15 +17,32 @@ module.exports = router => {
     res.redirect(`${devicesPath}/next`)
   })
 
-  router.post(`${devicesPath}/schools/:urn`, function (req, res) {
+  router.all(`${devicesPath}/schools/:urn`, function (req, res) {
     const urn = parseInt(req.params.urn, 10)
-    const school = req.session.data.schools.find(school => school.URN === urn)
-    res.render('responsible-body/devices/school', { school, success: true })
-  })
+    const data = req.session.data
+    const school = data.schools.find(school => school.URN === urn)
+    const schoolData = getKeypath(data, `['responsible-body'][${urn}]`) || {}
 
-  router.get(`${devicesPath}/schools/:urn`, function (req, res) {
-    const urn = parseInt(req.params.urn, 10)
-    const school = req.session.data.schools.find(school => school.URN === urn)
-    res.render('responsible-body/devices/school', { school })
+    const hasSetContactDetails = !!schoolData['person-type']
+    const isHeadteacher = schoolData['person-type'] === 'headteacher'
+    const emailAddress = isHeadteacher ? school.headteacher_email : schoolData['new-invite-email-address']
+    const name = isHeadteacher ? school.headteacher : schoolData['new-invite-name']
+    const number = isHeadteacher ? false : schoolData['new-invite-number']
+
+    let whoOrders = res.locals.hasCentralAll ? 'The local authority orders devices' : 'The school orders devices'
+    if (schoolData.who) {
+      whoOrders = schoolData.who === 'central' ? 'The local authority orders devices' : 'The school orders devices'
+    }
+
+    res.render('responsible-body/devices/school', {
+      school,
+      hasSetContactDetails,
+      isHeadteacher,
+      emailAddress,
+      whoOrders,
+      name,
+      number,
+      success: req.method === 'POST'
+    })
   })
 }
