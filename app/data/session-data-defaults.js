@@ -10,7 +10,7 @@ module.exports = {
     'sign-up': false,
     'bulk-upload': true,
     'only-bt': false,
-    'in-connectivity-pilots': true,
+    'in-connectivity-pilots': false,
     mno: false
   },
   mno: {
