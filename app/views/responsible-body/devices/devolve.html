@@ -17,8 +17,6 @@
         {{ title }}
       </h1>
 
-      <p>You can change this setting for each school later.</p>
-
       {{ govukRadios({
         items: [
           {
@@ -45,7 +43,7 @@
         ]
       } | decorateFormAttributes('who-orders-laptops') ) }}
 
-      <p>We recommend delegating responsibility to schools. They can manage orders directly, meaning children can access remote education more quickly.</p>
+      <p>You can change this setting for each school later.</p>
 
       {{ govukButton({
         text: 'Continue'
