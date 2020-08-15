@@ -34,7 +34,7 @@ module.exports = router => {
       whoOrders = schoolData.who === 'central' ? 'The local authority orders devices' : 'The school orders devices'
     }
 
-    res.render('responsible-body/devices/school', {
+    res.render('responsible-body/devices/school/index', {
       school,
       hasSetContactDetails,
       isHeadteacher,
