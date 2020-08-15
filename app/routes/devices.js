@@ -8,6 +8,7 @@ module.exports = router => {
     const data = req.session.data
     res.locals.hasDevolvedAll = data['who-orders-laptops'] === 'schools'
     res.locals.hasCentralAll = data['who-orders-laptops'] === 'central'
+    res.locals.whoOrders = res.locals.hasDevolvedAll ? 'School' : 'Local authority'
     next()
   })
 

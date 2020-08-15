@@ -80,12 +80,8 @@
               {% else %}
                 School
               {% endif %}
-            {% elseif hasCentralAll %}
-              Local authority
-            {% elseif hasDevolvedAll %}
-              School
             {% else %}
-              Unknown
+              {{ whoOrders }}
             {% endif %}
           </td>
           <td class="govuk-table__cell">
