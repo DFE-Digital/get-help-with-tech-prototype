@@ -1,6 +1,4 @@
 {% extends "layout.html" %}
-{% set hasDevolvedAll = data['who-orders-laptops'] == 'schools' %}
-{% set hasCentralAll = data['who-orders-laptops'] == 'central' %}
 {% set hasSetContactDetails = data['responsible-body'][school.URN]['person-type'] %}
 
 {% if hasSetContactDetails %}

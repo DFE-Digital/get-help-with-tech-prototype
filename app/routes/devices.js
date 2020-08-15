@@ -4,6 +4,13 @@ const devicesPath = '/responsible-body/devices'
  * Guide routes
  */
 module.exports = router => {
+  router.all(['/responsible-body/devices', '/responsible-body/devices*'], function (req, res, next) {
+    const data = req.session.data
+    res.locals.hasDevolvedAll = data['who-orders-laptops'] === 'schools'
+    res.locals.hasCentralAll = data['who-orders-laptops'] === 'central'
+    next()
+  })
+
   router.post(`${devicesPath}/devolve`, function (req, res) {
     res.redirect(`${devicesPath}/next`)
   })

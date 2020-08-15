@@ -1,25 +1,25 @@
 {% extends "layout.html" %}
 
-{% switch data['who-orders-laptops'] %}
-  {% case 'schools' %}
-    {% set title = "Each school will manage their own orders" %}
-    {% set description %}
-      <p>We’ve set each school as managing their own orders. If a school cannot order its own devices, you can change this setting on a school by school basis.</p>
+{% if hasDevolvedAll %}
+  {% set title = "Each school will manage their own orders" %}
+  {% set description %}
+    <p>We’ve set each school as managing their own orders. If a school cannot order its own devices, you can change this setting on a school by school basis.</p>
 
-      <h2 class="govuk-heading-m">What you need to do now</h2>
+    <h2 class="govuk-heading-m">What you need to do now</h2>
 
-      <p>For each school we need you to nominate a contact. Each contact will be able to:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>manage who can order devices for their school</li>
-        <li>order devices for their schools</li>
-      </ul>
+    <p>For each school we need you to nominate a contact. Each contact will be able to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>manage who can order devices for their school</li>
+      <li>order devices for their schools</li>
+    </ul>
 
-      <p>We’ll email everyone you nominate with instructions on how to order devices and what to do during a lockdown.</p>
+    <p>We’ll email everyone you nominate with instructions on how to order devices and what to do during a lockdown.</p>
 
-      <p>If a school doesn’t respond, we’ll ask you to chase them or give us new conctact details.</p>
-    {% endset %}
-    {% set devolvedAll = true %}
-  {% case 'central' %}
+    <p>If a school doesn’t respond, we’ll ask you to chase them or give us new conctact details.</p>
+  {% endset %}
+{% endif %}
+
+{% if hasCentralAll %}
   {% set title = "All orders will be managed centrally" %}
   {% set description %}
     <p>We’ve set each school as having their orders managed centrally. If a school needs to order its own devices, you can change this setting on a school by school basis.</p>
@@ -28,16 +28,11 @@
 
     <p>For each school you’ll need to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>find out if they want Chromebooks</li>
+      <li>find out if they want Chromebooks </li>
       <li>give details of the school domain and recovery email address needed to configure them</li>
     </ul>
   {% endset %}
-    {% set centralAll = true %}
-  {% default %}
-    {% set title = "Tell us who will manage orders for each school" %}
-    {% set description = "Some schools will manage their own orders" %}
-    {% set someSchools = true %}
-{% endswitch %}
+{% endif %}
 
 {% block pageTitle %}{{ title }}{% endblock %}
 

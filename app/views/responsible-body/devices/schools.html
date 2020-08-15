@@ -1,21 +1,5 @@
 {% extends "layout.html" %}
-{% switch data['who-orders-laptops'] %}
-  {% case 'schools' %}
-    {% set title = "Give us contact details for each school" %}
-    {% set description = "Schools will manage their own orders" %}
-    {% set devolvedAll = true %}
-  {% case 'central' %}
-    {% set title = "Schools you’ll need to order devices for" %}
-    {% set description = "All device orders are managed centrally" %}
-    {% set centralAll = true %}
-  {% default %}
-    {% set title = "Tell us who will manage orders for each school" %}
-    {% set description = "Some schools will manage their own orders" %}
-    {% set someSchools = true %}
-{% endswitch %}
-
 {% set title = "Schools that will need devices" %}
-
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -52,7 +36,6 @@
     }) }}
   </div>
 </div>
-
 
 <div data-module="filterable-table">
   <form class="app-filter-container">
@@ -97,9 +80,9 @@
               {% else %}
                 School
               {% endif %}
-            {% elseif centralAll %}
+            {% elseif hasCentralAll %}
               Local authority
-            {% elseif devolvedAll %}
+            {% elseif hasDevolvedAll %}
               School
             {% else %}
               Unknown
@@ -116,7 +99,7 @@
               <span class="govuk-tag govuk-tag--blue">School signed in</span>
               <span class="govuk-tag govuk-tag--completed">School ready</span> -->
             {% else %}
-              {% if centralAll %}
+              {% if hasCentralAll %}
                 <span class="govuk-tag govuk-tag--grey">Needs information</span>
               {% else %}
                 <span class="govuk-tag govuk-tag--grey">Needs a contact</span>
@@ -128,5 +111,4 @@
     </tbody>
   </table>
 </div>
-
 {% endblock %}
