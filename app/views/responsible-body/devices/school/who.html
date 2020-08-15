@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% set title = 'Who will order devices?' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/responsible-body/devices/schools/" + school.URN
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/responsible-body/devices/schools/{{ school.URN }}/who" method="post">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">{{ school.name }}</span>
+        {{ title }}
+      </h1>
+
+      {{ govukRadios({
+        items: [
+          {
+            text: 'The school will manage their own orders',
+            checked: hasDevolvedAll,
+            value: 'school'
+          },
+          {
+            text: 'Orders will be managed centrally',
+            checked: hasCentralAll,
+            value: 'central'
+          }
+        ]
+      } | decorateFormAttributes(["responsible-body", school.URN, "who"]) ) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

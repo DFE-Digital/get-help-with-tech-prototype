@@ -1,0 +1,54 @@
+{% set contactFields %}
+  <div class="govuk-!-margin-top-3">
+    <p>Nominate someone who:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      <li>is planning the response to a local lockdown</li>
+      <li>understands what devices are needed and who they will be for</li>
+      <li>knows how to configure the devices</li>
+    </ul>
+  </div>
+
+  {{ govukInput({
+    label: {
+      text: "Name"
+    }
+  } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-name"]) )}}
+
+  {{ govukInput({
+    label: {
+      text: "Email address"
+    }
+  } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-email-address"]) )}}
+
+  {{ govukInput({
+    classes: "govuk-input--width-10",
+    label: {
+      text: "Telephone number"
+    }
+  } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-number"]) )}}
+{% endset %}
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: "Who can we contact at the school?",
+      classes: "govuk-fieldset__legend--xl" if singlePage else "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      text: 'Headteacher',
+      value: 'headteacher',
+      hint: {
+        text: school.headteacher + ' (' + school.headteacher_email + ')'
+      }
+    },
+    {
+      text: 'Someone else',
+      value: 'someone',
+      conditional: {
+        html: contactFields
+      }
+    }
+  ]
+} | decorateFormAttributes(["responsible-body", school.URN, "person-type"]) ) }}

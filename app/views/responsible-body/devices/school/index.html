@@ -19,7 +19,7 @@
 
 {% block content %}
 {{ appBanner({
-  html: "<h2 class=\"govuk-heading-m\">Saved. We’ve emailed " + emailAddress + "</h2>",
+  html: '<h2 class="govuk-heading-m">' + success + '</h2>',
   type: "success",
   icon: false
 }) if success }}
@@ -31,7 +31,7 @@
         {{ title }}
       </h1>
 
-      <div class="govuk-inset-text govuk-!-padding-top-0">
+      <div class="{% if not hasSetContactDetails and not hasSetChromebookDetails %}govuk-inset-text{% else %}govuk-!-margin-bottom-6{% endif %} govuk-!-padding-top-0">
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-0 govuk-!-margin-top-0',
           rows: [
@@ -61,7 +61,7 @@
               actions: {
                 items: [
                   {
-                    href: "#",
+                    href: "/responsible-body/devices/schools/" + school.URN + "/who",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -78,83 +78,85 @@
               actions: {
                 items: [
                   {
-                    href: "#",
+                    href: "/responsible-body/devices/schools/" + school.URN + "/who-contact",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
                 ]
               }
-            } if hasSetContactDetails
+            } if hasSetContactDetails,
+            {
+              key: {
+                text: "Ordering Chromebooks?"
+              },
+              value: {
+                text: data["responsible-body"][school.URN].chromebooks
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            } if hasSetChromebookDetails,
+            {
+              key: {
+                text: "Domain"
+              },
+              value: {
+                text: domain
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            } if domain,
+            {
+              key: {
+                text: "Recovery email address"
+              },
+              value: {
+                text: recoveryAddress
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            } if recoveryAddress
           ]
         }) }}
       </div>
 
-      {% set contactFields %}
-        <div class="govuk-!-margin-top-3">
-          <p>Nominate someone who:</p>
-          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-            <li>is planning the response to a local lockdown</li>
-            <li>understands what devices are needed and who they will be for</li>
-            <li>knows how to configure the devices</li>
-          </ul>
-        </div>
-
-        {{ govukInput({
-          label: {
-            text: "Name"
-          }
-        } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-name"]) )}}
-
-        {{ govukInput({
-          label: {
-            text: "Email address"
-          }
-        } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-email-address"]) )}}
-
-        {{ govukInput({
-          classes: "govuk-input--width-10",
-          label: {
-            text: "Telephone number"
-          }
-        } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-number"]) )}}
-      {% endset %}
-
       {% if hasDevolvedAll %}
         {% if not hasSetContactDetails %}
-          {{ govukRadios({
-            fieldset: {
-              legend: {
-                text: "Who can we contact at the school?",
-                classes: "govuk-fieldset__legend--l"
-              }
-            },
-            items: [
-              {
-                text: 'Headteacher',
-                value: 'headteacher',
-                hint: {
-                  text: school.headteacher + ' (' + school.headteacher_email + ')'
-                }
-              },
-              {
-                text: 'Someone else',
-                value: 'someone',
-                conditional: {
-                  html: contactFields
-                }
-              }
-            ]
-          } | decorateFormAttributes(["responsible-body", school.URN, "person-type"]) ) }}
+          {% include 'responsible-body/devices/school/_contact-details.html' %}
 
           {{ govukButton({
             text: "Save and send email"
           }) }}
         {% endif %}
       {% else %}
-        <h2 class="govuk-heading-l">Will they be ordering Chromebooks?</h2>
-        <div class="govuk-inset-text">
-          Feature not yet available in prototype
-        </div>
+        {% if not hasSetChromebookDetails %}
+          <h2 class="govuk-heading-l">Will you be ordering Chromebooks?</h2>
+          {% include 'responsible-body/devices/school/_chromebook-details.html' %}
+
+          {{ govukButton({
+            text: "Save"
+          }) }}
+        {% endif %}
       {% endif %}
 
       <p>

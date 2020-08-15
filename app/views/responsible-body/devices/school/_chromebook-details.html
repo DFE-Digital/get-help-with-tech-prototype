@@ -1,0 +1,48 @@
+<p>If you expect to order Google Chromebooks we’ll need 2 pieces of information to configure them:</p>
+<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+  <li>the domain the school uses for Google</li>
+  <li>the school’s recovery email address</li>
+</ul>
+
+<p>You must give us this information before you place an order so the devices can be secured.</p>
+
+{% set chromebookFields %}
+  {{ govukInput({
+    label: {
+      text: 'School or local authority domain'
+    },
+    hint: {
+      text: 'For example, ‘school.co.uk’'
+    }
+  } | decorateFormAttributes(["responsible-body", school.URN, "domain"]) ) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Recovery email address'
+    },
+    hint: {
+      text: 'This email address must be on a different domain to the school domain. For example, if the domain is school.com, then the email must not be recovery@school.com.'
+    }
+  } | decorateFormAttributes(["responsible-body", school.URN, "recovery"]) ) }}
+
+  <p class="govuk-!-margin-top-4">
+    <a href="#">Get help with Google Chromebook details</a>
+  </p>
+{% endset %}
+
+{{ govukRadios({
+  items: [
+    {
+      text: 'Yes',
+      conditional: {
+        html: chromebookFields
+      }
+    },
+    {
+      text: 'No'
+    },
+    {
+      text: 'I don’t know'
+    }
+  ]
+} | decorateFormAttributes(["responsible-body", school.URN, "chromebooks"]) ) }}
