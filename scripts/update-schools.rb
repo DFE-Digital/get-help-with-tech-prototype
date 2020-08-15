@@ -5,7 +5,7 @@ require 'JSON'
 
 class UpdateSchoolsList
   def run
-    responsible_body = 'Essex'
+    responsible_body = 'Lancashire'
     rows = CSV.read(csv_file_location, { headers: true })
     grouped_by_responsible_body = rows.group_by { |r| r['LA'] }
     la_schools = grouped_by_responsible_body[responsible_body]
