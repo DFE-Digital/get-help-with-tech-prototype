@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% set title = 'Sign in' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <form action="/account/check-email-school" method="post" class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+      {{ govukInput({
+        label: {
+          text: "Email address"
+        },
+        id: "sign-in-email-address-rb",
+        name: "sign-in-email-address-rb"
+      }) }}
+
+      <!-- <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Change email address
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Contact <a href="#">COVID.TECHNOLOGY@education.gov.uk</a> to request access for a different email address.</p>
+        </div>
+      </details> -->
+
+      {{ govukButton({
+        text: "Sign in"
+      }) }}
+    </form>
+  </div>
+{% endblock %}
