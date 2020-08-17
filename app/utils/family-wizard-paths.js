@@ -1,56 +1,9 @@
-function originalQuery (req) {
-  var originalQueryString = req.originalUrl.split('?')[1]
-  return originalQueryString ? `?${originalQueryString}` : ''
-}
+const {
+  nextAndBackPaths,
+  nextForkPath
+} = require('../utils/wizard-helpers')
 
-function nextAndBackPaths (paths, req) {
-  const currentPath = req.path
-  const query = originalQuery(req)
-  const data = req.session.data
-  const index = paths.indexOf(currentPath)
-  const next = paths[index + 1] || ''
-  let back = paths[index - 1] || ''
-
-  // Point back to where we forked from
-  if (currentPath === data['forked-to']) {
-    back = data['forked-from']
-  }
-
-  // Remove the saved fork if we return to it
-  if (currentPath === data['forked-from'] && req.method === 'GET') {
-    delete data['forked-from']
-    delete data['forked-to']
-  }
-
-  return {
-    next: next + query,
-    back: back + query,
-    current: currentPath + query
-  }
-}
-
-function nextForkPath (forks, req) {
-  const currentPath = req.path
-  const data = req.session.data
-  const fork = forks[currentPath]
-
-  if (fork) {
-    for (const [key, condition] of Object.entries(fork)) {
-      const values = Array.isArray(condition.values) ? condition.values : [condition.values]
-
-      if (values.includes(data[key])) {
-        data['forked-from'] = currentPath
-        data['forked-to'] = condition.path
-
-        return condition.path
-      }
-    }
-  }
-
-  return false
-}
-
-function schoolWizardPaths (req) {
+function familyWizardPaths (req) {
   var paths = [
     '/family',
     '/family/who',
@@ -70,7 +23,7 @@ function schoolWizardPaths (req) {
   return nextAndBackPaths(paths, req)
 }
 
-function schoolWizardForks (req) {
+function familyWizardForks (req) {
   var forks = {
     '/family/eligible': {
       eligible: {
@@ -121,7 +74,7 @@ function schoolWizardForks (req) {
   return nextForkPath(forks, req)
 }
 
-function schoolMnoWizardPaths (req) {
+function familyMnoWizardPaths (req) {
   var paths = [
     '/family/mno/no-bt',
     '/family/mno/network',
@@ -138,7 +91,7 @@ function schoolMnoWizardPaths (req) {
 }
 
 module.exports = {
-  schoolWizardPaths,
-  schoolWizardForks,
-  schoolMnoWizardPaths
+  familyWizardPaths,
+  familyWizardForks,
+  familyMnoWizardPaths
 }
