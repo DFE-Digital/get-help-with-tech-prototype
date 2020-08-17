@@ -1,15 +1,22 @@
-<p>If you expect to order Google Chromebooks we’ll need 2 pieces of information to configure them:</p>
-<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-  <li>the domain the school uses for Google</li>
-  <li>the school’s recovery email address</li>
-</ul>
-
-<p>You must give us this information before you place an order so the devices can be secured.</p>
-
 {% set chromebookFields %}
+  <p>We need 2 pieces of information to configure them:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>the domain the school uses for Google</li>
+    <li>the school’s recovery email address</li>
+  </ul>
+
+  <p>You must give us this information before you place an order so the devices can be secured.</p>
+
+  <p class="govuk-!-margin-top-4">
+    <a href="#">Get help with Google Chromebook details</a>
+  </p>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
   {{ govukInput({
     label: {
-      text: 'School or local authority domain'
+      text: 'School or local authority domain',
+      classes: 'govuk-label--s'
     },
     hint: {
       text: 'For example, ‘school.co.uk’'
@@ -18,24 +25,25 @@
 
   {{ govukInput({
     label: {
-      text: 'Recovery email address'
+      text: 'Recovery email address',
+      classes: 'govuk-label--s'
     },
     hint: {
       text: 'This email address must be on a different domain to the school domain. For example, if the domain is school.com, then the email must not be recovery@school.com.'
     }
   } | decorateFormAttributes(["responsible-body", school.URN, "recovery"]) ) }}
-
-  <p class="govuk-!-margin-top-4">
-    <a href="#">Get help with Google Chromebook details</a>
-  </p>
 {% endset %}
 
 {{ govukRadios({
   items: [
     {
-      text: 'Yes',
+      text: 'Yes, they will need Chromebooks',
+      value: 'Yes',
       conditional: {
         html: chromebookFields
+      },
+      hint: {
+        text: 'More information is needed to configure them before ordering'
       }
     },
     {
