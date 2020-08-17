@@ -21,7 +21,7 @@
     hint: {
       text: 'For example, ‘school.co.uk’'
     }
-  } | decorateFormAttributes(["responsible-body", school.URN, "domain"]) ) }}
+  } | decorateFormAttributes(["domain"] if isSchool else ["responsible-body", school.URN, "domain"]) ) }}
 
   {{ govukInput({
     label: {
@@ -31,13 +31,13 @@
     hint: {
       text: 'This email address must be on a different domain to the school domain. For example, if the domain is school.com, then the email must not be recovery@school.com.'
     }
-  } | decorateFormAttributes(["responsible-body", school.URN, "recovery"]) ) }}
+  } | decorateFormAttributes(["recovery"] if isSchool else ["responsible-body", school.URN, "recovery"]) ) }}
 {% endset %}
 
 {{ govukRadios({
   items: [
     {
-      text: 'Yes, they will need Chromebooks',
+      text: 'Yes, we will need Chromebooks' if isSchool else 'Yes, they will need Chromebooks',
       value: 'Yes',
       conditional: {
         html: chromebookFields
@@ -53,4 +53,4 @@
       text: 'I don’t know'
     }
   ]
-} | decorateFormAttributes(["responsible-body", school.URN, "chromebooks"]) ) }}
+} | decorateFormAttributes(["chromebooks"] if isSchool else ["responsible-body", school.URN, "chromebooks"]) ) }}
