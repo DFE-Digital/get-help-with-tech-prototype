@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Who can order devices" %}
+{% set title = "Manage who can order devices" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -17,15 +17,16 @@
 
     <p class="govuk-body-l">Up to 5 people can order devices.</p>
 
-    {% for user in data['school-users'] %}
-      {% include "_shared/_user.html" %}
-    {% endfor %}
-
     {{ govukButton({
       text: 'Add someone new',
       href: '/school/users/new',
-      classes: 'govuk-!-margin-top-4'
+      classes: 'govuk-!-margin-bottom-8'
     }) }}
+
+    <h2 class="govuk-heading-l">Users</h2>
+    {% for user in data['school-users'] %}
+      {% include "_shared/_user.html" %}
+    {% endfor %}
   </div>
 </div>
 

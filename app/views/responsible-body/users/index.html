@@ -33,14 +33,15 @@
       {% endif %}
     </ul>
 
-    {% for user in data['rb-users'] %}
-      {% include "_shared/_user.html" %}
-    {% endfor %}
-
     {{ govukButton({
       text: 'Invite a new user',
       href: '/responsible-body/users/new'
     }) }}
+
+    <h2 class="govuk-heading-l">Users</h2>
+    {% for user in data['rb-users'] %}
+      {% include "_shared/_user.html" %}
+    {% endfor %}
   </div>
 </div>
 {% endblock %}
