@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
-{% set title = 'Will you be ordering Chromebooks?' %}
+{% set title = 'Will the school need Chromebooks?' %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/responsible-body/devices/schools"
+    href: "/responsible-body/devices/schools/" + school.URN
   }) }}
 {% endblock %}
 
