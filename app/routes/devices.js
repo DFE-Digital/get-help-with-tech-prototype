@@ -59,6 +59,9 @@ module.exports = router => {
     const showChromebookForm = !hasSetChromebookDetails && whoOrders === 'The local authority orders devices'
     const showContactForm = !hasSetContactDetails && whoOrders === 'The school orders devices'
 
+    const currentIndex = req.session.data.schools.findIndex(school => school === res.locals.school)
+    const nextSchoolUrn = req.session.data.schools[currentIndex + 1].URN
+
     res.render('responsible-body/devices/school/index', {
       hasSetChromebookDetails,
       hasSetContactDetails,
@@ -71,7 +74,8 @@ module.exports = router => {
       number,
       recoveryAddress,
       domain,
-      success
+      success,
+      nextSchoolUrn
     })
   })
 
