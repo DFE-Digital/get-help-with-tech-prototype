@@ -17,6 +17,11 @@
   {% endif %}
 {% endset %}
 
+{% set statusHtml %}
+  {% set urn = school.URN %}
+  {% include 'responsible-body/devices/school/_status-tag.html' %}
+{% endset %}
+
 {% block content %}
 {{ appBanner({
   html: '<h2 class="govuk-heading-m">' + success + '</h2>',
@@ -35,6 +40,14 @@
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-0 govuk-!-margin-top-0',
           rows: [
+            {
+              key: {
+                text: "Status"
+              },
+              value: {
+                html: statusHtml
+              }
+            },
             {
               key: {
                 text: "Allocation"

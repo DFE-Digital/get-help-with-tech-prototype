@@ -74,33 +74,21 @@
             {{ school.total }}
           </td>
           <td class="govuk-table__cell">
-            {% if data['responsible-body'][school.URN] %}
+            {% if data['responsible-body'][school.URN].who %}
               {% if data['responsible-body'][school.URN].who == 'central' %}
                 Local authority
-              {% else %}
+              {% elseif data['responsible-body'][school.URN].who == 'school' %}
                 School
+              {% else %}
+                Unknown
               {% endif %}
             {% else %}
               {{ whoOrders }}
             {% endif %}
           </td>
           <td class="govuk-table__cell">
-            {% if data['responsible-body'][school.URN] %}
-              {% if data['responsible-body'][school.URN].who == 'central' %}
-                <span class="govuk-tag govuk-tag--completed">Ready</span>
-              {% else %}
-                <span class="govuk-tag govuk-tag--yellow">School contacted</span>
-              {% endif %}
-              <!-- <span class="govuk-tag govuk-tag--yellow">School contacted</span>
-              <span class="govuk-tag govuk-tag--blue">School signed in</span>
-              <span class="govuk-tag govuk-tag--completed">School ready</span> -->
-            {% else %}
-              {% if hasCentralAll %}
-                <span class="govuk-tag govuk-tag--grey">Needs information</span>
-              {% else %}
-                <span class="govuk-tag govuk-tag--grey">Needs a contact</span>
-              {% endif %}
-            {% endif %}
+            {% set urn = school.URN %}
+            {% include 'responsible-body/devices/school/_status-tag.html' %}
           </td>
         </tr>
       {% endfor %}
