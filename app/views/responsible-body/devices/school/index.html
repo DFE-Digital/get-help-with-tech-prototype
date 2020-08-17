@@ -140,23 +140,21 @@
         }) }}
       </div>
 
-      {% if hasDevolvedAll %}
-        {% if not hasSetContactDetails %}
-          {% include 'responsible-body/devices/school/_contact-details.html' %}
+      {% if showContactForm %}
+        {% include 'responsible-body/devices/school/_contact-details.html' %}
 
-          {{ govukButton({
-            text: "Save and send email"
-          }) }}
-        {% endif %}
-      {% else %}
-        {% if not hasSetChromebookDetails %}
-          <h2 class="govuk-heading-l">Will you be ordering Chromebooks?</h2>
-          {% include 'responsible-body/devices/school/_chromebook-details.html' %}
+        {{ govukButton({
+          text: "Save and send email"
+        }) }}
+      {% endif %}
 
-          {{ govukButton({
-            text: "Save"
-          }) }}
-        {% endif %}
+      {% if showChromebookForm %}
+        <h2 class="govuk-heading-l">Will you be ordering Chromebooks?</h2>
+        {% include 'responsible-body/devices/school/_chromebook-details.html' %}
+
+        {{ govukButton({
+          text: "Save"
+        }) }}
       {% endif %}
 
       <p>

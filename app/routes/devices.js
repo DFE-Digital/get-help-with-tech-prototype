@@ -56,9 +56,14 @@ module.exports = router => {
       }
     }
 
+    const showChromebookForm = !hasSetChromebookDetails && whoOrders === 'The local authority orders devices'
+    const showContactForm = !hasSetContactDetails && whoOrders === 'The school orders devices'
+
     res.render('responsible-body/devices/school/index', {
       hasSetChromebookDetails,
       hasSetContactDetails,
+      showChromebookForm,
+      showContactForm,
       isHeadteacher,
       emailAddress,
       whoOrders,
