@@ -1,9 +1,9 @@
 {% extends "_wizard-form.html" %}
-{% set title = "You’ve been allocated 22 laptops and tablets" %}
+{% set title = "You’ve been allocated " + data['school-details'].allocation + " laptops and tablets" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
-    You’ve been allocated<br />22 laptops and tablets
+    You’ve been allocated<br />{{ data['school-details'].allocation }} laptops and tablets
   </h1>
 
   <p>Every school has its own allocation of devices.</p>

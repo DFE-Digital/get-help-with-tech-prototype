@@ -2,10 +2,10 @@ const fakeMnoRequests = require('./fake-mno-requests')
 const fakeSchoolUsers = require('./fake-school-users')
 const fakeRBUsers = require('./fake-rb-users')
 const schoolsInLocalAuthority = require('./local-authority-schools')
+const schoolDetails = require('./school-details')
 
 module.exports = {
   rb: 'Leeds',
-  school: 'Pool Hayes Primary',
   features: {
     'sign-up': false,
     'bulk-upload': true,
@@ -18,5 +18,6 @@ module.exports = {
   },
   'school-users': fakeSchoolUsers,
   'rb-users': fakeRBUsers,
-  schools: schoolsInLocalAuthority
+  schools: schoolsInLocalAuthority,
+  'school-details': schoolDetails
 }

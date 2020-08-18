@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = "You’re signed in as " + data.school %}
+{% set title = "You’re signed in as " + data['school-details'].name %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
