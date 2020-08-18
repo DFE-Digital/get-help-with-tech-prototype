@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'Pool Hayes Primary',
-  type: 'Primary school',
-  allocation: 22
+  name: 'John Hanson Community School',
+  type: 'Secondary school',
+  allocation: 68
 }
