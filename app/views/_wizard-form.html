@@ -17,7 +17,7 @@
           {% block form %}{% endblock %}
 
           {{ govukButton({
-            html: 'Continue'
+            html: buttonText if buttonText else 'Continue'
           }) }}
         </form>
       </div>

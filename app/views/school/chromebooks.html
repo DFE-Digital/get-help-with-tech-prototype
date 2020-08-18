@@ -1,0 +1,11 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Will you need to order Chromebooks?' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {% set isSchool = true %}
+  {% include 'responsible-body/devices/school/_chromebook-details.html' %}
+{% endblock %}

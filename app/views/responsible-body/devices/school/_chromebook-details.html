@@ -1,18 +1,16 @@
+<p>If you expect to order Google Chromebooks we’ll need 2 pieces of information to configure them:</p>
+<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+  <li>the domain the school uses for Google</li>
+  <li>the school’s recovery email address</li>
+</ul>
+
+<p>You must give us this information before you place an order so the devices can be secured.</p>
+
+<p class="govuk-!-margin-top-4">
+  <a href="#">Get help with Google Chromebook details</a>
+</p>
+
 {% set chromebookFields %}
-  <p>We need 2 pieces of information to configure them:</p>
-  <ul class="govuk-list govuk-list--bullet">
-    <li>the domain the school uses for Google</li>
-    <li>the school’s recovery email address</li>
-  </ul>
-
-  <p>You must give us this information before you place an order so the devices can be secured.</p>
-
-  <p class="govuk-!-margin-top-4">
-    <a href="#">Get help with Google Chromebook details</a>
-  </p>
-
-  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
   {{ govukInput({
     label: {
       text: 'School or local authority domain',
@@ -41,13 +39,10 @@
       value: 'Yes',
       conditional: {
         html: chromebookFields
-      },
-      hint: {
-        text: 'More information is needed to configure them before ordering'
       }
     },
     {
-      text: 'No'
+      text: 'No, we do not need Chromebooks' if isSchool else 'No, they will not need Chromebooks'
     },
     {
       text: 'I don’t know'

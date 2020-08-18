@@ -1,0 +1,18 @@
+{% extends "_wizard-form.html" %}
+{% set title = "We will create a TechSource account for you" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  <p>All devices must be ordered through a website called TechSource, a service managed by Computacenter.</p>
+
+  <p>In the next few days you will receive an email from them containing:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>a link to the service</li>
+    <li>your password to sign in to the service</li>
+  </ul>
+
+  <p class="govuk-!-margin-bottom-6">Keep this password safe, you’ll need it in the event of a lockdown.</p>
+{% endblock %}

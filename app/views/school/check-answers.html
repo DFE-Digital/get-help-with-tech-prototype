@@ -1,0 +1,100 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Check your answers" %}
+{% set buttonText = "Finish" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  <div class="govuk-!-margin-bottom-6">
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-0 govuk-!-margin-top-0',
+      rows: [
+        {
+          key: {
+            text: "Status"
+          },
+          value: {
+            html: '<span class="govuk-tag govuk-tag--completed">Ready for a lockdown</span>'
+          }
+        },
+        {
+          key: {
+            text: "Allocation"
+          },
+          value: {
+            text: '22 devices'
+          }
+        },
+        {
+          key: {
+            text: "Users"
+          },
+          value: {
+            text: '2 people can order devices'
+          }
+        },
+        {
+          key: {
+            text: "Type of school"
+          },
+          value: {
+            text: 'Primary school'
+          }
+        },
+        {
+          key: {
+            text: "Chromebooks?"
+          },
+          value: {
+            text: "Yes"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Domain"
+          },
+          value: {
+            text: data['domain']
+          },
+          actions: {
+            items: [
+              {
+                href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        } if data['domain'],
+        {
+          key: {
+            text: "Recovery email address"
+          },
+          value: {
+            text: data['recovery']
+          },
+          actions: {
+            items: [
+              {
+                href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        } if data['recovery']
+      ]
+    }) }}
+  </div>
+{% endblock %}

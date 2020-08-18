@@ -1,0 +1,39 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Will someone else be ordering devices?" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {% set contactFields %}
+    {% set isSchool = true %}
+    <p>New users:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>will receive a TechSource account to make device orders</li>
+      <li>will have access to this service</li>
+      <li>can also add new users or edit existing ones</li>
+    </ul>
+
+    {% include 'responsible-body/devices/school/_contact-details-fields.html' %}
+
+    {{ govukWarningText({
+      text: 'We’ll email them immediately',
+      iconFallbackText: 'Warning'
+    }) }}
+  {% endset %}
+
+  {{ govukRadios({
+    items: [
+      {
+        text: 'Yes',
+        conditional: {
+          html: contactFields
+        }
+      },
+      {
+        text: 'No'
+      }
+    ]
+  }  | decorateFormAttributes('you-ordering') ) }}
+{% endblock %}

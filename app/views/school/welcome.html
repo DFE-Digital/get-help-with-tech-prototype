@@ -1,0 +1,17 @@
+{% extends "_wizard-form.html" %}
+{% set title = "You’re signed in as " + data.school %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body-l">Welcome to Get help with technology.</p>
+
+  <p>You can use this service to:</p>
+  <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+    <li>manage who will order devices for your school in the event of a lockdown</li>
+    <li>access TechSource to order devices during a lockdown</li>
+    <li>give us technical details for Chromebooks if you’ll be ordering them</li>
+  </ul>
+{% endblock %}

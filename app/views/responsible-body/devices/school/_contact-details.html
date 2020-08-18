@@ -1,31 +1,5 @@
 {% set contactFields %}
-  <div class="govuk-!-margin-top-3">
-    <p>Nominate someone who:</p>
-    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-      <li>is planning the response to a local lockdown</li>
-      <li>understands what devices are needed and who they will be for</li>
-      <li>knows how to configure the devices</li>
-    </ul>
-  </div>
-
-  {{ govukInput({
-    label: {
-      text: "Name"
-    }
-  } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-name"]) )}}
-
-  {{ govukInput({
-    label: {
-      text: "Email address"
-    }
-  } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-email-address"]) )}}
-
-  {{ govukInput({
-    classes: "govuk-input--width-10",
-    label: {
-      text: "Telephone number"
-    }
-  } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-number"]) )}}
+  {% include 'responsible-body/devices/school/_contact-details-fields.html' %}
 {% endset %}
 
 {{ govukRadios({
