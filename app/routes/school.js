@@ -12,7 +12,6 @@ module.exports = router => {
   })
 
   router.get('/school/:view', function (req, res) {
-    console.log(schoolWizardPaths(req))
     res.render(`school/${req.params.view}`, { paths: schoolWizardPaths(req) })
   })
 
