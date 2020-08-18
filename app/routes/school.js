@@ -7,6 +7,10 @@ const {
  * Family walkthrough routes
  */
 module.exports = router => {
+  router.get('/school/users', function (req, res) {
+    res.render('school/users/index')
+  })
+
   router.get('/school/:view', function (req, res) {
     console.log(schoolWizardPaths(req))
     res.render(`school/${req.params.view}`, { paths: schoolWizardPaths(req) })
