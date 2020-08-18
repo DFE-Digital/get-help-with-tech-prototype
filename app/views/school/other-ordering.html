@@ -13,8 +13,18 @@
     <li>can also add new users or edit existing ones</li>
   </ul>
 
+  <div class="govuk-!-margin-top-3">
+    <p>Add someone who:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      <li>is planning the response to a local lockdown</li>
+      <li>understands what devices are needed and who they will be for</li>
+      <li>knows how to configure the devices</li>
+    </ul>
+  </div>
+
   {% set contactFields %}
     {% set isSchool = true %}
+    {% set hideGuidance = true %}
     {% include 'responsible-body/devices/school/_contact-details-fields.html' %}
 
     {{ govukWarningText({

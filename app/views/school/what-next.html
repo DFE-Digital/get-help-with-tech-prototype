@@ -1,0 +1,19 @@
+{% extends "_wizard-form.html" %}
+{% set title = "What happens next" %}
+{% set buttonText = "Finish set up" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  <p>We’ll let your local authority know that you’re all set up.</p>
+
+  <h2 class="govuk-heading-m">You can add more users, or change your settings</h2>
+  <p>You can always sign in to this service to add users, or change your Chromebook settings.</p>
+
+  <h2 class="govuk-heading-m">If there is a local lockdown</h2>
+  <p>Soon after a local lockdown is announced, everyone affected will receive a notification email.</p>
+  <p>You’ll be prompted to sign in to this service to check your allocation.</p>
+  <p class="govuk-!-margin-bottom-6">You’ll then be asked to order devices through TechSource.</p>
+{% endblock %}

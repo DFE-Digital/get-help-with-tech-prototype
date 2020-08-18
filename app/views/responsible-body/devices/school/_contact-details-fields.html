@@ -1,3 +1,4 @@
+{% if not hideGuidance %}
 <div class="govuk-!-margin-top-3">
   <p>Nominate someone who:</p>
   <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
@@ -6,6 +7,7 @@
     <li>knows how to configure the devices</li>
   </ul>
 </div>
+{% endif %}
 
 {{ govukInput({
   label: {

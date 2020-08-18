@@ -6,13 +6,13 @@ const {
 function schoolWizardPaths (req) {
   var paths = [
     '/school/welcome',
-    '/school/order-your-own',
     '/school/allocation',
-    '/school/you-ordering',
+    '/school/order-your-own',
+    // '/school/you-ordering',
     '/school/techsource-account',
     '/school/other-ordering',
     '/school/chromebooks',
-    '/school/check-answers',
+    '/school/what-next',
     '/school'
   ]
 

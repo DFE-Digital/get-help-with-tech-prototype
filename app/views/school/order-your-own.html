@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = "Your school can order its own devices" %}
+{% set title = "You can only order devices if there’s a local lockdown" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
@@ -8,7 +8,8 @@
 
   <p>Schools that are closed or partially closed because of a local lockdown will be allowed to place orders for devices.</p>
 
-  <p>You can also request devices, at any time, for children who are shielding because they are clinically extremely vulnerable.</p>
+  <p>Orders placed before 4pm will be delivered to schools the next working day.</p>
 
-  <p class="govuk-!-margin-bottom-6">Orders placed before 4pm will be delivered to schools the next working day.</p>
+  <h2 class="govuk-heading-m">Ordering devices for children who are shielding</h2>
+  <p class="govuk-!-margin-bottom-6">You can also request devices, at any time, for children who are shielding because they are clinically extremely vulnerable.</p>
 {% endblock %}
