@@ -29,7 +29,7 @@
           classes: "govuk-label--m"
         },
         hint: {
-          text: 'They’ll use this email address to sign in.<br />We’ll send them an email with all the details.' | safe
+          text: 'They’ll use this to sign in and we’ll use it to send them instructions.' | safe
         }
       } | decorateFormAttributes(["responsible-body", "new-invite-email-address"]) )}}
 
@@ -41,6 +41,7 @@
         }
       } | decorateFormAttributes(["responsible-body", "new-invite-number"]) )}}
 
+      <!--
       {{ govukRadios({
         fieldset: {
           legend: {
@@ -63,6 +64,7 @@
           }
         ]
       } | decorateFormAttributes(["responsible-body", "can-order-devices"]) ) }}
+      -->
 
       {{ govukButton({
           html: 'Send invite'
