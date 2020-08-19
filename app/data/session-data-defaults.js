@@ -5,12 +5,12 @@ const schoolsInLocalAuthority = require('./local-authority-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
-  rb: 'Leeds',
+  rb: 'Blackburn with Darwen',
   features: {
     'sign-up': false,
     'bulk-upload': true,
     'only-bt': false,
-    'in-connectivity-pilots': false,
+    'in-connectivity-pilots': true,
     mno: false
   },
   mno: {
