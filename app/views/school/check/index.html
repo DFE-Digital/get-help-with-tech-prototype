@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+{% set title = "Check your school details" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/school"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Provisional allocation"
+          },
+          value: {
+            text: data['school-details'].allocation + " devices"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Query",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Will your school need to order Chromebooks?"
+          },
+          value: {
+            text: "Yes"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Domain"
+          },
+          value: {
+            text: data['domain']
+          },
+          actions: {
+            items: [
+              {
+                href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        } if data['domain'],
+        {
+          key: {
+            text: "Recovery email address"
+          },
+          value: {
+            text: data['recovery']
+          },
+          actions: {
+            items: [
+              {
+                href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        } if data['recovery']
+      ]
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--m">
+
+    <h2 class="govuk-heading-m">
+      About Google Chromebooks
+    </h2>
+
+    {% set isSchool = true %}
+    {% include 'responsible-body/devices/school/_chromebook-guidance.html' %}
+
+    <h2 class="govuk-heading-m">
+      About allocations
+    </h2>
+
+    <p>Allocations are based on:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free school meals data</li>
+      <li>an estimate of the number of devices a school already has</li>
+    </ul>
+
+    <p>Numbers will be reassessed at the time of ordering based on availability and the extent of coronavirus outbreaks.</p>
+
+    <p>If you need to query your allocation email <a href="#">COVID.TECHNOLOGY@education.gov.uk</a></p>
+  </div>
+</div>
+{% endblock %}
