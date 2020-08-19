@@ -1,4 +1,5 @@
 const getKeypath = require('keypather/get')
+const { rbDeviceWizardPaths } = require('../utils/rb-device-wizard-paths')
 const devicesPath = '/responsible-body/devices'
 
 /**
@@ -10,6 +11,7 @@ module.exports = router => {
     res.locals.hasDevolvedAll = data['who-orders-laptops'] === 'schools'
     res.locals.hasCentralAll = data['who-orders-laptops'] === 'central'
     res.locals.whoOrders = res.locals.hasDevolvedAll ? 'School' : 'Local authority'
+    res.locals.paths = rbDeviceWizardPaths(req)
     next()
   })
 

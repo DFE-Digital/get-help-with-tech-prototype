@@ -1,54 +1,36 @@
-{% extends "layout.html" %}
+{% extends "_wizard-form.html" %}
 {% set title = "Who will order a school’s laptops and tablets?" %}
-{% block pageTitle %}{{ title }}{% endblock %}
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: "/responsible-body/devices"
-  }) }}
-{% endblock %}
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
 
-{% block content %}
+  {{ govukRadios({
+    items: [
+      {
+        html: '<span class="govuk-!-font-weight-bold">Most schools will manage their own orders (recommended)</span>',
+        value: 'schools',
+        hint: {
+          html: 'We’ll need contact details for each school'
+        }
+      },
+      {
+        html: '<span class="govuk-!-font-weight-bold">Some orders will be managed centrally</span>',
+        value: 'mixed',
+        hint: {
+          html: 'You’ll need to tell us how orders for each school will be managed'
+        }
+      } if false,
+      {
+        html: '<span class="govuk-!-font-weight-bold">Most orders will be managed centrally</span>',
+        value: 'central',
+        hint: {
+          html: 'You’ll need to order devices for all schools and give technical settings for any school that wants to order Chromebooks.<br>' | safe
+        }
+      }
+    ]
+  } | decorateFormAttributes('who-orders-laptops') ) }}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <form action="/responsible-body/devices/devolve" method="post">
-      <h1 class="govuk-heading-xl">
-        {{ title }}
-      </h1>
-
-      {{ govukRadios({
-        items: [
-          {
-            html: '<span class="govuk-!-font-weight-bold">Most schools will manage their own orders (recommended)</span>',
-            value: 'schools',
-            hint: {
-              html: 'We’ll need contact details for each school'
-            }
-          },
-          {
-            html: '<span class="govuk-!-font-weight-bold">Some orders will be managed centrally</span>',
-            value: 'mixed',
-            hint: {
-              html: 'You’ll need to tell us how orders for each school will be managed'
-            }
-          } if false,
-          {
-            html: '<span class="govuk-!-font-weight-bold">Most orders will be managed centrally</span>',
-            value: 'central',
-            hint: {
-              html: 'You’ll need to order devices for all schools and give technical settings for any school that wants to order Chromebooks.<br>' | safe
-            }
-          }
-        ]
-      } | decorateFormAttributes('who-orders-laptops') ) }}
-
-      <p>You can change this setting for each school later.</p>
-
-      {{ govukButton({
-        text: 'Continue'
-      }) }}
-    </form>
-  </div>
-</div>
+  <p>You can change this setting for each school later.</p>
 {% endblock %}

@@ -1,6 +1,5 @@
-{% extends "layout.html" %}
-{% set title = "Tell us who will order a school’s laptops and tablets" %}
-{% block pageTitle %}{{ title }}{% endblock %}
+{% extends "_wizard-page.html" %}
+{% set title = "Get laptops and tablets" %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
@@ -16,55 +15,49 @@
   }) }}
 {% endblock %}
 
-{% block content %}
+{% block page %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      {{ title }}
-    </h1>
+  <h2 class="govuk-heading-m">Schools can now order their own devices</h2>
 
-    <h2 class="govuk-heading-m">Schools can now order their own devices</h2>
-    <p>
-      We recommend you let schools order their own devices. You will need to nominate someone in each school for us to contact.</p>
+  <p>Schools will be able to order their own devices in the event of a local coronavirus (COVID-19) outbreak.</p>
+  <p>We recommend you let schools order their own devices because this is the quickest way to get help to those who need it.</p>
 
-    <p>Each contact will be able to:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>manage who can order devices for their school</li>
-      <li>order devices themselves</li>
-    </ul>
+  <p>You’ll need to nominate someone in each school for us to contact.</p>
 
-    <!-- <p>
-      All nominated contacts will receive:
-    </p>
+  <p>Alternatively, you can nominate contacts to manage some or all orders centrally.</p>
 
-    <ul class="govuk-list govuk-list--bullet">
-      <li>access to this service to add and edit who can make orders in their school</li>
-      <li>access to the TechSource system for placing orders</li>
-      <li>detailed instructions for how to place an order in the event of a local coronavirus (COVID-19) outbreak that affects their school(s) or pupils</li>
-    </ul> -->
+  <p>Each contact will be able to:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>manage who can order devices for their school</li>
+    <li>order devices themselves</li>
+  </ul>
 
-    <h2 class="govuk-heading-m">Prepare before a lockdown</h2>
+  <!-- <p>
+    All nominated contacts will receive:
+  </p>
 
-    <p>Give us school details as soon as you can so we can contact them, and they can prepare before a local lockdown.</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>access to this service to add and edit who can make orders in their school</li>
+    <li>access to the TechSource system for placing orders</li>
+    <li>detailed instructions for how to place an order in the event of a local coronavirus (COVID-19) outbreak that affects their school(s) or pupils</li>
+  </ul> -->
 
-    <h2 class="govuk-heading-m">Orders can only be placed during a lockdown</h2>
+  <h2 class="govuk-heading-m">Prepare before a lockdown</h2>
 
-    <p>Schools that are closed or partially closed because of a local lockdown will be notified that they can now place orders for devices.</p>
+  <p>Give us school details as soon as you can so we can contact them, and they can prepare before a local lockdown.</p>
 
-    <p>Orders placed before 4pm will be delivered to schools the next working day.</p>
+  <h2 class="govuk-heading-m">Orders can only be placed during a lockdown</h2>
 
-    <h2 class="govuk-heading-m">Each school has their own allocation</h2>
+  <p>Schools that are closed or partially closed because of a local lockdown will be notified that they can now place orders for devices.</p>
 
-    <p>Every school has its own allocation of devices. Allocations are based on free school meals and estimates of the number of devices a school already has.</p>
+  <p>Orders placed before 4pm will be delivered to schools the next working day.</p>
 
-    <p>Numbers will be re-assessed at the time of ordering based on availability and the extent of coronavirus outbreaks.</p>
+  <h2 class="govuk-heading-m">Each school has their own allocation</h2>
 
-    {{ govukButton({
-      text: 'Continue',
-      classes: 'govuk-!-margin-top-6',
-      href: '/responsible-body/devices/devolve'
-    }) }}
-  </div>
-</div>
+  <p>Every school has its own allocation of devices. Allocations are based on free school meals and estimates of the number of devices a school already has.</p>
+
+  <p>Numbers will be re-assessed at the time of ordering based on availability and the extent of coronavirus outbreaks.</p>
 {% endblock %}

@@ -1,4 +1,15 @@
-{% extends "layout.html" %}
+{% extends "_wizard-page.html" %}
+{% set buttonText = 'Go to your list of schools' %}
+
+{% block banner %}
+  {{ appBanner({
+    html: "
+      <h2 class=\"govuk-heading-m\">We’ve saved your choice</h2>
+  ",
+    type: "success",
+    icon: false
+  }) }}
+{% endblock %}
 
 {% if hasDevolvedAll %}
   {% set title = "Each school will manage their own orders" %}
@@ -34,36 +45,10 @@
   {% endset %}
 {% endif %}
 
-{% block pageTitle %}{{ title }}{% endblock %}
+{% block page %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: "/responsible-body/devices/devolve"
-  }) }}
-{% endblock %}
-
-{% block content %}
-
-{{ appBanner({
-  html: "
-    <h2 class=\"govuk-heading-m\">We’ve saved your choice</h2>
-",
-  type: "success",
-  icon: false
-}) }}
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        {{ title }}
-      </h1>
-
-      {{ description | safe }}
-      {{ govukButton({
-        text: 'Go to your list of schools',
-        classes: 'govuk-!-margin-top-6',
-        href: '/responsible-body/devices/schools'
-      }) }}
-  </div>
-</div>
+  {{ description | safe }}
 {% endblock %}
