@@ -12,35 +12,37 @@
 {% endblock %}
 
 {% if hasDevolvedAll %}
-  {% set title = "Each school will manage their own orders" %}
+  {% set title = "Each school will place their own orders" %}
   {% set description %}
-    <p>We’ve set each school as managing their own orders. If a school cannot order its own devices, you can change this setting on a school by school basis.</p>
+    <p>If a school cannot order its own devices, you can change this setting on a school-by-school basis.</p>
 
     <h2 class="govuk-heading-m">What you need to do now</h2>
 
-    <p>For each school we need you to nominate a contact. Each contact will be able to:</p>
+    <p>We need you to nominate a contact for each school.</p>
+
+    <p>They can:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>manage who can order devices for their school</li>
-      <li>order devices for their schools</li>
+      <li>order devices for their school</li>
     </ul>
 
-    <p>We’ll email everyone you nominate with instructions on how to order devices and what to do during a lockdown.</p>
+    <p>We’ll email everyone you nominate with instructions on how to order devices if there’s a local outbreak.</p>
 
-    <p>If a school doesn’t respond, we’ll ask you to chase them or give us new conctact details.</p>
+    <p>If a school does not respond, we’ll ask you to chase them or give us different contact details.</p>
   {% endset %}
 {% endif %}
 
 {% if hasCentralAll %}
-  {% set title = "All orders will be managed centrally" %}
+  {% set title = "Orders will be placed centrally" %}
   {% set description %}
-    <p>We’ve set each school as having their orders managed centrally. If a school needs to order its own devices, you can change this setting on a school by school basis.</p>
+    <p>If a school needs to order its own devices, you can change this setting on a school-by-school basis.</p>
 
     <h2 class="govuk-heading-m">What you need to do now</h2>
 
     <p>For each school you’ll need to:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>find out if they want Chromebooks </li>
-      <li>give details of the school domain and recovery email address needed to configure them</li>
+      <li>give details of the school domain and recovery email address needed to configure them. We’ll explain how to find these.</li>
     </ul>
   {% endset %}
 {% endif %}

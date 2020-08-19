@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = "Who will order a school’s laptops and tablets?" %}
+{% set title = "Who will place orders for laptops and tablets?" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
@@ -9,24 +9,17 @@
   {{ govukRadios({
     items: [
       {
-        html: '<span class="govuk-!-font-weight-bold">Most schools will manage their own orders (recommended)</span>',
+        html: '<span class="govuk-!-font-weight-bold">Most schools will place their own orders (recommended)</span>',
         value: 'schools',
         hint: {
           html: 'We’ll need contact details for each school'
         }
       },
       {
-        html: '<span class="govuk-!-font-weight-bold">Some orders will be managed centrally</span>',
-        value: 'mixed',
-        hint: {
-          html: 'You’ll need to tell us how orders for each school will be managed'
-        }
-      } if false,
-      {
-        html: '<span class="govuk-!-font-weight-bold">Most orders will be managed centrally</span>',
+        html: '<span class="govuk-!-font-weight-bold">Most orders will be placed centrally</span>',
         value: 'central',
         hint: {
-          html: 'You’ll need to order devices for all schools and give technical settings for any school that wants to order Chromebooks.<br>' | safe
+          html: 'You’ll need to place orders for schools and give technical information for any school that wants to order Chromebooks.<br>' | safe
         }
       }
     ]
