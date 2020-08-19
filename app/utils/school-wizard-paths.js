@@ -6,6 +6,7 @@ const {
 function schoolWizardPaths (req) {
   var paths = [
     '/school/welcome',
+    '/school/privacy',
     '/school/allocation',
     '/school/order-your-own',
     // '/school/you-ordering',

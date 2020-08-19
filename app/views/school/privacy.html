@@ -1,18 +1,15 @@
-{% extends "layout.html" %}
+{% extends "_wizard-form.html" %}
 {% set title = "Privacy notice" %}
-{% block pageTitle %}{{ title }}{% endblock %}
 
-{% block content %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      {{ title }}
-    </h1>
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
 
-    <p class="govuk-body-l">Before you continue, please read the privacy notice.</p>
-    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <p class="govuk-body-l">Before you continue, please read the privacy notice.</p>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    {% filter markdownToHTML %}
+  {% filter markdownToHTML %}
 ## Get help with technology – How we look after personal data
 
 ### Who this information is for
@@ -30,6 +27,7 @@ We will collect your name and contact details (specifically, your work email and
 ### How personal information will be shared
 
 We share the following information with a contracted third party (currently Computacenter (UK) Ltd) which administers the ordering and supply of computing devices and other related products and services under the Get help with technology initiative on behalf of DfE:
+
 * your name and contact details (specifically, your work email and telephone number)
 * your school’s name and address
 
@@ -49,15 +47,7 @@ You have certain rights under data protection law, including the right to find o
 
 You can find more information about how DfE handles personal data in our [personal information charter](#).
 You can also find out more about [data protection rights](#) from the [Information Commissioner’s Office](#).
-    {% endfilter %}
+  {% endfilter %}
 
-    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-    {{ govukButton({
-      html: 'Continue',
-      classes: 'govuk-!-margin-top-6',
-      href: '/responsible-body'
-    }) }}
-  </div>
-</div>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 {% endblock %}
