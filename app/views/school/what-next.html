@@ -1,19 +1,26 @@
 {% extends "_wizard-form.html" %}
 {% set title = "What happens next" %}
-{% set buttonText = "Finish set up" %}
+{% set buttonText = "Finish and go to homepage" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
 
-  <p>We’ll let your local authority know that you’re all set up.</p>
+  <p>We’ll let your local authority know that you’re ready to place orders.</p>
 
-  <h2 class="govuk-heading-m">You can add more users, or change your settings</h2>
-  <p>You can always sign in to this service to add users, or change your Chromebook settings.</p>
+  <p>You can continue to use this service to:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>add more users</li>
+    <li>change your Chromebook settings</li>
+    <li>review your allocation</li>
+    <li>request devices for clinically vulnerable children who are shielding</li>
+  </ul>
 
-  <h2 class="govuk-heading-m">If there is a local outbreak</h2>
+  <p class="govuk-!-margin-bottom-6 ">If your school is affected by local coronavirus restrictions, we’ll contact you as soon as you’re able to place orders.</p>
+
+  <!-- <h2 class="govuk-heading-m">If there is a local outbreak</h2>
   <p>Soon after a local lockdown is announced, everyone affected will receive a notification email.</p>
   <p>You’ll be prompted to sign in to this service to check your allocation.</p>
-  <p class="govuk-!-margin-bottom-6">You’ll then be asked to order devices through TechSource.</p>
+  <p class="govuk-!-margin-bottom-6">You’ll then be asked to order devices through TechSource.</p> -->
 {% endblock %}

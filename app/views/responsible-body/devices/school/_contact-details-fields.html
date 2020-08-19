@@ -2,9 +2,9 @@
 <div class="govuk-!-margin-top-3">
   <p>Nominate someone who:</p>
   <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-    <li>is planning the response to a local lockdown</li>
-    <li>understands what devices are needed and who they will be for</li>
-    <li>knows how to configure the devices</li>
+    <li>is planning the response to a local coronavirus outbreak</li>
+    <li>understands what devices are needed and who will get them</li>
+    <li>can configure devices or give technical information</li>
   </ul>
 </div>
 {% endif %}
@@ -18,6 +18,9 @@
 {{ govukInput({
   label: {
     text: "Email address"
+  },
+  hint: {
+    text: 'They will use this email address to sign in' | safe
   }
 } | decorateFormAttributes(["responsible-body", school.URN, "new-invite-email-address"]) )}}
 
