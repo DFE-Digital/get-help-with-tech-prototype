@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Give someone access to order devices" %}
+{% set title = "Invite a new user" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -16,18 +16,18 @@
         {{ title }}
       </h1>
 
-      <p>Give access to people who:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>are planning the response to a local lockdown</li>
-        <li>understand what devices are needed and who they will be for</li>
-        <li>know how to configure the devices</li>
-      </ul>
-
       <p>New users:</p>
-      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
-        <li>will receive a TechSource account to make device orders</li>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        <li>will get an invite to the Computacenter TechSource website</li>
         <li>will have access to this service</li>
         <li>can also add new users or edit existing ones</li>
+      </ul>
+
+      <p>Add someone who:</p>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        <li>is planning the response to a local coronavirus outbreak</li>
+        <li>understands what devices are needed and who will get them</li>
+        <li>can configure devices or give technical information</li>
       </ul>
 
       {{ govukInput({
