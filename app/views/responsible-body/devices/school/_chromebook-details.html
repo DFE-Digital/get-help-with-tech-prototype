@@ -47,6 +47,9 @@
     },
     {
       text: 'No, we do not need Chromebooks' if isSchool else 'No, they will not need Chromebooks'
-    }
+    },
+    {
+      text: 'I don’t know'
+    } if isSchool
   ]
 } | decorateFormAttributes(["chromebooks"] if isSchool else ["responsible-body", school.URN, "chromebooks"]) ) }}
