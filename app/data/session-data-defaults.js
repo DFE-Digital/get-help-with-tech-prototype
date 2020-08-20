@@ -5,7 +5,7 @@ const schoolsInLocalAuthority = require('./local-authority-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
-  rb: 'Blackburn with Darwen',
+  rb: 'Derbyshire',
   features: {
     'sign-up': false,
     'bulk-upload': true,
