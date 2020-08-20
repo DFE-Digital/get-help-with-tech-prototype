@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = 'Who will order devices?' %}
+{% set title = 'Who will place orders for laptops and tablets?' %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -21,12 +21,12 @@
       {{ govukRadios({
         items: [
           {
-            text: 'The school will manage their own orders',
+            text: 'The school will place their own orders',
             checked: hasDevolvedAll,
             value: 'school'
           },
           {
-            text: 'Orders will be managed centrally',
+            text: 'Orders will be placed centrally',
             checked: hasCentralAll,
             value: 'central'
           }
