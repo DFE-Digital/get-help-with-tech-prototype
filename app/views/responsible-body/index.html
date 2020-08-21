@@ -45,13 +45,13 @@
     {% endif %}
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/responsible-body/users">Manage local authority users</a>
+      <a href="/responsible-body/users">Manage {% if data.trust %}trust{% else %}local authority{% endif %} users</a>
     </h2>
 
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>give others in your local authority access to this service</li>
-      <li>set up accounts for your local authority to order devices</li>
+      <li>give others in your {% if data.trust %}trust{% else %}local authority{% endif %} access to this service</li>
+      <li>set up accounts for your {% if data.trust %}trust{% else %}local authority{% endif %} to order devices</li>
     </ul>
   </div>
 </div>

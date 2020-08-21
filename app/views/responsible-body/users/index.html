@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
-{% set title = "Manage local authority users" %}
+
+{% if data.trust %}
+  {% set title = "Manage trust users" %}
+{% else %}
+  {% set title = "Manage local authority users" %}
+{% endif %}
+
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
