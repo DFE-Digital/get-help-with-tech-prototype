@@ -5,7 +5,7 @@ const schoolsInResponsibleBody = require('./responsible-body-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
-  rb: 'DAYSPRING TRUST',
+  rb: 'UNITY SCHOOLS PARTNERSHIP',
   trust: true,
   features: {
     'sign-up': false,
