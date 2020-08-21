@@ -23,13 +23,16 @@
 </h1>
 
 {% set missingSchools %}
-  <p>This is a list of all local authority maintained and special schools.</p>
+  {% if not data.trust %}
+    <p>This is a list of all local authority maintained and special schools.</p>
+  {% endif %}
   <p>Email <a href="#">COVID.TECHNOLOGY@education.gov.uk</a> about a missing school.</p>
 {% endset %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{ data.schools.length }} schools</h2>
+
     {{ govukDetails({
       summaryText: "Is there a school missing from this list?",
       html: missingSchools
@@ -38,6 +41,7 @@
 </div>
 
 <div data-module="filterable-table">
+  {% if schools.length > 10 %}
   <form class="app-filter-container">
     <div class="govuk-form-group govuk-!-margin-top-1 govuk-!-margin-bottom-4">
       <label class="govuk-label govuk-label--s" for="filter">
@@ -49,6 +53,7 @@
       <input class="govuk-input js-filter-table-input" id="filter" name="filter" type="text">
     </div>
   </form>
+  {% endif %}
 
   <table class="govuk-table">
     <thead class="govuk-table__head">

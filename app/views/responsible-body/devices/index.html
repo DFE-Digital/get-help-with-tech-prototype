@@ -22,28 +22,31 @@
 
   <h2 class="govuk-heading-m">Decide if schools can order their own devices</h2>
 
-  <p>You can choose who orders devices if there's disruption to face to face education. You can:</p>
-  <ul class="govuk-list govuk-list--bullet">
-    <li>let schools place their own orders</li>
-  </ul>
-  <p>or</p>
-  <ul class="govuk-list govuk-list--bullet">
-    <li>place some, or all, orders centrally</li>
-  </ul>
+  <p>You can allow schools to order their own devices. Or you can manage some, or all, orders centrally.</p>
 
-  <p>We recommend letting schools place orders because it’s the quickest way to get help to those who need it.</p>
+  {% if data.trust %}
+    <p>If you let schools place orders you’ll need to nominate someone in each school for us to contact.</p>
 
-  <p>You’ll need to nominate someone in each school for us to contact.</p>
+    <p>Each contact will be able to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>manage who can order devices</li>
+      <li>order devices themselves</li>
+    </ul>
+  {% else %}
+    <p>We recommend letting schools place orders because it’s the quickest way to get help to those who need it.</p>
 
-  <p>Each contact will be able to:</p>
-  <ul class="govuk-list govuk-list--bullet">
-    <li>manage who can order devices</li>
-    <li>order devices themselves</li>
-  </ul>
+    <p>You’ll need to nominate someone in each school for us to contact.</p>
 
-  <h2 class="govuk-heading-m">Help schools prepare for disruption</h2>
+    <p>Each contact will be able to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>manage who can order devices</li>
+      <li>order devices themselves</li>
+    </ul>
 
-  <p>Give us contact details as soon as you can so we can help schools prepare to deliver remote education if they need to.</p>
+    <h2 class="govuk-heading-m">Help schools prepare for disruption</h2>
+
+    <p>Give us contact details as soon as you can so we can help schools prepare to deliver remote education if they need to.</p>
+  {% endif %}
 
   <h2 class="govuk-heading-m">Orders can only be placed when local coronavirus restrictions are confirmed</h2>
 

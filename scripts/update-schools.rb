@@ -5,11 +5,14 @@ require 'JSON'
 
 class UpdateSchoolsList
   def run
-    responsible_body = 'Derbyshire'
+    responsible_body = 'UNITY SCHOOLS PARTNERSHIP'
+    is_trust = true
+    trust_column_header = 'Column1'
+
     rows = CSV.read(csv_file_location, { headers: true })
-    grouped_by_responsible_body = rows.group_by { |r| r['LA'] }
-    la_schools = grouped_by_responsible_body[responsible_body]
-    only_schools_with_allocations = la_schools.reject {|r| r['Total '] == '0' }
+    grouped_by_responsible_body = rows.group_by { |r| is_trust ? r[trust_column_header] : ['LA'] }
+    rb_schools = grouped_by_responsible_body[responsible_body]
+    only_schools_with_allocations = rb_schools.reject {|r| r['Total '] == '0' }
 
     schools = only_schools_with_allocations.sort_by { |r| r['Name'] }.map do |r|
       total = Integer(r['Total '])
@@ -19,7 +22,7 @@ class UpdateSchoolsList
       {
         URN: Integer(r['URN']),
         name: r['Name'].gsub("'", "’"),
-        la: r['LA'],
+        rb: is_trust ? r[trust_column_header] : r['LA'],
         total: rand(Range.new(lower, upper))
       }
     end
@@ -28,12 +31,17 @@ class UpdateSchoolsList
     puts "Enriching..."
     enrich_schools_data(schools)
 
-    only_la_schools = schools.keep_if do |s|
-      ['Local authority maintained schools', 'Special schools'].include? s[:type]
-    end
+    if is_trust
+      puts "Trust schools: #{schools.count}"
+      update_schools_file(schools)
+    else
+      only_la_schools = schools.keep_if do |s|
+        ['Local authority maintained schools', 'Special schools'].include? s[:type]
+      end
 
-    puts "LA schools: #{only_la_schools.count}"
-    update_local_authority_schools_file(only_la_schools)
+      puts "LA schools: #{only_la_schools.count}"
+      update_schools_file(only_la_schools)
+    end
   end
 
   private
@@ -61,10 +69,10 @@ class UpdateSchoolsList
   end
 
   def local_authority_schools_file
-    "app/data/local-authority-schools.js"
+    "app/data/responsible-body-schools.js"
   end
 
-  def update_local_authority_schools_file(schools)
+  def update_schools_file(schools)
     json = schools_as_json(schools)
     file_contents = json_as_js_object(json)
 
@@ -81,7 +89,7 @@ class UpdateSchoolsList
     json
       .gsub('"URN"', 'URN')
       .gsub('"name"', 'name')
-      .gsub('"la"', 'la')
+      .gsub('"rb"', 'rb')
       .gsub('"total"', 'total')
       .gsub('"phase"', 'phase')
       .gsub('"type"', 'type')
