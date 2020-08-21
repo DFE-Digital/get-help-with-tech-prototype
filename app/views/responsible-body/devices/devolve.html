@@ -6,10 +6,14 @@
     {{ title }}
   </h1>
 
+  {% set schoolsHtml %}
+    <span class="govuk-!-font-weight-bold">Most schools will place their own orders{% if not data.trust %} (recommended){% endif %}</span>
+  {% endset %}
+
   {{ govukRadios({
     items: [
       {
-        html: '<span class="govuk-!-font-weight-bold">Most schools will place their own orders (recommended)</span>',
+        html: schoolsHtml,
         value: 'schools',
         hint: {
           html: 'We’ll need contact details for each school'
