@@ -81,7 +81,7 @@
           <td class="govuk-table__cell">
             {% if data['responsible-body'][school.URN].who %}
               {% if data['responsible-body'][school.URN].who == 'central' %}
-                Local authority
+                {% if data.trust %}Trust{% else %}Local authority{% endif %}
               {% elseif data['responsible-body'][school.URN].who == 'school' %}
                 School
               {% else %}

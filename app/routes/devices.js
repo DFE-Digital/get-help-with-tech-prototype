@@ -8,9 +8,10 @@ const devicesPath = '/responsible-body/devices'
 module.exports = router => {
   router.all([devicesPath, `${devicesPath}*`], function (req, res, next) {
     const data = req.session.data
+    const typeOfRb = data.trust ? 'Trust' : 'Local authority'
     res.locals.hasDevolvedAll = data['who-orders-laptops'] === 'schools'
     res.locals.hasCentralAll = data['who-orders-laptops'] === 'central'
-    res.locals.whoOrders = res.locals.hasDevolvedAll ? 'School' : 'Local authority'
+    res.locals.whoOrders = res.locals.hasDevolvedAll ? 'School' : typeOfRb
     res.locals.paths = rbDeviceWizardPaths(req)
     next()
   })
@@ -45,9 +46,11 @@ module.exports = router => {
     const recoveryAddress = schoolData.chromebooks === 'Yes' ? schoolData.recovery : false
     const domain = schoolData.chromebooks === 'Yes' ? schoolData.domain : false
 
-    let whoOrders = res.locals.hasCentralAll ? 'The local authority orders devices' : 'The school orders devices'
+    const typeOfRb = req.session.data.trust ? 'trust' : 'local authority'
+
+    let whoOrders = res.locals.hasCentralAll ? `The ${typeOfRb} orders devices` : 'The school orders devices'
     if (schoolData.who) {
-      whoOrders = schoolData.who === 'central' ? 'The local authority orders devices' : 'The school orders devices'
+      whoOrders = schoolData.who === 'central' ? `The ${typeOfRb} orders devices` : 'The school orders devices'
     }
 
     let success = false
@@ -58,7 +61,7 @@ module.exports = router => {
       }
     }
 
-    const showChromebookForm = !hasSetChromebookDetails && whoOrders === 'The local authority orders devices'
+    const showChromebookForm = !hasSetChromebookDetails && whoOrders === `The ${typeOfRb} orders devices`
     const showContactForm = !hasSetContactDetails && whoOrders === 'The school orders devices'
 
     const currentIndex = req.session.data.schools.findIndex(school => school === res.locals.school)
