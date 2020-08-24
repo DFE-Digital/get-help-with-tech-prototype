@@ -9,7 +9,7 @@ function schoolWizardPaths (req) {
     '/school/privacy',
     '/school/allocation',
     '/school/order-your-own',
-    // '/school/you-ordering',
+    '/school/you-ordering',
     '/school/techsource-account',
     '/school/other-ordering',
     '/school/chromebooks',
