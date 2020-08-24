@@ -5,12 +5,15 @@ require 'JSON'
 
 class UpdateSchoolsList
   def run
-    responsible_body = 'UNITY SCHOOLS PARTNERSHIP'
+    responsible_body = 'CASTLE SCHOOL EDUCATION TRUST'
     is_trust = true
     trust_column_header = 'Column1'
 
     rows = CSV.read(csv_file_location, { headers: true })
     grouped_by_responsible_body = rows.group_by { |r| is_trust ? r[trust_column_header] : ['LA'] }
+
+    # puts grouped_by_responsible_body.sort_by { |r| r[1].length }.map { |r| "#{r[0]}, #{r[1].length}" }
+
     rb_schools = grouped_by_responsible_body[responsible_body]
     only_schools_with_allocations = rb_schools.reject {|r| r['Total '] == '0' }
 

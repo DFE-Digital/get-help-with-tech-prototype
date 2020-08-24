@@ -5,7 +5,7 @@ const schoolsInResponsibleBody = require('./responsible-body-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
-  rb: 'UNITY SCHOOLS PARTNERSHIP',
+  rb: 'CASTLE SCHOOL EDUCATION TRUST',
   trust: true,
   features: {
     'sign-up': false,
