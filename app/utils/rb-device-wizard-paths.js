@@ -4,7 +4,7 @@ const {
 
 function rbDeviceWizardPaths (req) {
   var paths = [
-    '/responsible-body/devices',
+    '/responsible-body/devices/tell-us',
     '/responsible-body/devices/devolve',
     '/responsible-body/devices/next',
     '/responsible-body/devices/schools'

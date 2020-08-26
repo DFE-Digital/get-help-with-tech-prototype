@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% set title = "Order devices now" %}
+{% set lockdown = false %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Get help with technology",
+        href: "/responsible-body"
+      },
+      {
+        text: "Get laptops and tablets",
+        href: "/responsible-body/devices"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p>Order your devices now, do not delay. Place an order for each school.</p>
+    <p>Devices should arrive tomorrow if you order before 4pm.</p>
+
+    <table class="govuk-table govuk-!-margin-top-6">
+      <caption class="govuk-table__caption">
+        <span class="govuk-heading-m">Schools you need to place orders for:</span>
+      </caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" style="width: 70%">School</th>
+          <th class="govuk-table__header">Number of devices</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ data.schools[0].name }}</td>
+          <td class="govuk-table__cell">{{ data.schools[0].total }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ data.schools[2].name }}</td>
+          <td class="govuk-table__cell">{{ data.schools[2].total }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    {{ govukButton({
+      html: 'Start now',
+      isStartButton: true,
+      href: '#'
+    }) }}
+  </div>
+</div>
+{% endblock %}
