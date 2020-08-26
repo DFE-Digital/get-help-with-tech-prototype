@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'Harrow Way Community School',
-  type: 'Secondary school',
-  allocation: 76
+  name: 'Cale Green Primary School',
+  type: 'Primary school',
+  allocation: 25
 }
