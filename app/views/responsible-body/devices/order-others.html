@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Order devices now" %}
+{% set title = "You cannot order devices yet" %}
 {% set lockdown = false %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
@@ -15,7 +15,7 @@
         href: "/responsible-body/devices"
       },
       {
-        text: title
+        text: "Order devices"
       }
     ]
   }) }}
@@ -25,14 +25,17 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Order devices</span>
       {{ title }}
     </h1>
 
-    <p>Place an order for each school. Do not delay.<br />Devices should arrive tomorrow if you order before 4pm.</p>
+    <p>None of the schools you’re responsible for placing orders for are currently affected by local coronavirus restrictions.</p>
+
+    <p>Some of the schools who are placing orders themselves can now order devices:</p>
 
     <table class="govuk-table govuk-!-margin-top-6">
       <caption class="govuk-table__caption">
-        <span class="govuk-heading-m">Schools you need to place orders for:</span>
+        Schools that can order their own devices:
       </caption>
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -52,21 +55,11 @@
       </tbody>
     </table>
 
-    <h2 class="govuk-heading-m">Help signing in to TechSource</h2>
-
-    <p>You need to place orders on a website called TechSource, which is run by Computacenter.</p>
-
-    <p>Your ‘User ID’ is your email address: [EMAIL ADDRESS]</p>
-
-    <p>If you do not remember your password use the ‘Forgotten password?’ link to reset it.</p>
-
-    {{ govukButton({
-      html: 'Start now',
-      isStartButton: true,
-      classes: 'govuk-!-margin-bottom-3 govuk-!-margin-top-6',
-      href: '#'
-    }) }}
-    <p class="govuk-body-s">Link will open TechSource in a new window</p>
+    <p>You can still <a href="/responsible-body/devices/request-devices">request devices for disadvantaged children</a> who:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>are extremely clinically vulnerable and must continue shielding on official advice</li>
+      <li>live in an area subject to local restrictions</li>
+    </ul>
   </div>
 </div>
 {% endblock %}
