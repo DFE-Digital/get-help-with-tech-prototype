@@ -10,7 +10,7 @@ class UpdateSchoolsList
     trust_column_header = 'Column1'
 
     rows = CSV.read(csv_file_location, { headers: true })
-    grouped_by_responsible_body = rows.group_by { |r| is_trust ? r[trust_column_header] : ['LA'] }
+    grouped_by_responsible_body = rows.group_by { |r| is_trust ? r[trust_column_header] : r['LA'] }
 
     # puts grouped_by_responsible_body.sort_by { |r| r[1].length }.map { |r| "#{r[0]}, #{r[1].length}" }
 
