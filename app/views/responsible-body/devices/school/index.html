@@ -40,7 +40,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form action="/responsible-body/devices/schools/{{ school.URN }}" method="post">
-      <h2 class="govuk-heading-l">School details</h2>
+      <!-- <h2 class="govuk-heading-l">School details</h2> -->
       <div class="govuk-!-margin-bottom-6 govuk-!-padding-top-0">
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-0 govuk-!-margin-top-0',
@@ -59,6 +59,15 @@
               },
               value: {
                 text: school.total + ' devices'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Query",
+                    visuallyHiddenText: "name"
+                  }
+                ]
               }
             },
             {
@@ -181,13 +190,13 @@
     </form>
   </div>
   <div class="govuk-grid-column-one-third">
-    <div class="app-related" style="background-color: #f3f2f1; padding-left: 15px; padding-right: 15px; padding-bottom: 10px">
+    <!-- <div class="app-related" style="background-color: #f3f2f1; padding-left: 15px; padding-right: 15px; padding-bottom: 10px">
       <h2 class="govuk-heading-m">Guidance</h2>
       <ul class="govuk-list">
         <li><a href="#">Query an allocation</a></li>
         <li><a href="#">Request devices for shielding children</a></li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </div>
 {% endblock %}
