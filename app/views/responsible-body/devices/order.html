@@ -31,9 +31,7 @@
 
     <p>None of the {{ data.schools.length }} schools you’re responsible for placing orders for are currently affected by local coronavirus restrictions.</p>
 
-    <p>You can only place orders when local coronavirus restrictions are confirmed.</p>
-
-    <p>We’ll contact you as soon as you’re able to place orders.</p>
+    {% include '_shared/order/_cant-order.html' %}
 
     {% set requestLink = '/responsible-body/devices/request-devices' %}
     {% include '_shared/request-devices/_who.html' %}

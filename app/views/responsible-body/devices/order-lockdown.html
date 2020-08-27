@@ -52,21 +52,8 @@
       </tbody>
     </table>
 
-    <h2 class="govuk-heading-m">Help signing in to TechSource</h2>
-
-    <p>You need to place orders on a website called TechSource, which is run by Computacenter.</p>
-
-    <p>Your ‘User ID’ is your email address: [EMAIL ADDRESS]</p>
-
-    <p>If you do not remember your password use the ‘Forgotten password?’ link to reset it.</p>
-
-    {{ govukButton({
-      html: 'Start now',
-      isStartButton: true,
-      classes: 'govuk-!-margin-bottom-3 govuk-!-margin-top-6',
-      href: '#'
-    }) }}
-    <p class="govuk-body-s">Link will open TechSource in a new window</p>
+    {% include '_shared/order/_help-signing-in.html' %}
+    {% include '_shared/order/_start-now.html' %}
   </div>
 </div>
 {% endblock %}

@@ -24,14 +24,13 @@
       {{ title }}
     </h1>
 
-    <p class="govuk-body-l">Order your devices now, do not delay.</p>
-    <p class="govuk-body-l govuk-!-margin-bottom-8">You can order 100 devices. They will arrive tomorrow if you order before 4pm.</p>
+    <h2 class="govuk-heading-m">You can order {{ data['school-details'].allocation }} devices</h2>
+    <p class="govuk-body">Order your devices now, do not delay.</p>
+    <p class="govuk-body">You can order {{ data['school-details'].allocation }} devices.</p>
+    <p>They will arrive tomorrow if you order before 4pm</p>
 
-    {{ govukButton({
-      html: 'Start now',
-      isStartButton: true,
-      href: '#'
-    }) }}
+    {% include '_shared/order/_help-signing-in.html' %}
+    {% include '_shared/order/_start-now.html' %}
   </div>
 </div>
 {% endblock %}
