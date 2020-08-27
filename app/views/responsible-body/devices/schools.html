@@ -15,7 +15,7 @@
   {% if not data.trust %}
     <p>This is a list of all local authority maintained and special schools.</p>
   {% endif %}
-  <p>Email <a href="#">COVID.TECHNOLOGY@education.gov.uk</a> about a missing school.</p>
+  <p>Email <a href="#">COVID.TECHNOLOGY@education.gov.uk</a> and tell us what to change.</p>
 {% endset %}
 
 <div class="govuk-grid-row">
@@ -39,7 +39,7 @@
     </ul>-->
 
     {{ govukDetails({
-      summaryText: "Is there a school missing from this list?",
+      summaryText: "Is this list wrong?",
       html: missingSchools
     }) }}
   </div>
