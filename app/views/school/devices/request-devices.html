@@ -24,24 +24,7 @@
     </h1>
 
     {% include '_shared/request-devices/_who.html' %}
-
-    <h2 class="govuk-heading-m">What to put in your request</h2>
-
-    <p>Tell us:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>how many devices you will need</li>
-      <li>why you need them</li>
-    </ul>
-
-    <p>For children who are shielding you could be asked to give evidence.</p>
-
-    <h2 class="govuk-heading-m">Where to send your request</h2>
-
-    <p>Send your request in an email to:<br /><a href="#">COVID.TECHNOLOGY@education.gov.uk</a></p>
-
-    <h2 class="govuk-heading-m">What happens next</h2>
-
-    <p>We’ll email you back with instructions about what to do next.</p>
+    {% include '_shared/request-devices/_make-request.html' %}
   </div>
 </div>
 {% endblock %}
