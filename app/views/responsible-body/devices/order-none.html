@@ -31,11 +31,8 @@
 
     <p>If a school cannot order its own devices, you can change this setting on a school-by-school basis from the <a href="/responsible-body/devices/schools">schools list</a>.</p>
 
-    <p>You can still <a href="/responsible-body/devices/request-devices">request devices for disadvantaged children</a> who:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>are extremely clinically vulnerable and must continue shielding on official advice</li>
-      <li>live in an area subject to local restrictions</li>
-    </ul>
+    {% set requestLink = '/responsible-body/devices/request-devices' %}
+    {% include '_shared/request-devices/_who.html' %}
   </div>
 </div>
 {% endblock %}
