@@ -4,21 +4,8 @@
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Get help with technology",
-        href: "/responsible-body"
-      },
-      {
-        text: "Get laptops and tablets",
-        href: "/responsible-body/devices"
-      },
-      {
-        text: title
-      }
-    ]
-  }) }}
+  {% set customBreadcrumbTitle = 'Order devices' %}
+  {% include '_shared/breadcrumbs/_get-laptops-and-tablets.html' %}
 {% endblock %}
 
 {% block content %}
