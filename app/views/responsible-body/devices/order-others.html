@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% set title = "You cannot order devices yet" %}
+{% set lockdown = false %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {% set customBreadcrumbTitle = 'Order devices' %}
+  {% include '_shared/breadcrumbs/_get-laptops-and-tablets.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Order devices</span>
+      {{ title }}
+    </h1>
+
+    <p>None of the schools you’re responsible for placing orders for are currently affected by local coronavirus restrictions.</p>
+
+    <p>Some of the schools who are placing orders themselves can now order devices:</p>
+
+    <table class="govuk-table govuk-!-margin-top-6">
+      <caption class="govuk-table__caption">
+        Schools that can order their own devices:
+      </caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" style="width: 70%">School</th>
+          <th class="govuk-table__header">Number of devices</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ data.schools[0].name }}</td>
+          <td class="govuk-table__cell">{{ data.schools[0].total }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ data.schools[2].name }}</td>
+          <td class="govuk-table__cell">{{ data.schools[2].total }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    {% set requestLink = '/responsible-body/devices/request-devices' %}
+    {% include '_shared/request-devices/_who.html' %}
+  </div>
+</div>
+{% endblock %}

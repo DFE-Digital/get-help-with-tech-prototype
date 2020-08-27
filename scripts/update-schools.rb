@@ -5,8 +5,8 @@ require 'JSON'
 
 class UpdateSchoolsList
   def run
-    responsible_body = 'CASTLE SCHOOL EDUCATION TRUST'
-    is_trust = true
+    responsible_body = 'East Sussex'
+    is_trust = false
     trust_column_header = 'Column1'
 
     rows = CSV.read(csv_file_location, { headers: true })

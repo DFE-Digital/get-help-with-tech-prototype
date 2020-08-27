@@ -1,5 +1,6 @@
-{% extends "_wizard-page.html" %}
-{% set title = "Tell us who will order a school’s laptops and tablets" %}
+{% extends "layout.html" %}
+{% set title = "Get laptops and tablets" %}
+{% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
@@ -9,52 +10,59 @@
         href: "/responsible-body"
       },
       {
-        text: "Get laptops and tablets"
+        text: title
       }
     ]
   }) }}
 {% endblock %}
 
-{% block page %}
-  <h1 class="govuk-heading-xl">
-    {{ title }}
-  </h1>
+{% block content %}
+<!-- {{ appBanner({
+  html: "<h2 class=\"govuk-heading-m\">Thank you. We’ve received your information.</h2>",
+  type: "success",
+  icon: false
+}) }} -->
 
-  <h2 class="govuk-heading-m">Decide if schools can order their own devices</h2>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
 
-  <p>You can allow schools to order their own devices. Or you can manage some, or all, orders centrally.</p>
+    {% if data['who-orders-laptops'] %}
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/responsible-body/devices/schools">Get schools ready</a>
+      </h2>
+    {% else %}
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/responsible-body/devices/tell-us">Get schools ready</a>
+      </h2>
+    {% endif %}
 
-  {% if data.trust %}
-    <p>If you let schools place orders you’ll need to nominate someone in each school for us to contact.</p>
-
-    <p>Each contact will be able to:</p>
+    <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>manage who can order devices</li>
-      <li>order devices themselves</li>
+      <li>tell us who will place orders for schools</li>
+      <li>give schools access to the services they need</li>
+      <li>see your list of schools and their allocations</li>
     </ul>
-  {% else %}
-    <p>We recommend letting schools place orders because it’s the quickest way to get help to those who need it.</p>
 
-    <p>You’ll need to nominate someone in each school for us to contact.</p>
-
-    <p>Each contact will be able to:</p>
+    <h2 class="govuk-heading-l govuk-!-font-size-27">
+      <a href="/responsible-body/devices/order">Order devices</a>
+    </h2>
+    <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>manage who can order devices</li>
-      <li>order devices themselves</li>
+      <li>place orders in the event of local coronavirus restrictions</li>
+      <li>access the Computacenter TechSource website</li>
     </ul>
 
-    <h2 class="govuk-heading-m">Help schools prepare for disruption</h2>
-
-    <p>Give us contact details as soon as you can so we can help schools prepare to deliver remote education if they need to.</p>
-  {% endif %}
-
-  <h2 class="govuk-heading-m">Orders can only be placed when local coronavirus restrictions are confirmed</h2>
-
-  <p>We’ll contact people as soon as they’re able to place orders.</p>
-
-  <p>Orders placed before 4pm will normally be delivered to schools the next working day.</p>
-
-  <h2 class="govuk-heading-m">Each school has their own allocation</h2>
-
-  <p>Every school has its own provisional allocation of laptops and tablets. Allocations are based on free school meal data and estimates of how many devices a school has already received.</p>
+    <h2 class="govuk-heading-l govuk-!-font-size-27">
+      <a href="/responsible-body/devices/request-devices">Request devices for children</a>
+    </h2>
+    <p>Use this section to request devices for:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>children who are shielding</li>
+      <li>children who live in an area subject to local restrictions</li>
+    </ul>
+  </div>
+</div>
 {% endblock %}

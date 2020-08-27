@@ -1,19 +1,8 @@
 {% extends "layout.html" %}
 {% set title = "Request devices for children" %}
-{% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Get devices for your school",
-        href: "/school"
-      },
-      {
-        text: title
-      }
-    ]
-  }) }}
+  {% include '_shared/breadcrumbs/_get-laptops-and-tablets.html' %}
 {% endblock %}
 
 {% block content %}
@@ -24,6 +13,8 @@
     </h1>
 
     {% include '_shared/request-devices/_who.html' %}
+
+    {% set multipleSchools = true %}
     {% include '_shared/request-devices/_make-request.html' %}
   </div>
 </div>

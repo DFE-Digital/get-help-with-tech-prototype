@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% set title = "Order devices now" %}
+{% set lockdown = false %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {% set customBreadcrumbTitle = 'Order devices' %}
+  {% include '_shared/breadcrumbs/_get-laptops-and-tablets.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p>Place an order for each school. Do not delay.<br />Devices should arrive tomorrow if you order before 4pm.</p>
+
+    <table class="govuk-table govuk-!-margin-top-6">
+      <caption class="govuk-table__caption">
+        <span class="govuk-heading-m">Schools you need to place orders for:</span>
+      </caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" style="width: 70%">School</th>
+          <th class="govuk-table__header">Number of devices</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ data.schools[0].name }}</td>
+          <td class="govuk-table__cell">{{ data.schools[0].total }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ data.schools[2].name }}</td>
+          <td class="govuk-table__cell">{{ data.schools[2].total }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    {% include '_shared/order/_help-signing-in.html' %}
+    {% include '_shared/order/_start-now.html' %}
+  </div>
+</div>
+{% endblock %}

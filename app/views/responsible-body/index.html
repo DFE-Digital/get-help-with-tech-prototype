@@ -16,23 +16,19 @@
       {{ title }}
     </h1>
 
-    {% if data['who-orders-laptops'] %}
-      <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/responsible-body/devices/schools">Get laptops and tablets</a>
-      </h2>
-    {% else %}
-      <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/responsible-body/devices">Get laptops and tablets</a>
-      </h2>
-    {% endif %}
+    <h2 class="govuk-heading-l govuk-!-font-size-27">
+      <a href="/responsible-body/devices">Get laptops and tablets</a>
+    </h2>
 
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>tell us who will place orders for schools</li>
+      <li>prepare schools before local coronavirus restrictions</li>
       <li>give schools access to the services they need</li>
+      <li>see a list of schools and their allocations</li>
+      <li>place orders when local coronavirus restrictions are confirmed</li>
     </ul>
 
-    {% if data.features['in-connectivity-pilots'] %}
+    {% if true or data.features['in-connectivity-pilots'] %}
     <h2 class="govuk-heading-l govuk-!-font-size-27">
       <a href="/responsible-body/internet">Get the internet</a>
     </h2>

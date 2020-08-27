@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% set title = "All schools will order their own devices" %}
+{% set lockdown = false %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {% set customBreadcrumbTitle = 'Order devices' %}
+  {% include '_shared/breadcrumbs/_get-laptops-and-tablets.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Order devices</span>
+      {{ title }}
+    </h1>
+
+    <p>If a school cannot order its own devices, you can change this setting on a school-by-school basis from the <a href="/responsible-body/devices/schools">schools list</a>.</p>
+
+    {% set requestLink = '/responsible-body/devices/request-devices' %}
+    {% include '_shared/request-devices/_who.html' %}
+  </div>
+</div>
+{% endblock %}

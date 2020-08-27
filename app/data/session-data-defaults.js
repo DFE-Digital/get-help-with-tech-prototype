@@ -5,8 +5,8 @@ const schoolsInResponsibleBody = require('./responsible-body-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
-  rb: 'CASTLE SCHOOL EDUCATION TRUST',
-  trust: true,
+  rb: 'East Sussex',
+  trust: false,
   features: {
     'sign-up': false,
     'bulk-upload': true,
