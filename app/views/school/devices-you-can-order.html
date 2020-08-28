@@ -1,0 +1,21 @@
+{% extends "_wizard-form.html" %}
+{% set title = "You can order a range of laptops and tablets" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  <p>Your school will own the devices. It’s up to you to decide who will benefit most from them.</p>
+
+  <p>You can choose from:</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>Microsoft Windows laptop</li>
+    <li>Microsoft Windows tablet</li>
+    <li>Google Chromebook</li>
+    <li>Apple iPad</li>
+  </ul>
+
+  <p class="govuk-!-margin-bottom-6"><a href="#">Read more about the device specifications</a></p>
+{% endblock %}

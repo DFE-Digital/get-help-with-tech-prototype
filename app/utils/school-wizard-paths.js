@@ -12,6 +12,7 @@ function schoolWizardPaths (req) {
     '/school/you-ordering',
     '/school/techsource-account',
     '/school/other-ordering',
+    '/school/devices-you-can-order',
     '/school/chromebooks',
     '/school/what-next',
     '/school'
