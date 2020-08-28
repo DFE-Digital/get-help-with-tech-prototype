@@ -1,6 +1,6 @@
 module.exports = {
-  name: 'Cale Green Primary School',
+  name: 'Barlows Primary School',
   type: 'Primary school',
-  allocation: 17,
+  allocation: 49,
   can_order: false
 }
