@@ -1,8 +1,8 @@
 {% extends "_wizard-form.html" %}
-{% set title = "You can only place orders when local coronavirus restrictions are confirmed" %}
+{% set title = "You can only order your full allocation if local restrictions are confirmed" %}
 
 {% block form %}
-  <h1 class="govuk-heading-xl">
+  <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
 
@@ -10,8 +10,13 @@
 
   <p>Orders placed before 4pm will normally be delivered to schools the next working day.</p>
 
-  <h2 class="govuk-heading-m">Request devices for specific circumstances</h2>
+  <h2 class="govuk-heading-m">Get devices earlier for specific circumstances</h2>
   <div class="govuk-!-margin-bottom-6">
-    {% include '_shared/request-devices/_who.html' %}
+    <p>You can request devices at any time for disadvantaged children who:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>are extremely clinically vulnerable and must continue shielding on&nbsp;official&nbsp;advice</li>
+      <li>cannot attend school – even though theirs is open – because they live in a different area with local coronavirus restrictions</li>
+    </ul>
   </div>
 {% endblock %}
