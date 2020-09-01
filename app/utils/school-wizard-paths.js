@@ -12,7 +12,7 @@ function schoolWizardPaths (req) {
     '/school/privacy',
     '/school/allocation',
     '/school/order-your-own',
-    ...isOrderUser ? ['/school/you-ordering'] : [],
+    ...isFirstUser ? ['/school/you-ordering'] : [],
     ...isOrderUser ? ['/school/techsource-account'] : [],
     ...isFirstUser ? ['/school/other-ordering'] : [],
     '/school/devices-you-can-order',
