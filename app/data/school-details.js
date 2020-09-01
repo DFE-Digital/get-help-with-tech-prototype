@@ -3,6 +3,6 @@ module.exports = {
   type: 'Primary school',
   allocation: 162,
   can_order: false,
-  order_user: false,
-  first_user: false
+  order_user: true,
+  first_user: true
 }
