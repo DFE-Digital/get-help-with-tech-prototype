@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Manage who can order devices" %}
+{% set title = "Manage users" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -15,10 +15,12 @@
       {{ title }}
     </h1>
 
-    <p>Up to 3 users can be added. Everyone with access can:</p>
+    <p>No more than {{ data['max-school-order-users'] }} users will be allowed to place orders.</p>
+
+    <p>Everyone with access can:</p>
     <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
       <li>add or edit existing users</li>
-      <li>place orders for devices</li>
+      <li>change who places orders for devices</li>
     </ul>
 
     {{ govukButton({
@@ -28,6 +30,7 @@
     }) }}
 
     <h2 class="govuk-heading-l">Users</h2>
+    {% set isSchoolUser = true %}
     {% for user in data['school-users'] %}
       {% include "_shared/_user.html" %}
     {% endfor %}

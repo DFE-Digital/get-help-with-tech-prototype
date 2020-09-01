@@ -24,12 +24,12 @@
     },
     {
       key: {
-        text: "Order devices"
+        text: "Can place orders"
       },
       value: {
         text: 'Yes' if user['order-devices'] else 'No'
       }
-    } if false,
+    } if isSchoolUser,
     {
       key: {
         text: "Last sign-in"

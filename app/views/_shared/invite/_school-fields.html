@@ -1,0 +1,45 @@
+{{ govukInput({
+  label: {
+    text: "Name",
+    classes: "govuk-label--s" if isNested else "govuk-label--m"
+  }
+} | decorateFormAttributes(["school", "new-invite-name"]) )}}
+
+{{ govukInput({
+  label: {
+    text: "Email address",
+    classes: "govuk-label--s" if isNested else "govuk-label--m"
+  }
+} | decorateFormAttributes(["school", "new-invite-email-address"]) )}}
+
+{{ govukInput({
+  classes: "govuk-input--width-10",
+  label: {
+    text: "Telephone number",
+    classes: "govuk-label--s" if isNested else "govuk-label--m"
+  }
+} | decorateFormAttributes(["school", "new-invite-number"]) )}}
+
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: "Will they place orders for devices?",
+      classes: "govuk-fieldset__legend--s" if isNested else "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "No more than " + data['max-school-order-users'] + " users will be allowed to place orders."
+  },
+  items: [
+    {
+      text: "Yes, give them access to the TechSource website",
+      hint: {
+        text: "This is where they’ll place orders."
+      }
+    },
+    {
+      text: "No"
+    }
+  ]
+} | decorateFormAttributes(["responsible-body", "can-order-devices"]) ) }}
