@@ -1,5 +1,6 @@
 {% extends "_wizard-form.html" %}
-{% set title = "You can only order your full allocation if local restrictions are confirmed" %}
+{% set isOrderUser = data['school-details'].order_user %}
+{% set title = "You can only order your full allocation if local restrictions are confirmed" if isOrderUser else "Your school can only order its full allocation if local restrictions are confirmed" %}
 
 {% block form %}
   <h1 class="govuk-heading-l">

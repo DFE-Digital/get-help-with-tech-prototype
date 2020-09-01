@@ -1,4 +1,5 @@
 {% extends "_wizard-form.html" %}
+{% set isOrderUser = data['school-details'].order_user %}
 {% set title = "You’re signed in as " + data['school-details'].name %}
 
 {% block form %}
@@ -9,7 +10,9 @@
   <p>You can use the ‘Get help with technology’ service to:</p>
   <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
     <li>manage who will order devices for your school</li>
-    <li>access the Computacenter TechSource website to place orders when devices are made available</li>
+    {% if isOrderUser %}
+      <li>access the Computacenter TechSource website to place orders when devices are made available</li>
+    {% endif %}
     <li>give us technical details for Chromebooks if you’ll be ordering them</li>
     <li>view your device allocation</li>
   </ul>
