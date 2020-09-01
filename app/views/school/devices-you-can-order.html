@@ -1,5 +1,6 @@
 {% extends "_wizard-form.html" %}
-{% set title = "Your school can order a range of laptops and tablets" %}
+{% set isOrderUser = data['school-details'].order_user %}
+{% set title = "You can order a range of laptops and tablets" if isOrderUser else "Your school can order a range of laptops and tablets" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
