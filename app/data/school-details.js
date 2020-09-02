@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'Rice Lane Primary School',
+  name: 'The Catholic School of Saint Gregory the Great',
   type: 'Primary school',
-  allocation: 162,
+  allocation: 82,
   can_order: false,
   order_user: true,
   first_user: true
