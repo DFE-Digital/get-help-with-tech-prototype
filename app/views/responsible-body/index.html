@@ -16,9 +16,29 @@
       {{ title }}
     </h1>
 
-    <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/responsible-body/devices">Get laptops and tablets</a>
-    </h2>
+    <!-- <div style="padding: 10px 20px; border-left: 10px solid #0b0c0c" class="govuk-!-margin-bottom-7">
+      <h2 class="govuk-heading-l govuk-!-font-size-27 govuk-!-margin-bottom-2">
+        <a href="/responsible-body/devices/schools">Get schools ready to order devices</a>
+      </h2>
+
+      <div class="govuk-warning-text govuk-!-margin-bottom-0">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          204 schools need contact details
+        </strong>
+      </div>
+    </div> -->
+
+    {% if data['who-orders-laptops'] %}
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/responsible-body/devices/schools">Get laptops and tablets</a>
+      </h2>
+    {% else %}
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/responsible-body/devices/tell-us">Get laptops and tablets</a>
+      </h2>
+    {% endif %}
 
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">

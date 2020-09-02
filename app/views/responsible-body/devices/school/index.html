@@ -37,11 +37,31 @@
   </div>
 </div>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+
     <form action="/responsible-body/devices/schools/{{ school.URN }}" method="post">
-      <!-- <h2 class="govuk-heading-l">School details</h2> -->
-      <div class="govuk-!-margin-bottom-6 govuk-!-padding-top-0">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          {% if showContactForm %}
+            {% include 'responsible-body/devices/school/_contact-details.html' %}
+
+            {{ govukButton({
+              text: "Save and send email"
+            }) }}
+          {% endif %}
+
+          {% if showChromebookForm %}
+            <h2 class="govuk-heading-l">Will the school’s order include Chromebooks?</h2>
+            {% include 'responsible-body/devices/school/_chromebook-details.html' %}
+
+            {{ govukButton({
+              text: "Save"
+            }) }}
+          {% endif %}
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-l govuk-!-margin-top-6">School details</h2>
+      <div class="govuk-inset-text govuk-!-padding-top-0">
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-0 govuk-!-margin-top-0',
           rows: [
@@ -55,19 +75,26 @@
             },
             {
               key: {
+                text: "Who will order?"
+              },
+              value: {
+                html: whoOrders + '<br /><a href="#">Change</a>'
+              }
+            },
+            {
+              key: {
                 text: "Provisional allocation"
               },
               value: {
-                text: school.total + ' devices'
+                html: school.total + ' devices<br /><a href="#">Query allocation</a>'
+              }
+            },
+            {
+              key: {
+                text: "Can place orders?"
               },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Query",
-                    visuallyHiddenText: "name"
-                  }
-                ]
+              value: {
+                html: 'Not yet because there are no local coronavirus restrictions<br /><a href="#">Get devices early for specific circumstances</a>'
               }
             },
             {
@@ -76,23 +103,6 @@
               },
               value: {
                 text: "Special school" if school.type == 'Special schools' else school.phase + ' school'
-              }
-            },
-            {
-              key: {
-                text: "Who will order?"
-              },
-              value: {
-                text: whoOrders
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/responsible-body/devices/schools/" + school.URN + "/who",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
               }
             },
             {
@@ -167,36 +177,19 @@
         }) }}
       </div>
 
-      {% if showContactForm %}
-        {% include 'responsible-body/devices/school/_contact-details.html' %}
-
-        {{ govukButton({
-          text: "Save and send email"
-        }) }}
-      {% endif %}
-
-      {% if showChromebookForm %}
-        <h2 class="govuk-heading-l">Will the school’s order include Chromebooks?</h2>
-        {% include 'responsible-body/devices/school/_chromebook-details.html' %}
-
-        {{ govukButton({
-          text: "Save"
-        }) }}
-      {% endif %}
-
       <p>
         <a href="/responsible-body/devices/schools">Return to list of schools</a> or <a href="/responsible-body/devices/schools/{{ nextSchoolUrn }}">go to the next school</a>
       </p>
     </form>
   </div>
-  <div class="govuk-grid-column-one-third">
-    <!-- <div class="app-related" style="background-color: #f3f2f1; padding-left: 15px; padding-right: 15px; padding-bottom: 10px">
-      <h2 class="govuk-heading-m">Guidance</h2>
+  <!-- <div class="govuk-grid-column-one-third">
+    <div class="app-related">
+      <h2 class="govuk-heading-s">Related links</h2>
       <ul class="govuk-list">
+        <li><a href="#">Request devices for specific circumstances</a></li>
         <li><a href="#">Query an allocation</a></li>
-        <li><a href="#">Request devices for shielding children</a></li>
       </ul>
-    </div> -->
-  </div>
+    </div>
+  </div> -->
 </div>
 {% endblock %}
