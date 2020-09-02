@@ -60,8 +60,10 @@
         </div>
       </div>
 
-      <h2 class="govuk-heading-l govuk-!-margin-top-6">School details</h2>
-      <div class="govuk-inset-text govuk-!-padding-top-0">
+      {% if showContactForm or showChromebookForm %}
+        <h2 class="govuk-heading-l govuk-!-margin-top-6">School details</h2>
+      {% endif %}
+      <div class="govuk-!-padding-top-0 {% if showContactForm or showChromebookForm %}govuk-inset-text{% else %}govuk-!-margin-top-0 govuk-!-margin-bottom-6{% endif %}">
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-0 govuk-!-margin-top-0',
           rows: [
@@ -78,7 +80,7 @@
                 text: "Who will order?"
               },
               value: {
-                html: whoOrders + '<br /><a href="#">Change</a>'
+                html: whoOrders + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/who">Change</a>'
               }
             },
             {
@@ -110,16 +112,7 @@
                 text: "School contact"
               },
               value: {
-                html: schoolContactHtml
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/responsible-body/devices/schools/" + school.URN + "/who-contact",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
+                html: schoolContactHtml + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/who-contact">Change contact</a>'
               }
             } if hasSetContactDetails,
             {
@@ -127,16 +120,7 @@
                 text: "Ordering Chromebooks?"
               },
               value: {
-                text: data["responsible-body"][school.URN].chromebooks
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
+                html: data["responsible-body"][school.URN].chromebooks + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/chromebooks">Change</a>'
               }
             } if hasSetChromebookDetails,
             {
@@ -144,16 +128,7 @@
                 text: "Domain"
               },
               value: {
-                text: domain
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
+                html: domain + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/chromebooks">Change</a>'
               }
             } if domain,
             {
@@ -161,16 +136,7 @@
                 text: "Recovery email address"
               },
               value: {
-                text: recoveryAddress
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
+                html: recoveryAddress + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/chromebooks">Change</a>'
               }
             } if recoveryAddress
           ]
