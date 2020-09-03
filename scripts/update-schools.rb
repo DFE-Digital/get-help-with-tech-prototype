@@ -5,7 +5,7 @@ require 'JSON'
 
 class UpdateSchoolsList
   def run
-    responsible_body = 'ST FRANCIS AND ST CLARE CATHOLIC MULTI ACADEMY COMPANY'
+    responsible_body = 'OASIS COMMUNITY LEARNING'
     is_trust = true
     trust_column_header = 'Column1'
 
