@@ -5,8 +5,8 @@ const schoolsInResponsibleBody = require('./responsible-body-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
-  rb: 'East Sussex',
-  trust: false,
+  rb: 'OUTWOOD GRANGE ACADEMIES TRUST',
+  trust: true,
   features: {
     'sign-up': false,
     'bulk-upload': true,
