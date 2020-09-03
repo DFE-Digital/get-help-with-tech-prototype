@@ -20,12 +20,12 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <ul class="govuk-list govuk-list--bullet">
+    <!-- <ul class="govuk-list govuk-list--bullet">
       <li>{{ data.schools.length }} schools will place their own orders</li>
-      <!-- <li>100 need a contact</li> -->
+      <li>100 need a contact</li>
       <li>0 out of {{ data.schools.length }} have been contacted</li>
       <li>0 out of {{ data.schools.length }} are ready to place orders</li>
-    </ul>
+    </ul> -->
 
     <!--<h2 class="govuk-heading-m">Summary</h2>
     <p>You need to nominate a contact for 100 schools.</p>
@@ -37,6 +37,8 @@
       <li><a href="#">22 have been contacted</a></li>
       <li><a href="#">5 are ready</a> if local coronavirus restrictions are confirmed</li>
     </ul>-->
+
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{ data.schools.length }} schools</h2>
 
     {{ govukDetails({
       summaryText: "Is this list wrong?",

@@ -16,9 +16,15 @@
       {{ title }}
     </h1>
 
-    <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/responsible-body/devices">Get laptops and tablets</a>
-    </h2>
+    {% if data['who-orders-laptops'] %}
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/responsible-body/devices">Get laptops and tablets</a>
+      </h2>
+    {% else %}
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/responsible-body/devices/tell-us">Get laptops and tablets</a>
+      </h2>
+    {% endif %}
 
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
