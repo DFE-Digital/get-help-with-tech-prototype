@@ -29,11 +29,15 @@
       </thead>
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">{{ data.schools[0].name }}</td>
+          <td class="govuk-table__cell">
+            <a href="/responsible-body/devices/schools/{{ data.schools[0].URN }}">{{ data.schools[0].name }}</a>
+          </td>
           <td class="govuk-table__cell">{{ data.schools[0].total }}</td>
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">{{ data.schools[2].name }}</td>
+          <td class="govuk-table__cell">
+            <a href="/responsible-body/devices/schools/{{ data.schools[2].URN }}">{{ data.schools[2].name }}</a>
+          </td>
           <td class="govuk-table__cell">{{ data.schools[2].total }}</td>
         </tr>
       </tbody>
