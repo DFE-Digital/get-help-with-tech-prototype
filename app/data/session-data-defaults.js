@@ -5,7 +5,7 @@ const schoolsInResponsibleBody = require('./responsible-body-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
-  rb: 'OUTWOOD GRANGE ACADEMIES TRUST',
+  rb: 'ST FRANCIS AND ST CLARE CATHOLIC MULTI ACADEMY COMPANY',
   trust: true,
   features: {
     'sign-up': false,
