@@ -16,6 +16,21 @@
       {{ title }}
     </h1>
 
+    {% if data.covid %}
+      <div style="border-left: 10px solid #0b0c0c; padding: 10px 20px" class="govuk-!-margin-bottom-7">
+        <h2 class="govuk-heading-l govuk-!-font-size-27 govuk-!-margin-bottom-2">
+          <a href="/responsible-body/devices/order-lockdown">Order devices now</a>
+        </h2>
+
+        <p>Local coronavirus restrictions have been confirmed.</p>
+        {{ govukWarningText({
+          text: 'You can now order devices for schools',
+          iconFallbackText: 'Notice',
+          classes: 'govuk-!-margin-bottom-0'
+        }) }}
+      </div>
+    {% endif %}
+
     {% if data['who-orders-laptops'] %}
       <h2 class="govuk-heading-l govuk-!-font-size-27">
         <a href="/responsible-body/devices">Get laptops and tablets</a>

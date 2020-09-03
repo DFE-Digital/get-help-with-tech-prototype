@@ -6,6 +6,15 @@ const devicesPath = '/responsible-body/devices'
  * Guide routes
  */
 module.exports = router => {
+  router.get('/covid', function (req, res) {
+    req.session.data.covid = true
+    if (!req.session.data['who-orders-laptops']) {
+      req.session.data['who-orders-laptops'] = 'central'
+    }
+
+    res.redirect('/responsible-body')
+  })
+
   router.all([devicesPath, `${devicesPath}*`], function (req, res, next) {
     const data = req.session.data
     const typeOfRb = data.trust ? 'Trust' : 'Local authority'

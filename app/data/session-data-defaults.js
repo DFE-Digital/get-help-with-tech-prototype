@@ -21,5 +21,6 @@ module.exports = {
   'rb-users': fakeRBUsers,
   schools: schoolsInResponsibleBody,
   'school-details': schoolDetails,
-  'max-school-order-users': 3
+  'max-school-order-users': 3,
+  covid: false
 }
