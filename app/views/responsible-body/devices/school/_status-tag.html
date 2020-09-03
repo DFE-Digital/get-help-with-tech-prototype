@@ -1,4 +1,4 @@
-{% if school and school['can_order'] %}
+{% if data.covid and school and school['can_order'] %}
   <span class="govuk-tag govuk-tag--green">Orders open</span>
 {% elseif (hasCentralAll and not data['responsible-body'][urn].who) or data['responsible-body'][urn].who == 'central' %}
   {% if data['responsible-body'][urn].chromebooks %}

@@ -8,7 +8,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Julie Wardle",
     headteacher_email: "julie.wardle@school.gov.uk",
-    fsm_percentage: 43.5
+    fsm_percentage: 43.5,
+    can_order: true
   },
   {
     URN: 141789,
@@ -30,7 +31,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Louisa Craig",
     headteacher_email: "louisa.craig@school.gov.uk",
-    fsm_percentage: 33.6
+    fsm_percentage: 33.6,
+    can_order: true
   },
   {
     URN: 139894,
