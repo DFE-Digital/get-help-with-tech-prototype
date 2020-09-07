@@ -1,0 +1,100 @@
+{% set schoolContactHtml %}
+  {% if isHeadteacher %}Headteacher: {% endif %}
+  {{ name }}
+  <br />{{ emailAddress }}
+  {% if number %}
+    <br />{{ number }}
+  {% endif %}
+{% endset %}
+
+{% set statusHtml %}
+  {% set urn = school.URN %}
+  {% include 'responsible-body/devices/school/_status-tag.html' %}
+{% endset %}
+
+{% set canOrderHtml %}
+  {% if data.covid %}
+    Yes, local coronavirus restrictions have been confirmed<br />
+    <a href="/responsible-body/devices/order-lockdown">Place orders now</a>
+  {% else %}
+    Not yet because there are no local coronavirus restrictions<br /><a href="/responsible-body/devices/request-devices">Get devices early for specific circumstances</a>
+  {% endif %}
+{% endset %}
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-0 govuk-!-margin-top-0',
+  rows: [
+    {
+      key: {
+        text: "Status"
+      },
+      value: {
+        html: statusHtml
+      }
+    },
+    {
+      key: {
+        text: "Who will order?"
+      },
+      value: {
+        html: whoOrders + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/who">Change</a>'
+      }
+    },
+    {
+      key: {
+        text: "Provisional allocation"
+      },
+      value: {
+        html: school.total + ' devices<br /><a href="#">Query allocation</a>'
+      }
+    },
+    {
+      key: {
+        text: "Can place orders?"
+      },
+      value: {
+        html: canOrderHtml
+      }
+    },
+    {
+      key: {
+        text: "Type of school"
+      },
+      value: {
+        text: "Special school" if school.type == 'Special schools' else school.phase + ' school'
+      }
+    },
+    {
+      key: {
+        text: "School contact"
+      },
+      value: {
+        html: schoolContactHtml + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/who-contact">Change contact</a>'
+      }
+    } if hasSetContactDetails,
+    {
+      key: {
+        text: "Ordering Chromebooks?"
+      },
+      value: {
+        html: data["responsible-body"][school.URN].chromebooks + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/chromebooks">Change</a>'
+      }
+    } if hasSetChromebookDetails,
+    {
+      key: {
+        text: "Domain"
+      },
+      value: {
+        html: domain + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/chromebooks">Change</a>'
+      }
+    } if domain,
+    {
+      key: {
+        text: "Recovery email address"
+      },
+      value: {
+        html: recoveryAddress + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/chromebooks">Change</a>'
+      }
+    } if recoveryAddress
+  ]
+}) }}
