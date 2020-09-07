@@ -1,0 +1,22 @@
+<form action="/responsible-body/devices/schools/{{ school.URN }}" method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if showContactForm %}
+        {% include 'responsible-body/devices/school/_contact-details.html' %}
+
+        {{ govukButton({
+          text: "Save and send email"
+        }) }}
+      {% endif %}
+
+      {% if showChromebookForm %}
+        <h2 class="govuk-heading-l">Will the school’s order include Chromebooks?</h2>
+        {% include 'responsible-body/devices/school/_chromebook-details.html' %}
+
+        {{ govukButton({
+          text: "Save"
+        }) }}
+      {% endif %}
+    </div>
+  </div>
+</form>
