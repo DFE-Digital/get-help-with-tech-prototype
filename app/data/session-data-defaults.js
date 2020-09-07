@@ -5,8 +5,8 @@ const schoolsInResponsibleBody = require('./responsible-body-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
-  rb: 'OASIS COMMUNITY LEARNING',
-  trust: true,
+  rb: 'East Sussex',
+  trust: false,
   features: {
     'sign-up': false,
     'bulk-upload': true,
