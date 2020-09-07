@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Get schools ready" %}
+{% set title = data.schools.length + " schools" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="govuk-heading-xl">
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-1">
   {{ title }}
 </h1>
 
@@ -20,6 +20,10 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    {{ govukDetails({
+      summaryText: "Is this list wrong?",
+      html: missingSchools
+    }) }}
     <!-- <ul class="govuk-list govuk-list--bullet">
       <li>{{ data.schools.length }} schools will place their own orders</li>
       <li>100 need a contact</li>
@@ -38,18 +42,53 @@
       <li><a href="#">5 are ready</a> if local coronavirus restrictions are confirmed</li>
     </ul>-->
 
-    <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{ data.schools.length }} schools</h2>
-
-    {{ govukDetails({
-      summaryText: "Is this list wrong?",
-      html: missingSchools
-    }) }}
+    <!-- <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{ data.schools.length }} schools</h2> -->
   </div>
 </div>
 
 <div data-module="filterable-table">
   {% if data.schools.length > 10 %}
-  <form class="app-filter-container">
+  <div class="app-filter-container">
+    <h2 class="govuk-heading-m">Filter this list</h2>
+
+    <div style="background-color: #fff; padding: 10px">
+      {{ govukCheckboxes({
+        fieldset: {
+          legend: {
+            text: 'Status',
+            classes: 'govuk-fieldset__legend--s'
+          }
+        },
+        items: [
+          { text: 'Needs information' },
+          { text: 'Needs a contact' },
+          { text: 'School contacted' },
+          { text: 'Orders open' }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        fieldset: {
+          legend: {
+            text: 'Who will order?',
+            classes: 'govuk-fieldset__legend--s'
+          }
+        },
+        items: [
+          { text: 'Show all' },
+          { text: 'Trust' },
+          { text: 'School' }
+        ]
+      }) }}
+
+      {{ govukButton({
+        html: 'Filter list',
+        classes: 'govuk-!-margin-bottom-0'
+      }) }}
+    </div>
+  </div>
+
+  <!-- <form class="app-filter-container">
     <div class="govuk-form-group govuk-!-margin-top-1 govuk-!-margin-bottom-4">
       <label class="govuk-label govuk-label--s" for="filter">
         Filter the list of schools
@@ -59,7 +98,7 @@
       </div>
       <input class="govuk-input js-filter-table-input" id="filter" name="filter" type="text">
     </div>
-  </form>
+  </form> -->
   {% endif %}
 
   <table class="govuk-table">

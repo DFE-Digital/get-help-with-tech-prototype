@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Order devices now" %}
+{% set title = "You can order devices for specific circumstances" %}
 {% set lockdown = false %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
@@ -12,8 +12,13 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Order devices</span>
       {{ title }}
     </h1>
+
+    <p>Now you’ve emailed us to <a href="/responsible-body/devices/request-devices">request devices for specific circumstances</a>, you can go ahead with your order.</p>
+
+    <p>You cannot order a school’s full allocation yet because there are no local coronavirus restrictions. The number of devices you can currently place for each school is shown.</p>
 
     {% include '_shared/order/_each-school.html' %}
   </div>
@@ -35,57 +40,24 @@
         <a href="/responsible-body/devices/schools/{{ data.schools[0].URN }}">{{ data.schools[0].name }}</a>
       </td>
       <td class="govuk-table__cell">
-        Order {{ data.schools[0].total }} devices
-        <br /><span class="govuk-!-font-size-16" style="color: #505a5f">You’ve ordered 0 of {{ data.schools[0].total }} devices</span>
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <a href="/responsible-body/devices/schools/{{ data.schools[0].URN }}">{{ data.schools[1].name }}</a>
-      </td>
-      <td class="govuk-table__cell">
         Order 2 devices for specific circumstances
         <br /><span class="govuk-!-font-size-16" style="color: #505a5f">You cannot order this school’s full allocation yet</span>
       </td>
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
-        <a href="/responsible-body/devices/schools/{{ data.schools[0].URN }}">{{ data.schools[2].name }}</a>
+        <a href="/responsible-body/devices/schools/{{ data.schools[0].URN }}">{{ data.schools[0].name }}</a>
       </td>
       <td class="govuk-table__cell">
         Order 1 device for specific circumstances
         <br /><span class="govuk-!-font-size-16" style="color: #505a5f">You’ve ordered 1 of 2 devices for specific circumstances</span>
       </td>
     </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <a href="/responsible-body/devices/schools/{{ data.schools[2].URN }}">{{ data.schools[3].name }}</a>
-      </td>
-      <td class="govuk-table__cell">
-        Order 5 devices
-        <br /><span class="govuk-!-font-size-16" style="color: #505a5f">You’ve ordered {{ data.schools[2].total - 5 }} of {{ data.schools[2].total }} devices</span>
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <a href="/responsible-body/devices/schools/{{ data.schools[2].URN }}">{{ data.schools[4].name }}</a>
-      </td>
-      <td class="govuk-table__cell">
-        Order 45 devices and 4 routers
-        <br /><span class="govuk-!-font-size-16" style="color: #505a5f">You’ve ordered 56 of {{ data.schools[2].total }} devices and 0 of 4 routers</span>
-      </td>
-    </tr>
-    <!-- <tr class="govuk-table__row">
-      <td colspan="2" class="govuk-table__cell">
-        <a href="#">View all schools (25)</a>
-      </td>
-    </tr> -->
   </tbody>
 </table>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
     {% include '_shared/order/_help-signing-in.html' %}
     {% include '_shared/order/_start-now.html' %}
   </div>

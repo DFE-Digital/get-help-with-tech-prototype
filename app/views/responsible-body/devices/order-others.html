@@ -16,11 +16,17 @@
       {{ title }}
     </h1>
 
-    <p>None of the schools you’re responsible for placing orders for are currently affected by local coronavirus restrictions.</p>
+    <p>None of the <a href="#">{{ data.schools.length }} schools you will be placing orders for</a> have local coronavirus restrictions.</p>
 
-    <p>Some of the schools who are placing orders themselves can now order devices:</p>
+    {% include '_shared/order/_cant-order.html' %}
 
-    <table class="govuk-table govuk-!-margin-top-6">
+    <h2 class="govuk-heading-m">Some schools can place their orders now</h2>
+
+    <p><a href="#">4 schools have local coronavirus restrictions</a>.</p>
+
+    <p>They can order their full allocation of devices.</p>
+
+    <!-- <table class="govuk-table govuk-!-margin-top-6">
       <caption class="govuk-table__caption">
         Schools that can order their own devices:
       </caption>
@@ -40,8 +46,9 @@
           <td class="govuk-table__cell">{{ data.schools[2].total }}</td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
 
+    <h2 class="govuk-heading-m">Get devices early for specific circumstances</h2>
     {% set requestLink = '/responsible-body/devices/request-devices' %}
     {% include '_shared/request-devices/_who.html' %}
   </div>

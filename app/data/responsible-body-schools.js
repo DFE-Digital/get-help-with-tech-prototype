@@ -8,7 +8,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Thomas Raymond",
     headteacher_email: "thomas.raymond@school.gov.uk",
-    fsm_percentage: 38.7
+    fsm_percentage: 38.7,
+    can_order: true
   },
   {
     URN: 140052,
@@ -19,7 +20,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Angela Sweeting",
     headteacher_email: "angela.sweeting@school.gov.uk",
-    fsm_percentage: 38.4
+    fsm_percentage: 38.4,
+    can_order: true
   },
   {
     URN: 138409,
@@ -85,7 +87,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Peter Knight",
     headteacher_email: "peter.knight@school.gov.uk",
-    fsm_percentage: 24.8
+    fsm_percentage: 24.8,
+    can_order: true
   },
   {
     URN: 144569,
