@@ -5,8 +5,8 @@ require 'JSON'
 
 class UpdateSchoolsList
   def run
-    responsible_body = 'OASIS COMMUNITY LEARNING'
-    is_trust = true
+    responsible_body = 'East Sussex'
+    is_trust = false
     trust_column_header = 'Column1'
 
     rows = CSV.read(csv_file_location, { headers: true })
@@ -15,9 +15,8 @@ class UpdateSchoolsList
     # puts grouped_by_responsible_body.sort_by { |r| r[1].length }.map { |r| "#{r[0]}, #{r[1].length}" }
 
     rb_schools = grouped_by_responsible_body[responsible_body]
-    only_schools_with_allocations = rb_schools.reject {|r| r['Total '] == '0' }
 
-    schools = only_schools_with_allocations.sort_by { |r| r['Name'] }.map do |r|
+    schools = rb_schools.sort_by { |r| r['Name'] }.map do |r|
       total = Integer(r['Total '])
       lower = total < 40 ? 0 : total - 40
       upper = total < 40 ? total + 20 : total + 40
@@ -26,7 +25,7 @@ class UpdateSchoolsList
         URN: Integer(r['URN']),
         name: r['Name'].gsub("'", "’"),
         rb: is_trust ? r[trust_column_header] : r['LA'],
-        total: rand(Range.new(lower, upper))
+        total: total == 0 ? 0 : rand(Range.new(lower, upper))
       }
     end
 

@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 {% set title = school.name %}
+{% set noAllocation = school.total == 0 %}
+{% if data.covid %}
+  {% set showForms = false %}
+{% else %}
+  {% set showForms = showChromebookForm or showContactForm %}
+{% endif %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -7,29 +13,6 @@
     href: "/responsible-body/devices/schools"
   }) }}
 {% endblock %}
-
-{% set schoolContactHtml %}
-  {% if isHeadteacher %}Headteacher: {% endif %}
-  {{ name }}
-  <br />{{ emailAddress }}
-  {% if number %}
-    <br />{{ number }}
-  {% endif %}
-{% endset %}
-
-{% set statusHtml %}
-  {% set urn = school.URN %}
-  {% include 'responsible-body/devices/school/_status-tag.html' %}
-{% endset %}
-
-{% set canOrderHtml %}
-  {% if data.covid %}
-    Yes, local coronavirus restrictions have been confirmed<br />
-    <a href="/responsible-body/devices/order-lockdown">Place orders now</a>
-  {% else %}
-    Not yet because there are no local coronavirus restrictions<br /><a href="/responsible-body/devices/request-devices">Get devices early for specific circumstances</a>
-  {% endif %}
-{% endset %}
 
 {% block content %}
 {{ appBanner({
@@ -46,112 +29,22 @@
   </div>
 </div>
 
-<form action="/responsible-body/devices/schools/{{ school.URN }}" method="post">
-  {% if not data.covid %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      {% if showContactForm %}
-        {% include 'responsible-body/devices/school/_contact-details.html' %}
+{% if noAllocation %}
+  {% include 'responsible-body/devices/school/_school-no-allocation.html' %}
+{% endif %}
 
-        {{ govukButton({
-          text: "Save and send email"
-        }) }}
-      {% endif %}
-
-      {% if showChromebookForm %}
-        <h2 class="govuk-heading-l">Will the school’s order include Chromebooks?</h2>
-        {% include 'responsible-body/devices/school/_chromebook-details.html' %}
-
-        {{ govukButton({
-          text: "Save"
-        }) }}
-      {% endif %}
-    </div>
-  </div>
+{% if showForms %}
+  {% if noAllocation %}
+    <hr class="govuk-section-break govuk-section-break--m">
   {% endif %}
-</form>
+  {% include 'responsible-body/devices/school/_school-prompt.html' %}
+{% endif %}
 
-{% if not data.covid and (showContactForm or showChromebookForm) %}
+{% if showForms or noAllocation %}
   <h2 class="govuk-heading-l govuk-!-margin-top-6">School details</h2>
 {% endif %}
-<div class="govuk-!-padding-top-0 {% if not data.covid and (showContactForm or showChromebookForm) %}govuk-inset-text{% else %}govuk-!-margin-top-0 govuk-!-margin-bottom-6{% endif %}">
-  {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-0 govuk-!-margin-top-0',
-    rows: [
-      {
-        key: {
-          text: "Status"
-        },
-        value: {
-          html: statusHtml
-        }
-      },
-      {
-        key: {
-          text: "Who will order?"
-        },
-        value: {
-          html: whoOrders + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/who">Change</a>'
-        }
-      },
-      {
-        key: {
-          text: "Provisional allocation"
-        },
-        value: {
-          html: school.total + ' devices<br /><a href="#">Query allocation</a>'
-        }
-      },
-      {
-        key: {
-          text: "Can place orders?"
-        },
-        value: {
-          html: canOrderHtml
-        }
-      },
-      {
-        key: {
-          text: "Type of school"
-        },
-        value: {
-          text: "Special school" if school.type == 'Special schools' else school.phase + ' school'
-        }
-      },
-      {
-        key: {
-          text: "School contact"
-        },
-        value: {
-          html: schoolContactHtml + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/who-contact">Change contact</a>'
-        }
-      } if hasSetContactDetails,
-      {
-        key: {
-          text: "Ordering Chromebooks?"
-        },
-        value: {
-          html: data["responsible-body"][school.URN].chromebooks + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/chromebooks">Change</a>'
-        }
-      } if hasSetChromebookDetails,
-      {
-        key: {
-          text: "Domain"
-        },
-        value: {
-          html: domain + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/chromebooks">Change</a>'
-        }
-      } if domain,
-      {
-        key: {
-          text: "Recovery email address"
-        },
-        value: {
-          html: recoveryAddress + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/chromebooks">Change</a>'
-        }
-      } if recoveryAddress
-    ]
-  }) }}
+<div class="govuk-!-padding-top-0 govuk-!-margin-top-0 govuk-!-margin-bottom-6">
+  {% include 'responsible-body/devices/school/_school-details.html' %}
 </div>
 
 <p>
