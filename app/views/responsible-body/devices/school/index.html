@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% set title = school.name %}
 {% set noAllocation = school.total == 0 %}
-{% if data.covid or noAllocation %}
+{% if data.covid %}
   {% set showForms = false %}
 {% else %}
   {% set showForms = showChromebookForm or showContactForm %}
@@ -34,6 +34,9 @@
 {% endif %}
 
 {% if showForms %}
+  {% if noAllocation %}
+    <hr class="govuk-section-break govuk-section-break--m">
+  {% endif %}
   {% include 'responsible-body/devices/school/_school-prompt.html' %}
 {% endif %}
 

@@ -26,12 +26,8 @@
 {% endset %}
 
 {% set whoOrdersHtml %}
-  {% if noAllocation %}
-    The local authority can request devices
-  {% else %}
-    {{ whoOrders }}
-    <br /><a href="/responsible-body/devices/schools/{{ school.URN }}">Change</a>
-  {% endif %}
+  {{ whoOrders }}
+  <br /><a href="/responsible-body/devices/schools/{{ school.URN }}">Change</a>
 {% endset %}
 
 {{ govukSummaryList({
