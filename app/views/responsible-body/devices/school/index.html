@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 {% set title = school.name %}
+{% set noAllocation = school.total == 0 %}
+{% if data.covid or noAllocation %}
+  {% set showForms = false %}
+{% else %}
+  {% set showForms = showChromebookForm or showContactForm %}
+{% endif %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -23,14 +29,18 @@
   </div>
 </div>
 
-{% if not data.covid %}
+{% if noAllocation %}
+  {% include 'responsible-body/devices/school/_school-no-allocation.html' %}
+{% endif %}
+
+{% if showForms %}
   {% include 'responsible-body/devices/school/_school-prompt.html' %}
 {% endif %}
 
-{% if not data.covid and (showContactForm or showChromebookForm) %}
+{% if showForms or noAllocation %}
   <h2 class="govuk-heading-l govuk-!-margin-top-6">School details</h2>
 {% endif %}
-<div class="govuk-!-padding-top-0 {% if not data.covid and (showContactForm or showChromebookForm) %}govuk-inset-text{% else %}govuk-!-margin-top-0 govuk-!-margin-bottom-6{% endif %}">
+<div class="govuk-!-padding-top-0 govuk-!-margin-top-0 govuk-!-margin-bottom-6">
   {% include 'responsible-body/devices/school/_school-details.html' %}
 </div>
 

@@ -1,3 +1,5 @@
+{% set noAllocation = school.total == 0 %}
+
 {% set schoolContactHtml %}
   {% if isHeadteacher %}Headteacher: {% endif %}
   {{ name }}
@@ -13,11 +15,22 @@
 {% endset %}
 
 {% set canOrderHtml %}
-  {% if data.covid %}
+  {% if noAllocation %}
+    No because there is no allocation<br /><a href="/responsible-body/devices/request-devices">Get devices for specific circumstances</a>
+  {% elseif data.covid %}
     Yes, local coronavirus restrictions have been confirmed<br />
     <a href="/responsible-body/devices/order-lockdown">Place orders now</a>
   {% else %}
     Not yet because there are no local coronavirus restrictions<br /><a href="/responsible-body/devices/request-devices">Get devices early for specific circumstances</a>
+  {% endif %}
+{% endset %}
+
+{% set whoOrdersHtml %}
+  {% if noAllocation %}
+    The local authority can request devices
+  {% else %}
+    {{ whoOrders }}
+    <br /><a href="/responsible-body/devices/schools/{{ school.URN }}">Change</a>
   {% endif %}
 {% endset %}
 
@@ -37,7 +50,7 @@
         text: "Who will order?"
       },
       value: {
-        html: whoOrders + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/who">Change</a>'
+        html: whoOrdersHtml
       }
     },
     {
