@@ -2,6 +2,22 @@
 {% set title = "Get devices for your school" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your schools",
+        href: "/school/multiple-schools"
+      },
+      {
+        text: data['school-details'].name
+      }
+    ]
+  }) }}
+{% endblock %}
+
+
+
 {% block content %}
 <!-- {{ appBanner({
   html: "<h2 class=\"govuk-heading-m\">Thank you. We’ve received your information.</h2>",
@@ -12,8 +28,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">{{ data['school-details'].name }}</span>
-      {{ title }}
+      {{ data['school-details'].name }}
     </h1>
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% set title = "Your schools" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- {{ appBanner({
+  html: "<h2 class=\"govuk-heading-m\">Thank you. We’ve received your information.</h2>",
+  type: "success",
+  icon: false
+}) }} -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <ul class="govuk-list">
+      <li>
+        <h2 class="govuk-heading-m">
+          <a href="/school">{{ data['school-details'].name }}</a>
+        </h2>
+      </li>
+      <li>
+        <h2 class="govuk-heading-m">
+          <a href="/school">Pool Hayes Primary School</a>
+        </h2>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
