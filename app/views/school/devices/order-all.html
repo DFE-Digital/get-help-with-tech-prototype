@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% set isOrderUser = false and data['school-details'].order_user %}
+{% set title = "You’ve ordered all the devices you can" if isOrderUser else "Your school has ordered all the devices it can" %}
+{% set lockdown = false %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: 'Order devices'
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">
+        Order devices
+      </span>
+      {{ title }}
+    </h1>
+
+    <div class="app-order-card">
+      <h1 class="govuk-panel__title govuk-!-font-size-36 govuk-!-margin-bottom-2">
+        All devices ordered
+      </h1>
+      <div class="govuk-panel__body govuk-!-font-size-24">
+        You’ve ordered 82 of 82 devices
+      </div>
+    </div>
+
+    <p>We’ll contact you if you can place more orders.</p>
+
+    {% if isOrderUser %}
+      <p><a href="#">View your order history on TechSource</a></p>
+    {% endif %}
+
+    <h2 class="govuk-heading-m">Get devices for specific circumstances</h2>
+    {% set requestLink = '/school/devices/request-devices' %}
+    {% include '_shared/request-devices/_who.html' %}
+  </div>
+</div>
+{% endblock %}
