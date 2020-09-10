@@ -5,8 +5,14 @@ const schoolsInResponsibleBody = require('./responsible-body-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
-  rb: 'East Sussex',
-  trust: false,
+  rb: 'COMMUNITY ACADEMIES TRUST',
+  trust: true,
+  'who-orders-laptops': 'central',
+  'responsible-body': {
+    138934: {
+      chromebooks: 'No, they will not need Chromebooks'
+    }
+  },
   features: {
     'sign-up': false,
     'bulk-upload': true,
