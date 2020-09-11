@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set isOrderUser = false and data['school-details'].order_user %}
+{% set isOrderUser = data['school-details'].order_user %}
 {% set title = "You’ve ordered all the devices you can" if isOrderUser else "Your school has ordered all the devices it can" %}
 {% set lockdown = false %}
 {% block pageTitle %}{{ title }}{% endblock %}
