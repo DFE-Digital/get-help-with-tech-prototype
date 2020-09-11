@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set isOrderUser = false and data['school-details'].order_user %}
+{% set isOrderUser = data['school-details'].order_user %}
 {% set title = "Order devices" %}
 {% set lockdown = false %}
 {% block pageTitle %}{{ title }}{% endblock %}
@@ -34,16 +34,17 @@
 
     <div class="app-order-card">
       <h1 class="govuk-panel__title govuk-!-font-size-36 govuk-!-margin-bottom-2">
-        82 devices available
+        2 devices available<br />for specific circumstances
       </h1>
       <div class="govuk-panel__body govuk-!-font-size-24">
-        You’ve ordered 0 of 82 devices
+        You cannot order your full allocation yet
       </div>
     </div>
 
     {% if isOrderUser %}
-      <p class="govuk-body">Order your devices now. Do not delay.</p>
-      <p>They will arrive on the next working day if you order before 4pm.</p>
+      <p>Now you’ve contacted us to <a href="/school/devices/request-devices">request devices for specific circumstances</a>, you can go ahead with your order.</p>
+
+      <p>You cannot order your full allocation yet because there are no local coronavirus restrictions.</p>
 
       {% include '_shared/order/_help-signing-in.html' %}
       {% include '_shared/order/_start-now.html' %}
