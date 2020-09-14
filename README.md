@@ -1,4 +1,4 @@
-# Increasing children’s internet access (prototype)
+# Get help with technology prototype
 
 This prototype is based on the [GOV.UK prototype kit](https://github.com/alphagov/govuk-prototype-kit)
 
