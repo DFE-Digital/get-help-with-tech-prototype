@@ -14,20 +14,27 @@
   {% include 'responsible-body/devices/school/_status-tag.html' %}
 {% endset %}
 
-{% set canOrderHtml %}
-  {% if noAllocation %}
-    No because there is no allocation<br /><a href="/responsible-body/devices/request-devices">Get devices for specific circumstances</a>
-  {% elseif data.covid %}
-    Yes, local coronavirus restrictions have been confirmed<br />
-    <a href="/responsible-body/devices/order-lockdown">Place orders now</a>
-  {% else %}
-    Not yet because there are no local coronavirus restrictions<br /><a href="/responsible-body/devices/request-devices">Get devices early for specific circumstances</a>
+{% if noAllocation %}
+  {% set orderAction =
+    { items: [{ text: 'Get devices for specific circumstances', href: '/responsible-body/devices/request-devices' }] }
+  %}
+  {% set orderText = 'No because there is no allocation' %}
+{% elseif school.can_order %}
+  {% if whoOrders != 'The school orders devices' %}
+    {% set orderAction =
+      { items: [{ text: 'Place orders now', href: '/responsible-body/devices/schools/' + school.URN + '/order' }] }
+    %}
   {% endif %}
-{% endset %}
+  {% set orderText = 'Yes, local coronavirus restrictions have been confirmed' %}
+{% else %}
+  {% set orderAction =
+    { items: [{ text: 'Get devices for specific circumstances', href: '/responsible-body/devices/request-devices']} }
+  %}
+  {% set orderText = 'Not yet because there are no local coronavirus restrictions' %}
+{% endif %}
 
 {% set whoOrdersHtml %}
   {{ whoOrders }}
-  <br /><a href="/responsible-body/devices/schools/{{ school.URN }}">Change</a>
 {% endset %}
 
 {{ govukSummaryList({
@@ -46,7 +53,15 @@
         text: "Who will order?"
       },
       value: {
-        html: whoOrdersHtml
+        html: whoOrders
+      },
+      actions: {
+        items: [
+          {
+            text: 'Change',
+            href: '/responsible-body/devices/schools/' + school.URN + '/who'
+          }
+        ]
       }
     },
     {
@@ -54,7 +69,15 @@
         text: "Provisional allocation"
       },
       value: {
-        html: school.total + ' devices<br /><a href="#">Query allocation</a>'
+        html: school.total + ' devices'
+      },
+      actions: {
+        items: [
+          {
+            text: 'Query allocation',
+            href: '#'
+          }
+        ]
       }
     },
     {
@@ -62,8 +85,9 @@
         text: "Can place orders?"
       },
       value: {
-        html: canOrderHtml
-      }
+        text: orderText
+      },
+      actions: orderAction
     },
     {
       key: {
@@ -78,7 +102,15 @@
         text: "School contact"
       },
       value: {
-        html: schoolContactHtml + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/who-contact">Change contact</a>'
+        html: schoolContactHtml
+      },
+      actions: {
+        items: [
+          {
+            text: 'Change',
+            href: '/responsible-body/devices/schools/' + school.URN + '/who-contact'
+          }
+        ]
       }
     } if hasSetContactDetails,
     {
@@ -86,7 +118,15 @@
         text: "Ordering Chromebooks?"
       },
       value: {
-        html: data["responsible-body"][school.URN].chromebooks + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/chromebooks">Change</a>'
+        html: data["responsible-body"][school.URN].chromebooks
+      },
+      actions: {
+        items: [
+          {
+            text: 'Change',
+            href: '/responsible-body/devices/schools/' + school.URN + '/chromebooks'
+          }
+        ]
       }
     } if hasSetChromebookDetails,
     {
@@ -94,7 +134,15 @@
         text: "Domain"
       },
       value: {
-        html: domain + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/chromebooks">Change</a>'
+        html: domain
+      },
+      actions: {
+        items: [
+          {
+            text: 'Change',
+            href: '/responsible-body/devices/schools/' + school.URN + '/chromebooks'
+          }
+        ]
       }
     } if domain,
     {
@@ -102,7 +150,15 @@
         text: "Recovery email address"
       },
       value: {
-        html: recoveryAddress + '<br /><a href="/responsible-body/devices/schools/' + school.URN + '/chromebooks">Change</a>'
+        html: recoveryAddress
+      },
+      actions: {
+        items: [
+          {
+            text: 'Change',
+            href: '/responsible-body/devices/schools/' + school.URN + '/chromebooks'
+          }
+        ]
       }
     } if recoveryAddress
   ]

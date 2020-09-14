@@ -1,13 +1,15 @@
-{% if data.covid and school and school['can_order'] %}
-  <span class="govuk-tag govuk-tag--green">Orders open</span>
-{% elseif (hasCentralAll and not data['responsible-body'][urn].who) or data['responsible-body'][urn].who == 'central' %}
-  {% if data['responsible-body'][urn].chromebooks %}
+{% if (hasCentralAll and not data['responsible-body'][urn].who) or data['responsible-body'][urn].who == 'central' %}
+  {% if school and school['can_order'] %}
+    <span class="govuk-tag govuk-tag--green">Orders open</span>
+  {% elseif data['responsible-body'][urn].chromebooks %}
     <span class="govuk-tag govuk-tag--blue">Ready</span>
   {% else %}
     <span class="govuk-tag govuk-tag--grey">Needs information</span>
   {% endif %}
 {% else %}
-  {% if data['responsible-body'][urn]['person-type'] %}
+  {% if school and school['can_order'] %}
+    <span class="govuk-tag govuk-tag--green">School can order</span>
+  {% elseif data['responsible-body'][urn]['person-type'] %}
     <span class="govuk-tag govuk-tag--yellow">School contacted</span>
   {% else %}
     <span class="govuk-tag govuk-tag--grey">Needs a contact</span>
