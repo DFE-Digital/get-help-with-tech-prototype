@@ -1,5 +1,10 @@
 const express = require('express')
 const router = express.Router()
+const newDomain = 'https://ghwt-prototype.herokuapp.com'
+
+router.use(function (req, res, next) {
+  return res.redirect(301, newDomain + req.url)
+})
 
 require('./routes/responsible-body')(router)
 require('./routes/family')(router)
