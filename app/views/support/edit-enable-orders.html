@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% set title = "Change how many devices can be ordered" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/support/enabling" method="post">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Pool Hayes Primary</span>
+        {{ title }}
+      </h1>
+
+      <!-- <div class="app-order-card">
+        <h1 class="govuk-panel__title govuk-!-font-size-27 govuk-!-margin-bottom-2">
+          3 can be ordered for specific circumstances
+        </h1>
+        <div class="govuk-panel__body govuk-!-font-size-19">
+          They’ve ordered 0 of 3 devices for specific circumstances
+        </div>
+      </div> -->
+
+      <p>They can currently order 3 devices for specific circumstances, from a total allocation of 50.</p>
+
+      {% set specificHtml %}
+        {{ govukInput({
+          classes: 'govuk-input--width-3',
+          label: {
+            text: 'How many devices can they now order?'
+          }
+        } | decorateFormAttributes('support-specific-count') ) }}
+      {% endset %}
+
+      {{ govukRadios({
+        items: [
+          {
+            text: 'They can order more devices for specific circumstances',
+            hint: {
+              html: ''
+            },
+            conditional: {
+              html: specificHtml
+            }
+          },
+          {
+            text: 'They can order their full allocation because local coronavirus restrictions are confirmed',
+            hint: {
+              html: ''
+            }
+          }
+        ]
+      } | decorateFormAttributes('support-mode') ) }}
+
+
+      {{ govukButton({
+        html: 'Continue'
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

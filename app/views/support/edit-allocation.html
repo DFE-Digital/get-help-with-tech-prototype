@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% set title = "Edit allocation" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/support/enabling" method="post">
+      {{ govukInput({
+        classes: 'govuk-input--width-3',
+        label: {
+          html: '<span class="govuk-caption-xl">Pool Hayes Primary</span>What is their total allocation of devices?',
+          classes: "govuk-label--xl govuk-!-margin-bottom-4",
+          isPageHeading: true
+        }
+      } | decorateFormAttributes('support-specific-count') ) }}
+
+      {{ govukButton({
+        html: 'Save'
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

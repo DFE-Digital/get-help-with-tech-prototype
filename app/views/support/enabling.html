@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+{% set title = "Check your answers and confirm" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/support/enable-orders"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/school/users" method="post">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Pool Hayes Primary</span>
+        {{ title }}
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: 'Can they order devices?'
+            },
+            value: {
+              text: data['support-mode']
+            },
+            actions: {
+              items: [
+                {
+                  text: 'Change',
+                  href: '#',
+                  visuallyHiddenText: ''
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: 'How many devices?'
+            },
+            value: {
+              text: 'Up to ' + data['support-specific-count'] + ' from an allocation of 50'
+            },
+            actions: {
+              items: [
+                {
+                  text: 'Change',
+                  href: '#',
+                  visuallyHiddenText: ''
+                }
+              ]
+            }
+          }
+        }
+      }) }}
+
+      <!-- {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: 'Can they order devices?'
+            },
+            value: {
+              text: 'They can order their full allocation because local coronavirus restrictions are confirmed'
+            },
+            actions: {
+              items: [
+                {
+                  text: 'Change',
+                  href: '#',
+                  visuallyHiddenText: ''
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: 'How many devices?'
+            },
+            value: {
+              text: 'Up to their total allocation of 50 devices'
+            }
+          }
+        }
+      }) }} -->
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-8">What happens next</h2>
+
+      <p>We will:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>email everyone at Pool Hayes Primary to tell them they can place orders for specific circumstances</li>
+        <li>tell their local authority East Sussex that this school can place orders for specific circumstances</li>
+      </ul>
+
+      {{ govukButton({
+        classes: 'govuk-!-margin-top-6',
+        html: 'Confirm'
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% set title = "Can they place orders?" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/support/enabling" method="post">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Pool Hayes Primary</span>
+        {{ title }}
+      </h1>
+
+      {% set specificHtml %}
+        {{ govukInput({
+          classes: 'govuk-input--width-3',
+          label: {
+            text: 'How many devices can they order?'
+          }
+        } | decorateFormAttributes('support-specific-count') ) }}
+      {% endset %}
+
+      {{ govukRadios({
+        items: [
+          {
+            text: 'No, orders cannot be placed yet'
+          },
+          {
+            text: 'They can place orders for specific circumstances',
+            hint: {
+              html: ''
+            },
+            conditional: {
+              html: specificHtml
+            }
+          },
+          {
+            text: 'They can order their full allocation because local coronavirus restrictions are confirmed',
+            hint: {
+              html: ''
+            }
+          }
+        ]
+      } | decorateFormAttributes('support-mode') ) }}
+
+
+      {{ govukButton({
+        html: 'Continue'
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}
