@@ -38,7 +38,10 @@
       text: 'No, we will not order Chromebooks'
     },
     {
-      text: 'I don’t know'
+      text: 'I don’t know',
+      conditional: {
+        html: '<p class="govuk-body">You cannot place an order until you tell us whether you’ll be ordering Chromebooks or not</p>'
+      }
     } if iDontKnow
   ]
 } | decorateFormAttributes(["chromebooks"] if isSchool else ["responsible-body", school.URN, "chromebooks"]) ) }}
