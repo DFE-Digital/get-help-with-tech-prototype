@@ -11,7 +11,8 @@
 
       {% if showChromebookForm %}
         <h2 class="govuk-heading-l">Will the school’s order include Chromebooks?</h2>
-        {% include 'responsible-body/devices/school/_chromebook-details.html' %}
+        {% include '_shared/chromebooks/_guidance.html' %}
+        {% include '_shared/chromebooks/_fields.html' %}
 
         {{ govukButton({
           text: "Save"

@@ -1,9 +1,7 @@
-{% include 'responsible-body/devices/school/_chromebook-guidance.html' %}
-
 {% set chromebookFields %}
   {{ govukInput({
     label: {
-      text: 'School or local authority domain',
+      text: 'School or local authority domain registered for G Suite for Education',
       classes: 'govuk-label--s'
     },
     hint: {
@@ -20,22 +18,27 @@
       text: 'This email address must be on a different domain to the school domain. For example, if the domain is ‘school.com’, then the email must not be ‘recovery@school.com’.'
     }
   } | decorateFormAttributes(["recovery"] if isSchool else ["responsible-body", school.URN, "recovery"]) ) }}
+
+
+  <p class="govuk-!-margin-top-4">
+    If you need help finding these details, email <a href="#">COVID.TECHNOLOGY@education.gov.uk</a>
+  </p>
 {% endset %}
 
 {{ govukRadios({
   items: [
     {
-      text: 'Yes, we will need Chromebooks' if isSchool else 'Yes, they will need Chromebooks',
+      text: 'Yes, we will order Chromebooks',
       value: 'Yes',
       conditional: {
         html: chromebookFields
       }
     },
     {
-      text: 'No, we do not need Chromebooks' if isSchool else 'No, they will not need Chromebooks'
+      text: 'No, we will not order Chromebooks'
     },
     {
       text: 'I don’t know'
-    } if isSchool
+    } if iDontKnow
   ]
 } | decorateFormAttributes(["chromebooks"] if isSchool else ["responsible-body", school.URN, "chromebooks"]) ) }}

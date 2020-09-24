@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Will your school’s order include Chromebooks?' %}
+{% set title = 'Before you can order, we need more information' %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
@@ -8,6 +8,8 @@
 
   {% set isSchool = true %}
   {% set iDontKnow = true %}
-  <p>If you’re going to order Google Chromebooks, we need information to configure them before you place your order.</p>
+  {% include '_shared/chromebooks/_guidance.html' %}
+
+  <h2 class="govuk-heading-m">Will your school’s order include Chromebooks?</h2>
   {% include '_shared/chromebooks/_fields.html' %}
 {% endblock %}
