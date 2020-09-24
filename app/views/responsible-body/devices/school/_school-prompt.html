@@ -10,8 +10,10 @@
       {% endif %}
 
       {% if showChromebookForm %}
-        <h2 class="govuk-heading-l">Will the school’s order include Chromebooks?</h2>
+        <h2 class="govuk-heading-l">Before you can order, we need more information</h2>
         {% include '_shared/chromebooks/_guidance.html' %}
+
+        <h3 class="govuk-heading-m">Will the school’s order include Chromebooks?</h3>
         {% include '_shared/chromebooks/_fields.html' %}
 
         {{ govukButton({
