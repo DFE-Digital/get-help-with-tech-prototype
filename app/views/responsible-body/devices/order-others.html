@@ -18,6 +18,7 @@
 
     <p>None of the <a href="#">{{ data.schools.length }} schools you will be placing orders for</a> have local coronavirus restrictions.</p>
 
+    {% set requestLink = '/responsible-body/devices/request-devices' %}
     {% include '_shared/order/_cant-order.html' %}
     {% include '_shared/order/_some-schools.html' %}
 

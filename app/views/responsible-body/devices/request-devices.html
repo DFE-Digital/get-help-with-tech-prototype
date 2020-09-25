@@ -11,11 +11,9 @@
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
-
-    {% include '_shared/request-devices/_who.html' %}
-
-    {% set multipleSchools = true %}
-    {% include '_shared/request-devices/_make-request.html' %}
   </div>
 </div>
+
+{% set multipleSchools = true %}
+{% include '_shared/request-devices/_tabs.html' %}
 {% endblock %}

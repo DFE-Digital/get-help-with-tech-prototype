@@ -26,6 +26,8 @@
       {{ title }}
     </h1>
 
+    {% set isSchool = true %}
+    {% set requestLink = '/school/devices/request-devices' %}
     {% include '_shared/order/_cant-order.html' %}
 
     {% if not isOrderUser %}
@@ -35,7 +37,6 @@
     {% endif %}
 
     <h2 class="govuk-heading-m">Get devices early for specific circumstances</h2>
-    {% set requestLink = '/school/devices/request-devices' %}
     {% include '_shared/request-devices/_who.html' %}
   </div>
 </div>
