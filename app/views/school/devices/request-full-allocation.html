@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% set title = "Request devices if 15 or more children are self-isolating" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Get devices for your school",
+        href: "/school"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p>You can request your full device allocation if you have 15 or more children who are self-isolating having been exposed to a confirmed coronavirus case outside the school community.</p>
+
+    <h2 class="govuk-heading-m">What to put in your request</h2>
+
+    <p>Tell us:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>how many children are self-isolating at the same time, having been exposed to a confirmed coronavirus case outside the school community</li>
+      <li>the year groups of the children who are self-isolating</li>
+      <li>if you’ve spoken to your health protection team about rates of transmission in your area</li>
+    </ul>
+
+    <h2 class="govuk-heading-m">Where to send your request</h2>
+
+    <p>Send your request in an email to:<br /><a href="#">COVID.TECHNOLOGY@education.gov.uk</a></p>
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+
+    <p>We’ll email you back with instructions about what to do next.</p>
+  </div>
+</div>
+{% endblock %}
