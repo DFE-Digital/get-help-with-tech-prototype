@@ -17,6 +17,7 @@ module.exports = {
     'sign-up': false,
     'bulk-upload': true,
     'in-connectivity-pilots': true,
+    'pilots-stopped': true,
     mno: false
   },
   mno: {

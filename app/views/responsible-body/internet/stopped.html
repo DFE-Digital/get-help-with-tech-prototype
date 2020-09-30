@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% set title = "Get the internet pilots" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/responsible-body"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<!-- {{ appBanner({
+  html: "<h2 class=\"govuk-heading-m\">Thank you. We’ve received your information.</h2>",
+  type: "success",
+  icon: false
+}) }} -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <h2 class="govuk-heading-l">Increasing mobile data pilot</h2>
+
+    <p>This pilot has been paused while the Department for Education negotiates a new offer with mobile networks.</p>
+
+    <h2 class="govuk-heading-l">BT wifi hotspot pilot</h2>
+
+    <p>This pilot has been stopped because it did not give children a reliable internet connection.</p>
+  </div>
+</div>
+{% endblock %}

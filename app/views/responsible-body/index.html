@@ -50,15 +50,27 @@
     </ul>
 
     {% if data.features['in-connectivity-pilots'] %}
-    <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/responsible-body/internet">Get the internet</a>
-    </h2>
+      {% if data.features['pilots-stopped'] %}
+        <h2 class="govuk-heading-l govuk-!-font-size-27">
+          <a href="/responsible-body/internet/stopped">Get the internet pilots</a>
+        </h2>
 
-    <p>Use this section to:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>download BT wifi vouchers to distribute</li>
-      <li>request extra data for mobile devices</li>
-    </ul>
+        <p>These schemes are not currently running. This is because:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>the increasing mobile data pilot is on hold while we prepare to expand it</li>
+          <li>we’ve closed the BT wifi hotspot pilot</li>
+        </ul>
+      {% else %}
+        <h2 class="govuk-heading-l govuk-!-font-size-27">
+          <a href="/responsible-body/internet">Get the internet</a>
+        </h2>
+
+        <p>Use this section to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>download BT wifi vouchers to distribute</li>
+          <li>request extra data for mobile devices</li>
+        </ul>
+      {% endif %}
     {% endif %}
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">
