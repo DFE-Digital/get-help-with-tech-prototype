@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% set isOrderUser = data['school-details'].order_user %}
+{% set title = "Order devices soon" %}
+{% set lockdown = false %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: 'Order devices'
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {% if isOrderUser %}
+        {{ title }}
+      {% else %}
+        <span class="govuk-caption-xl">
+          {{ title }}
+        </span>
+        Your school can order devices
+      {% endif %}
+    </h1>
+
+    <p>Your school is now eligible to place orders.</p>
+
+    <p>You need to do this on a website called TechSource.</p>
+
+    <h2 class="govuk-heading-m">Your TechSource account will be ready soon</h2>
+
+    <p>You cannot order devices until your TechSource account is ready. This should be in the next 24 hours. We’ll email you when you can order.</p>
+
+    <!-- <div class="app-order-card govuk-!-margin-top-6">
+      <h1 class="govuk-panel__title govuk-!-font-size-36 govuk-!-margin-bottom-2">
+        82 devices available
+      </h1>
+      <div class="govuk-panel__body govuk-!-font-size-24">
+        You’ve ordered 0 of 82 devices
+      </div>
+    </div> -->
+  </div>
+</div>
+{% endblock %}
