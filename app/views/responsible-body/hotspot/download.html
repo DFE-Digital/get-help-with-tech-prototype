@@ -4,11 +4,9 @@
 {% set downloadAgain = data['downloaded'] == 'yes' %}
 
 {% block pageNavigation %}
-  {% if not data.features['only-bt'] %}
-    {{ govukBackLink({
-      href: "/responsible-body/internet"
-    }) }}
-  {% endif %}
+  {{ govukBackLink({
+    href: "/responsible-body/internet"
+  }) }}
 {% endblock %}
 
 {% block content %}
