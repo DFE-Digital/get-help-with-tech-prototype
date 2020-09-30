@@ -1,4 +1,6 @@
-{% if isSchool %}
+{% if reopenedSchool %}
+  <p>You can order the rest of your allocation when:</p>
+{% elseif isSchool %}
   <p>You can order your full allocation when:</p>
 {% else %}
   <p>You can order a school’s full allocation when:</p>

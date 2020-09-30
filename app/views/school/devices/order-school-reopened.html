@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% set isOrderUser = data['school-details'].order_user %}
+{% set title = "Your school has reopened and ordering has closed" %}
+{% set lockdown = false %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: 'Order devices'
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Order devices</span>
+      {{ title }}
+    </h1>
+
+    <!-- <p>Your school has reopened and ordering has closed.</p> -->
+
+    <div class="app-order-card">
+      <div class="govuk-panel__body govuk-!-font-size-24">
+        You ordered 82 of 102 devices
+      </div>
+    </div>
+
+    {% if isOrderUser %}
+      <p><a href="#">View your order history on TechSource</a></p>
+    {% endif %}
+
+    <h2 class="govuk-heading-m">When you can order again</h2>
+    {% set reopenedSchool = true %}
+    {% set requestLink = '/school/devices/request-devices' %}
+    {% include '_shared/order/_cant-order.html' %}
+
+    {% if not isOrderUser %}
+      <h2 class="govuk-heading-m">You won’t be able to place orders yourself</h2>
+      <p>You do not have a TechSource account. Someone else will need to place your school’s orders.</p>
+      <p><a href="/school/users">Go to manage users to see who can place orders, or give yourself access</a></p>
+    {% endif %}
+
+    <h2 class="govuk-heading-m">Get devices early for specific circumstances</h2>
+    {% include '_shared/request-devices/_who.html' %}
+  </div>
+</div>
+{% endblock %}
