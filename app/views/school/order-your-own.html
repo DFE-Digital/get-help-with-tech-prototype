@@ -1,13 +1,26 @@
 {% extends "_wizard-form.html" %}
 {% set isOrderUser = data['school-details'].order_user %}
-{% set title = "You can only order your full allocation if local restrictions are confirmed" if isOrderUser else "Your school can only order its full allocation if local restrictions are confirmed" %}
+{% set title = "You cannot order your full allocation right away" if isOrderUser else "Your school cannot order its full allocation right away" %}
 
 {% block form %}
-  <h1 class="govuk-heading-l">
+  [If a school can order, do not show this page]
+  <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
 
+  {% if isOrderUser %}
+    <p>You can only order your full allocation when:</p>
+  {% else %}
+    <p>Your school can only order its full allocation when:</p>
+  {% endif %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>local coronavirus restrictions are confirmed</li>
+    <li>15 or more children (in years 3 to 11) are self-isolating having been exposed to a confirmed case outside the school community</li>
+  </ul>
+
   <p>If your school is affected by local coronavirus restrictions, we’ll contact you with instructions as soon as you’re able to place orders.</p>
+
+  <p>If your school has 15 or more children self-isolating you will need to tell us before you can place orders.</p>
 
   <p>Orders placed before 4pm will normally be delivered to schools the next working day.</p>
 
