@@ -22,7 +22,9 @@
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
+
+    {% include '_shared/request-devices/_who.html' %}
+    {% include '_shared/request-devices/_make-disadvantaged-request.html' %}
   </div>
 </div>
-{% include '_shared/request-devices/_tabs.html' %}
 {% endblock %}
