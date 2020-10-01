@@ -16,10 +16,10 @@
       {{ title }}
     </h1>
 
-    <p>None of the <a href="#">{{ data.schools.length }} schools you will be placing orders for</a> have local coronavirus restrictions.</p>
-
     {% set requestLink = '/responsible-body/devices/request-devices' %}
     {% include '_shared/order/_cant-order.html' %}
+
+    <p>None of the <a href="#">{{ data.schools.length }} schools you will be placing orders for</a> have reported disruption.</p>
 
     <h2 class="govuk-heading-m">Get devices early for specific circumstances</h2>
     {% include '_shared/request-devices/_who.html' %}
