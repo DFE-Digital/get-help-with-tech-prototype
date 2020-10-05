@@ -16,6 +16,19 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/card";
 @import "components/order-card";
 
+// Prototype hack to hide broken breadcrumbs
+// Allows something like this in the template:
+// {
+//   text: "Thing",
+//   href: "/"
+// } if condition,
+// {
+//   text: 'Blah'
+// }
+.govuk-breadcrumbs__list-item:empty {
+  display: none;
+}
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
 .govuk-summary-list--wide-terms {

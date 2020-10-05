@@ -1,0 +1,15 @@
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "/school"
+    },
+    {
+      text: "Get laptops and tablets",
+      href: "/school/devices"
+    } if data.features['school-mno'],
+    {
+      text: customBreadcrumbTitle if customBreadcrumbTitle else title
+    }
+  ]
+}) }}

@@ -3,9 +3,7 @@
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
-  {{ govukBackLink({
-    href: "/school"
-  }) }}
+  {% include '_shared/breadcrumbs/_get-laptops-and-tablets-school.html' %}
 {% endblock %}
 
 {% block content %}
@@ -88,13 +86,6 @@
     }) }}
 
     <hr class="govuk-section-break govuk-section-break--m">
-
-    <h2 class="govuk-heading-m">
-      About Google Chromebooks
-    </h2>
-
-    {% set isSchool = true %}
-    {% include 'responsible-body/devices/school/_chromebook-guidance.html' %}
 
     <h2 class="govuk-heading-m">
       About allocations
