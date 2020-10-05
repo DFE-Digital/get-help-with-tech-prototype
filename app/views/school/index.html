@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Get devices for your school" %}
+{% set title = data['school-details'].name %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block content %}
@@ -12,7 +12,6 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">{{ data['school-details'].name }}</span>
       {{ title }}
     </h1>
 
@@ -53,25 +52,6 @@
       <li>access to this service</li>
       <li>access to the TechSource website (where they’ll place orders)</li>
     </ul>
-
-    <!-- <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/school/chromebooks">Configure Chromebooks before ordering</a>
-    </h2>
-    <p>Use this section to:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>tell us if you’ll be ordering Chromebooks</li>
-      <li>set the technical details needed to secure devices</li>
-    </ul> -->
-
-    <!-- <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/school/devices/manage">Configure your devices</a>
-    </h2>
-    <p>Use this section to:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>add users to this service</li>
-      <li>allow new users to order devices</li>
-      <li>edit existing users</li>
-    </ul> -->
   </div>
 </div>
 {% endblock %}
