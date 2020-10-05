@@ -14,10 +14,11 @@ module.exports = {
     }
   },
   features: {
+    'school-mno': true,
     'sign-up': false,
     'bulk-upload': true,
     'only-bt': false,
-    'in-connectivity-pilots': false,
+    'in-connectivity-pilots': true,
     mno: false
   },
   mno: {
