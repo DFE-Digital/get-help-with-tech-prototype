@@ -7,11 +7,11 @@
     items: [
       {
         text: "Home",
-        href: "/responsible-body"
+        href: "/responsible-body" if isRb else "/school"
       },
       {
         text: "Get the internet",
-        href: "/responsible-body/internet"
+        href: "/responsible-body/internet" if isRb else "/school/internet"
       },
       {
         text: title
@@ -33,7 +33,7 @@
       {{ title }}
     </h1>
 
-    {% if not dataValue(["responsible-body", "mobile"]) %}
+    {% if not dataValue(["mobile"]) %}
     <div class="govuk-inset-text">
       <p class="govuk-body">
         Use the guide to tell people what’s available and collect the information you&nbsp;need:
@@ -44,19 +44,19 @@
     </div>
     {% endif %}
 
-    <h2 class="govuk-heading-l">You cannot request data at the&nbsp;moment</h2>
+    <!-- <h2 class="govuk-heading-l">You cannot request data at the&nbsp;moment</h2>
     <p>Our initial pilot ended on 30 September 2020, and we are now working with mobile network providers to prepare for the next phase.</p>
     <p>If you were planning to request a data increase, please hold on to the information you’ve gathered and wait for an update on the scheme.</p>
-    <p>Data increases already received will continue until 31 December 2020.</p>
+    <p>Data increases already received will continue until 31 December 2020.</p> -->
 
-    <!-- {{ govukButton({
-      text: 'New request' if data.features['bulk-upload'] else 'Request data for someone',
-      href: '/responsible-body/mobile/type' if data.features['bulk-upload'] else '/responsible-body/mobile/new'
-    }) }} -->
+    {{ govukButton({
+      text: 'New request',
+      href: mobilePath + '/type'
+    }) }}
   </div>
 </div>
 
-{% if dataValue(["responsible-body", "mobile"]) %}
+{% if dataValue(["mobile"]) %}
   <h2 class="govuk-heading-l govuk-!-margin-top-6">Your requests</h2>
   <table class="govuk-table">
     <thead class="govuk-table__head">
@@ -67,7 +67,7 @@
       </tr>
     </thead>
     <tbody class="govuk-table__body">
-      {% for id, request in dataValue(["responsible-body", "mobile"]) %}
+      {% for id, request in dataValue(["mobile"]) %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">{{ request['name'] }}</td>
           <td class="govuk-table__cell">{{ request['mobile-number'] }}</td>

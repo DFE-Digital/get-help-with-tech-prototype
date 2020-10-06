@@ -5,17 +5,8 @@
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "/school"
-      },
-      {
-        text: 'Order devices'
-      }
-    ]
-  }) }}
+  {% set customBreadcrumbTitle = 'Order devices' %}
+  {% include '_shared/breadcrumbs/_get-laptops-and-tablets-school.html' %}
 {% endblock %}
 
 {% block content %}

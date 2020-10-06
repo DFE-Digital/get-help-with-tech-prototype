@@ -1,9 +1,19 @@
 {% extends "layout.html" %}
-{% set title = "Request devices for specific circumstances" %}
+{% set title = "Get laptops and tablets" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
-  {% include '_shared/breadcrumbs/_get-laptops-and-tablets-school.html' %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -13,8 +23,7 @@
       {{ title }}
     </h1>
 
-    {% include '_shared/request-devices/_who.html' %}
-    {% include '_shared/request-devices/_make-disadvantaged-request.html' %}
+    {% include '_shared/school/_devices-index.html' %}
   </div>
 </div>
 {% endblock %}

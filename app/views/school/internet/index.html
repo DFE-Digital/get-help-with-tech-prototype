@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% set title = "Get the internet" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <h2 class="govuk-heading-l govuk-!-font-size-27">
+      <a href="/school/internet/mobile">Request extra data for mobile devices</a>
+    </h2>
+    <p class="govuk-body">Give us mobile numbers and network details and we’ll request extra data for these devices. How much data someone gets will depend on their network.</p>
+  </div>
+</div>
+{% endblock %}

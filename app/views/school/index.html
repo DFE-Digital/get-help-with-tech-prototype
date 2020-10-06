@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Get devices for your school" %}
+{% set title = data['school-details'].name %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block content %}
@@ -12,38 +12,30 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">{{ data['school-details'].name }}</span>
       {{ title }}
     </h1>
 
-    <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/school/devices/order">Order devices</a>
-    </h2>
-    <p>Use this section to:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>check if you can place orders</li>
-      <li>access the Computacenter TechSource website to order devices</li>
-    </ul>
+    {% if data.features['school-mno'] %}
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/school/devices">Get laptops and tablets</a>
+      </h2>
+      <p>Use this section to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>order devices</li>
+        <li>request devices for specific circumstances</li>
+        <li>check your allocation and school details</li>
+      </ul>
 
-    <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/school/devices/request-devices">Request devices for specific circumstances</a>
-    </h2>
-    <p>Use this section to request devices for children who:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>are shielding on official advice</li>
-      <li>cannot attend school because they live in a different area with coronavirus restrictions</li>
-    </ul>
-
-    <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/school/check">Check your school details</a>
-    </h2>
-
-    <p>Use this section to:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>review your allocation</li>
-      <li>change your Chromebook settings</li>
-    </ul>
-
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/school/internet">Get the internet</a>
+      </h2>
+      <p>Use this section to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>request extra data for mobile devices</li>
+      </ul>
+    {% else %}
+      {% include '_shared/school/_devices-index.html' %}
+    {% endif %}
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">
       <a href="/school/users">Manage users</a>
@@ -53,25 +45,6 @@
       <li>access to this service</li>
       <li>access to the TechSource website (where they’ll place orders)</li>
     </ul>
-
-    <!-- <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/school/chromebooks">Configure Chromebooks before ordering</a>
-    </h2>
-    <p>Use this section to:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>tell us if you’ll be ordering Chromebooks</li>
-      <li>set the technical details needed to secure devices</li>
-    </ul> -->
-
-    <!-- <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/school/devices/manage">Configure your devices</a>
-    </h2>
-    <p>Use this section to:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>add users to this service</li>
-      <li>allow new users to order devices</li>
-      <li>edit existing users</li>
-    </ul> -->
   </div>
 </div>
 {% endblock %}

@@ -4,13 +4,13 @@
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/responsible-body/mobile"
+    href: mobilePath
   }) }}
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
-  <form method="post" action="/responsible-body/mobile/type" class="govuk-grid-column-two-thirds">
+  <form method="post" action="{{ mobilePath }}/type" class="govuk-grid-column-two-thirds">
 
     {{ govukRadios({
       fieldset: {
@@ -28,7 +28,7 @@
           text: "Using a spreadsheet"
         }
       ]
-    } | decorateFormAttributes(["responsible-body", "type"])) }}
+    } | decorateFormAttributes(["mobile-entry-type"])) }}
 
     {{ govukButton({
       html: 'Continue'
