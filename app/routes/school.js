@@ -19,6 +19,10 @@ module.exports = router => {
     res.render('school/devices/index')
   })
 
+  router.get('/school/internet', function (req, res) {
+    res.render('school/internet/index')
+  })
+
   router.get('/school/:view', function (req, res) {
     res.render(`school/${req.params.view}`, { paths: schoolWizardPaths(req) })
   })
