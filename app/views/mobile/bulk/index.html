@@ -4,7 +4,7 @@
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/responsible-body/mobile/type"
+    href: mobilePath + "/type"
   }) }}
 {% endblock %}
 
@@ -43,7 +43,7 @@
 
     {{ govukButton({
       text: 'Upload requests',
-      href: '/responsible-body/mobile/bulk/uploaded'
+      href: mobilePath + '/bulk/uploaded'
     }) }}
   </div>
 </div>

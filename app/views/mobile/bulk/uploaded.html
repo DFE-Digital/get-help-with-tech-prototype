@@ -4,7 +4,7 @@
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/responsible-body/mobile/bulk"
+    href: mobilePath + "/bulk"
   }) }}
 {% endblock %}
 
@@ -107,6 +107,6 @@
 
 {{ govukButton({
   text: 'Finish',
-  href: '/responsible-body/mobile'
+  href: mobilePath
 }) }}
 {% endblock %}

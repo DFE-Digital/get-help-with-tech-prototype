@@ -23,6 +23,10 @@ module.exports = router => {
     res.render('school/internet/index')
   })
 
+  router.get('/school/internet/mobile/:view', function (req, res) {
+    res.render(`mobile/${req.params.view}`, { school: true })
+  })
+
   router.get('/school/:view', function (req, res) {
     res.render(`school/${req.params.view}`, { paths: schoolWizardPaths(req) })
   })

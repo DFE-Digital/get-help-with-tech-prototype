@@ -4,7 +4,7 @@
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/responsible-body/mobile/type" if data.features['bulk-upload'] else "/responsible-body/mobile"
+    href: mobilePath + "/type"
   }) }}
 {% endblock %}
 
@@ -27,7 +27,7 @@
 </div>
 
 <div class="govuk-grid-row">
-  <form method="post" action="/responsible-body/mobile/{{ mobileId }}/check-answers" class="govuk-grid-column-two-thirds">
+  <form method="post" action="{{ mobilePath }}/{{ mobileId }}/check-answers" class="govuk-grid-column-two-thirds">
     {{ govukInput({
       label: {
         text: "Account holder name",
@@ -36,7 +36,7 @@
       hint: {
         html: "The account holder for a pay monthly contract must be over 18"
       }
-    } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "name"]) )}}
+    } | decorateFormAttributes(["mobile", mobileId, "name"]) )}}
 
     {{ govukInput({
       label: {
@@ -46,7 +46,7 @@
       hint: {
         text: 'All UK mobile numbers begin with ‘07’'
       }
-    } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "mobile-number"]) )}}
+    } | decorateFormAttributes(["mobile", mobileId, "mobile-number"]) )}}
 
     {{ govukRadios({
       fieldset: {
@@ -127,7 +127,7 @@
           }
         }
       ]
-    } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "mobile-network"])) }}
+    } | decorateFormAttributes(["mobile", mobileId, "mobile-network"])) }}
 
     {{ govukRadios({
       fieldset: {
@@ -144,7 +144,7 @@
           text: "Pay as you go (PAYG)"
         }
       ]
-    } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "mobile-contract-type"]) ) }}
+    } | decorateFormAttributes(["mobile", mobileId, "mobile-contract-type"]) ) }}
 
     {{ govukCheckboxes({
       fieldset: {
@@ -158,24 +158,7 @@
           text: "Yes, the privacy statement has been shared"
         }
       ]
-    } | decorateFormAttributes(["responsible-body", "mobile", mobileId, "privacy"])) }}
-
-    <!-- {{ govukRadios({
-      fieldset: {
-        legend: {
-          text: "Are they a Pay as you go (PAYG) customer?",
-          classes: "govuk-label--m"
-        }
-      },
-      items: [
-        {
-          text: "Yes"
-        },
-        {
-          text: "No"
-        }
-      ]
-    }) }} -->
+    } | decorateFormAttributes(["mobile", mobileId, "privacy"])) }}
 
     {{ govukButton({
       html: 'Continue'

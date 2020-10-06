@@ -4,7 +4,7 @@
 
 {% block pageNavigation %}
   {{ govukBackLink({
-    href: "/responsible-body/mobile/new"
+    href: mobilePath + "/new"
   }) }}
 {% endblock %}
 
@@ -22,12 +22,12 @@
             text: "Account holder"
           },
           value: {
-            text: dataValue(["responsible-body", "mobile", mobileId, "name"])
+            text: dataValue(["mobile", mobileId, "name"])
           },
           actions: {
             items: [
               {
-                href: "/responsible-body/mobile/new",
+                href: mobilePath + "/new",
                 text: "Change",
                 visuallyHiddenText: "name"
               }
@@ -39,12 +39,12 @@
             text: "Mobile number"
           },
           value: {
-            text: dataValue(["responsible-body", "mobile", mobileId, "mobile-number"])
+            text: dataValue(["mobile", mobileId, "mobile-number"])
           },
           actions: {
             items: [
               {
-                href: "/responsible-body/mobile/new",
+                href: mobilePath + "/new",
                 text: "Change",
                 visuallyHiddenText: "name"
               }
@@ -56,12 +56,12 @@
             text: "Mobile network"
           },
           value: {
-            text: dataValue(["responsible-body", "mobile", mobileId, "mobile-network"])
+            text: dataValue(["mobile", mobileId, "mobile-network"])
           },
           actions: {
             items: [
               {
-                href: "/responsible-body/mobile/new",
+                href: mobilePath + "/new",
                 text: "Change",
                 visuallyHiddenText: "name"
               }
@@ -73,12 +73,12 @@
             text: "Pay monthly or pay as you go"
           },
           value: {
-            text: dataValue(["responsible-body", "mobile", mobileId, "mobile-contract-type"])
+            text: dataValue(["mobile", mobileId, "mobile-contract-type"])
           },
           actions: {
             items: [
               {
-                href: "/responsible-body/mobile/new",
+                href: mobilePath + "/new",
                 text: "Change",
                 visuallyHiddenText: "name"
               }
@@ -90,12 +90,12 @@
             text: "Privacy"
           },
           value: {
-            text: dataValue(["responsible-body", "mobile", mobileId, "privacy"])
+            text: dataValue(["mobile", mobileId, "privacy"])
           },
           actions: {
             items: [
               {
-                href: "/responsible-body/mobile/new",
+                href: mobilePath + "/new",
                 text: "Change",
                 visuallyHiddenText: "name"
               }
@@ -105,11 +105,11 @@
       ]
     }) }}
 
-    <p>These details will be passed to {{ dataValue(["responsible-body", "mobile", mobileId, "mobile-network"]) }}</p>
+    <p>These details will be passed to {{ dataValue(["mobile", mobileId, "mobile-network"]) }}</p>
 
     {{ govukButton({
       text: 'Confirm request',
-      href: '/responsible-body/mobile?finish-mobile=true'
+      href: mobilePath + '?finish-mobile=true'
     }) }}
   </div>
 </div>
