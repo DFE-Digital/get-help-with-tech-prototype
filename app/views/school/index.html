@@ -15,6 +15,25 @@
       {{ title }}
     </h1>
 
+    {{ govukWarningText({
+      html: '
+        <h2 class="govuk-heading-m govuk-!-font-weight-bold">We reduced your allocation because of<br />delays in our supply chain</h2>
+        <!-- <p>We’ve reduced your allocation so we can target support at disadvantaged children in key exam years (10 and 11).</p> -->
+        <p><a href="/school/reduced-allocation">More about your reduced allocation</a></p>
+      ',
+      iconFallbackText: 'Warning',
+      classes: 'govuk-!-margin-bottom-2'
+    }) }}
+
+    {{ govukWarningText({
+      html: '
+        <h2 class="govuk-heading-m govuk-!-font-weight-bold">We removed your allocation because of<br />delays in our supply chain</h2>
+        <p>Primary schools cannot currently place orders for laptops and tablets. We’ve made this difficult decision so we can target support at disadvantaged children in key exam years (10 and 11).</p>
+        <p><a href="/school/reduced-to-zero-allocation">More about this change to your allocation</a></p>
+      ',
+      iconFallbackText: 'Warning'
+    }) }}
+
     {% if data.features['school-mno'] %}
       <h2 class="govuk-heading-l govuk-!-font-size-27">
         <a href="/school/devices">Get laptops and tablets</a>

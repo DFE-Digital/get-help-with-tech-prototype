@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% set title = "We reduced device allocations because of delays in our supply chain" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/responsible-body"
+      },
+      {
+        text: "Delays in our supply chain"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <p>Due to delays in our supply chain, we reduced the number of laptops and tablets allocated to schools. This is so we can target support at disadvantaged children in key exam years (10 and 11). This means primary schools cannot currently order devices .</p>
+
+    <p>Allocations of devices are now based on:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>the number of children in years 10 and 11</li>
+      <li>free school meals data</li>
+      <li>an estimate of the number of devices a school already has</li>
+    </ul>
+
+    <h2 class="govuk-heading-m">We’re working hard to increase stock levels</h2>
+
+    <p>We’re working hard with suppliers to increase stock levels as quickly as we can, and we hope to restore your original allocation. We’ll let you know when things change.</p>
+
+    <p>We understand this news is disappointing, and we’re sorry.</p>
+  </div>
+</div>
+{% endblock %}

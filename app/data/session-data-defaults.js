@@ -14,7 +14,7 @@ module.exports = {
     }
   },
   features: {
-    'school-mno': true,
+    'school-mno': false,
     'sign-up': false,
     'bulk-upload': true,
     'only-bt': false,

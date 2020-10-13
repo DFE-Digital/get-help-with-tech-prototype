@@ -16,6 +16,16 @@
       {{ title }}
     </h1>
 
+    {{ govukWarningText({
+      html: '
+        <h2 class="govuk-heading-m govuk-!-font-weight-bold">We reduced device allocations because of delays in our supply chain</h2>
+        <p>With fewer devices available we’re targeting support at disadvantaged children in key exam years (10 and 11). Primary schools cannot currently place orders for laptops and tablets.</p>
+        <p><a href="/responsible-body/reduced-allocations">More about changes to allocations</a></p>
+      ',
+      iconFallbackText: 'Warning',
+      classes: 'govuk-!-margin-bottom-2'
+    }) }}
+
     {% if data.covid %}
       <div style="border-left: 10px solid #0b0c0c; padding: 10px 20px" class="govuk-!-margin-bottom-7">
         <h2 class="govuk-heading-l govuk-!-font-size-27 govuk-!-margin-bottom-2">

@@ -1,4 +1,18 @@
+<!-- {{ govukWarningText({
+  text: 'Due to delays in our supply chain, devices are now only available for disadvantaged children in years 10 and 11.',
+  iconFallbackText: 'Warning',
+  classes: 'govuk-!-margin-bottom-2'
+}) }} -->
+
 {% if reopenedSchool %}
+  <p>You can order the rest of your allocation when:</p>
+{% elseif isSchool %}
+  <p>You can order your full allocation when local coronavirus restrictions are confirmed.</p>
+{% else %}
+  <p>You can order a school’s full allocation when local coronavirus restrictions are confirmed.</p>
+{% endif %}
+
+<!-- {% if reopenedSchool %}
   <p>You can order the rest of your allocation when:</p>
 {% elseif isSchool %}
   <p>You can order your full allocation when:</p>
@@ -6,9 +20,9 @@
   <p>You can order a school’s full allocation when:</p>
 {% endif %}
 <ul class="govuk-list govuk-list--bullet">
-  <li>local coronavirus restrictions are confirmed</li>
-  <li>15 or more children (in years 3 to 11) are self-isolating having been exposed to a confirmed case outside the school community</li>
-</ul>
+  <li>local coronavirus restrictions are affecting children in years 10 to 11</li>
+  <li>15 or more children (in years 10 to 11) are self-isolating having been exposed to a confirmed case outside the school community</li>
+</ul> -->
 
 {% if isSchool %}
   <p>We’ll contact you about placing orders if you report disruption through the <a href="https://form.education.gov.uk/service/educational-setting-status">DfE educational settings status form</a>.</p>

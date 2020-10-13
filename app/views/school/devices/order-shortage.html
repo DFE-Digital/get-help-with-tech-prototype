@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% set isOrderUser = data['school-details'].order_user %}
+{% set title = "You cannot order devices because of delays in our supply chain" %}
+{% set lockdown = false %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {% set customBreadcrumbTitle = 'Order devices' %}
+  {% include '_shared/breadcrumbs/_get-laptops-and-tablets-school.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Order devices</span>
+      {{ title }}
+    </h1>
+
+    <p>Due to delays in our supply chain, primary schools cannot currently place orders for laptops and tablets.</p>
+    <p>We made this difficult decision so we can target support at disadvantaged children in key exam years (10 and 11).</p>
+    <p>We understand this news is disappointing, and we’re sorry.</p>
+    <p><a href="/school/reduced-to-zero-allocation">More about your allocation and when it might be reinstated</a></p>
+
+    <h2 class="govuk-heading-m">Get devices for specific circumstances</h2>
+    {% set requestLink = '/school/devices/request-devices' %}
+    {% include '_shared/request-devices/_who.html' %}
+  </div>
+</div>
+{% endblock %}
