@@ -1,26 +1,32 @@
 {% extends "_wizard-form.html" %}
 {% set isOrderUser = data['school-details'].order_user %}
-{% set title = "You cannot order your full allocation right away" if isOrderUser else "Your school cannot order its full allocation right away" %}
+{% if data.features['15-self'] %}
+  {% set title = "You cannot order your full allocation right away" if isOrderUser else "Your school cannot order its full allocation right away" %}
+{% else %}
+  {% set title = "You can only order your full allocation if local restrictions are confirmed" if isOrderUser else "Your school can only order its full allocation if local restrictions are confirmed" %}
+{% endif %}
 
 {% block form %}
-  [If a school can order, do not show this page]
+  {% if data.features['15-self'] %}[If a school can order, do not show this page]{% endif %}
   <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
 
-  {% if isOrderUser %}
-    <p>You can only order your full allocation when:</p>
+  {% if data.features['15-self'] %}
+    {% if isOrderUser %}
+      <p>You can only order your full allocation when:</p>
+    {% else %}
+      <p>Your school can only order its full allocation when:</p>
+    {% endif %}
+    <ul class="govuk-list govuk-list--bullet">
+      <li>local coronavirus restrictions are confirmed</li>
+      <li>15 or more children (in years 3 to 11) are self-isolating having been exposed to a confirmed case outside the school community</li>
+    </ul>
+
+    <p>If your school reports disruption through the <a href="https://form.education.gov.uk/service/educational-setting-status">DfE educational settings status form</a> we will contact you about placing orders.</p>
   {% else %}
-    <p>Your school can only order its full allocation when:</p>
+    <p>If your school is affected by local coronavirus restrictions, we’ll contact you with instructions as soon as you’re able to place orders.</p>
   {% endif %}
-  <ul class="govuk-list govuk-list--bullet">
-    <li>local coronavirus restrictions are confirmed</li>
-    <li>15 or more children (in years 3 to 11) are self-isolating having been exposed to a confirmed case outside the school community</li>
-  </ul>
-
-  <p>If your school reports disruption through the <a href="https://form.education.gov.uk/service/educational-setting-status">DfE educational settings status form</a> we will contact you about placing orders.</p>
-
-  <p>Orders placed before 4pm will normally be delivered to schools the next working day.</p>
 
   <h2 class="govuk-heading-m">Get devices earlier for specific circumstances</h2>
   <div class="govuk-!-margin-bottom-6">

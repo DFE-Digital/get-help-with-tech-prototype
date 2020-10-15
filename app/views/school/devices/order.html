@@ -1,6 +1,11 @@
 {% extends "layout.html" %}
 {% set isOrderUser = data['school-details'].order_user %}
-{% set title = "You cannot order your full allocation yet" if isOrderUser else "Your school cannot its full allocation yet" %}
+
+{% if data.features['15-self']%}
+  {% set title = "You cannot order your full allocation yet" if isOrderUser else "Your school cannot its full allocation yet" %}
+{% else %}
+  {% set title = "You cannot order yet" if isOrderUser else "Your school cannot order yet" %}
+{% endif %}
 {% set lockdown = false %}
 {% block pageTitle %}{{ title }}{% endblock %}
 

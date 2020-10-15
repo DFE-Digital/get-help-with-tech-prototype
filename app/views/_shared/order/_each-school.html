@@ -1,3 +1,5 @@
-<p>Place an order for each school.</p>
-
-<p>Devices will arrive the next working day if you order before 4pm.</p>
+{% if data.features['delay-delivery'] %}
+  <p>We’re experiencing high demand at the moment, but we’re working hard to get devices delivered within 5 working days.</p>
+{% else %}
+  <p>Devices will arrive the next working day if you order before 4pm.</p>
+{% endif %}
