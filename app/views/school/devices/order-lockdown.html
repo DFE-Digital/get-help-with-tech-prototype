@@ -32,7 +32,11 @@
     </div>
 
     {% if isOrderUser %}
-      <p class="govuk-body">Order your devices now. Do not delay.</p>
+      {% if data.features['order-only-what-you-need'] %}
+        <p class="govuk-body">Only order the devices you need.</p>
+      {% else %}
+        <p class="govuk-body">Order your devices now. Do not delay.</p>
+      {% endif %}
 
       {% if data.features['delay-delivery']%}
         <p class="govuk-body">We’re experiencing high demand at the moment, but we’re working hard to get devices delivered within 5 working days.</p>

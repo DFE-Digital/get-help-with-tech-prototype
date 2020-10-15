@@ -17,6 +17,11 @@
     <p>We’ll contact you about placing orders if a school reports disruption through the <a href="https://form.education.gov.uk/service/educational-setting-status">DfE educational settings status form</a>.</p>
   {% endif %}
 {% else %}
-  <p>You can only place orders when local coronavirus restrictions are confirmed.</p>
+  {% if data.features['order-only-what-you-need'] %}
+    <p>You should only order the devices you need. You can do this when local coronavirus restrictions are confirmed.</p>
+  {% else %}
+    <p>You can only place orders when local coronavirus restrictions are confirmed.</p>
+  {% endif %}
+
   <p>We’ll contact you as soon as you’re able to place orders.</p>
 {% endif %}

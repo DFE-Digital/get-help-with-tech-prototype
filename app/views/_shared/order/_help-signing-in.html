@@ -8,4 +8,8 @@
   <li>Password: Use the ‘Forgotten password’ link to set a password the first time you sign in</li>
 </ul>
 
-<p>It’s important to know how many devices you can order before you sign in. If you try to order more than you’ve been allocated, the order will be cancelled.</p>
+{% if data.features['order-only-what-you-need'] %}
+  <p>It’s important to know how many devices you can order before you sign in. Please order only what you need. If you try to order more than you’ve been allocated, the order will be cancelled.</p>
+{% else %}
+  <p>It’s important to know how many devices you can order before you sign in. If you try to order more than you’ve been allocated, the order will be cancelled.</p>
+{% endif %}

@@ -14,6 +14,7 @@ module.exports = {
     }
   },
   features: {
+    'order-only-what-you-need': true,
     '15-self': false,
     'delay-delivery': true,
     'school-mno': false,
