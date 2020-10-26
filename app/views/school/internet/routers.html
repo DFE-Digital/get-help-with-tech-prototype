@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% set title = "Request 4G wireless routers" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: "Get the internet",
+        href: "/school/internet"
+      },
+      {
+        text: customBreadcrumbTitle if customBreadcrumbTitle else title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p>You can request 4G wireless routers for disadvantaged children<br />in years 3 to 11 who:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>do not have access to the internet and whose face-to-face education is disrupted. In this event, you will also have been invited to order laptops and tablets.</li>
+      <li>are <a href="#">extremely clinically vulnerable</a> and need to shield on current official advice (this could be from a doctor or hospital consultant)</li>
+      <li>live in a household that’s been advised to shield because a family member is clinically extremely vulnerable</li>
+      <li>cannot attend school – even though theirs is open – because they live in a different area with local coronavirus restrictions</li>
+    </ul>
+
+    <h2 class="govuk-heading-m">What to put in your request</h2>
+
+    <p>Tell us:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>your unique reference number (URN) [SHOW URN HERE]</li>
+      <li>the name of your school</li>
+      <li>the number of children needing a router</li>
+      <!-- <li>how many of the routers you’re requesting are for years 10 and 11, as we’ll prioritise them if stocks get low</li> -->
+    </ul>
+
+    <p>Give us evidence of:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>how you’ve identified disadvantage, such as the number of children in receipt of free school meals or pupil premium</li>
+      <li>your understanding of children, young people and families’ access to internet connectivity</li>
+      <li>disadvantaged pupils joining the school since the most recent Schools Census</li>
+    </ul>
+
+    <p>Evidence can be surveys, calls home, awareness of families, demographic data, or questions asked to parents. Please don’t send us any personal information, like names of children, or dates of birth.</p>
+    <p>We have a limited number of routers available and may not be able to give you the number you’ve requested.</p>
+
+    {% include '_shared/request-devices/_where-send-request.html' %}
+  </div>
+</div>
+{% endblock %}
