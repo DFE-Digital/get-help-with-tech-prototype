@@ -12,96 +12,78 @@
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
-
-    {{ govukSummaryList({
-      rows: [
-        {
-          key: {
-            text: "Provisional allocation"
-          },
-          value: {
-            text: data['school-details'].allocation + " devices"
-          },
-          actions: {
-            items: [
-              {
-                href: "https://get-help-with-tech.education.gov.uk/devices/device-allocations",
-                text: "Query allocation"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Will your school need to order Chromebooks?"
-          },
-          value: {
-            text: "Yes"
-          },
-          actions: {
-            items: [
-              {
-                href: "#",
-                text: "Change",
-                visuallyHiddenText: "name"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Google Chromebook: Domain"
-          },
-          value: {
-            text: data['domain']
-          },
-          actions: {
-            items: [
-              {
-                href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
-                text: "Change",
-                visuallyHiddenText: "name"
-              }
-            ]
-          }
-        } if data['domain'],
-        {
-          key: {
-            text: "Google Chromebook: Recovery email address"
-          },
-          value: {
-            text: data['recovery']
-          },
-          actions: {
-            items: [
-              {
-                href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
-                text: "Change",
-                visuallyHiddenText: "name"
-              }
-            ]
-          }
-        } if data['recovery']
-      ]
-    }) }}
-
-    <hr class="govuk-section-break govuk-section-break--m">
-
-    <h2 class="govuk-heading-m">
-      About allocations
-    </h2>
-
-    <p>Allocations are based on:</p>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li>the number of children in years 3 to 11</li>
-      <li>free school meals data</li>
-      <li>an estimate of the number of devices a school already has</li>
-    </ul>
-
-    <p>Numbers will be reassessed at the time of ordering based on availability and the extent of coronavirus restrictions.</p>
-
-    <p>If you need to query your allocation, email <a href="#">COVID.TECHNOLOGY@education.gov.uk</a></p>
   </div>
 </div>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Allocation"
+      },
+      value: {
+        text: data['school-details'].allocation + " devices"
+      },
+      actions: {
+        items: [
+          {
+            href: "https://get-help-with-tech.education.gov.uk/devices/device-allocations",
+            text: "Query allocation"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Will your school need to order Chromebooks?"
+      },
+      value: {
+        text: "Yes"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Google Chromebook: Domain"
+      },
+      value: {
+        text: data['domain']
+      },
+      actions: {
+        items: [
+          {
+            href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    } if data['domain'],
+    {
+      key: {
+        text: "Google Chromebook: Recovery email address"
+      },
+      value: {
+        text: data['recovery']
+      },
+      actions: {
+        items: [
+          {
+            href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    } if data['recovery']
+  ]
+}) }}
 {% endblock %}
