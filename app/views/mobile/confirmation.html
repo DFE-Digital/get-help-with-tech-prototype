@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% set title = "Who you can request mobile data for" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: mobilePath
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+    <p class="govuk-body">
+      You can request extra mobile data for disadvantaged children:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>in years 3 to 11 who do not have access to the internet and whose face-to-face education is disrupted. (In this event, you will also have been invited to order laptops and tablets).</li>
+      <li>who are <a href="https://www.gov.uk/government/publications/guidance-on-shielding-and-protecting-extremely-vulnerable-persons-from-covid-19/guidance-on-shielding-and-protecting-extremely-vulnerable-persons-from-covid-19">extremely clinically vulnerable</a> and need to shield on current official advice (this could be from a doctor or hospital consultant)</li>
+      <li>who live in a household that’s been advised to shield because a family member is clinically extremely vulnerable</li>
+      <li>who cannot attend school – even though theirs is open – because they live in a different area with local coronavirus restrictions</li>
+    </ul>
+
+    {{ govukCheckboxes({
+      fieldset: {
+        legend: {
+          text: 'Confirmation',
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          text: "I confirm I’m requesting data for one or more of these reasons"
+        }
+      ]
+    } | decorateFormAttributes(["mobile-entry-type"])) }}
+
+    {{ govukButton({
+      html: 'Continue',
+      href: mobilePath + '/type'
+    }) }}
+  </div>
+</div>
+{% endblock %}

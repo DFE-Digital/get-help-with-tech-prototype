@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% set title = "Why are you requesting this increase in mobile data?" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: mobilePath
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <form method="post" action="{{ mobilePath }}/type" class="govuk-grid-column-two-thirds">
+
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: title,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+        }
+      },
+      hint: {
+        html: "<p>I am requesting this data on behalf of a disadvantaged child (or children) who needs internet access because:</p>"
+      },
+      items: [
+        {
+          text: "Face-to-face education has been disrupted at their school"
+        },
+        {
+          text: "They are extremely clinically vulnerable and need to shield on current official advice"
+        },
+        {
+          text: "They live in a household that’s been advised to shield because a family member is clinically extremely vulnerable"
+        },
+        {
+          text: "They cannot attend school – even though theirs is open – because they live in a different area with local coronavirus restrictions"
+        }
+      ]
+    } | decorateFormAttributes(["mobile-entry-type"])) }}
+
+    {{ govukButton({
+      html: 'Continue'
+    }) }}
+  </form>
+</div>
+{% endblock %}
