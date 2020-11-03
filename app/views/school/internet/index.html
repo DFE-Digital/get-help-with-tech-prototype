@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Get the internet" %}
+{% set title = "Get internet access" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -24,15 +24,19 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body">
-      Help children get online by giving them 4G wireless routers or requesting extra data for their mobile devices. You can request these for disadvantaged children:
+      Help disadvantaged children get online by requesting extra data for mobile devices or by giving them 4G wireless routers.
     </p>
 
-    <ul class="govuk-list govuk-list--bullet">
-      <li>in years 3 to 11 who do not have access to the internet and whose face-to-face education is disrupted. (In this event, you will also have been invited to order laptops and tablets).</li>
-      <li>who are <a href="https://www.gov.uk/government/publications/guidance-on-shielding-and-protecting-extremely-vulnerable-persons-from-covid-19/guidance-on-shielding-and-protecting-extremely-vulnerable-persons-from-covid-19">extremely clinically vulnerable</a> and need to shield on current official advice (this could be from a doctor or hospital consultant)</li>
-      <li>who live in a household that’s been advised to shield because a family member is clinically extremely vulnerable</li>
-      <li>who cannot attend school – even though theirs is open – because they live in a different area with local coronavirus restrictions</li>
+    <ul class="govuk-list">
+      <li><a href="#">Find out more about routers and data</a></li>
+      <li><a href="#">Compare ways of getting children online</a></li>
     </ul>
+
+    <h2 class="govuk-heading-l govuk-!-font-size-27">What you can request</h2>
+
+    <p>You can request data or routers for <a href="#">specific circumstances</a>.</p>
+
+    <p>If your school reports a closure or more than 15 children are self-isolating, you can request data and routers for more children.</p>
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">
       <a href="/school/internet/mobile">Request extra data for mobile devices</a>
@@ -48,13 +52,13 @@
       <a href="/school/internet/routers">Request 4G wireless routers</a>
     </h2>
 
-    <p>Request 4G wireless routers for:</p>
+    <p>Request routers for:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>children without access to a mobile device</li>
       <li>families with multiple children needing internet access</li>
     </ul>
   </div>
-  <div class="govuk-grid-column-one-third">
+  <!-- <div class="govuk-grid-column-one-third">
     {{ appRelated({
       title: "Guidance",
       items: [
@@ -68,6 +72,6 @@
         }
       ]
     }) }}
-  </div>
+  </div> -->
 </div>
 {% endblock %}

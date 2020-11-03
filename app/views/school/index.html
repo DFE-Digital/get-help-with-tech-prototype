@@ -15,24 +15,49 @@
       {{ title }}
     </h1>
 
+    <p>Use this service to get help with technology for disadvantaged children:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>in years 3 to 11 whose face-to-face education is disrupted</li>
+      <li>in any year group for <a href="#">specific circumstances</a></li>
+    </ul>
+
     {% if data.features['school-mno'] %}
       <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/school/devices">Get laptops and tablets</a>
+        <a href="/school/devices/order">Order devices</a>
       </h2>
       <p>Use this section to:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>order devices</li>
-        <li>request devices for specific circumstances</li>
-        <li>check your allocation and school details</li>
+        <li>check if you can place orders</li>
+        <!-- <li>order laptops, tablets and 4G wireless routers</li> -->
+        <li>access the Computacenter TechSource website to order devices</li>
       </ul>
 
       <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/school/internet">Get the internet</a>
+        <a href="/school/devices/request-devices">Request devices for specific&nbsp;circumstances</a>
       </h2>
-      <p>Use this section to request:</p>
+      <p>Use this section to request devices for children who:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>extra data for mobile devices</li>
-        <li>4G wireless routers</li>
+        <li>are shielding on official advice</li>
+        <li>cannot attend school because they live in a different area with coronavirus restrictions</li>
+      </ul>
+
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/school/internet">Get internet access</a>
+      </h2>
+      <p>Use this section to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>compare ways of getting children online</li>
+        <li>request extra data for mobile devices</li>
+      </ul>
+
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/school/devices/check">Check your school details</a>
+      </h2>
+
+      <p>Use this section to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>review your allocation</li>
+        <li>change your Chromebook settings</li>
       </ul>
     {% else %}
       {% include '_shared/school/_devices-index.html' %}
