@@ -3,7 +3,22 @@
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
-  {% include '_shared/breadcrumbs/_get-laptops-and-tablets-school.html' %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: "Get help for specific circumstances",
+        href: "/school/specific-circumstances"
+      } if data.features['school-mno'],
+      {
+        text: title
+      }
+    ]
+  }) }}
+
 {% endblock %}
 
 {% block content %}
