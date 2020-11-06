@@ -13,12 +13,11 @@ function guideNavigation (req) {
       href: '/guide/telling-about-offer'
     },
     {
+      text: 'Explaining our privacy policy',
+      href: '/guide/privacy'
+    }, {
       text: 'Asking for account holder name and mobile number',
       href: '/guide/asking-for-account-holder'
-    },
-    {
-      text: 'Privacy and collecting permission to share someone’s details',
-      href: '/guide/privacy'
     }
   ]
 

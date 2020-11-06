@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% set title = "Get help for specific circumstances" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<!-- {{ appBanner({
+  html: "<h2 class=\"govuk-heading-m\">Thank you. We’ve received your information.</h2>",
+  type: "success",
+  icon: false
+}) }} -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p>Full support is only available when you use the <a href="https://form.education.gov.uk/service/educational-setting-status">educational setting status form</a> to:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>report a closure</li>
+      <li>tell us that more than 15 children are self-isolating</li>
+    </ul>
+
+    <!-- <p>You will then be invited to order devices.</p> -->
+
+    <p>Partial support is available for specific circumstances.</p>
+
+    <h2 class="govuk-heading-m">Specific circumstances</h2>
+
+    <p>You can get help immediately for disadvantaged children from any year group who:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>are <a href="#">extremely clinically vulnerable</a> and need to shield on current official advice (this could be from a doctor or hospital consultant)</li>
+      <li>live in a household that’s been advised to shield because a family member is clinically extremely vulnerable</li>
+      <li>cannot attend school – even though theirs is open – because they live in a different area with local coronavirus restrictions</li>
+    </ul>
+
+    <h2 class="govuk-heading-m">Help available</h2>
+
+    <ul class="govuk-list">
+      <li><a href="/school/devices/request-devices">Request devices for specific circumstances</a></li>
+      <li><a href="/school/internet">Request extra mobile data for specific circumstances</a></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

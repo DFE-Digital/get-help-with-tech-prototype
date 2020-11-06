@@ -15,14 +15,13 @@
       Who needs the extra mobile&nbsp;data?
     </h1>
 
-    <div class="govuk-inset-text">
-      <p class="govuk-body">
-        Use the guide to tell people what’s available and collect the information you&nbsp;need:
-      </p>
-      <p class="govuk-body">
-        <a class="govuk-link" href="/guide">Guide to collecting mobile information</a>
-      </p>
-    </div>
+    <h2 class="govuk-heading-m">Use the guide</h2>
+    <p class="govuk-body">
+      Use the guide to tell people what’s available, collect the information needed, and share the privacy statement:
+    </p>
+    <p class="govuk-body govuk-!-margin-bottom-6">
+      <a class="govuk-link" href="/guide">Guide to collecting mobile information</a>
+    </p>
   </div>
 </div>
 
@@ -61,70 +60,16 @@
       },
       items: [
         {
-          text: "BT Mobile",
-          hint: {
-            text: 'May offer data when service launches'
-          }
+          text: "Three"
         },
         {
-          text: "BT Plusnet",
-          hint: {
-            text: 'May offer data when service launches'
-          }
+          text: "Smarty"
         },
         {
-          text: "EE",
-          hint: {
-            text: 'Offers data now'
-          }
+          text: "Sky Mobile"
         },
         {
-          text: "Giff Gaff",
-          hint: {
-            text: 'May offer data when service launches'
-          }
-        },
-        {
-          text: "O2",
-          hint: {
-            text: 'May offer data when service launches'
-          }
-        },
-        {
-          text: "Tesco Mobile",
-          hint: {
-            text: 'May offer data when service launches'
-          }
-        },
-        {
-          text: "Three",
-          hint: {
-            text: 'Offers data now'
-          }
-        },
-        {
-          text: "Smarty",
-          hint: {
-            text: 'Offers data now'
-          }
-        },
-        {
-          text: "Sky Mobile",
-          hint: {
-            text: 'May offer data when service launches'
-          }
-        },
-        {
-          text: "Virgin Mobile",
-          hint: {
-            text: 'Offers data now. Does not support Pay as you go customers.'
-          }
-        },
-        {
-          text: "Vodafone",
-          hint: {
-            text: 'May offer data when service launches'
-          }
+          text: "Virgin Mobile"
         }
       ]
     } | decorateFormAttributes(["mobile", mobileId, "mobile-network"])) }}
@@ -152,6 +97,9 @@
           text: "Has someone shared the privacy statement with the account holder?",
           classes: "govuk-fieldset__legend--m"
         }
+      },
+      hint: {
+        html: 'The account holder does not need to sign or agree to the <a href="/guide/privacy">privacy statement</a>, but it must be shared with them, verbally or in writing.'
       },
       items: [
         {

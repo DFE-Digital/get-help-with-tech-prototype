@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% set title = "Your requests" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/responsible-body" if isRb else "/school"
+      },
+      {
+        text: "Get internet access",
+        href: "/responsible-body/internet" if isRb else "/school/internet"
+      },
+      {
+        text: "Request extra data for mobile devices",
+        href: "/responsible-body/internet/mobile" if isRb else "/school/internet/mobile"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+{% block content %}
+
+{{ appBanner({
+  html: "<h2 class=\"govuk-heading-m\">We’ve received your request</h2>",
+  type: "success",
+  icon: false
+}) }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+  </div>
+</div>
+
+{{ govukButton({
+  text: 'New request',
+  href: mobilePath + '/type'
+}) }}
+
+{% if dataValue(["mobile"]) %}
+  <table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header">Account holder</th>
+        <th class="govuk-table__header">Mobile number</th>
+        <th class="govuk-table__header">Mobile network</th>
+        <th class="govuk-table__header">Status</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      {% for id, request in dataValue(["mobile"]) %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ request['name'] }}</td>
+          <td class="govuk-table__cell">{{ request['mobile-number'] }}</td>
+          <td class="govuk-table__cell">{{ request['mobile-network'] }}</td>
+          <td class="govuk-table__cell">
+            {{ govukTag({
+              text: "Requested",
+              classes: "govuk-tag--blue"
+            })}}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No requests yet.</p>
+{% endif %}
+{% endblock %}
