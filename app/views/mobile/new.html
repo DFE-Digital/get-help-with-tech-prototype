@@ -33,7 +33,7 @@
         classes: "govuk-label--m"
       },
       hint: {
-        html: "The account holder for a pay monthly contract must be over 18"
+        html: 'The account holder for a pay monthly contract must be over 18.<br /><a href="/guide/asking-for-account-holder">Guidance on asking for account holder details</a>'
       }
     } | decorateFormAttributes(["mobile", mobileId, "name"]) )}}
 
@@ -43,9 +43,18 @@
         classes: "govuk-label--m"
       },
       hint: {
-        text: 'All UK mobile numbers begin with ‘07’'
+        html: 'All UK mobile numbers begin with ‘07’<br /><a href="/guide/asking-for-account-holder">Guidance on asking for mobile numbers</a>'
       }
     } | decorateFormAttributes(["mobile", mobileId, "mobile-number"]) )}}
+
+    {% set genericOfferDetailsHTML %}
+      <ul class="govuk-list govuk-list--bullet">
+        <li>The recipient will get unlimited data until 31 July 2021.</li>
+        <li>The offer is available to both Pay Monthly and Pay-As-You-Go customers.</li>
+        <li>A text message will be sent to the nominated device once the additional data has been added to the account.</li>
+        <li>The network will aim to process the request within 14 days.</li>
+      </ul>
+    {% endset %}
 
     {{ govukRadios({
       fieldset: {
@@ -55,21 +64,33 @@
         }
       },
       hint: {
-        text: 'Only mobile networks participating in the service are listed',
+        html: 'Only mobile networks participating in the service are listed<br /><a href="/guide/asking-for-network">Guidance on asking for mobile network</a> and <a href="/guide/telling-about-offer">telling people about their offer</a>',
         classes: 'govuk-!-margin-bottom-3'
       },
       items: [
         {
-          text: "Three"
+          text: "Three",
+          conditional: {
+            html: genericOfferDetailsHTML
+          }
         },
         {
-          text: "Smarty"
+          text: "Smarty",
+          conditional: {
+            html: genericOfferDetailsHTML
+          }
         },
         {
-          text: "Sky Mobile"
+          text: "Sky Mobile",
+          conditional: {
+            html: genericOfferDetailsHTML
+          }
         },
         {
-          text: "Virgin Mobile"
+          text: "Virgin Mobile",
+          conditional: {
+            html: genericOfferDetailsHTML
+          }
         }
       ]
     } | decorateFormAttributes(["mobile", mobileId, "mobile-network"])) }}
@@ -80,6 +101,9 @@
           text: 'Pay monthly or pay as you go (PAYG)?',
           classes: "govuk-label--m"
         }
+      },
+      hint: {
+        html: '<a href="/guide/asking-for-network">Guidance on asking for pay monthly or pay as you go</a>'
       },
       items: [
         {
