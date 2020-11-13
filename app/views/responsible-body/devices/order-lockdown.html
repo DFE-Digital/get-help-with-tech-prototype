@@ -44,17 +44,79 @@
         {{ routersOrdered }} routers
       </li>
     </ul>
-    <h2 class='govuk-heading-m'>
-      Schools reporting disruption
-    </h2>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>{{ data.schools[0].name }}</li>
-      <li>{{ data.schools[1].name }}</li>
-      <li>{{ data.schools[2].name }}</li>
-      <li>{{ data.schools[3].name }}</li>
-      <li>{{ data.schools[4].name }}</li>
-      <li>{{ data.schools[5].name }}</li>
-    </ul>
+  </div>
+</div>
+
+<table class="govuk-table govuk-!-margin-top-3">
+  <caption class="govuk-table__caption">
+    <span class="govuk-heading-m">Schools you can place orders for</span>
+  </caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" style="width: 50%">School</th>
+      <th class="govuk-table__header">Allocation</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/responsible-body/devices/schools/{{ data.schools[0].URN }}">{{ data.schools[0].name }}</a>
+      </td>
+      <td class="govuk-table__cell">
+        {{ data.schools[0].total }} devices
+      </td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/responsible-body/devices/schools/{{ data.schools[0].URN }}">{{ data.schools[1].name }}</a>
+      </td>
+      <td class="govuk-table__cell">
+        2 devices for specific circumstances
+      </td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/responsible-body/devices/schools/{{ data.schools[0].URN }}">{{ data.schools[2].name }}</a>
+      </td>
+      <td class="govuk-table__cell">
+        1 device for specific circumstances
+      </td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/responsible-body/devices/schools/{{ data.schools[2].URN }}">{{ data.schools[3].name }}</a>
+      </td>
+      <td class="govuk-table__cell">
+        5 devices
+      </td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/responsible-body/devices/schools/{{ data.schools[2].URN }}">{{ data.schools[4].name }}</a>
+      </td>
+      <td class="govuk-table__cell">
+        {{ data.schools[2].total }} devices and 4 routers
+      </td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/responsible-body/devices/schools/{{ data.schools[2].URN }}">{{ data.schools[5].name }}</a>
+      </td>
+      <td class="govuk-table__cell">
+        {{ data.schools[3].total }} devices
+      </td>
+    </tr>
+    <!-- <tr class="govuk-table__row">
+      <td colspan="2" class="govuk-table__cell">
+        <a href="#">View all schools (25)</a>
+      </td>
+    </tr> -->
+  </tbody>
+</table>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
     {% include '_shared/order/_help-signing-in.html' %}
     {% include '_shared/order/_start-now.html' %}
   </div>
