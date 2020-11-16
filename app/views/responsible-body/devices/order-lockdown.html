@@ -1,10 +1,6 @@
 {% extends "layout.html" %}
 {% set title = "Order devices now" %}
 
-{% set devicesCap = data.devicesAllocated - data.devicesOrdered %}
-{% set routersCap = data.routersAllocated - data.routersOrdered %}
-
-
 {% set lockdown = false %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
@@ -21,17 +17,9 @@
     </h1>
 
     {% include '_shared/order/_each-school.html' %}
-    <div class="app-order-card">
-      <h2 class='govuk-heading-s govuk-!-margin-bottom-2'>
-        {{ data.rb }} has:
-      </h2>
-      <h1 class="govuk-panel__title govuk-!-font-size-36 govuk-!-margin-bottom-2">
-        {{ devicesCap }} devices and<br>
-        {{ routersCap }} routers available
-      </h1>
-    </div>
-    <p class=''>
-      You’ve already ordered:
+    {% include '_shared/responsible-body/_group-items-available.html' %}
+    <p class='govuk-!-margin-bottom-1'>
+      You have already ordered:
     </p>
     <ul class="govuk-list govuk-list--bullet">
       <li>
@@ -51,7 +39,7 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th class="govuk-table__header" style="width: 50%">School</th>
-      <th class="govuk-table__header">Allocation</th>
+      <th class="govuk-table__header">Recommended distribution</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">

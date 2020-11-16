@@ -1,0 +1,20 @@
+{% set devicesCap = data.devicesAllocated - data.devicesOrdered %}
+{% set routersCap = data.routersAllocated - data.routersOrdered %}
+<div class="app-order-card">
+  <h2 class='govuk-!-margin-0'>
+    <span class='govuk-heading-s govuk-!-margin-bottom-2'>
+      {{ data.rb }} has:
+    </span>
+    <span class="govuk-panel__title govuk-!-font-size-36 govuk-!-margin-bottom-2">
+      {{ devicesCap }} devices and<br>
+      {{ routersCap }} routers available
+    </span>
+  </h2>
+  {% if showOrderButton == true %}
+    {{ govukButton({
+    text: 'Order devices',
+    href: '/responsible-body/devices/schools/' + school.URN + '/order',
+    classes: 'govuk-!-margin-top-4 govuk-!-margin-bottom-1'
+    }) }}
+  {% endif %}
+</div>
