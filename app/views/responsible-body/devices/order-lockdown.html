@@ -1,14 +1,8 @@
 {% extends "layout.html" %}
 {% set title = "Order devices now" %}
 
-{% set devicesOrdered = 2 %}
-{% set routersOrdered = 4 %}
-
-{% set devicesTotalAllocation = 176 %}
-{% set routersTotalAllocation = 4 %}
-
-{% set devicesCap = devicesTotalAllocation - devicesOrdered %}
-{% set routersCap = routersTotalAllocation - routersOrdered %}
+{% set devicesCap = data.devicesAllocated - data.devicesOrdered %}
+{% set routersCap = data.routersAllocated - data.routersOrdered %}
 
 
 {% set lockdown = false %}
@@ -28,6 +22,9 @@
 
     {% include '_shared/order/_each-school.html' %}
     <div class="app-order-card">
+      <h2 class='govuk-heading-s govuk-!-margin-bottom-2'>
+        {{ data.rb }} has:
+      </h2>
       <h1 class="govuk-panel__title govuk-!-font-size-36 govuk-!-margin-bottom-2">
         {{ devicesCap }} devices and<br>
         {{ routersCap }} routers available
@@ -38,10 +35,10 @@
     </p>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        {{ devicesOrdered }} devices
+        {{ data.devicesOrdered }} devices
       </li>
       <li>
-        {{ routersOrdered }} routers
+        {{ data.routersOrdered }} routers
       </li>
     </ul>
   </div>
