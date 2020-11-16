@@ -8,8 +8,8 @@ module.exports = {
   rb: 'COMMUNITY ACADEMIES TRUST',
   trust: true,
   'devicesAllocated': 176,
-  'devicesOrdered': 4,
-  'routersAllocated': 4,
+  'devicesOrdered': 8,
+  'routersAllocated': 14,
   'routersOrdered': 4,
   'who-orders-laptops': 'central',
   'responsible-body': {

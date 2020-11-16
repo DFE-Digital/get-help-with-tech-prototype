@@ -1,5 +1,8 @@
 {% extends "layout.html" %}
 {% set title = "Order devices now" %}
+{% set devicesCap = data.devicesAllocated - data.devicesOrdered %}
+{% set routersCap = data.routersAllocated - data.routersOrdered %}
+{% set rbContent = true %}
 
 {% set lockdown = false %}
 {% block pageTitle %}{{ title }}{% endblock %}
@@ -12,96 +15,14 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{ data.rb }}</span>
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
-
-    {% include '_shared/order/_each-school.html' %}
     {% include '_shared/responsible-body/_group-items-available.html' %}
-    <p class='govuk-!-margin-bottom-1'>
-      You have already ordered:
+    <p>
+      The number of devices you can order is the total devices allocated to <a href="/responsible-body/devices/schools">schools that have reported a closure or a self-isolating group</a>.
     </p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        {{ data.devicesOrdered }} devices
-      </li>
-      <li>
-        {{ data.routersOrdered }} routers
-      </li>
-    </ul>
-  </div>
-</div>
-
-<table class="govuk-table govuk-!-margin-top-3">
-  <caption class="govuk-table__caption">
-    <span class="govuk-heading-m">Schools you can place orders for</span>
-  </caption>
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th class="govuk-table__header" style="width: 50%">School</th>
-      <th class="govuk-table__header">Recommended distribution</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <a href="/responsible-body/devices/schools/{{ data.schools[0].URN }}">{{ data.schools[0].name }}</a>
-      </td>
-      <td class="govuk-table__cell">
-        {{ data.schools[0].total }} devices
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <a href="/responsible-body/devices/schools/{{ data.schools[0].URN }}">{{ data.schools[1].name }}</a>
-      </td>
-      <td class="govuk-table__cell">
-        2 devices for specific circumstances
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <a href="/responsible-body/devices/schools/{{ data.schools[0].URN }}">{{ data.schools[2].name }}</a>
-      </td>
-      <td class="govuk-table__cell">
-        1 device for specific circumstances
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <a href="/responsible-body/devices/schools/{{ data.schools[2].URN }}">{{ data.schools[3].name }}</a>
-      </td>
-      <td class="govuk-table__cell">
-        5 devices
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <a href="/responsible-body/devices/schools/{{ data.schools[2].URN }}">{{ data.schools[4].name }}</a>
-      </td>
-      <td class="govuk-table__cell">
-        {{ data.schools[2].total }} devices and 4 routers
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <a href="/responsible-body/devices/schools/{{ data.schools[2].URN }}">{{ data.schools[5].name }}</a>
-      </td>
-      <td class="govuk-table__cell">
-        {{ data.schools[3].total }} devices
-      </td>
-    </tr>
-    <!-- <tr class="govuk-table__row">
-      <td colspan="2" class="govuk-table__cell">
-        <a href="#">View all schools (25)</a>
-      </td>
-    </tr> -->
-  </tbody>
-</table>
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
     {% include '_shared/order/_help-signing-in.html' %}
     {% include '_shared/order/_start-now.html' %}
   </div>

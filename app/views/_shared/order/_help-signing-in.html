@@ -2,10 +2,16 @@
 
 <p>You need to place orders on a website called TechSource.</p>
 
-<p>Use these details to sign in:</p>
+<p class='govuk-!-margin-bottom-1'>Use these details to sign in:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>User ID: [email address]</li>
   <li>Password: Use the ‘Forgotten password’ link to set a password the first time you sign in</li>
 </ul>
 
-<p>It’s important to know how many devices you can order before you sign in. If you try to order more than you’ve been allocated, the order will be cancelled.</p>
+  {% if rbContent == true %}
+    <p>
+      If you try to order more than {{ devicesCap }} devices {% if routersCap > 0 %}or more than {{ routersCap }} routers{% else %} (or any routers){% endif %}, the order will be cancelled.
+    </p>
+  {% else %}
+    <p>It ’s important to know how many devices you can order before you sign in. If you try to order more than you’ve been allocated, the order will be cancelled.</p>
+  {% endif %}

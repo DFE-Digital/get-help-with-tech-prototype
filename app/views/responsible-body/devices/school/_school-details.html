@@ -22,7 +22,7 @@
 {% elseif school.can_order %}
   {% if whoOrders != 'The school orders devices' %}
     {% set orderAction =
-      { items: [{ text: 'Place orders now', href: '/responsible-body/devices/schools/' + school.URN + '/order' }] }
+      { items: [{ text: 'Order devices now', href: '/responsible-body/devices/order-lockdown' }] }
     %}
   {% endif %}
   {% set orderText = 'Yes, local coronavirus restrictions have been confirmed' %}
