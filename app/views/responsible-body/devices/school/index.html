@@ -7,6 +7,9 @@
   {% set showForms = showChromebookForm or showContactForm %}
 {% endif %}
 {% block pageTitle %}{{ title }}{% endblock %}
+{% if school.can_order %}
+  {% set showForms = false %}
+{% endif %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
@@ -29,11 +32,13 @@
     </h1>
   </div>
 </div>
+{% if showForms == false %}
 <p class=''>
   <a href='/responsible-body/devices/order-lockdown'>
     Order devices now
   </a>
 </p>
+{% endif %}
 
 {% if showForms %}
   {% if noAllocation %}

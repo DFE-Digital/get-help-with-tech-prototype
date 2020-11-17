@@ -44,7 +44,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Moira Cross",
     headteacher_email: "moira.cross@school.gov.uk",
-    fsm_percentage: 19.6
+    fsm_percentage: 19.6,
+    can_order: true
   },
   {
     URN: 142705,
@@ -55,7 +56,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Richard Thorpe",
     headteacher_email: "richard.thorpe@school.gov.uk",
-    fsm_percentage: 24.9
+    fsm_percentage: 24.9,
+    can_order: true
   },
   {
     URN: 144648,
@@ -66,7 +68,8 @@ module.exports = [
     type: "Free Schools",
     headteacher: "Gill Humphriss",
     headteacher_email: "gill.humphriss@school.gov.uk",
-    fsm_percentage: 13.1
+    fsm_percentage: 13.1,
+    can_order: true
   },
   {
     URN: 145834,
@@ -77,7 +80,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Jennifer Wallbank",
     headteacher_email: "jennifer.wallbank@school.gov.uk",
-    fsm_percentage: 27.3
+    fsm_percentage: 27.3,
+    can_order: true
   },
   {
     URN: 142581,
@@ -88,7 +92,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Gillian Humphriss",
     headteacher_email: "gillian.humphriss@school.gov.uk",
-    fsm_percentage: 10.6
+    fsm_percentage: 10.6,
+    can_order: true
   },
   {
     URN: 136459,
@@ -99,7 +104,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Maura Favell",
     headteacher_email: "maura.favell@school.gov.uk",
-    fsm_percentage: 11
+    fsm_percentage: 11,
+    can_order: true
   },
   {
     URN: 139766,
@@ -110,7 +116,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Stephen Carter",
     headteacher_email: "stephen.carter@school.gov.uk",
-    fsm_percentage: 35.1
+    fsm_percentage: 35.1,
+    can_order: true
   },
   {
     URN: 139536,
@@ -121,7 +128,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Holly Rigby",
     headteacher_email: "holly.rigby@school.gov.uk",
-    fsm_percentage: 33.2
+    fsm_percentage: 33.2,
+    can_order: true
   },
   {
     URN: 142285,
@@ -132,7 +140,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Stacey Jordan",
     headteacher_email: "stacey.jordan@school.gov.uk",
-    fsm_percentage: 27.3
+    fsm_percentage: 27.3,
+    can_order: true
   },
   {
     URN: 138936,
@@ -143,7 +152,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Sian Hartle",
     headteacher_email: "sian.hartle@school.gov.uk",
-    fsm_percentage: 12.9
+    fsm_percentage: 12.9,
+    can_order: true
   },
   {
     URN: 147228,
@@ -154,7 +164,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Jonathan Baker",
     headteacher_email: "jonathan.baker@school.gov.uk",
-    fsm_percentage: 16.7
+    fsm_percentage: 16.7,
+    can_order: true
   },
   {
     URN: 145745,
@@ -165,7 +176,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Mark Gibbons",
     headteacher_email: "mark.gibbons@school.gov.uk",
-    fsm_percentage: 40.9
+    fsm_percentage: 40.9,
+    can_order: true
   },
   {
     URN: 140418,
