@@ -11,7 +11,7 @@
     </span>
   </h2>
   <div class="govuk-panel__body govuk-!-font-size-24">
-    You’ve ordered {{ data.devicesOrdered }} of {{ devicesAllocated }} devices and {{ data.routersOrdered }} of {{ data.routersAllocated }} routers
+    You’ve ordered <span class='app-no-wrap'>{{ data.devicesOrdered }} of {{ devicesAllocated }} devices</span> and <span class='app-no-wrap'>{{ data.routersOrdered }} of {{ data.routersAllocated }} routers</span>
   </div>
   {% if showOrderButton == true %}
     {{ govukButton({
