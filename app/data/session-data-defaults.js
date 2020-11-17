@@ -7,8 +7,7 @@ const schoolDetails = require('./school-details')
 module.exports = {
   rb: 'COMMUNITY ACADEMIES TRUST',
   trust: true,
-  'devicesAllocated': 176,
-  'devicesOrdered': 8,
+  'devicesOrdered': 200,
   'routersAllocated': 14,
   'routersOrdered': 4,
   'who-orders-laptops': 'central',

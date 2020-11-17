@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 {% set title = "Order devices now" %}
-{% set devicesCap = data.devicesAllocated - data.devicesOrdered %}
-{% set routersCap = data.routersAllocated - data.routersOrdered %}
 {% set rbContent = true %}
-{% set total = 0 %}
+{% set devicesAllocated = 0 %}
+{% for item in data.schools %}
+  {% set devicesAllocated = devicesAllocated + item.total %}
+{% endfor %}
+{% set devicesCap = devicesAllocated - data.devicesOrdered %}
+{% set routersCap = data.routersAllocated - data.routersOrdered %}
 
 {% set lockdown = false %}
 {% block pageTitle %}{{ title }}{% endblock %}
