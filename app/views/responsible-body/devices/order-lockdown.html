@@ -3,6 +3,7 @@
 {% set devicesCap = data.devicesAllocated - data.devicesOrdered %}
 {% set routersCap = data.routersAllocated - data.routersOrdered %}
 {% set rbContent = true %}
+{% set total = 0 %}
 
 {% set lockdown = false %}
 {% block pageTitle %}{{ title }}{% endblock %}
@@ -17,7 +18,7 @@
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">{{ data.rb }}</span>
     <h1 class="govuk-heading-xl">
-      {{ title }} {{ data.school[1].total }}
+      {{ title }}
     </h1>
     {% include '_shared/responsible-body/_group-items-available.html' %}
     <p>
