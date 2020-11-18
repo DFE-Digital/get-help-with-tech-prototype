@@ -7,6 +7,9 @@
   {% set showForms = showChromebookForm or showContactForm %}
 {% endif %}
 {% block pageTitle %}{{ title }}{% endblock %}
+{% if school.can_order %}
+  {% set showForms = false %}
+{% endif %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
@@ -23,39 +26,18 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{ data.rb }}</span>
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
   </div>
 </div>
-
-{% if school.can_order %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <div class="app-order-card">
-        <h1 class="govuk-panel__title govuk-!-font-size-36 govuk-!-margin-bottom-2">
-          {{ school.total }} devices available
-        </h1>
-        <div class="govuk-panel__body govuk-!-font-size-24">
-          {% if whoOrders == 'The school orders devices' %}
-            <p class="govuk-!-font-size-24 govuk-!-margin-bottom-0">The school has ordered 0 of {{ school.total }} devices</p>
-          {% else %}
-            <p class="govuk-!-font-size-24">You’ve ordered 0 of {{ school.total }} devices</p>
-
-            {{ govukButton({
-              text: 'Order devices',
-              href: '/responsible-body/devices/schools/' + school.URN + '/order',
-              classes: 'govuk-!-margin-bottom-1'
-            }) }}
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </div>
-{% endif %}
-
-{% if noAllocation %}
-  {% include 'responsible-body/devices/school/_school-no-allocation.html' %}
+{% if showForms == false %}
+<p class=''>
+  <a href='/responsible-body/devices/order-lockdown'>
+    Order devices now
+  </a>
+</p>
 {% endif %}
 
 {% if showForms %}
@@ -75,4 +57,5 @@
 <p>
   <a href="/responsible-body/devices/schools">Return to list of schools</a> or <a href="/responsible-body/devices/schools/{{ nextSchoolUrn }}">go to the next school</a>
 </p>
+
 {% endblock %}

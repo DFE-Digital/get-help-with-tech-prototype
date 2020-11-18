@@ -17,7 +17,7 @@ class UpdateSchoolsList
     rb_schools = grouped_by_responsible_body[responsible_body]
 
     schools = rb_schools.sort_by { |r| r['Name'] }.map do |r|
-      total = Integer(r['Total '])
+      total = Integer(r['Total ']/20)
       lower = total < 40 ? 0 : total - 40
       upper = total < 40 ? total + 20 : total + 40
 

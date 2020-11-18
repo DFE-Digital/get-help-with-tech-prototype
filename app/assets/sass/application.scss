@@ -174,3 +174,7 @@ $govuk-assets-path: '/govuk/assets/';
     @extend .govuk-heading-s;
   }
 }
+
+.app-no-wrap {
+  white-space: nowrap;
+}
