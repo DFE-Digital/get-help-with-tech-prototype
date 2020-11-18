@@ -1,16 +1,13 @@
 {% extends "layout.html" %}
-{% set title = "Your schools" %}
+{% set title = data.schools.length + " schools" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
+  {% set customBreadcrumbTitle = 'List of schools' %}
   {% include '_shared/breadcrumbs/_get-laptops-and-tablets.html' %}
 {% endblock %}
 
 {% block content %}
-<h1 class="govuk-heading-xl">
-  {{ title }}
-</h1>
-
 {% set missingSchools %}
   {% if not data.trust %}
     <p>This is a list of all local authority maintained and special schools.</p>
@@ -20,31 +17,13 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
-    <h2 class="govuk-heading-l govuk-!-margin-bottom-1">{{ data.schools.length }} schools</h2>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+      {{ title }}
+    </h1>
     {{ govukDetails({
       summaryText: "Is this list wrong?",
       html: missingSchools
     }) }}
-    <!-- <ul class="govuk-list govuk-list--bullet">
-      <li>{{ data.schools.length }} schools will place their own orders</li>
-      <li>100 need a contact</li>
-      <li>0 out of {{ data.schools.length }} have been contacted</li>
-      <li>0 out of {{ data.schools.length }} are ready to place orders</li>
-    </ul> -->
-
-    <!--<h2 class="govuk-heading-m">Summary</h2>
-    <p>You need to nominate a contact for 100 schools.</p>
-    <p>You need to tell us if 10 schools will be ordering Chromebooks.</p>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li>{{ data.schools.length }} schools will be placing their own orders</li>
-      <li><a href="#">100 need a contact</a></li>
-      <li><a href="#">22 have been contacted</a></li>
-      <li><a href="#">5 are ready</a> if local coronavirus restrictions are confirmed</li>
-    </ul>-->
-
-    <!-- <h2 class="govuk-heading-l govuk-!-margin-bottom-2">{{ data.schools.length }} schools</h2> -->
   </div>
 </div>
 
@@ -90,7 +69,7 @@
     </div>
   </div> -->
 
-  <form class="app-filter-container">
+  <!-- <form class="app-filter-container">
     <div class="govuk-form-group govuk-!-margin-top-1 govuk-!-margin-bottom-4">
       <label class="govuk-label govuk-label--s" for="filter">
         Filter the list of schools
@@ -100,7 +79,7 @@
       </div>
       <input class="govuk-input js-filter-table-input" id="filter" name="filter" type="text">
     </div>
-  </form>
+  </form> -->
   {% endif %}
 
   <table class="govuk-table">
