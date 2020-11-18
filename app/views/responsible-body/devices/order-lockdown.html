@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Order devices now" %}
+{% set title = "Order devices" %}
 {% set rbContent = true %}
 {% set devicesAllocated = 0 %}
 {% for item in data.schools %}
@@ -19,7 +19,7 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-xl">{{ data.rb }}</span>
+    <!-- <span class="govuk-caption-xl">{{ data.rb }}</span> -->
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
