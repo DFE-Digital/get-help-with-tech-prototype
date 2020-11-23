@@ -21,12 +21,6 @@
 {% endblock %}
 
 {% block content %}
-<!-- {{ appBanner({
-  html: "<h2 class=\"govuk-heading-m\">We’ve received your request</h2>",
-  type: "success",
-  icon: false
-}) }} -->
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
@@ -50,7 +44,7 @@
       <li>who cannot attend school – even though theirs is open – because they live in a different area with local coronavirus restrictions</li>
     </ul>
 
-    <h2 class="govuk-heading-m">2. Use our guide to gather the information you need</h2>
+    <h2 class="govuk-heading-m">2. Use our guide to gather the information we need</h2>
 
     <p class="govuk-body">
       You will need to collect names, telephone numbers and network details from households. They also need to understand how we’ll use their personal information.
@@ -60,9 +54,17 @@
       <a class="govuk-link" href="/guide">Guide to collecting mobile information from families</a>
     </p>
 
-    <h2 class="govuk-heading-m">3. Enter the information you collect</h2>
+    {% if isRb %}
+      <p>Share this guide with schools if they will be gathering the information.</p>
+    {% endif %}
+
+    <h2 class="govuk-heading-m">3. Enter the information we need</h2>
 
     <p>Once you submit mobile numbers and network details through our service, we’ll request extra data. How much data someone gets will depend on their network.</p>
+
+    {% if isRb %}
+      <p>We recommend that schools gathering this information <a href="https://drive.google.com/file/d/15bOT-wNAM_GunPNbuXxDD3sz0a-ej75r/view">use our template spreadsheet</a>. You can upload their completed spreadsheet to the service.</p>
+    {% endif %}
 
     {{ govukButton({
       text: 'New request',
