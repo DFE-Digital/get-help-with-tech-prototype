@@ -5,11 +5,11 @@ const schoolsInResponsibleBody = require('./responsible-body-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
-  rb: 'COMMUNITY ACADEMIES TRUST',
+  rb: 'ALSAGER MULTI ACADEMY TRUST',
   trust: true,
-  'devicesOrdered': 200,
-  'routersAllocated': 14,
-  'routersOrdered': 4,
+  'devicesOrdered': 50,
+  'routersAllocated': 0,
+  'routersOrdered': 0,
   'who-orders-laptops': 'central',
   'responsible-body': {
     138934: {
@@ -34,5 +34,5 @@ module.exports = {
   schools: schoolsInResponsibleBody,
   'school-details': schoolDetails,
   'max-school-order-users': 3,
-  covid: false
+  covid: true
 }

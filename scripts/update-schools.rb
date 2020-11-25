@@ -5,7 +5,7 @@ require 'JSON'
 
 class UpdateSchoolsList
   def run
-    responsible_body = 'COMMUNITY ACADEMIES TRUST'
+    responsible_body = 'ALSAGER MULTI ACADEMY TRUST'
     is_trust = true
     trust_column_header = 'Column1'
 
@@ -17,7 +17,7 @@ class UpdateSchoolsList
     rb_schools = grouped_by_responsible_body[responsible_body]
 
     schools = rb_schools.sort_by { |r| r['Name'] }.map do |r|
-      total = Integer(r['Total ']/20)
+      total = Integer(r['Total '])
       lower = total < 40 ? 0 : total - 40
       upper = total < 40 ? total + 20 : total + 40
 
