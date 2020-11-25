@@ -1,17 +1,21 @@
-
-{% set routersCap = data.routersAllocated - data.routersOrdered %}
 <div class="app-order-card">
   <h2 class='govuk-!-margin-0 govuk-!-margin-bottom-4'>
     <span class='govuk-heading-s govuk-!-margin-bottom-2'>
       {{ data.rb }} has:
     </span>
     <span class="govuk-panel__title govuk-!-font-size-36">
-      {{ devicesCap }} devices and<br>
-      {{ routersCap }} routers available
+      {{ devicesAvailableToOrder }} devices
+      {% if routersAvailableToOrder %}
+        and<br>
+        {{ routersAvailableToOrder }} routers available
+      {% endif %}
     </span>
   </h2>
   <div class="govuk-panel__body govuk-!-font-size-24">
-    You’ve ordered <span class='app-no-wrap'>{{ data.devicesOrdered }} of {{ devicesAllocated }} devices</span> and <span class='app-no-wrap'>{{ data.routersOrdered }} of {{ data.routersAllocated }} routers</span>
+    You’ve ordered <span class='app-no-wrap'>{{ data.devicesOrdered }} of {{ devicesAllocated }} devices</span>
+    {% if routersAvailableToOrder %}
+      and <span class='app-no-wrap'>{{ data.routersOrdered }} of {{ data.routersAllocated }} routers</span>
+    {% endif %}
   </div>
   {% if showOrderButton == true %}
     {{ govukButton({

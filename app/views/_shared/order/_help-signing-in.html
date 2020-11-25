@@ -9,9 +9,15 @@
 </ul>
 
 {% if rbContent %}
-  <p>
-    If you try to order more than {{ devicesCap }} devices {% if routersCap > 0 %}or more than {{ routersCap }} routers{% else %} (or any routers){% endif %}, the order will be cancelled.
-  </p>
+  {% if data.routersAllocated %}
+    <p>
+      If you try to order more than {{ devicesAvailableToOrder }} devices {% if routersCap > 0 %}or more than {{ routersCap }} routers{% else %} (or any routers){% endif %}, the order will be cancelled.
+    </p>
+  {% else %}
+    <p>
+      If you try to order more than {{ devicesAvailableToOrder }} devices the order will be cancelled.
+    </p>
+  {% endif %}
 {% else %}
   <p>It ’s important to know how many devices you can order before you sign in. If you try to order more than you’ve been allocated, the order will be cancelled.</p>
 {% endif %}

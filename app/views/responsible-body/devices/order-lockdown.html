@@ -5,8 +5,8 @@
 {% for item in data.schools %}
   {% set devicesAllocated = devicesAllocated + item.total %}
 {% endfor %}
-{% set devicesCap = devicesAllocated - data.devicesOrdered %}
-{% set routersCap = data.routersAllocated - data.routersOrdered %}
+{% set devicesAvailableToOrder = devicesAllocated - data.devicesOrdered %}
+{% set routersAvailableToOrder = data.routersAllocated - data.routersOrdered %}
 
 {% set lockdown = false %}
 {% block pageTitle %}{{ title }}{% endblock %}
