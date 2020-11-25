@@ -60,11 +60,11 @@
 
     <h2 class="govuk-heading-m">3. Enter the information we need</h2>
 
-    <p>Once you submit mobile numbers and network details through our service, we’ll request extra data. How much data someone gets will depend on their network.</p>
-
     {% if isRb %}
-      <p>We recommend that schools gathering this information <a href="https://drive.google.com/file/d/15bOT-wNAM_GunPNbuXxDD3sz0a-ej75r/view">use our template spreadsheet</a>. You can upload their completed spreadsheet to the service.</p>
+      <p>Schools gathering this information should <a href="https://drive.google.com/file/d/15bOT-wNAM_GunPNbuXxDD3sz0a-ej75r/view">use our template spreadsheet</a>. You can upload their completed spreadsheet to the service.</p>
     {% endif %}
+
+    <p>Once you submit mobile numbers and network details through our service, we’ll request extra data. How much data someone gets will depend on their network.</p>
 
     {{ govukButton({
       text: 'New request',
