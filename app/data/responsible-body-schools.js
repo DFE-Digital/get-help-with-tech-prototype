@@ -8,7 +8,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Richard Middlebrook",
     headteacher_email: "richard.middlebrook@school.gov.uk",
-    fsm_percentage: 8.9
+    fsm_percentage: 8.9,
+    can_order: true
   },
   {
     URN: 140108,
@@ -19,7 +20,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Richard Middlebrook",
     headteacher_email: "richard.middlebrook@school.gov.uk",
-    fsm_percentage: 8.9
+    fsm_percentage: 8.9,
+    can_order: true
   },
   {
     URN: 145587,
@@ -30,6 +32,7 @@ module.exports = [
     type: "Academies",
     headteacher: "Thomas Cutts",
     headteacher_email: "thomas.cutts@school.gov.uk",
-    fsm_percentage: 2.8
+    fsm_percentage: 2.8,
+    can_order: true
   }
 ]

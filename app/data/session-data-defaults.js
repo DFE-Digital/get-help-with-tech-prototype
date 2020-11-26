@@ -12,7 +12,13 @@ module.exports = {
   'routersOrdered': 0,
   'who-orders-laptops': 'central',
   'responsible-body': {
-    138934: {
+    148136: {
+      chromebooks: 'No, they will not need Chromebooks'
+    },
+    140108: {
+      chromebooks: 'No, they will not need Chromebooks'
+    },
+    145587: {
       chromebooks: 'No, they will not need Chromebooks'
     }
   },
