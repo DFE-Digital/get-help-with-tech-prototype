@@ -123,7 +123,7 @@
             {% endif %}
           </td>
           <td class="govuk-table__cell">
-            {{ school.total }} devices <br>
+            {{ school.total }} device{% if school.total != 1 %}s{% endif %} <br>
             0 routers
           </td>
           <td class="govuk-table__cell">
