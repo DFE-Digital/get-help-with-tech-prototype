@@ -29,26 +29,44 @@
       <li><a href="/responsible-body/devices/request-devices">devices requested for specific circumstances</a></li>
     </ul>
     <h2 class="govuk-heading-m">
-      How to order devices for more than 1 school
+      How to order
     </h2>
-    <h2 class="govuk-heading-s">Ordering Chromebooks</h2>
+    <p>You need to place orders on a website called TechSource.</p>
+    {% if rbContent %}
+      {% if data.routersAllocated %}
+        <p>
+          If you try to order more than {{ devicesAvailableToOrder }} devices {% if routersCap > 0 %}or more than {{ routersCap }} routers{% else %} (or any routers){% endif %}, the order will be cancelled.
+        </p>
+      {% else %}
+        <p>
+          If you try to order more than {{ devicesAvailableToOrder }} devices the order will be cancelled.
+        </p>
+      {% endif %}
+    {% else %}
+      <p>It ’s important to know how many devices you can order before you sign in. If you try to order more than you’ve been allocated, the order will be cancelled.</p>
+    {% endif %}
     <p>
-      When ordering Chromebooks, you need to place separate orders for schools with different G Suite for Education domains. This is because they need to be set up differently.
+      Devices will be delivered within 2 working days.
     </p>
-    <p>
-      When using TechSource, you will be asked for a URN. Use the URN of the school that has the G Suite domain you want to use for the Chromebooks.
-    </p>
-    <h2 class="govuk-heading-s">Orders that do not include Chromebooks</h2>
+    <h3 class="govuk-heading-s">
+      Ordering devices for more than one school
+    </h3>
     <p>
       You can combine allocations for all your schools, and have all devices delivered to one place. If you want different schools to get devices directly, place a separate order for each delivery address.
     </p>
     <p>
       When using TechSource, you will be asked for a URN. Use any URN for one of the schools you manage.
     </p>
-    {% include '_shared/order/_help-signing-in.html' %}
+    <h3 class="govuk-heading-s">Chromebooks</h3>
     <p>
-      Devices will be delivered within 2 working days.
+      After you place an order for Chromebooks TechSource will contact you for which ‘G Suite for Education’ domains you want to use.
     </p>
+    <h3 class="govuk-heading-s">Using TechSource for the first time</h3>
+    <p class='govuk-!-margin-bottom-1'>Use these details to sign in:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>User ID: [email address]</li>
+      <li>Password: Use the ‘Forgotten password’ link to set a password the first time you sign in</li>
+    </ul>
     {% include '_shared/order/_start-now.html' %}
   </div>
 </div>
