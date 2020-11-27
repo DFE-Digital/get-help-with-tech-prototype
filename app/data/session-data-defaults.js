@@ -5,21 +5,92 @@ const schoolsInResponsibleBody = require('./responsible-body-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
-  rb: 'ALSAGER MULTI ACADEMY TRUST',
+  rb: 'DARTMOOR MULTI ACADEMY TRUST',
   trust: true,
   'devicesOrdered': 50,
   'routersAllocated': 0,
   'routersOrdered': 0,
   'who-orders-laptops': 'central',
   'responsible-body': {
-    148136: {
-      chromebooks: 'No, they will not need Chromebooks'
+    145341: {
+      chromebooks: 'Yes',
+      domain: 'blacktorrington.devon.sch.uk',
+      recovery: 'email@email.com'
     },
-    140108: {
-      chromebooks: 'No, they will not need Chromebooks'
+    145330: {
+      chromebooks: 'Yes',
+      domain: 'stjamesokehampton.co.uk',
+      recovery: 'email@email.com'
     },
-    145587: {
-      chromebooks: 'No, they will not need Chromebooks'
+    145346: {
+      chromebooks: 'Yes',
+      domain: 'stjamesokehampton.co.uk',
+      recovery: 'email@email.com'
+    },
+    145331: {
+      chromebooks: 'Yes',
+      domain: 'stjamesokehampton.co.uk',
+      recovery: 'email@email.com'
+    },
+    145342: {
+      chromebooks: 'Yes',
+      domain: 'bridgerule.devon.sch.uk',
+      recovery: 'email@email.com'
+    },
+    145338: {
+      chromebooks: 'Yes',
+      domain: 'chagford-primary.devon.sch.uk',
+      recovery: 'email@email.com'
+    },
+    146248: {
+      chromebooks: 'Yes',
+      domain: 'stjamesokehampton.co.uk',
+      recovery: 'email@email.com'
+    },
+    145339: {
+      chromebooks: 'Yes',
+      domain: 'stjamesokehampton.co.uk',
+      recovery: 'email@email.com'
+    },
+    145343: {
+      chromebooks: 'Yes',
+      domain: 'hcc.devon.sch.uk',
+      recovery: 'email@email.com'
+    },
+    145332: {
+      chromebooks: 'Yes',
+      domain: 'stjamesokehampton.co.uk',
+      recovery: 'email@email.com'
+    },
+    145340: {
+      chromebooks: 'Yes',
+      domain: 'stjamesokehampton.co.uk',
+      recovery: 'email@email.com'
+    },
+    145333: {
+      chromebooks: 'Yes',
+      domain: 'ntcps.co.uk',
+      recovery: 'email@email.com'
+    },
+    145337: {
+      chromebooks: 'Yes',
+      domain: 'stjamesokehampton.co.uk',
+      recovery: 'email@email.com'
+    },
+    145334: {
+      chromebooks: 'Yes',
+      domain: 'okehampton.school',
+      recovery: 'email@email.com'
+    },
+    145335: {
+      chromebooks: 'Yes',
+      domain: 'stjamesokehampton.co.uk',
+      recovery: 'email@email.com'
+    },
+    145336: {
+      chromebooks: 'Yes',
+      domain: 'tavistockcollege.org',
+      recovery: 'email@email.com'
     }
   },
   features: {

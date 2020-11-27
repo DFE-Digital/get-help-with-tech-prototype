@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {% set title = "Your schools" %}
-{% set devicesAllocated = 0 %}
+
 {% for item in data.schools %}
   {% set devicesAllocated = devicesAllocated + item.total %}
 {% endfor %}
+{% set devicesAllocated = 104 %}
 {% set devicesAvailableToOrder = devicesAllocated - data.devicesOrdered %}
 {% set routersAvailableToOrder = data.routersAllocated - data.routersOrdered %}
 {% if devicesAvailableToOrder > 0 %}

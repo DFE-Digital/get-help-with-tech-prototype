@@ -5,7 +5,7 @@ require 'JSON'
 
 class UpdateSchoolsList
   def run
-    responsible_body = 'ALSAGER MULTI ACADEMY TRUST'
+    responsible_body = 'DARTMOOR MULTI ACADEMY TRUST'
     is_trust = true
     trust_column_header = 'Column1'
 
