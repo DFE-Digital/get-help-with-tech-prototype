@@ -1,10 +1,7 @@
 {% extends "layout.html" %}
 {% set title = "Order devices" %}
 {% set rbContent = true %}
-{% set devicesAllocated = 0 %}
-{% for item in data.schools %}
-  {% set devicesAllocated = devicesAllocated + item.total %}
-{% endfor %}
+{% set devicesAllocated = 9 %}
 {% set devicesAvailableToOrder = devicesAllocated - data.devicesOrdered %}
 {% set routersAvailableToOrder = data.routersAllocated - data.routersOrdered %}
 

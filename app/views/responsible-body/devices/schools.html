@@ -1,10 +1,7 @@
 {% extends "layout.html" %}
 {% set title = "Your schools" %}
 
-{% set devicesAllocated = 0 %}
-{% for item in data.schools %}
-  {% set devicesAllocated = devicesAllocated + item.total %}
-{% endfor %}
+{% set devicesAllocated = 55 %}
 {% set devicesAvailableToOrder = devicesAllocated - data.devicesOrdered %}
 {% set routersAvailableToOrder = data.routersAllocated - data.routersOrdered %}
 {% if devicesAvailableToOrder > 0 %}
@@ -141,7 +138,11 @@
           </td>
           <td class="govuk-table__cell">
             {% set urn = school.URN %}
-            {% include 'responsible-body/devices/school/_status-tag.html' %}
+            {% if loop.index > 3 %}
+              <span class="govuk-tag govuk-tag--blue">Ready</span>
+            {% else %}
+              <span class="govuk-tag govuk-tag--green">Disruption reported</span>
+            {% endif %}
           </td>
         </tr>
       {% endfor %}
