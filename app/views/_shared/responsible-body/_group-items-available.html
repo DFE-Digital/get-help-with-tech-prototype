@@ -4,19 +4,19 @@
       {{ data.rb }} has:
     </span>
     <span class="govuk-panel__title govuk-!-font-size-36">
-      {{ devicesAvailableToOrder }} devices
+      {{ devicesAvailableToOrder }} device{% if devicesAvailableToOrder != 1 %}s{% endif %}
       {% if routersAvailableToOrder %}
         and<br>
-        {{ routersAvailableToOrder }} routers available
+        {{ routersAvailableToOrder }} routers
       {% else %}
         available to order
       {% endif %}
     </span>
   </h2>
   <div class="govuk-panel__body govuk-!-font-size-24">
-    You’ve ordered <span class='app-no-wrap'>{{ data.devicesOrdered }} of {{ devicesAllocated }} devices</span>
+    You’ve ordered <span class='app-no-wrap'>{{ data.devicesOrdered }} devices</span>
     {% if routersAvailableToOrder %}
-      and <span class='app-no-wrap'>{{ data.routersOrdered }} of {{ data.routersAllocated }} routers</span>
+      and <span class='app-no-wrap'>{{ data.routersOrdered }} routers</span>
     {% endif %}
   </div>
   {% if showOrderButton == 'canOrder' %}

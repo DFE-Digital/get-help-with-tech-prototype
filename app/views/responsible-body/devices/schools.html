@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% set title = "Your schools" %}
 
-{% set devicesAllocated = 55 %}
+{% set devicesAllocated = 14 %}
 {% set devicesAvailableToOrder = devicesAllocated - data.devicesOrdered %}
 {% set routersAvailableToOrder = data.routersAllocated - data.routersOrdered %}
 {% if devicesAvailableToOrder > 0 %}
@@ -28,6 +28,9 @@
       {{ title }}
     </h1>
     {% include '_shared/responsible-body/_group-items-available.html' %}
+    <p>
+      When a school has reported disruption (either a closure or a self‑isolating group) you can order that school’s allocation of devices.
+    </p>
   </div>
 </div>
 
@@ -103,8 +106,8 @@
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
         <th class="govuk-table__header" style="width: 50%">School</th>
-        <th class="govuk-table__header">Allocation</th>
         <th class="govuk-table__header">Who will order?</th>
+        <th class="govuk-table__header">Allocation</th>
         <th class="govuk-table__header" style="width: 200px">Status</th>
       </tr>
     </thead>
@@ -120,10 +123,6 @@
             {% endif %}
           </td>
           <td class="govuk-table__cell">
-            {{ school.total }} device{% if school.total != 1 %}s{% endif %} <br>
-            0 routers
-          </td>
-          <td class="govuk-table__cell">
             {% if data['responsible-body'][school.URN].who %}
               {% if data['responsible-body'][school.URN].who == 'central' %}
                 {% if data.trust %}Trust{% else %}Local authority{% endif %}
@@ -137,11 +136,15 @@
             {% endif %}
           </td>
           <td class="govuk-table__cell">
+            {{ school.total }} device{% if school.total != 1 %}s{% endif %} <br>
+            0 routers
+          </td>
+          <td class="govuk-table__cell">
             {% set urn = school.URN %}
-            {% if loop.index > 3 %}
-              <span class="govuk-tag govuk-tag--blue">Ready</span>
-            {% else %}
+            {% if (loop.index == 1) or (loop.index == 3) or (loop.index == 5) %}
               <span class="govuk-tag govuk-tag--green">Disruption reported</span>
+            {% else %}
+              <span class="govuk-tag govuk-tag--blue">Ready</span>
             {% endif %}
           </td>
         </tr>

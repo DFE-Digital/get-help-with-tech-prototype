@@ -5,37 +5,42 @@ const schoolsInResponsibleBody = require('./responsible-body-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
-  rb: 'LEARN@ MAT',
+  rb: 'LEO ACADEMY TRUST',
   trust: true,
-  'devicesOrdered': 48,
+  'devicesOrdered': 9,
   'routersAllocated': 0,
   'routersOrdered': 0,
   'who-orders-laptops': 'central',
   'responsible-body': {
-    144655: {
-      chromebooks: 'No',
-      domain: 'knowledge.learnmat.uk',
-      recovery: 'email@email.com'
+  143628: {
+    chromebooks: "yes",
+    domain: "leoacademytrust.co.uk",
+    recovery: 'email@email.com'
     },
-    144284: {
-      chromebooks: 'No',
-      domain: 'LearnMAT.uk',
-      recovery: 'email@email.com'
+  145481: {
+    chromebooks: "yes",
+    domain: "leoacademytrust.co.uk",
+    recovery: 'email@email.com'
     },
-    144286: {
-      chromebooks: 'No',
-      domain: 'notton.learnmat.uk',
-      recovery: 'email@email.com'
+  142398: {
+    chromebooks: "yes",
+    domain: "leoacademytrust.co.uk",
+    recovery: 'email@email.com'
     },
-    147889: {
-      chromebooks: 'No',
-      domain: 'LearnMAT.uk',
-      recovery: 'email@email.com'
+  143375: {
+    chromebooks: "yes",
+    domain: "leoacademytrust.co.uk",
+    recovery: 'email@email.com'
     },
-    144285: {
-      chromebooks: 'No',
-      domain: 'stmatthias.learnmat.uk',
-      recovery: 'email@email.com'
+  140260: {
+    chromebooks: "yes",
+    domain: "leoacademytrust.co.uk",
+    recovery: 'email@email.com'
+    },
+  145484: {
+    chromebooks: "yes",
+    domain: "leoacademytrust.co.uk",
+    recovery: 'email@email.com'
     }
   },
   features: {
