@@ -1,7 +1,10 @@
 {% extends "layout.html" %}
 {% set title = "Order devices" %}
 {% set rbContent = true %}
-{% set devicesAllocated = 104 %}
+{% set devicesAllocated = 0 %}
+{% for item in data.schools %}
+  {% set devicesAllocated = devicesAllocated + item.total %}
+{% endfor %}
 {% set devicesAvailableToOrder = devicesAllocated - data.devicesOrdered %}
 {% set routersAvailableToOrder = data.routersAllocated - data.routersOrdered %}
 
@@ -57,10 +60,10 @@
     <p>
       When using TechSource, you will be asked for a URN. Use any URN for one of the schools you manage.
     </p>
-    <h3 class="govuk-heading-s">Chromebooks</h3>
+    {# <h3 class="govuk-heading-s">Chromebooks</h3>
     <p>
       If you place an order for Chromebooks, TechSource will contact you about which ‘G Suite for Education’ domains you want to use.
-    </p>
+    </p> #}
     <h3 class="govuk-heading-s">Using TechSource for the first time</h3>
     <p class='govuk-!-margin-bottom-1'>Use these details to sign in:</p>
     <ul class="govuk-list govuk-list--bullet">
