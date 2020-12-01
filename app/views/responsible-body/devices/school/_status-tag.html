@@ -1,14 +1,11 @@
 {% if (hasCentralAll and not data['responsible-body'][urn].who) or data['responsible-body'][urn].who == 'central' %}
   {% if school and school['can_order'] %}
-    <span class="govuk-tag govuk-tag--green">You can order</span>
   {% elseif data['responsible-body'][urn].chromebooks %}
-    <span class="govuk-tag govuk-tag--blue">Ready</span>
   {% else %}
     <span class="govuk-tag govuk-tag--grey">Needs information</span>
   {% endif %}
 {% else %}
   {% if school and school['can_order'] %}
-    <span class="govuk-tag govuk-tag--green">School can order</span>
   {% elseif data['responsible-body'][urn]['person-type'] %}
     <span class="govuk-tag govuk-tag--yellow">School contacted</span>
   {% else %}

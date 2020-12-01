@@ -8,7 +8,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Prathayini Wright",
     headteacher_email: "pwright45@leoacademytrust.co.uk",
-    fsm_percentage: 19.2
+    fsm_percentage: 19.2,
+    can_order: true
   },
   {
     URN: 145481,
@@ -30,7 +31,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Sophie Gunner",
     headteacher_email: "sgunner1@leoacademytrust.co.uk",
-    fsm_percentage: 10.7
+    fsm_percentage: 10.7,
+    can_order: true
   },
   {
     URN: 143375,
@@ -52,7 +54,8 @@ module.exports = [
     type: "Academies",
     headteacher: "Alison Day",
     headteacher_email: "aday@leoacademytrust.co.uk",
-    fsm_percentage: 8.5
+    fsm_percentage: 8.5,
+    can_order: true
   },
   {
     URN: 145484,

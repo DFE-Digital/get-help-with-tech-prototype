@@ -24,13 +24,14 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
       {{ title }}
     </h1>
+    {{ govukDetails({
+      summaryText: "Is this list wrong?",
+      html: missingSchools
+    }) }}
     {% include '_shared/responsible-body/_group-items-available.html' %}
-    <p>
-      When a school has reported disruption (either a closure or a self‑isolating group) you can order that school’s allocation of devices.
-    </p>
   </div>
 </div>
 
@@ -91,28 +92,26 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4">
-    <h2 class='govuk-heading-m govuk-!-margin-bottom-2'>
-      Schools and their allocated devices
-    </h2>
-    {{ govukDetails({
-      summaryText: "Is this list wrong?",
-      html: missingSchools,
-      classes: 'govuk-!-margin-bottom-2'
-    }) }}
+    <h3 class="govuk-heading-m ">Schools reporting a closure or self-isolating group</h3>
+    <p>
+      When a school has reported either a closure or a self‑isolating group you can order that school’s allocation of devices or routers.
+    </p>
   </div>
 </div>
 
   <table class="govuk-table">
+    <caption class="govuk-table__caption govuk-visually-hidden">Schools reporting a closure or self-isolating group</caption>
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
         <th class="govuk-table__header" style="width: 50%">School</th>
         <th class="govuk-table__header">Who will order?</th>
         <th class="govuk-table__header">Allocation</th>
-        <th class="govuk-table__header" style="width: 200px">Status</th>
+        <th class="govuk-table__header" style="width: 200px"></th>
       </tr>
     </thead>
     <tbody class="govuk-table__body">
       {% for school in data.schools %}
+        {% if school.can_order %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
             <a href="/responsible-body/devices/schools/{{ school.URN }}" class="js-open-on-submit">{{ school.name }} ({{ school.URN }})</a><br />
@@ -141,13 +140,65 @@
           </td>
           <td class="govuk-table__cell">
             {% set urn = school.URN %}
-            {% if (loop.index == 1) or (loop.index == 3) or (loop.index == 5) %}
-              <span class="govuk-tag govuk-tag--green">Disruption reported</span>
-            {% else %}
-              <span class="govuk-tag govuk-tag--blue">Ready</span>
-            {% endif %}
+            {% include 'responsible-body/devices/school/_status-tag.html' %}
           </td>
         </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4">
+      <h3 class="govuk-heading-m ">Schools without a reported closure or self&#8209;isolating group</h3>
+    </div>
+  </div>
+
+  <table class="govuk-table">
+    <caption class="govuk-table__caption govuk-visually-hidden">Schools without a reported closure or self&#8209;isolating group</caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" style="width: 50%">School</th>
+        <th class="govuk-table__header">Who will order?</th>
+        <th class="govuk-table__header">Allocation</th>
+        <th class="govuk-table__header" style="width: 200px"></th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      {% for school in data.schools %}
+       {% if not school.can_order %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <a href="/responsible-body/devices/schools/{{ school.URN }}" class="js-open-on-submit">{{ school.name }} ({{ school.URN }})</a><br />
+            {% if school.type == 'Special schools' %}
+              Special school
+            {% else %}
+              {{ school.phase }}
+            {% endif %}
+          </td>
+          <td class="govuk-table__cell">
+            {% if data['responsible-body'][school.URN].who %}
+              {% if data['responsible-body'][school.URN].who == 'central' %}
+                {% if data.trust %}Trust{% else %}Local authority{% endif %}
+              {% elseif data['responsible-body'][school.URN].who == 'school' %}
+                School
+              {% else %}
+                Unknown
+              {% endif %}
+            {% else %}
+              {{ whoOrders }}
+            {% endif %}
+          </td>
+          <td class="govuk-table__cell">
+            {{ school.total }} device{% if school.total != 1 %}s{% endif %} <br>
+            0 routers
+          </td>
+          <td class="govuk-table__cell">
+            {% set urn = school.URN %}
+            {% include 'responsible-body/devices/school/_status-tag.html' %}
+          </td>
+        </tr>
+        {% endif %}
       {% endfor %}
     </tbody>
   </table>
