@@ -44,6 +44,7 @@ module.exports = {
     }
   },
   features: {
+    push: true,
     '15-self': false,
     'delay-delivery': true,
     'school-mno': true,
