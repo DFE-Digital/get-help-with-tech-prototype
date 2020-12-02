@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Request devices for specific circumstances" %}
+{% set title = "Request more devices for specific circumstances" if data.features.push else "Request devices for specific circumstances" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}

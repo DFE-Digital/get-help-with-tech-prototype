@@ -1,21 +1,36 @@
-<h3 class="govuk-heading-m">What to put in your request</h3>
+{% if data.features['google-form-request-devices'] %}
+  <h3 class="govuk-heading-m">What to put in your request</h3>
 
-<p>Tell us:</p>
-{% if multipleSchools %}
-  <ul class="govuk-list govuk-list--bullet">
-    <li>which schools need the devices</li>
-    <li>how many devices they need</li>
-    <li>the year groups of the children who need devices</li>
-    <li>why they need the devices</li>
-  </ul>
+  <p>Tell us:</p>
+  {% if multipleSchools %}
+    <ul class="govuk-list govuk-list--bullet">
+      <li>which schools need the devices</li>
+      <li>how many devices they need</li>
+      <li>the year groups of the children who need devices</li>
+      <li>why they need the devices</li>
+    </ul>
+  {% else %}
+    <ul class="govuk-list govuk-list--bullet">
+      <li>how many devices you will need</li>
+      <li>the year groups of the children who need devices</li>
+      <li>why you need them</li>
+    </ul>
+  {% endif %}
+  {% include '_shared/request-devices/_where-send-request.html' %}
 {% else %}
+  <h2 class="govuk-heading-m">Before you start</h2>
+
+  <p>You will need to know:</p>
   <ul class="govuk-list govuk-list--bullet">
-    <li>how many devices you will need</li>
+    <li>how many devices you need</li>
     <li>the year groups of the children who need devices</li>
-    <li>why you need them</li>
+    <li>if any children also need help with internet connectivity</li>
   </ul>
+
+  {{ govukButton({
+    html: 'Make a new request',
+    classes: 'govuk-!-margin-bottom-3 govuk-!-margin-top-4',
+    href: '#'
+  }) }}
+  <p class="govuk-body-s">using Google Forms. Link opens in a new window.</p>
 {% endif %}
-
-<p>If shielding is not recommended in your area (see the <a href="#">guidance on local restrictions</a>), you’ll need to show evidence that children have received official advice to continue shielding outside of national guidelines.</p>
-
-{% include '_shared/request-devices/_where-send-request.html' %}

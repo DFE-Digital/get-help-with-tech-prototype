@@ -1,4 +1,6 @@
-{% if requestLink %}
+{% if data.features.push %}
+  <p>If your current provision of devices is not enough, you can request more devices (on top of your allocation) for disadvantaged children from any year group who:</p>
+{% elseif requestLink %}
   <p>You can still <a href="{{ requestLink }}">request devices for disadvantaged children</a> from any year group who:</p>
 {% else %}
   <p>You can request devices for disadvantaged children from any year group who:</p>

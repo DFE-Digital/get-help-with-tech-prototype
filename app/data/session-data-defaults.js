@@ -45,6 +45,7 @@ module.exports = {
   },
   features: {
     push: true,
+    mno: false,
     '15-self': false,
     'delay-delivery': true,
     'school-mno': true,
@@ -52,7 +53,7 @@ module.exports = {
     'bulk-upload': true,
     'only-bt': false,
     'in-connectivity-pilots': true,
-    mno: false
+    'request-devices-google-form': true
   },
   mno: {
     requests: fakeMnoRequests
