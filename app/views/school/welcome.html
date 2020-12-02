@@ -9,11 +9,15 @@
 
   <p>You can use the ‘Get help with technology’ service to:</p>
   <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-    <li>manage who will order devices for your school</li>
+    {% if data.features.push %}
+      <li>check how many devices you can order</li>
+    {% else %}
+      <li>view your device allocation</li>
+    {% endif %}
     {% if isOrderUser %}
-      <li>access the Computacenter TechSource website to place orders when devices are made available</li>
+      <li>access the Computacenter TechSource website to place orders{% if not data.features.push %} when devices are made available{% endif %}</li>
     {% endif %}
     <li>give us technical details for Chromebooks if you’ll be ordering them</li>
-    <li>view your device allocation</li>
+    <li>manage who can order devices</li>
   </ul>
 {% endblock %}
