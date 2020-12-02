@@ -3,12 +3,6 @@
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block content %}
-<!-- {{ appBanner({
-  html: "<h2 class=\"govuk-heading-m\">Thank you. We’ve received your information.</h2>",
-  type: "success",
-  icon: false
-}) }} -->
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
@@ -33,7 +27,18 @@
         <li>request extra data for mobile devices</li>
         <li>request 4G wireless routers</li>
       </ul>
+    {% endif %}
 
+    {% if data.features.push %}
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/school/devices/request-devices">Request more devices for specific circumstances</a>
+      </h2>
+      <p>Use this section to request more devices for children who:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>are shielding on official advice</li>
+        <li>cannot attend school because they live in a different area with coronavirus restrictions</li>
+      </ul>
+    {% elseif data.features['school-mno'] %}
       <h2 class="govuk-heading-l govuk-!-font-size-27">
         <a href="/school/specific-circumstances">Get help for specific circumstances</a>
       </h2>
