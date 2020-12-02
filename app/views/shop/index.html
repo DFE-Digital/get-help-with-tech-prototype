@@ -1,0 +1,27 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Which devices do you need?" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {{ govukCheckboxes({
+    items: [
+      {
+        text: 'Microsoft Windows laptop'
+      },
+      {
+        text: 'Microsoft Windows tablet'
+      },
+      {
+        text: 'Google Chromebook'
+      },
+      {
+        text: 'Apple iPad'
+      }
+    ]
+  }  | decorateFormAttributes('shop-devices') ) }}
+
+  <p>Read more about <a href="https://get-help-with-tech.education.gov.uk/devices/device-specification">device specifications</a>.</p>
+{% endblock %}

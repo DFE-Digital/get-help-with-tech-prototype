@@ -6,6 +6,7 @@ require('./routes/family')(router)
 require('./routes/school')(router)
 require('./routes/guide')(router)
 require('./routes/devices')(router)
+require('./routes/shop')(router)
 
 router.post('/account', (req, res) => {
   const hasAccount = req.session.data['has-account']

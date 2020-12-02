@@ -1,0 +1,61 @@
+{% extends "_wizard-form.html" %}
+{% set multipleDeviceTypes = data['shop-devices'].length > 1 %}
+{% set title = "How many devices do you need?" %}
+
+{% block form %}
+  {% if multipleDeviceTypes %}
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <div class="app-order-card">
+      <h1 class="govuk-panel__title govuk-!-font-size-36 govuk-!-margin-bottom-2">
+        30 devices available to order
+      </h1>
+      <div class="govuk-panel__body govuk-!-font-size-24">
+        You’ve ordered 0 of 30 devices
+      </div>
+    </div>
+
+    {% for type in data['shop-devices'] %}
+      {{ govukInput({
+        label: {
+          text: type + 's',
+          classes: 'govuk-label--m'
+        },
+        classes: 'govuk-input--width-4'
+      } | decorateFormAttributes('shop-amount-' + type) ) }}
+    {% endfor %}
+  {% else %}
+
+    {% set howManyHtml %}
+      {{ govukInput({
+        label: {
+          text: 'How many ' + data['shop-devices'][0] + 's?'
+        },
+        classes: 'govuk-input--width-4'
+      } | decorateFormAttributes('shop-amount-' + type) ) }}
+    {% endset %}
+
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: "How many " + data['shop-devices'][0] + "s do you need?",
+          classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          text: 'Our full allocation of 30 devices'
+        },
+        {
+          text: 'Less than our allocation',
+          conditional: {
+            html: howManyHtml
+          }
+        }
+      ]
+    }  | decorateFormAttributes('shop-amount-choice') ) }}
+  {% endif %}
+{% endblock %}

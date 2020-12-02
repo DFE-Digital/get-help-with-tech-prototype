@@ -1,0 +1,27 @@
+{% extends "_wizard-form.html" %}
+{% set notStandardForm = true %}
+{% set buttonText = "Return to service" %}
+{% set title = "Your order has been placed" %}
+
+{% block primary %}
+  {{ govukPanel({
+    titleText: title,
+    html: "Your reference number<br><strong>HDJ2123F</strong>",
+    classes: "govuk-!-margin-bottom-6"
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p>Devices will normally arrive within 2 working days.</p>
+
+      <hr class="govuk-section-break govuk-section-break--m">
+
+      {{ govukButton({
+        href: paths.next,
+        html: 'Return to service'
+      }) }}
+    </div>
+  </div>
+{% endblock %}
