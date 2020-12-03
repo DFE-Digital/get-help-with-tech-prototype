@@ -1,0 +1,65 @@
+{% extends "_wizard-form.html" %}
+{% set buttonText = "Confirm order" %}
+{% set title = "Confirm your order details" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Devices"
+        },
+        value: {
+          html: "30 Microsoft Windows laptops<br />10 Google Chromebooks"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Type of Windows devices"
+        },
+        value: {
+          text: "Standard"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "date of birth"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Delivery address"
+        },
+        value: {
+          html: "Pool Hayes Primary<br>72 Guild Street<br>London<br>SE23 6FH"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "contact information"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+{% endblock %}
