@@ -29,16 +29,7 @@
       </ul>
     {% endif %}
 
-    {% if data.features.push %}
-      <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/school/devices/request-devices">Request more devices for specific circumstances</a>
-      </h2>
-      <p>Use this section to request more devices for children who:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>are shielding on official advice</li>
-        <li>cannot attend school because they live in a different area with coronavirus restrictions</li>
-      </ul>
-    {% elseif data.features['school-mno'] %}
+    {% if data.features['school-mno'] and not data.features.push %}
       <h2 class="govuk-heading-l govuk-!-font-size-27">
         <a href="/school/specific-circumstances">Get help for specific circumstances</a>
       </h2>
@@ -47,7 +38,7 @@
         <li>understand when children can get support</li>
         <li>see what help they can get</li>
       </ul>
-    {% else %}
+    {% elseif not data.features.push %}
       <h2 class="govuk-heading-l govuk-!-font-size-27">
         <a href="/school/devices/request-devices">Request devices for specific circumstances</a>
       </h2>
@@ -57,8 +48,6 @@
         <li>cannot attend school because they live in a different area with coronavirus restrictions</li>
       </ul>
     {% endif %}
-
-
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">
       <a href="/school/devices/check">Check your school details</a>

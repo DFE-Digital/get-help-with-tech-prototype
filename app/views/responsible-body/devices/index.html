@@ -48,14 +48,16 @@
       <li>access the Computacenter TechSource website</li>
     </ul>
 
+    {% if not data.features.push %}
     <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/responsible-body/devices/request-devices">Request {% if data.features.push %}more {% endif %}devices for specific circumstances</a>
+      <a href="/responsible-body/devices/request-devices">Request devices for specific circumstances</a>
     </h2>
     <p>Use this section to request devices for children who:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>are shielding on official advice</li>
       <li>cannot attend school because restrictions prevent them from going</li>
     </ul>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
