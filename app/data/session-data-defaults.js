@@ -47,7 +47,7 @@ module.exports = {
     push: true,
     mno: false,
     '15-self': false,
-    'delay-delivery': true,
+    'delay-delivery': false,
     'school-mno': true,
     'sign-up': false,
     'bulk-upload': true,
