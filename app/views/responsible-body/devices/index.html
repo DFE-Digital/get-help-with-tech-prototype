@@ -17,12 +17,6 @@
 {% endblock %}
 
 {% block content %}
-<!-- {{ appBanner({
-  html: "<h2 class=\"govuk-heading-m\">Thank you. We’ve received your information.</h2>",
-  type: "success",
-  icon: false
-}) }} -->
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
@@ -41,19 +35,24 @@
     </ul>
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">
-      {% if data.covid %}
-        <a href="/responsible-body/devices/order-lockdown">Order devices</a>
+      {% if data.covid or data.features.push %}
+        <a href="/responsible-body/devices/order-virtual-cap">Order devices</a>
       {% else %}
         <a href="/responsible-body/devices/order">Order devices</a>
       {% endif %}
     </h2>
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>place orders in the event of disruption</li>
-      <li>place orders for specific circumstances</li>
+      {% if data.features.push %}
+        <li>place orders</li>
+      {% else %}
+        <li>place orders in the event of disruption</li>
+        <li>place orders for specific circumstances</li>
+      {% endif %}
       <li>access the Computacenter TechSource website</li>
     </ul>
 
+    {% if not data.features.push %}
     <h2 class="govuk-heading-l govuk-!-font-size-27">
       <a href="/responsible-body/devices/request-devices">Request devices for specific circumstances</a>
     </h2>
@@ -62,6 +61,7 @@
       <li>are shielding on official advice</li>
       <li>cannot attend school because restrictions prevent them from going</li>
     </ul>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Request devices for specific circumstances" %}
+{% set title = "Request more devices for specific circumstances" if data.features.push else "Request devices for specific circumstances" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -12,7 +12,7 @@
       {
         text: "Get help for specific circumstances",
         href: "/school/specific-circumstances"
-      } if data.features['school-mno'],
+      } if data.features['school-mno'] and not data.features.push,
       {
         text: title
       }

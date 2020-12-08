@@ -7,8 +7,6 @@
     {{ title }}
   </h1>
 
-  <p>We’ll let your local authority know that you’re ready to place orders.</p>
-
   <p>You can continue to use this service to:</p>
   <ul class="govuk-list govuk-list--bullet">
     <li>add more users</li>
@@ -17,5 +15,9 @@
     <li>request devices for clinically vulnerable children who are shielding</li>
   </ul>
 
-  <p class="govuk-!-margin-bottom-6 ">If your school is affected by local coronavirus restrictions, we’ll contact you as soon as you’re able to place orders.</p>
+  {% if not data.features.push %}
+    <p class="govuk-!-margin-bottom-6">If your school is affected by local coronavirus restrictions, we’ll contact you as soon as you’re able to place orders.</p>
+  {% else %}
+    <p class="govuk-!-margin-bottom-6">When your TechSource account is ready you can order your devices.</p>
+  {% endif %}
 {% endblock %}

@@ -44,14 +44,16 @@ module.exports = {
     }
   },
   features: {
+    push: true,
+    mno: false,
     '15-self': false,
-    'delay-delivery': true,
+    'delay-delivery': false,
     'school-mno': true,
     'sign-up': false,
     'bulk-upload': true,
     'only-bt': false,
     'in-connectivity-pilots': true,
-    mno: false
+    'request-devices-google-form': true
   },
   mno: {
     requests: fakeMnoRequests
