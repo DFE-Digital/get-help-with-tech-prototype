@@ -3,12 +3,7 @@
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block content %}
-<!-- {{ appBanner({
-  html: "<h2 class=\"govuk-heading-m\">Thank you. We’ve received your information.</h2>",
-  type: "success",
-  icon: false
-}) }} -->
-
+{% if data.features['increased-allocations'] or data.features['xmas-soon'] %}
 <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
   <div class="govuk-notification-banner__header">
     <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -16,13 +11,22 @@
     </h2>
   </div>
   <div class="govuk-notification-banner__content">
-    <p class="govuk-notification-banner__heading">We’ve restored original device allocations</p>
-    <p>As international stocks of laptops and tablets have increased, we have restored allocations to what they were before October half term.</p>
-    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-    <p class="govuk-notification-banner__heading">No orders over Christmas</p>
-    <p>You will not be able to place orders over the Christmas break. We’ll accept orders up until 4pm on Thursday 17 December and we’ll then close ordering until Monday 4 January.</p>
+    {% if data.features['increased-allocations'] %}
+      <p class="govuk-notification-banner__heading">We’ve restored original device allocations</p>
+      <p>As international stocks of laptops and tablets have increased, we have restored allocations to what they were before October half term.</p>
+    {% endif %}
+
+    {% if data.features['increased-allocations'] and data.features['xmas-soon'] %}
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    {% endif %}
+
+    {% if data.features['xmas-soon'] %}
+      <p class="govuk-notification-banner__heading">No orders over Christmas</p>
+      <p>You will not be able to place orders over the Christmas break. We’ll accept orders up until 4pm on Thursday 17 December and we’ll then close ordering until Monday 4 January.</p>
+    {% endif %}
   </div>
 </div>
+{% endif %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
