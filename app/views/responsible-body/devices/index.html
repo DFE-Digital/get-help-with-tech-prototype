@@ -35,7 +35,7 @@
     </ul>
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">
-      {% if data.covid %}
+      {% if data.covid or data.features.push %}
         <a href="/responsible-body/devices/order-lockdown">Order devices</a>
       {% else %}
         <a href="/responsible-body/devices/order">Order devices</a>
@@ -43,8 +43,12 @@
     </h2>
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>place orders in the event of disruption</li>
-      <li>place orders for specific circumstances</li>
+      {% if data.features.push %}
+        <li>place orders</li>
+      {% else %}
+        <li>place orders in the event of disruption</li>
+        <li>place orders for specific circumstances</li>
+      {% endif %}
       <li>access the Computacenter TechSource website</li>
     </ul>
 
