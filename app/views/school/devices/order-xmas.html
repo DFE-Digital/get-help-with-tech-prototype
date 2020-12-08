@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% set title = "You cannot place orders over Christmas" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: "Order devices"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Order devices</span>
+      You cannot place orders over&nbsp;Christmas
+    </h1>
+
+    <p>Ordering is now closed until Monday 4 January.</p>
+
+    <p>When ordering reopens, you can order your full allocation if:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>a school closure is reported</li>
+      <li>15 or more children (in years 3 to 11) are self-isolating</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
