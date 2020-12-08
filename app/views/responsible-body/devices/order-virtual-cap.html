@@ -16,17 +16,16 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <!-- <span class="govuk-caption-xl">{{ data.rb }}</span> -->
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
     {% include '_shared/responsible-body/_group-items-available.html' %}
-    <p>
-      The number of devices you can order is:
+    <p class="govuk-body govuk-!-margin-bottom-1">
+      The number of devices you can order is the remaining allocation of devices for:
     </p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>the total devices allocated to <a href="/responsible-body/devices/schools">schools that have reported a closure or a self&#8209;isolating group</a></li>
-      <li>any <a href="/responsible-body/devices/request-devices">devices requested for specific circumstances</a></li>
+      <li>approved requests <a href="/responsible-body/devices/request-devices">for specific circumstances</a></li>
+      <li><a href="/responsible-body/devices/schools">schools that have reported a closure</a> or 15 or more pupils self-isolating at the same time</li>
     </ul>
     <h2 class="govuk-heading-m">
       How to order
