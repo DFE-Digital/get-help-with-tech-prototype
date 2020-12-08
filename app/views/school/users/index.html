@@ -3,8 +3,16 @@
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
-  {{ govukBackLink({
-    href: "/school"
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: title
+      }
+    ]
   }) }}
 {% endblock %}
 
