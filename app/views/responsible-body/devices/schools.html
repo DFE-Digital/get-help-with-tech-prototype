@@ -35,66 +35,9 @@
   </div>
 </div>
 
-<div data-module="filterable-table">
-  {% if data.schools.length > 10 %}
-  <!-- <div class="app-filter-container">
-    <h2 class="govuk-heading-m">Filter this list</h2>
-
-    <div style="background-color: #fff; padding: 10px">
-      {{ govukCheckboxes({
-        fieldset: {
-          legend: {
-            text: 'Status',
-            classes: 'govuk-fieldset__legend--s'
-          }
-        },
-        items: [
-          { text: 'Needs information' },
-          { text: 'Needs a contact' },
-          { text: 'School contacted' },
-          { text: 'Orders open' }
-        ]
-      }) }}
-
-      {{ govukRadios({
-        fieldset: {
-          legend: {
-            text: 'Who will order?',
-            classes: 'govuk-fieldset__legend--s'
-          }
-        },
-        items: [
-          { text: 'Show all' },
-          { text: 'Trust' },
-          { text: 'School' }
-        ]
-      }) }}
-
-      {{ govukButton({
-        html: 'Filter list',
-        classes: 'govuk-!-margin-bottom-0'
-      }) }}
-    </div>
-  </div> -->
-
-  <!-- <form class="app-filter-container">
-    <div class="govuk-form-group govuk-!-margin-top-1 govuk-!-margin-bottom-4">
-      <label class="govuk-label govuk-label--s" for="filter">
-        Filter the list of schools
-      </label>
-      <div id="account-number-hint" class="govuk-hint">
-        Try searching for “Secondary” or a status like “Needs a contact”
-      </div>
-      <input class="govuk-input js-filter-table-input" id="filter" name="filter" type="text">
-    </div>
-  </form> -->
-  {% endif %}
-
 {% if data.features.push %}
   {% include 'responsible-body/devices/_schools-push.html' %}
 {% else %}
   {% include 'responsible-body/devices/_schools-pull.html' %}
 {% endif %}
-
-</div>
 {% endblock %}
