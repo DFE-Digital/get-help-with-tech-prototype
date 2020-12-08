@@ -1,6 +1,6 @@
 <div class="app-order-card">
-  <h2 class='govuk-!-margin-0 govuk-!-margin-bottom-6'>
-    <span class='govuk-heading-s govuk-!-margin-bottom-1 govuk-!-font-size-24'>
+  <h2 class="govuk-!-margin-0 govuk-!-margin-bottom-6">
+    <span class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-font-size-24">
       {{ data.rb }} has:
     </span>
     <span class="govuk-panel__title govuk-!-font-size-36">
@@ -14,9 +14,9 @@
     </span>
   </h2>
   <div class="govuk-panel__body govuk-!-font-size-24">
-    You ordered <span class='app-no-wrap'>{{ data.devicesOrdered }} devices</span>
+    You ordered <span class="app-no-wrap">{{ data.devicesOrdered }} devices</span>
     {% if routersAvailableToOrder %}
-      and <span class='app-no-wrap'>{{ data.routersOrdered }} routers</span>
+      and <span class="app-no-wrap">{{ data.routersOrdered }} routers</span>
     {% endif %}
   </div>
   {% if showOrderButton == 'canOrder' %}
