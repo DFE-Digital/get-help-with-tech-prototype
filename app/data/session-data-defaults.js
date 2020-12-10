@@ -44,7 +44,7 @@ module.exports = {
     }
   },
   features: {
-    push: true,
+    push: false,
     mno: false,
     'xmas-soon': true,
     'increased-allocations': false,
