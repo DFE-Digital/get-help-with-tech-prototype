@@ -33,7 +33,6 @@
       How to order
     </h2>
     <p>You need to place orders on a website called TechSource.</p>
-    {% if rbContent %}
       {% if data.routersAllocated %}
         <p>
           If you try to order more than {{ devicesAvailableToOrder }} devices {% if routersCap > 0 %}or more than {{ routersCap }} routers{% else %} (or any routers){% endif %}, the order will be cancelled.
@@ -43,9 +42,6 @@
           If you try to order more than {{ devicesAvailableToOrder }} devices the order will be cancelled.
         </p>
       {% endif %}
-    {% else %}
-      <p>It ’s important to know how many devices you can order before you sign in. If you try to order more than you’ve been allocated, the order will be cancelled.</p>
-    {% endif %}
     <p>
       Most devices will be delivered within 2 working days.
     </p>
