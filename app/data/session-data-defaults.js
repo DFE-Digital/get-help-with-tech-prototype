@@ -47,7 +47,7 @@ module.exports = {
     push: true,
     mno: false,
     'xmas-soon': true,
-    'increased-allocations': true,
+    'increased-allocations': false,
     '15-self': false,
     'delay-delivery': false,
     'school-mno': true,
