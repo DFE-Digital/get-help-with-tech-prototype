@@ -1,7 +1,8 @@
+
 {% set chromebookFields %}
   {{ govukInput({
     label: {
-      text: 'School or local authority domain registered for G Suite for Education',
+      text: 'School, college, or local authority domain registered for G Suite for Education',
       classes: 'govuk-label--s'
     },
     hint: {
@@ -15,7 +16,7 @@
       classes: 'govuk-label--s'
     },
     hint: {
-      text: 'This email address must be on a different domain to the school domain. For example, if the domain is ‘school.com’, then the email must not be ‘recovery@school.com’.'
+      text: 'This email address must be on a different domain to the school, or college, domain. For example, if the domain is ‘school.com’, then the email must not be ‘recovery@school.com’.'
     }
   } | decorateFormAttributes(["recovery"] if isSchool else ["responsible-body", school.URN, "recovery"]) ) }}
 
