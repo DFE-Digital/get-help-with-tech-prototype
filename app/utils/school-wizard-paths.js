@@ -14,7 +14,7 @@ function schoolWizardPaths (req) {
     // '/school/order-your-own',
     // ...isFirstUser ? ['/school/you-ordering'] : [],
     // ...isOrderUser ? ['/school/techsource-account'] : [],
-    // ...isFirstUser ? ['/school/other-ordering'] : [],
+    ...isFirstUser ? ['/school/other-ordering'] : [],
     '/school/devices-you-can-order',
     '/school/chromebooks',
     '/school/what-next',
