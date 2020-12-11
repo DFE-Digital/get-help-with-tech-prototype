@@ -10,6 +10,6 @@
   {% set iDontKnow = true %}
   {% include '_shared/chromebooks/_guidance.html' %}
 
-  <h2 class="govuk-heading-m">Will your school’s order include Chromebooks?</h2>
+  <h2 class="govuk-heading-m">Will your {% if data.features['further-education'] == false %}school’s{% endif %} order include Chromebooks?</h2>
   {% include '_shared/chromebooks/_fields.html' %}
 {% endblock %}

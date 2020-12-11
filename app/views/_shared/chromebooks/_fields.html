@@ -1,18 +1,13 @@
 {% if data.features['further-education'] %}
-  {% set collegeInList = ', college, or ' %}
-  {% set orCollege = ' or college, ' %}
-{% endif %}
-
-{% if data.features['further-education'] %}
-  {% set collegeInList = ', college, or ' %}
-  {% set orCollege = ' or college ' %}
+  {% set listOfOrgModifier = ', college or ' %}
 {% else %}
+  {% set listOfOrgModifier = ' or ' %}
 {% endif %}
 
 {% set chromebookFields %}
   {{ govukInput({
     label: {
-      text: 'School' + collegeInList + 'local authority domain registered for G Suite for Education',
+      text: 'School' + listOfOrgModifier + 'local authority domain registered for G Suite for Education',
       classes: 'govuk-label--s'
     },
     hint: {
@@ -26,7 +21,7 @@
       classes: 'govuk-label--s'
     },
     hint: {
-      text: 'This email address must be on a different domain to the school' + orCollege + 'domain. For example, if the domain is ‘school.com’, then the email must not be ‘recovery@school.com’.'
+      text: 'This email address must be on a different domain to the school' + listOfOrgModifier + 'local authority domain. For example, if the domain is ‘school.com’, then the email must not be ‘recovery@school.com’.'
     }
   } | decorateFormAttributes(["recovery"] if isSchool else ["responsible-body", school.URN, "recovery"]) ) }}
 

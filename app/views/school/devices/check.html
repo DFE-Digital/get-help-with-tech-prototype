@@ -8,6 +8,11 @@
 {% endif %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
+{% if data.features["further-education"] %}
+ {% set orderChomebookRowHeading = "Will you need to order Chromebooks?" %}
+{% else %}
+  {% set orderChomebookRowHeading = "Will your school need to order Chromebooks?" %}
+{% endif %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
