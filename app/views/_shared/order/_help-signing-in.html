@@ -1,23 +1,7 @@
-<h2 class="govuk-heading-m">Before you start</h2>
-
-<p>You need to place orders on a website called TechSource.</p>
+<h3 class="govuk-heading-s">Using TechSource for the first time</h3>
 
 <p>Use these details to sign in:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>User ID: [email address]</li>
   <li>Password: Use the ‘Forgotten password’ link to set a password the first time you sign in</li>
 </ul>
-
-{% if rbContent %}
-  {% if data.routersAllocated %}
-    <p>
-      If you try to order more than {{ devicesAvailableToOrder }} devices {% if routersCap > 0 %}or more than {{ routersCap }} routers{% else %} (or any routers){% endif %}, the order will be cancelled.
-    </p>
-  {% else %}
-    <p>
-      If you try to order more than {{ devicesAvailableToOrder }} devices the order will be cancelled.
-    </p>
-  {% endif %}
-{% else %}
-  <p>It ’s important to know how many devices you can order before you sign in. If you try to order more than you’ve been allocated, the order will be cancelled.</p>
-{% endif %}

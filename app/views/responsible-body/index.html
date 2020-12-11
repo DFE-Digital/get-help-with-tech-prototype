@@ -3,7 +3,7 @@
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block content %}
-{% if data.features['increased-allocations'] or data.features['xmas-soon'] %}
+{% if data.features['increased-allocations'] or data.features['xmas-soon'] or data.features['sixth-form-increase'] %}
 <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
   <div class="govuk-notification-banner__header">
     <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -23,6 +23,15 @@
     {% if data.features['xmas-soon'] %}
       <p class="govuk-notification-banner__heading">No orders over Christmas</p>
       <p>You will not be able to place orders over the Christmas break. We’ll accept orders up until 4pm on Thursday 17 December and we’ll then close ordering until Monday 4 January.</p>
+    {% endif %}
+
+    {% if data.features['sixth-form-increase'] %}
+      <p class="govuk-notification-banner__heading">Your allocation has increased to include students in years 12 and 13</p>
+      {% if data.features['push'] %}
+        <p>You can <a href='/school/devices/order-lockdown' class='govuk-link--no-visited-state'>order 30 more devices</a>.</p>
+      {% else %}
+        <p>You can order 30 more devices when you report a closure or 15 or more pupils self&#8209isolating at the same time.</p>
+      {% endif %}
     {% endif %}
   </div>
 </div>

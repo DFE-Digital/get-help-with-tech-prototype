@@ -44,9 +44,11 @@ module.exports = {
     }
   },
   features: {
-    push: false,
+    push: true,
     mno: false,
-    'xmas-soon': true,
+    'further-education': false,
+    'sixth-form-increase': false,
+    'xmas-soon': false,
     'increased-allocations': false,
     '15-self': false,
     'delay-delivery': false,
