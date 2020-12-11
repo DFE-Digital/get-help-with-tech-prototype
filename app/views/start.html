@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Get technology for children who cannot attend school due to coronavirus" %}
+{% set title = "Get help with technology" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block content %}
@@ -11,11 +11,10 @@
 
     <p>Use this service to:</p>
     <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
-      <li>tell us who to contact about ordering devices for each of your schools</li>
-      <li>download log-ins for BT wifi hotspots so you can give them out</li>
-      {% if data.features.mno %}
-        <li>request extra data for mobile devices</li>
-      {% endif %}
+      <li>tell us who will place orders for laptops and tablets</li>
+      <li>give others in your organisation access to the services they need</li>
+      <li>see device allocations</li>
+      <li><a class="govuk-link" href="#">increase children’s internet access</a> (only for pilot participants)</li>
     </ul>
 
     {{ govukButton({

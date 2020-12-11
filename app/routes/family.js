@@ -1,7 +1,6 @@
 const {
   familyWizardPaths,
-  familyWizardForks,
-  familyMnoWizardPaths
+  familyWizardForks
 } = require('../utils/family-wizard-paths')
 
 /**
@@ -10,15 +9,6 @@ const {
 module.exports = router => {
   router.all('/family', function (req, res) {
     res.render('family/index', { paths: familyWizardPaths(req) })
-  })
-
-  router.get('/family/mno/:view', function (req, res) {
-    res.render(`family/mno/${req.params.view}`, { paths: familyMnoWizardPaths(req) })
-  })
-
-  router.post('/family/mno/:view', function (req, res) {
-    const paths = familyMnoWizardPaths(req)
-    res.redirect(paths.next)
   })
 
   router.get('/family/:view', function (req, res) {
