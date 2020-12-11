@@ -47,7 +47,7 @@ module.exports = {
     push: true,
     mno: false,
     'further-education': true,
-    'sixth-form-increase': true,
+    'sixth-form-increase': false,
     'xmas-soon': false,
     'increased-allocations': false,
     '15-self': false,

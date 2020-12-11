@@ -2,6 +2,12 @@
 {% set title = "Check your school details" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
+{% if data.features["further-education"] %}
+ {% set orderChomebookRowHeading = "Will you need to order Chromebooks?" %}
+{% else %}
+  {% set orderChomebookRowHeading = "Will your school need to order Chromebooks?" %}
+{% endif %}
+
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
     items: [
@@ -43,7 +49,7 @@
         },
         {
           key: {
-            text: "Will your school need to order Chromebooks?"
+            text: orderChomebookRowHeading
           },
           value: {
             text: "Yes"
@@ -103,11 +109,7 @@
 
     <p>Allocations are based on:</p>
 
-    <ul class="govuk-list govuk-list--bullet">
-      <li>the number of children in years 3 to 11</li>
-      <li>free school meals data</li>
-      <li>an estimate of the number of devices a school already has</li>
-    </ul>
+    {% include "_shared/school/_allocation-description.html" %}
 
     {% if not data.features.push %}
       <p>Numbers will be reassessed at the time of ordering based on availability and the extent of coronavirus restrictions.</p>
