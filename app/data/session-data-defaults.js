@@ -55,7 +55,6 @@ module.exports = {
     'school-mno': true,
     'sign-up': false,
     'bulk-upload': true,
-    'only-bt': false,
     'in-connectivity-pilots': true,
     'request-devices-google-form': true
   },

@@ -61,11 +61,7 @@
 {% endblock %}
 
 {% if data['sign-in-email-address-rb'] %}
-  {% if data.features['only-bt'] %}
-    {% set homepage = '/responsible-body/hotspot/download' %}
-  {% else %}
-    {% set homepage = '/responsible-body' %}
-  {% endif %}
+  {% set homepage = '/responsible-body' %}
 {% else %}
   {% set homepage = '/' %}
 {% endif %}
