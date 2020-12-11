@@ -5,7 +5,8 @@
 
 {% if data.features['further-education'] %}
   {% set collegeInList = ', college, or ' %}
-  {% set orCollege = ' or college, ' %}
+  {% set orCollege = ' or college ' %}
+{% else %}
 {% endif %}
 
 {% set chromebookFields %}

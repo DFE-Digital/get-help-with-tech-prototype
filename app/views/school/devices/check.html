@@ -1,12 +1,13 @@
 {% extends "layout.html" %}
-{% set title = "Check your school details" %}
-{% block pageTitle %}{{ title }}{% endblock %}
-
 {% if data.features["further-education"] %}
+  {% set title = "Check your details" %}
  {% set orderChomebookRowHeading = "Will you need to order Chromebooks?" %}
 {% else %}
+  {% set title = "Check your school details" %}
   {% set orderChomebookRowHeading = "Will your school need to order Chromebooks?" %}
 {% endif %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
