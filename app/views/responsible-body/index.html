@@ -27,7 +27,11 @@
 
     {% if data.features['sixth-form-increase'] %}
       <p class="govuk-notification-banner__heading">Your allocation has increased to include students in years 12 and 13</p>
-      <p>You can <a href='/school/devices/order-lockdown' class='govuk-link--no-visited-state'>order 30 more devices</a>.</p>
+      {% if data.features['push'] %}
+        <p>You can <a href='/school/devices/order-lockdown' class='govuk-link--no-visited-state'>order 30 more devices</a>.</p>
+      {% else %}
+        <p>You can order 30 more devices when you report a closure or 15 or more pupils self&#8209isolating at the same time.</p>
+      {% endif %}
     {% endif %}
   </div>
 </div>

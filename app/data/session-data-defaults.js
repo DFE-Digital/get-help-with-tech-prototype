@@ -46,7 +46,7 @@ module.exports = {
   features: {
     push: true,
     mno: false,
-    'further-education': true,
+    'further-education': false,
     'sixth-form-increase': false,
     'xmas-soon': false,
     'increased-allocations': false,
