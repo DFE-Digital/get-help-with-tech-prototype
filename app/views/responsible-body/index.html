@@ -28,9 +28,9 @@
     {% if data.features['sixth-form-increase'] %}
       <p class="govuk-notification-banner__heading">Your allocation has increased to include students in years 12 and 13</p>
       {% if data.features['push'] %}
-        <p>You can <a href='/school/devices/order-lockdown' class='govuk-link--no-visited-state'>order 30 more devices</a>.</p>
+        <p>You can <a href='/school/devices/order-lockdown' class='govuk-link--no-visited-state'>order more devices</a>.</p>
       {% else %}
-        <p>You can order 30 more devices when you report a closure or 15 or more pupils self&#8209isolating at the same time.</p>
+        <p>You can order the devices when you report a closure or 15 or more students <span class='app-no-wrap'>self-isolating</span> at the same time.</p>
       {% endif %}
     {% endif %}
   </div>
@@ -57,9 +57,13 @@
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>place orders</li>
-      <li>add school contacts</li>
-      <li>tell us who will place orders for schools</li>
-      <li>give schools access to the services they need</li>
+      <li>add contacts</li>
+      <li>tell us who will place orders</li>
+      {% if data.features['further-education'] %}
+        <li>give school and college staff access to this service and TechSource</li>
+      {% else %}
+        <li>give schools access to the services they need</li>
+      {% endif %}
     </ul>
 
     {% if data.features['in-connectivity-pilots'] %}

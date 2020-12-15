@@ -1,15 +1,24 @@
 {# SPECIFIC CIRCUMSTANCES #}
-{# <div class="govuk-grid-row">
+<div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4">
-    <h3 class="govuk-heading-m ">Schools with approved requests for specific circumstances</h3>
+    {% if data.features['further-education'] %}
+      <h3 class="govuk-heading-m ">Schools and colleges with approved requests for <span class='app-no-wrap'>specific circumstances</span></h3>
+    {% else %}
+      <h3 class="govuk-heading-m ">Schools with approved requests for specific circumstances</h3>
+    {% endif %}
   </div>
 </div>
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-visually-hidden">Schools with approved requests for specific circumstances</caption>
+  {% if data['responsible-body'] %}
+    <caption class="govuk-table__caption govuk-visually-hidden">Schools and colleges with approved requests for specific circumstances</caption>
+  {% else %}
+    <caption class="govuk-table__caption govuk-visually-hidden">Schools with approved requests for specific circumstances</caption>
+  {% endif %}
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th class="govuk-table__header" style="width: 50%">School</th>
+
+      <th class="govuk-table__header" style="width: 50%">School{% if data.features['further-education'] %} or college{% endif %}</th>
       <th class="govuk-table__header">Who will order?</th>
       <th class="govuk-table__header">Allocation</th>
       <th class="govuk-table__header" style="width: 200px"></th>
@@ -32,30 +41,38 @@
         </td>
       </tr>
   </tbody>
-</table> #}
+</table>
 {# END SPECIFIC CIRCUMSTANCES #}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4">
-    <h3 class="govuk-heading-m ">Schools reporting a closure or self-isolating group</h3>
+    {% if data.features['further-education'] %}
+      <h3 class="govuk-heading-m ">Schools and colleges reporting a closure <span class='app-no-wrap'>or self-isolating group</span></h3>
+    {% else %}
+      <h3 class="govuk-heading-m ">Schools reporting a closure or self-isolating group</h3>
+    {% endif %}
     <p>
-      When a school has reported either a closure or a group of 15 or more pupils self-isolating at the same time, you can order its allocation of devices or routers.
+      When a school{% if data.features['further-education'] %} or college{% endif %} has reported either a closure or a group of 15 or more pupils self-isolating at the same time, you can order its allocation of devices or routers.
     </p>
   </div>
 </div>
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-visually-hidden">Schools reporting a closure or self-isolating group</caption>
+  {% if data['responsible-body'] %}
+    <caption class="govuk-table__caption govuk-visually-hidden">Schools and colleges reporting a closure or self-isolating group</caption>
+  {% else %}
+    <caption class="govuk-table__caption govuk-visually-hidden">Schools reporting a closure or self-isolating group</caption>
+  {% endif %}
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th class="govuk-table__header" style="width: 50%">School</th>
+      <th class="govuk-table__header" style="width: 50%">School{% if data.features['further-education'] %} or college{% endif %}</th>
       <th class="govuk-table__header">Who will order?</th>
       <th class="govuk-table__header">Allocation</th>
       <th class="govuk-table__header" style="width: 200px"></th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
-    {% for school in data.schools %}
+    {% for school in data.schools and colleges %}
       {% if school.can_order %}
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">
@@ -95,22 +112,30 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4">
-    <h3 class="govuk-heading-m ">Schools without a reported closure or self&#8209;isolating group</h3>
+    {% if data.features['further-education'] %}
+      <h3 class="govuk-heading-m ">Schools and colleges without a reported closure <span class='app-no-wrap'>or self-isolating group</span></h3>
+    {% else %}
+      <h3 class="govuk-heading-m ">Schools without a reported closure or self-isolating group></h3>
+    {% endif %}
   </div>
 </div>
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-visually-hidden">Schools without a reported closure or self&#8209;isolating group</caption>
+  {% if data['responsible-body'] %}
+    <caption class="govuk-table__caption govuk-visually-hidden">Schools and colleges without a reported closure or self-isolating group</caption>
+  {% else %}
+    <caption class="govuk-table__caption govuk-visually-hidden">Schools without a reported closure or self-isolating group</caption>
+  {% endif %}
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th class="govuk-table__header" style="width: 50%">School</th>
+      <th class="govuk-table__header" style="width: 50%">School{% if data.features['further-education'] %} or college{% endif %}</th>
       <th class="govuk-table__header">Who will order?</th>
       <th class="govuk-table__header">Allocation</th>
       <th class="govuk-table__header" style="width: 200px"></th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
-    {% for school in data.schools %}
+    {% for school in data.schools and colleges %}
      {% if not school.can_order %}
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">
