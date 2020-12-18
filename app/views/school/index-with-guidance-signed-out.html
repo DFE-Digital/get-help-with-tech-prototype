@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Get help with technology
+    </h1>
+
+    <p class="govuk-body-l">Get devices, access to the internet, software and training to provide remote learning during the coronavirus (COVID-19) pandemic.</p>
+
+    <h3 class="govuk-heading-m">
+      <a href="#">Sign in</a>
+    </h3>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      <li>order devices</li>
+      <li>manage your school, local authority or trust</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Laptops and tablets</h2>
+
+    <h3 class="govuk-heading-m">
+      <a href="#">Before you order your devices</a>
+    </h3>
+    <!-- <p>Use this section to:</p> -->
+    <ul class="govuk-list govuk-list--bullet">
+      <li>check your allocation</li>
+      <li>decide what type of devices your school needs</li>
+      <li>learn about device ownership</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">
+      <a href="#">Order devices</a>
+    </h3>
+    <ul class="govuk-list govuk-list--bullet">
+      {% if data.features.push %}
+        <li>place orders</li>
+      {% else %}
+        <li>check if you can place orders</li>
+      {% endif %}
+      <li>access the Computacenter TechSource website</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">
+      <a href="#">Manage devices you’ve ordered</a>
+    </h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>help getting devices ready</li>
+      <li>support and maintenance</li>
+      <li>what to do with faulty devices</li>
+    </ul>
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-6">Internet access</h2>
+
+    <h2 class="govuk-heading-m">
+      <a href="#">Request mobile data</a>
+    </h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>see which networks are supported</li>
+      <li>follow guide on collecting mobile information we need</li>
+      <li>submit mobile information to mobile networks</li>
+    </ul>
+
+    <!-- <h2 class="govuk-heading-l govuk-!-margin-top-6">
+      Remote learning assistance
+    </h2>
+
+    <h2 class="govuk-heading-m">
+      <a href="#">Request remote learning software</a>
+    </h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>see what you can request</li>
+      <li>apply for funding</li>
+      <li>submit mobile information to mobile networks</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">
+      <a href="#">Technology training for staff</a>
+    </h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>see what you can request</li>
+      <li>apply for funding</li>
+      <li>submit mobile information to mobile networks</li>
+    </ul> -->
+
+    <!-- <h2 class="govuk-heading-l govuk-!-margin-top-6">Your school</h2>
+
+    <h3 class="govuk-heading-l govuk-!-font-size-27">
+      <a href="/school/devices/check">Check your{% if data.features['further-education'] == false %} school{% endif %} details</a>
+    </h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>review your school details</li>
+      <li>change your Chromebook settings</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">
+      <a href="/school/users">Manage users</a>
+    </h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>add users to this service</li>
+      <li>give others access to the TechSource website (where they’ll place orders)</li>
+    </ul> -->
+  </div>
+</div>
+{% endblock %}
