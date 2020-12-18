@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% if data.features["further-education"] %}
   {% set title = "Check your details" %}
- {% set orderChomebookRowHeading = "Will you need to order Chromebooks?" %}
+  {% set orderChomebookRowHeading = "Will you need to order Chromebooks?" %}
 {% else %}
   {% set title = "Check your school details" %}
   {% set orderChomebookRowHeading = "Will your school need to order Chromebooks?" %}
@@ -132,7 +132,7 @@
       <p>Numbers will be reassessed at the time of ordering based on availability and the extent of coronavirus restrictions.</p>
     {% endif %}
 
-    <p>If the number of pupils unable to attend school and in need of laptops and tablets is greater than your allocation, you can <a href='#'>request more devices</a>.</p>
+    <p>If the number of {% if data.features["further-education"] %}students unable to take part in face-to-face education{% else %}pupils unable to attend school{% endif %} and in need of laptops and tablets is greater than your allocation, you can <a href='#'>request more devices</a>.</p>
   </div>
 </div>
 {% endblock %}
