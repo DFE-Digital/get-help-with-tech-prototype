@@ -29,9 +29,9 @@
 
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>see your list of schools {% if data.features['further-education'] %}and colleges{% endif %} and their device allocations</li>
+      <li>see your list of schools {% if data.features['further-education'] %}and colleges, {% endif %} and their device allocations</li>
       <li>tell us if schools {% if data.features['further-education'] %}or colleges{% endif %} will place their own orders</li>
-      <li>give contacts and technical information{% if data.features['further-education'] == false %} for each school{% endif %}</li>
+      <li>give contacts and technical information{% if not data.features['further-education'] %} for each school{% endif %}</li>
     </ul>
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">
