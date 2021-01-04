@@ -9,7 +9,7 @@
 </div>
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-visually-hidden">Schools and colleges needing information before they can order</caption>
+  <caption class="govuk-table__caption govuk-visually-hidden">Schools {% if data['further-education'] %} and colleges{% endif %} needing information before they can order</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th class="govuk-table__header" style="width: 50%">School{% if data['further-education'] %} or college{% endif %}</th>
@@ -69,10 +69,10 @@
 </div>
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-visually-hidden">Schools ready to order</caption>
+  <caption class="govuk-table__caption govuk-visually-hidden">Schools{% if data['further-education'] %} and colleges{% endif %} ready to order</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th class="govuk-table__header" style="width: 50%">Schools{% if data['further-education'] %} or college{% endif %}</th>
+      <th class="govuk-table__header" style="width: 50%">School{% if data['further-education'] %} or college{% endif %}</th>
       <th class="govuk-table__header">Who will order?</th>
       <th class="govuk-table__header">Allocation</th>
       <th class="govuk-table__header" style="width: 200px"></th>
