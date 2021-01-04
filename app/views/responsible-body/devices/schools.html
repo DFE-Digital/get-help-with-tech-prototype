@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
-{% set title = "Your schools" %}
+{% if data.features['further-education'] %}
+  {% set title = "Your schools and colleges" %}
+{% else %}
+  {% set title = "Your schools" %}
+{% endif %}
 
 {% set devicesAllocated = 14 %}
 {% set devicesAvailableToOrder = devicesAllocated - data.devicesOrdered %}

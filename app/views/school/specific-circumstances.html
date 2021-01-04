@@ -33,7 +33,7 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>report a closure</li>
-      <li>tell us that more than 15 children are self-isolating</li>
+      <li>tell us that more than 15 children or students are self-isolating</li>
     </ul>
 
     <!-- <p>You will then be invited to order devices.</p> -->
@@ -42,11 +42,16 @@
 
     <h2 class="govuk-heading-m">Specific circumstances</h2>
 
-    <p>You can get help immediately for disadvantaged children from any year group who:</p>
+    <p>You can get help immediately for disadvantaged {% if data.features['further-education'] %}students{% else %}children{% endif %} from any year group who:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>are <a href="#">clinically extremely vulnerable</a> and need to shield on current official advice (this could be from a doctor or hospital consultant)</li>
       <li>live in a household that’s been advised to shield because a family member is clinically extremely vulnerable</li>
-      <li>cannot attend school – even though theirs is open – because they live in a different area with local coronavirus restrictions</li>
+      {% if data.features['further-education'] %}
+        <li>cannot take part in face-to-face education – even though their school or college is open – because they live in a different area with local coronavirus restrictions</li>
+      {% else %}
+        <li>cannot attend school – even though theirs is open – because they live in a different area with local coronavirus restrictions<li>
+      {% endif %}
+    
     </ul>
 
     <h2 class="govuk-heading-m">Help available</h2>

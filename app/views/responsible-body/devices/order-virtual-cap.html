@@ -45,15 +45,21 @@
     <p>
       Most devices will be delivered within 2 working days.
     </p>
-    <h3 class="govuk-heading-s">
-      Ordering devices for more than one school
-    </h3>
-    <p>
-      You can combine allocations for all your schools, and have all devices delivered to one place. If you want different schools to get devices directly, place a separate order for each delivery address.
-    </p>
-    <p>
-      When using TechSource, you will be asked for a URN. Use any URN for one of the schools you manage.
-    </p>
+    {% if data.features['further-education'] %}
+      <h3 class="govuk-heading-s">
+        Combining allocations into one order
+      </h3>
+      <p>
+        You can combine allocations for your schools and colleges, and have devices delivered to one location. If you want devices delivered directly to different locations, place a separate order for each delivery address.
+      </p>
+    {% else %}
+      <h3 class="govuk-heading-s">
+        Ordering devices for more than one school
+      </h3>
+      <p>
+        You can combine allocations for all your schools, and have the devices delivered to one place. If you want a school to get devices directly, place a separate order for each delivery address.
+      </p>
+    {% endif %}
     {# <h3 class="govuk-heading-s">Chromebooks</h3>
     <p>
       If you place an order for Chromebooks, TechSource will contact you about which ‘G Suite for Education’ domains you want to use.
