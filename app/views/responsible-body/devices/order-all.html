@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% set title = "You’ve ordered all the devices you can" %}
-{% set lockdown = false %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -16,57 +15,36 @@
       {{ title }}
     </h1>
 
+    <div class="app-order-card">
+      <h2 class="govuk-!-margin-0 govuk-!-margin-bottom-6">
+        <span class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-font-size-24">
+          {{ data.rb }} has:
+        </span>
+        <span class="govuk-panel__title govuk-!-font-size-36">
+          No devices left to order
+        </span>
+      </h2>
+      <div class="govuk-panel__body govuk-!-font-size-24">
+        You ordered 582 of 582 devices
+      </div>
+    </div>
+
     <p>We’ll contact you if you’re able to place more orders.</p>
 
     <p><a href="#">View your order history on TechSource</a></p>
   </div>
 </div>
 
-<table class="govuk-table govuk-!-margin-top-3">
-  <caption class="govuk-table__caption">
-    <span class="govuk-heading-m">Schools you ordered for</span>
-  </caption>
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th class="govuk-table__header" style="width: 50%">School</th>
-      <th class="govuk-table__header">What was ordered</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <a href="/responsible-body/devices/schools/{{ data.schools[0].URN }}">{{ data.schools[2].name }}</a>
-      </td>
-      <td class="govuk-table__cell">
-        All devices for specific circumstances ordered
-        <br /><span class="govuk-!-font-size-16" style="color: #505a5f">You’ve ordered 2 of 2 devices for specific circumstances</span>
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
-        <a href="/responsible-body/devices/schools/{{ data.schools[2].URN }}">{{ data.schools[5].name }}</a>
-      </td>
-      <td class="govuk-table__cell">
-        All devices ordered
-        <br /><span class="govuk-!-font-size-16" style="color: #505a5f">You’ve ordered {{ data.schools[2].total }} of {{ data.schools[2].total }} devices</span>
-      </td>
-    </tr>
-    <!-- <tr class="govuk-table__row">
-      <td colspan="2" class="govuk-table__cell">
-        <a href="#">View all schools (25)</a>
-      </td>
-    </tr> -->
-  </tbody>
-</table>
-
+{% if not data.features.push %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {% include '_shared/order/_some-schools.html' %}
+    <!-- {% include '_shared/order/_some-schools.html' %} -->
 
     <h2 class="govuk-heading-m govuk-!-margin-top-2">Get devices for specific circumstances</h2>
     {% set requestLink = '/responsible-body/devices/request-devices' %}
     {% include '_shared/request-devices/_who.html' %}
   </div>
 </div>
+{% endif %}
 
 {% endblock %}
