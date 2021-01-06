@@ -43,9 +43,11 @@
       <p><a href="#">View your order history on TechSource</a></p>
     {% endif %}
 
-    <h2 class="govuk-heading-m">Get devices for specific circumstances</h2>
-    {% set requestLink = '/school/devices/request-devices' %}
-    {% include '_shared/request-devices/_who.html' %}
+    {% if not data.features.push %}
+      <h2 class="govuk-heading-m">Get devices for specific circumstances</h2>
+      {% set requestLink = '/school/devices/request-devices' %}
+      {% include '_shared/request-devices/_who.html' %}
+    {% endif %}
   </div>
 </div>
 {% endblock %}
