@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% set count = 3 %}
+{% set title = count + " requests found" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/mno/index-2"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+  </div>
+</div>
+
+{{ govukButton({
+  text: 'Download requests as a CSV',
+  href: '/public/images/sample.csv'
+}) }}
+
+<!-- <h2 class="govuk-heading-l">Find requests</h2>
+<div class="app-card govuk-!-margin-bottom-4">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+        {{ govukTextarea({
+          label: {
+            text: "Names or telephone numbers"
+          },
+          hint: {
+            text: 'Enter one name or telephone number per line'
+          },
+          classes: "govuk-!-margin-bottom-0",
+          id: "mno-name-or-number",
+          name: "mno-name-or-number"
+        }) }}
+
+        {{ govukButton({
+          text: "Find requests",
+          href: "#",
+          classes: "govuk-!-margin-bottom-1"
+        }) }}
+      </fieldset>
+    </div>
+  </div>
+</div> -->
+
+<table class="govuk-table requests-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="all-rows" name="all-rows" type="checkbox" value="all-rows">
+          <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="all-rows">
+            Account holder
+          </label>
+        </div>
+      </th>
+      <th class="govuk-table__header">Mobile number</th>
+      <th class="govuk-table__header"><a href="#">Requested</a></th>
+      <th class="govuk-table__header"><a href="#">Status</a></th>
+      <th class="govuk-table__header">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    {% for request in data.mno.requests %}
+      {% if loop.index <= count %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="row-{{ loop.index }}" name="row" type="checkbox" value="row-{{ loop.index }}">
+              <label class="govuk-label govuk-checkboxes__label" for="row-{{ loop.index }}">
+                {{ request.name }}
+              </label>
+            </div>
+          </td>
+          <td class="govuk-table__cell">{{ request.number }}</td>
+          <td class="govuk-table__cell">{{ request.date }}</td>
+          <td class="govuk-table__cell">{{ govukTag({ classes: "govuk-tag--blue", text: "New" }) }}</td>
+          <td class="govuk-table__cell">
+            <a href="/mno/report-a-problem">Report a problem</a>
+          </td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+
+<form action="#" method="post">
+  <div class="govuk-form-group govuk-!-margin-bottom-2">
+    <label class="govuk-label" for="sortby">Set status of selected to</label>
+    <select class="govuk-select" name="sortby" id="sortby" style="width: 200px">
+      <option value=""></option>
+      <option value="in_progress">In progress</option>
+      <option value="completed">Completed</option>
+      <option value="not_valid">Not valid</option>
+    </select>
+    <button class="govuk-button govuk-buton--secondary govuk-!-margin-bottom-2" data-module="govuk-button">
+      Update
+    </button>
+  </div>
+</form>
+{% endblock %}
