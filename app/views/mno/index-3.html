@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% set title = "Requests for extra mobile data" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">[Network name]</span>
+      Requests for extra mobile&nbsp;data
+    </h1>
+  </div>
+</div>
+
+{{ govukButton({
+  text: 'Download all requests as CSV',
+  href: '/public/images/sample.csv'
+}) }}
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" style="width: 25%">Status</th>
+      <th class="govuk-table__header">Number of requests</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell govuk-!-font-weight-bold">{{ govukTag({ classes: "govuk-tag--grey", text: "All requests" }) }}</td>
+      <td class="govuk-table__cell"><a href="/mno/all">400 requests</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">{{ govukTag({ classes: "govuk-tag--blue", text: "New" }) }}</td>
+      <td class="govuk-table__cell"><a href="/mno/all-new">300 requests</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">{{ govukTag({ classes: "govuk-tag--yellow", text: "In progress" }) }}</td>
+      <td class="govuk-table__cell"><a href="/mno/all-in-progress">2 requests</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">{{ govukTag({ classes: "govuk-tag--green", text: "Completed" }) }}</td>
+      <td class="govuk-table__cell"><a href="/mno/all-completed">70 requests</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">{{ govukTag({ classes: "govuk-tag--red", text: "Problem reported" }) }}</td>
+      <td class="govuk-table__cell"><a href="/mno/all-problem">28 requests</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="app-card govuk-!-margin-bottom-4">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          Find requests by telephone number
+        </legend>
+        <!-- <p>Find requests by telephone number and update them.</p> -->
+        {{ govukTextarea({
+          label: {
+            text: "Telephone numbers",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: 'One per line'
+          },
+          classes: "govuk-!-margin-bottom-0",
+          id: "mno-name-or-number",
+          name: "mno-name-or-number"
+        }) }}
+
+        {{ govukButton({
+          text: "Find requests",
+          href: "/mno/find-requests",
+          classes: "govuk-!-margin-bottom-1"
+        }) }}
+      </fieldset>
+    </div>
+  </div>
+</div>
+{% endblock %}
