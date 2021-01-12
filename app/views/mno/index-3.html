@@ -12,38 +12,50 @@
   </div>
 </div>
 
-{{ govukButton({
+<!-- {{ govukButton({
   text: 'Download all requests as CSV',
   href: '/public/images/sample.csv'
-}) }}
+}) }} -->
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th class="govuk-table__header" style="width: 25%">Status</th>
       <th class="govuk-table__header">Number of requests</th>
+      <th class="govuk-table__header">View requests</th>
+      <td class="govuk-table__header">Download CSV</td>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell govuk-!-font-weight-bold">{{ govukTag({ classes: "govuk-tag--grey", text: "All requests" }) }}</td>
-      <td class="govuk-table__cell"><a href="/mno/all">400 requests</a></td>
+      <td class="govuk-table__cell">All requests</td>
+      <td class="govuk-table__cell">400</td>
+      <td class="govuk-table__cell"><a href="/mno/all">View all requests</a></td>
+      <td class="govuk-table__cell"><a href="#">Download CSV</a></td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">{{ govukTag({ classes: "govuk-tag--blue", text: "New" }) }}</td>
-      <td class="govuk-table__cell"><a href="/mno/all-new">300 requests</a></td>
+      <td class="govuk-table__cell">New</td>
+      <td class="govuk-table__cell">300</td>
+      <td class="govuk-table__cell"><a href="/mno/all-new">View new requests</a></td>
+      <td class="govuk-table__cell"><a href="#">Download CSV</a></td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">{{ govukTag({ classes: "govuk-tag--yellow", text: "In progress" }) }}</td>
-      <td class="govuk-table__cell"><a href="/mno/all-in-progress">2 requests</a></td>
+      <td class="govuk-table__cell">In progress</td>
+      <td class="govuk-table__cell">2</td>
+      <td class="govuk-table__cell"><a href="/mno/all-in-progress">View in progress requests</a></td>
+      <td class="govuk-table__cell"><a href="#">Download CSV</a></td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">{{ govukTag({ classes: "govuk-tag--green", text: "Completed" }) }}</td>
-      <td class="govuk-table__cell"><a href="/mno/all-completed">70 requests</a></td>
+      <td class="govuk-table__cell">Completed</td>
+      <td class="govuk-table__cell">70</td>
+      <td class="govuk-table__cell"><a href="/mno/all-completed">View completed requests</a></td>
+      <td class="govuk-table__cell"><a href="#">Download CSV</a></td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">{{ govukTag({ classes: "govuk-tag--red", text: "Problem reported" }) }}</td>
-      <td class="govuk-table__cell"><a href="/mno/all-problem">28 requests</a></td>
+      <td class="govuk-table__cell">Problem reported</td>
+      <td class="govuk-table__cell">28</td>
+      <td class="govuk-table__cell"><a href="/mno/all-problem">View requests with problems</a></td>
+      <td class="govuk-table__cell"><a href="#">Download CSV</a></td>
     </tr>
   </tbody>
 </table>
