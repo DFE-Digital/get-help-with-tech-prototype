@@ -98,18 +98,5 @@
   </tbody>
 </table>
 
-<form action="#" method="post">
-  <div class="govuk-form-group govuk-!-margin-bottom-2">
-    <label class="govuk-label" for="sortby">Set status of selected to</label>
-    <select class="govuk-select" name="sortby" id="sortby" style="width: 200px">
-      <option value=""></option>
-      <option value="in_progress">In progress</option>
-      <option value="completed">Completed</option>
-      <option value="not_valid">Not valid</option>
-    </select>
-    <button class="govuk-button govuk-buton--secondary govuk-!-margin-bottom-2" data-module="govuk-button">
-      Update
-    </button>
-  </div>
-</form>
+{% include 'mno/_shared/_change-status-form.html' %}
 {% endblock %}
