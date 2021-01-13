@@ -24,44 +24,7 @@
   href: '/public/images/sample.csv'
 }) }}
 
-<table class="govuk-table requests-table">
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th class="govuk-table__header">
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="all-rows" name="all-rows" type="checkbox" value="all-rows">
-          <label class="govuk-label govuk-label--s govuk-checkboxes__label" for="all-rows">
-            Account holder
-          </label>
-        </div>
-      </th>
-      <th class="govuk-table__header">Mobile number</th>
-      <th class="govuk-table__header"><a href="#">Requested</a></th>
-      <th class="govuk-table__header"><a href="#">Status</a></th>
-      <th class="govuk-table__header">Actions</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    {% for request in data.mno.requests %}
-      {% if loop.index <= count %}
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="row-{{ loop.index }}" name="row" type="checkbox" value="row-{{ loop.index }}">
-              <label class="govuk-label govuk-checkboxes__label" for="row-{{ loop.index }}">
-                {{ request.name }}
-              </label>
-            </div>
-          </td>
-          <td class="govuk-table__cell">{{ request.number }}</td>
-          <td class="govuk-table__cell">{{ request.date }}</td>
-          <td class="govuk-table__cell">{{ govukTag({ classes: "govuk-tag--green", text: "Completed" }) }}</td>
-          <td class="govuk-table__cell"></td>
-        </tr>
-      {% endif %}
-    {% endfor %}
-  </tbody>
-</table>
-
+{% set overrideTag = { classes: "govuk-tag--green", text: "Completed" } %}
+{% include 'mno/_shared/_requests-table.html' %}
 {% include 'mno/_shared/_change-status-form.html' %}
 {% endblock %}
