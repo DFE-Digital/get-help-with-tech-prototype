@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+{% set title = "We’ve processed your CSV" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/mno/upload-csv"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    <p>We found 47 rows in your CSV:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>4 were not changed</li>
+      <li>3 contain errors</li>
+      <li>40 were updated successfully</li>
+    </ul>
+  </div>
+</div>
+
+<h2 class="govuk-heading-l govuk-!-margin-top-4">3 requests contain errors</h2>
+
+<div class="govuk-form-group--error">
+  <p class="govuk-error-message">Fix the errors in your CSV and try uploading again</p>
+
+  <table class="govuk-table requests-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header">ID</th>
+        <th class="govuk-table__header">Account holder</th>
+        <th class="govuk-table__header">Mobile number</th>
+        <th class="govuk-table__header">Error</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          10
+        </td>
+        <td class="govuk-table__cell">
+          {{ data.mno.requests[10].name }}
+        </td>
+        <td class="govuk-table__cell">01234 321456</td>
+        <td class="govuk-table__cell">
+          <span class="govuk-error-message govuk-!-margin-bottom-0">
+            Phone number does not match our records<br />We expected 01222 321456
+          </span>
+        </td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          15
+        </td>
+        <td class="govuk-table__cell">
+          {{ data.mno.requests[15].name }}
+        </td>
+        <td class="govuk-table__cell">07123456789</td>
+        <td class="govuk-table__cell">
+          <span class="govuk-error-message govuk-!-margin-bottom-0">
+            Account holder does not match our records<br />We expected Adam Jones
+          </span>
+        </td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          20
+        </td>
+        <td class="govuk-table__cell">
+          {{ data.mno.requests[20].name }}
+        </td>
+        <td class="govuk-table__cell">07123456789</td>
+        <td class="govuk-table__cell ">
+          <span class="govuk-error-message govuk-!-margin-bottom-0">No status provided</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="govuk-heading-l govuk-!-margin-top-4">{{ data.mno.requests | length }} requests updated</h2>
+<table class="govuk-table requests-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header">ID</th>
+      <th class="govuk-table__header">Account holder</th>
+      <th class="govuk-table__header">Mobile number</th>
+      <th class="govuk-table__header">New status</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    {% for request in data.mno.requests %}
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">{{ loop.index }}</td>
+        <td class="govuk-table__cell">{{ request.name }}</td>
+        <td class="govuk-table__cell">{{ request.number }}</td>
+        <td class="govuk-table__cell">{{ govukTag(request.tag) }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{{ govukButton({
+  text: 'Finish',
+  href: '/mno'
+}) }}
+{% endblock %}

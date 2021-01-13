@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% set count = 3 %}
+{% set title = count + " requests found" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/mno/index-2"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+  </div>
+</div>
+
+{{ govukButton({
+  text: 'Download requests as a CSV',
+  href: '/public/images/sample.csv'
+}) }}
+
+{% set overrideTag = { classes: "govuk-tag--blue", text: "new" } %}
+{% include 'mno/_shared/_requests-table.html' %}
+{% include 'mno/_shared/_change-status-form.html' %}
+{% endblock %}

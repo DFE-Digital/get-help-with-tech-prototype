@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% set count = 70 %}
+{% set title = count + " completed requests" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: "/mno/index-3"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+  </div>
+</div>
+
+{{ govukButton({
+  text: 'Download completed requests as CSV',
+  href: '/public/images/sample.csv'
+}) }}
+
+{% set overrideTag = { classes: "govuk-tag--green", text: "Completed" } %}
+{% include 'mno/_shared/_requests-table.html' %}
+{% include 'mno/_shared/_change-status-form.html' %}
+{% endblock %}
