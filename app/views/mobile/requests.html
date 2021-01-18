@@ -50,6 +50,7 @@
       <tr class="govuk-table__row">
         <th class="govuk-table__header">Account holder</th>
         <th class="govuk-table__header">Mobile number</th>
+        <th class="govuk-table__header">Requested</th>
         <th class="govuk-table__header">Mobile network</th>
         <th class="govuk-table__header">Status</th>
       </tr>
@@ -59,6 +60,7 @@
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">{{ request['name'] }}</td>
           <td class="govuk-table__cell">{{ request['mobile-number'] }}</td>
+          <td class="govuk-table__cell">{{ request['date'] }}</td>
           <td class="govuk-table__cell">{{ request['mobile-network'] }}</td>
           <td class="govuk-table__cell">
             {{ govukTag(request['tag'])}}
