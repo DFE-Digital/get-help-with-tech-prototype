@@ -61,10 +61,7 @@
           <td class="govuk-table__cell">{{ request['mobile-number'] }}</td>
           <td class="govuk-table__cell">{{ request['mobile-network'] }}</td>
           <td class="govuk-table__cell">
-            {{ govukTag({
-              text: "Requested",
-              classes: "govuk-tag--blue"
-            })}}
+            {{ govukTag(request['tag'])}}
           </td>
         </tr>
       {% endfor %}
