@@ -27,8 +27,7 @@ function generateFakeRequests (count) {
           ]),
           classes: 'govuk-tag--red'
         },
-        { text: 'Completed', classes: 'govuk-tag--green' },
-        { text: 'Unavailable', classes: 'govuk-tag--grey' }
+        { text: 'Completed', classes: 'govuk-tag--green' }
       ]),
       'mobile-network': faker.random.arrayElement([
         'Three', 'Three',
