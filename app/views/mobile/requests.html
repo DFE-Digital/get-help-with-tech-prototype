@@ -25,11 +25,11 @@
 {% endblock %}
 {% block content %}
 
-{{ appBanner({
+<!-- {{ appBanner({
   html: "<h2 class=\"govuk-heading-m\">We’ve received your request</h2>",
   type: "success",
   icon: false
-}) }}
+}) }} -->
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -58,7 +58,9 @@
     <tbody class="govuk-table__body">
       {% for id, request in dataValue(["mobile"]) %}
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">{{ request['name'] }}</td>
+          <td class="govuk-table__cell">
+            <a href="{{ mobilePath }}/request">{{ request['name'] }}</a>
+          </td>
           <td class="govuk-table__cell">{{ request['mobile-number'] }}</td>
           <td class="govuk-table__cell">{{ request['date'] }}</td>
           <td class="govuk-table__cell">{{ request['mobile-network'] }}</td>

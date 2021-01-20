@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% set title = "Marlene Schuster" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: mobilePath + "/requests"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">07123456789</span>
+      {{ title }}
+    </h1>
+
+    <div class="govuk-inset-text">
+      <h2 class="govuk-heading-m">Three did not recognise this number</h2>
+
+      <p>Check the following:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the number was typed correctly</li>
+        <li>the correct mobile network was provided</li>
+      </ul>
+
+      {{ govukButton({
+        text: 'Make new request',
+        href: '#'
+      }) }}
+    </div>
+
+    <div class="govuk-inset-text">
+      <h2 class="govuk-heading-m">Three did not recognise this name</h2>
+
+      <p>Check the following:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the correct account holder was given</li>
+        <li>the name matches the name on the bill</li>
+      </ul>
+
+      {{ govukButton({
+        text: 'Make new request',
+        href: '#'
+      }) }}
+    </div>
+
+    <div class="govuk-inset-text">
+      <h2 class="govuk-heading-m">This account is not eligible for free data</h2>
+
+      <p>This could be because:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>they are a new customer</li>
+        <li>they do not meet the <a href="#">network’s criteria</a></li>
+        <li>they already have fixed line broadband at home</li>
+      </ul>
+
+      <p>You can:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>confirm this person needs internet access</li>
+        <li>check if there’s another mobile account that could be used</li>
+        <li>request a <a href="#">4G wireless router instead</a></li>
+      </ul>
+    </div>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: { text: "Account holder" },
+          value: { text: "Marlene Schuster" }
+        },
+        {
+          key: { text: "Number" },
+          value: { text: "07123456789" }
+        },
+        {
+          key: { text: "Mobile network" },
+          value: { text: "Three" }
+        },
+        {
+          key: { text: "Requested" },
+          value: { text: "18 January 3:59pm" }
+        },
+        {
+          key: { text: "Status" },
+          value: { html: govukTag({ classes: 'govuk-tag--red', text: 'Unknown number'}) }
+        }
+      ]
+    }) }}
+  </div>
+</div>
+
+{% endblock %}
