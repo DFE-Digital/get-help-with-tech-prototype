@@ -44,6 +44,62 @@
   href: mobilePath + '/type'
 }) }}
 
+{% set statusHelpHtml %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p>Visit a request for guidance on what to do if a request is unsuccessful.</p>
+
+    <table class="govuk-table govuk-!-margin-bottom-0">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" style="width: 200px">Status</th>
+          <th class="govuk-table__header">Description</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ govukTag({ classes: 'govuk-tag--blue', text: 'Requested' }) }}</td>
+          <td class="govuk-table__cell">Request has not been processed yet</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ govukTag({ classes: 'govuk-tag--yellow', text: 'In progress' }) }}</td>
+          <td class="govuk-table__cell">Network is currently processing this request</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ govukTag({ classes: 'govuk-tag--green', text: 'Completed' }) }}</td>
+          <td class="govuk-table__cell">Request succesful and offer activated</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ govukTag({ classes: 'govuk-tag--red', text: 'Unknown number' }) }}</td>
+          <td class="govuk-table__cell">No account was found with number given</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ govukTag({ classes: 'govuk-tag--red', text: 'Unknown name' }) }}</td>
+          <td class="govuk-table__cell">No account was found with name given</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ govukTag({ classes: 'govuk-tag--red', text: 'Not eligible' }) }}</td>
+          <td class="govuk-table__cell">The network reported this request was not eligible</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ govukTag({ classes: 'govuk-tag--red', text: 'Other problem' }) }}</td>
+          <td class="govuk-table__cell">The network could not process this request but did not give a reason why</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ govukTag({ classes: 'govuk-tag--grey', text: 'Unavailable' }) }}</td>
+          <td class="govuk-table__cell">This network is not supporting the offer yet</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endset %}
+
+{{ govukDetails({
+  summaryText: "Help with statuses",
+  html: statusHelpHtml
+}) }}
+
 {% if dataValue(["mobile"]) %}
   <table class="govuk-table">
     <thead class="govuk-table__head">
