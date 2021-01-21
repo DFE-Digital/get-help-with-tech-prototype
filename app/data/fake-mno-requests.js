@@ -21,7 +21,7 @@ function generateFakeRequests (count) {
             'Unknown name',
             'Not eligible',
             'Not on network',
-            'Not valid'
+            'Other problem'
           ]),
           classes: 'govuk-tag--red'
         },

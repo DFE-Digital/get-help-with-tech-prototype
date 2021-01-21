@@ -59,7 +59,7 @@
       {% for id, request in dataValue(["mobile"]) %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="{{ mobilePath }}/request">{{ request['name'] }}</a>
+            <a href="{{ mobilePath }}/{{ id }}/request">{{ request['name'] }}</a>
           </td>
           <td class="govuk-table__cell">{{ request['mobile-number'] }}</td>
           <td class="govuk-table__cell">{{ request['date'] }}</td>

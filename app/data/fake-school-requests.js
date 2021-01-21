@@ -18,12 +18,12 @@ function generateFakeRequests (count) {
         { text: 'In progress', classes: 'govuk-tag--yellow' },
         {
           text: faker.random.arrayElement([
-            'Invalid number',
+            // 'Invalid number',
             'Unknown number',
             'Unknown name',
             'Not eligible',
-            'Not on network',
-            'Not valid'
+            // 'Not on network',
+            'Other problem'
           ]),
           classes: 'govuk-tag--red'
         },
