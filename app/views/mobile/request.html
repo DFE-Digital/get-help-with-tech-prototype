@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+{% set title = dataValue(["mobile", mobileId, "name"]) %}
+{% set network = dataValue(["mobile", mobileId, "mobile-network"]) %}
+{% set hasProblem = dataValue(["mobile", mobileId, "tag", "classes"]) == "govuk-tag--red" %}
+{% set problem = dataValue(["mobile", mobileId, "tag", "text"]) %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: mobilePath + "/requests"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">{{ dataValue(["mobile", mobileId, "mobile-number"]) }}</span>
+      {{ title }}
+    </h1>
+
+    {% if hasProblem %}
+      {% if problem == 'Unknown number' %}
+        <div class="govuk-inset-text">
+          <h2 class="govuk-heading-m">{{ network }} did not recognise this number</h2>
+
+          <p>Check the following:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>the number was typed correctly</li>
+            <li>the correct mobile network was provided</li>
+          </ul>
+
+          {{ govukButton({
+            text: 'Make new request',
+            href: '#'
+          }) }}
+        </div>
+      {% endif %}
+
+      {% if problem == 'Unknown name' %}
+        <div class="govuk-inset-text">
+          <h2 class="govuk-heading-m">{{ network }} did not recognise this name</h2>
+
+          <p>Check the following:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>the correct account holder was given</li>
+            <li>the name matches the name on the bill</li>
+          </ul>
+
+          {{ govukButton({
+            text: 'Make new request',
+            href: '#'
+          }) }}
+        </div>
+      {% endif %}
+
+      {% if problem == 'Not eligible' %}
+        <div class="govuk-inset-text">
+          <h2 class="govuk-heading-m">{{ network }} told us this account is not eligible</h2>
+
+          <p>This could be because:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>they are a new {{ network }} customer</li>
+            <li>they do not meet {{ network }}’s criteria</li>
+            <li>they already have fixed line broadband at home</li>
+          </ul>
+
+          <p>You can still:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>confirm this person needs internet access</li>
+            <li>check if there’s another mobile account they could use</li>
+            <li>request a <a href="#">4G wireless router instead</a></li>
+          </ul>
+        </div>
+      {% endif %}
+
+      {% if problem == 'Other problem' %}
+        <div class="govuk-inset-text">
+          <h2 class="govuk-heading-m">{{ network }} couldn’t process this requested</h2>
+
+          <p>They did not give a reason why.</p>
+
+          <p>You can still:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>confirm this person needs internet access</li>
+            <li>check if there’s another mobile account they could use</li>
+            <li>request a <a href="#">4G wireless router instead</a></li>
+          </ul>
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <h2 class="govuk-heading-m">Request details</h2>
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: { text: "Status" },
+          value: { html: govukTag(dataValue(["mobile", mobileId, "tag"])) }
+        },
+        {
+          key: { text: "Requested on" },
+          value: { text: dataValue(["mobile", mobileId, "date"]) }
+        },
+        {
+          key: {
+            text: "Account holder"
+          },
+          value: {
+            text: dataValue(["mobile", mobileId, "name"])
+          }
+        },
+        {
+          key: {
+            text: "Mobile number"
+          },
+          value: {
+            text: dataValue(["mobile", mobileId, "mobile-number"])
+          }
+        },
+        {
+          key: {
+            text: "Mobile network"
+          },
+          value: {
+            text: network
+          }
+        },
+        {
+          key: {
+            text: "Pay monthly or pay as you go"
+          },
+          value: {
+            text: dataValue(["mobile", mobileId, "mobile-contract-type"])
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">{{ network }} offer</h2>
+
+    {% set genericOfferDetailsMarkdown %}
+[placeholder offer details]
+
+* The recipient will get unlimited data until 31 July 2021.
+* The offer is available to both Pay Monthly and Pay-As-You-Go customers.
+* A text message will be sent to the nominated device once the additional data has been added to the account.
+* The network will aim to process the request within 14 days.
+    {% endset %}
+
+    {{ genericOfferDetailsMarkdown | markdownToHTML }}
+  </div>
+</div>
+
+{% endblock %}

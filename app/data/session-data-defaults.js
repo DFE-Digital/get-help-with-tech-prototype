@@ -1,4 +1,5 @@
 const fakeMnoRequests = require('./fake-mno-requests')
+const fakeSchoolRequests = require('./fake-school-requests')
 const fakeSchoolUsers = require('./fake-school-users')
 const fakeRBUsers = require('./fake-rb-users')
 const schoolsInResponsibleBody = require('./responsible-body-schools')
@@ -61,6 +62,7 @@ module.exports = {
   mno: {
     requests: fakeMnoRequests
   },
+  mobile: fakeSchoolRequests,
   'school-users': fakeSchoolUsers,
   'rb-users': fakeRBUsers,
   schools: schoolsInResponsibleBody,

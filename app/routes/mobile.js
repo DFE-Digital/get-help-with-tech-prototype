@@ -58,6 +58,13 @@ module.exports = router => {
   })
 
   router.all([
+    '/responsible-body/internet/mobile/:mobileId/request',
+    '/school/internet/mobile/:mobileId/request'
+  ], function (req, res) {
+    res.render('mobile/request', { mobileId: req.params.mobileId })
+  })
+
+  router.all([
     '/responsible-body/internet/mobile',
     '/school/internet/mobile'
   ], function (req, res) {

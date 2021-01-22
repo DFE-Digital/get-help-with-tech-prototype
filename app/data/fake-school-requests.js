@@ -4,30 +4,32 @@ const dateFormat = require('dateformat')
 faker.locale = 'en_GB'
 
 function generateFakeRequests (count) {
-  const requests = []
+  const requests = {}
 
   for (var i = 0; i < count; i++) {
-    requests.push({
+    requests[i] = {
+      'mobile-contract-type': faker.random.arrayElement(['Pay monthly', 'Pay as you go (PAYG)']),
+      privacy: ['Yes, the privacy statement has been shared'],
       name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-      number: faker.phone.phoneNumber('07#########'),
+      'mobile-number': faker.phone.phoneNumber('07#########'),
       date: dateFormat(faker.date.recent(), 'd mmmm h:MMtt'),
       tag: faker.random.arrayElement([
-        { text: 'New', classes: 'govuk-tag--blue' },
+        { text: 'Requested', classes: 'govuk-tag--blue' },
         { text: 'In progress', classes: 'govuk-tag--yellow' },
         {
           text: faker.random.arrayElement([
-            'Invalid number',
+            // 'Invalid number',
             'Unknown number',
             'Unknown name',
             'Not eligible',
-            'Not on network',
+            // 'Not on network',
             'Other problem'
           ]),
           classes: 'govuk-tag--red'
         },
         { text: 'Completed', classes: 'govuk-tag--green' }
       ]),
-      network: faker.random.arrayElement([
+      'mobile-network': faker.random.arrayElement([
         'Three', 'Three',
         'O2', 'O2', 'O2',
         'GiffGaff',
@@ -37,7 +39,7 @@ function generateFakeRequests (count) {
         'Virgin mobile',
         'BT mobile'
       ])
-    })
+    }
   }
 
   return requests
