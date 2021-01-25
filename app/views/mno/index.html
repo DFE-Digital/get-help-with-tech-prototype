@@ -18,14 +18,45 @@
   </div>
 </div>
 
-{{ govukButton({
-    text: 'Download requests as a CSV',
-    href: '/public/images/sample.csv'
-}) }}
-
 <p>
   <a href="/mno/upload-csv">Update requests using a CSV</a>
 </p>
+
+{{ govukButton({
+  text: 'Download requests as a CSV',
+  href: '/public/images/sample.csv'
+}) }}
+
+<div class="app-card govuk-!-margin-bottom-6 govuk-!-margin-top-4">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          Find requests by telephone number
+        </legend>
+        <!-- <p>Find requests by telephone number and update them.</p> -->
+        {{ govukTextarea({
+          label: {
+            text: "Telephone numbers",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: 'One per line'
+          },
+          classes: "govuk-!-margin-bottom-0",
+          id: "mno-name-or-number",
+          name: "mno-name-or-number"
+        }) }}
+
+        {{ govukButton({
+          text: "Find requests",
+          href: "/mno/find-requests",
+          classes: "govuk-!-margin-bottom-1"
+        }) }}
+      </fieldset>
+    </div>
+  </div>
+</div>
 
 <h2 class="govuk-heading-l govuk-!-margin-top-4">{{ data.mno.requests | length }} requests</h2>
 
