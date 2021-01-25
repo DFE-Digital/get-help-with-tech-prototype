@@ -2,6 +2,7 @@
 {% set title = dataValue(["mobile", mobileId, "name"]) %}
 {% set network = dataValue(["mobile", mobileId, "mobile-network"]) %}
 {% set hasProblem = dataValue(["mobile", mobileId, "tag", "classes"]) == "govuk-tag--red" %}
+{% set isUnavailable = dataValue(["mobile", mobileId, "tag", "classes"]) == "govuk-tag--grey" %}
 {% set problem = dataValue(["mobile", mobileId, "tag", "text"]) %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
@@ -19,6 +20,13 @@
       <span class="govuk-caption-xl">{{ dataValue(["mobile", mobileId, "mobile-number"]) }}</span>
       {{ title }}
     </h1>
+
+    {% if isUnavailable %}
+      <div class="govuk-inset-text">
+        <h2 class="govuk-heading-m">{{ network }} is not offering data increases yet</h2>
+        <p>We cannot request an increase in data from a network that’s not participating in the offer.</p>
+      </div>
+      {% endif %}
 
     {% if hasProblem %}
       {% if problem == 'Unknown number' %}
@@ -137,18 +145,20 @@
       ]
     }) }}
 
-    <h2 class="govuk-heading-m">{{ network }} offer</h2>
+    {% if not isUnavailable %}
+      <h2 class="govuk-heading-m">{{ network }} offer</h2>
 
-    {% set genericOfferDetailsMarkdown %}
-[placeholder offer details]
+      {% set genericOfferDetailsMarkdown %}
+  [placeholder offer details]
 
-* The recipient will get unlimited data until 31 July 2021.
-* The offer is available to both Pay Monthly and Pay-As-You-Go customers.
-* A text message will be sent to the nominated device once the additional data has been added to the account.
-* The network will aim to process the request within 14 days.
-    {% endset %}
+  * The recipient will get unlimited data until 31 July 2021.
+  * The offer is available to both Pay Monthly and Pay-As-You-Go customers.
+  * A text message will be sent to the nominated device once the additional data has been added to the account.
+  * The network will aim to process the request within 14 days.
+      {% endset %}
 
-    {{ genericOfferDetailsMarkdown | markdownToHTML }}
+      {{ genericOfferDetailsMarkdown | markdownToHTML }}
+    {% endif %}
   </div>
 </div>
 
