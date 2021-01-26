@@ -67,11 +67,11 @@
         <div class="govuk-inset-text">
           <h2 class="govuk-heading-m">{{ network }} told us this account is not eligible</h2>
 
-          <p>This could be because:</p>
+          <p>This could be because the account holder:</p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>they are a new {{ network }} customer</li>
-            <li>they do not meet {{ network }}’s criteria</li>
-            <li>they already have fixed line broadband at home</li>
+            <li>is a new {{ network }} customer</li>
+            <li>does not meet {{ network }}’s criteria</li>
+            <li>already has fixed line broadband at home</li>
           </ul>
 
           <p>You can still:</p>
@@ -85,7 +85,7 @@
 
       {% if problem == 'Other problem' %}
         <div class="govuk-inset-text">
-          <h2 class="govuk-heading-m">{{ network }} couldn’t process this requested</h2>
+          <h2 class="govuk-heading-m">{{ network }} could not process this request</h2>
 
           <p>They did not give a reason why.</p>
 
