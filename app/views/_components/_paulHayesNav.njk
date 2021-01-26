@@ -1,0 +1,20 @@
+{% macro paulHayesNav(heading, linkDestination, listItems=[]) %}
+  <h2 class="govuk-heading-m">
+    <a href="{{ linkDestination }}">{{ heading }}</a>
+  </h2>
+  {% if listItems.length > 1 %}
+    <p class="govuk-body">
+      Use this section to:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+    {% for item in listItems %}
+      <li>{{ item }}</li>
+    {%  endfor %}
+    </ul>
+  {% else %}
+    <p class="govuk-body">
+      Use this section to {{ listItems }}
+    </p>
+  {% endif %}
+
+{% endmacro %}
