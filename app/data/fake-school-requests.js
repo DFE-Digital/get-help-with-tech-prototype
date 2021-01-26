@@ -33,7 +33,7 @@ function generateFakeRequests (count) {
     const lastRequest = i === count - 1
 
     requests[i] = {
-      'mobile-contract-type': faker.random.arrayElement(['Pay monthly', 'Pay as you go (PAYG)']),
+      'mobile-contract-type': faker.random.arrayElement(['Pay Monthly', 'Pay-as-you-go']),
       privacy: ['Yes, the privacy statement has been shared'],
       name: `${faker.name.firstName()} ${faker.name.lastName()}`,
       'mobile-number': faker.phone.phoneNumber('07#########'),
