@@ -5,7 +5,7 @@ function guideNavigation (req) {
       href: '/guide'
     },
     {
-      text: 'Asking for mobile network, contracts and Pay as you go (PAYG)',
+      text: 'Asking for mobile network, contracts and Pay-as-you-go (PAYG)',
       href: '/guide/asking-for-network'
     },
     {
