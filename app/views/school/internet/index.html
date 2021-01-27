@@ -22,7 +22,11 @@
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
+  </div>
+</div>
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-l govuk-!-font-size-27">
       <a href="/school/internet/mobile">Request extra data for mobile devices</a>
     </h2>
@@ -38,6 +42,14 @@
     <p class="govuk-body">
       If your school{% if data.features['further-education'] %}, or college,{% endif %} is facing disruption to education and you’ve been invited to order devices, you can request 4G wireless routers.
     </p>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <div class="app-related">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Guidance</h2>
+      <p class="govuk-body">
+        <a href="#">Choosing help with internet access</a>
+      </p>
+    </div>
   </div>
 </div>
 {% endblock %}
