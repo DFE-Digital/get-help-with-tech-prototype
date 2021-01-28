@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% set title = "Laptops and tablets" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Get help with technology",
+        href: "/guidance-reorg"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+    <p class="govuk-body-l">
+      Order laptops and tablets for disadvantaged children and young people during the pandemic.
+    </p>
+    <h2 class="govuk-heading-s govuk-!-margin-top-7">
+      Before you order
+    </h2>
+    <ul class="govuk-list govuk-list--spaced">
+        <li><a href="#">Who is eligible for devices and why the DfE is providing them</a></li>
+        <li><a href="#">How devices are allocated</a></li>
+        <li><a href="#">Who owns the devices and how to distribute them</a></li>
+        <li><a href="#">What types of device are available</a></li>
+    </ul>
+    <h2 class="govuk-heading-s govuk-!-margin-top-7">
+      How to order
+    </h2>
+       <ul class="govuk-list">
+        <li class="app-call-out"><a href="/school">Sign in to order devices</a></li>
+      </ul>
+    <h2 class="govuk-heading-s govuk-!-margin-top-7">
+      Managing devices
+    </h2>
+      <ul class="govuk-list govuk-list--spaced">
+        <li>
+          <a href="#">How to setup and maintain Windows laptops and tablets</a>
+        </li>
+        <li>
+          <a href="#">How to setup and maintain Google Chromebooks</a>
+        </li>
+        <li>
+          <a href="#">How to setup and maintain Apple iPads</a>
+        </li>
+        <li>
+          <a href="#">Replace a faulty device</a>
+        </li>
+      </ul>
+    <h2 class="govuk-heading-s govuk-!-margin-top-7">
+      Software and digital tools
+    </h2>
+      <ul class="govuk-list">
+        <li><a href="#">Set up a Google domain for care leavers</a></li>
+      </ul>
+</div>
+{% endblock %}

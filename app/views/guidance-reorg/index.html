@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% set showPhaseBanner = false %}
+{% set title = "Get help with technology" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+
+
+<div class='app-masthead'>
+    <div class="govuk-grid-row app-masthead-container">
+      <div class="govuk-heading-banner">
+        {{ govukPhaseBanner({
+          tag: {
+            text: "Prototype"
+          },
+          html: "This is a prototype of a new service. Some parts may not work yet."
+        }) }}
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+          Get help with technology
+        </h1>
+        <p class="govuk-body-l">
+          Devices, internet access and support to provide <span class='app-no-wrap'>remote education</span> and access to children’s social care during coronavirus (COVID-19).
+        </p>
+        <div class="app-button-and-p">
+          <a href="/school" role="button" draggable="false" class="govuk-button govuk-button--start app-masthead-button" data-module="govuk-button">
+            Sign in
+          </a>
+          <p>
+            to order devices, request internet access or add people to your organisation.
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="govuk-grid-row app-below-masthead">
+  <div class="govuk-grid-column-two-thirds">
+    <h3 class="govuk-heading-m govuk-!-margin-top-7">
+      <a href="guidance-reorg/laptops-and-tablets">Laptops and tablets</a>
+    </h3>
+    <p>
+      How to order, prepare and manage devices.
+    </p>
+    <h3 class="govuk-heading-m govuk-!-margin-top-7">
+      <a href="guidance-reorg/internet-access">Internet access</a>
+    </h3>
+    <p>
+      How to get internet access for pupils and students.
+    </p>
+    <h3 class="govuk-heading-m govuk-!-margin-top-7">
+      <a href="#">Funding and support for online education platforms</a>
+    </h3>
+    <p>
+      Apply for funding for G Suite for Education or Office 365 Education.
+    </p>
+    <h3 class="govuk-heading-m govuk-!-margin-top-7">
+      <a href="#">Traning and support for remote education</a>
+    </h3>
+    <p>
+      Advice, guidance and training from a network of schools and colleges expert in their use of technology.
+    </p>
+    <h3 class="govuk-heading-m govuk-!-margin-top-7">
+      <a href="guidance-reorg/guidance-for-parents">Guidance for parents, carers, pupils and students</a>
+    </h3>
+    <p>
+      Guidance on your laptop, tablet or 4G wireless router.
+    </p>
+</div>
+{% endblock %}

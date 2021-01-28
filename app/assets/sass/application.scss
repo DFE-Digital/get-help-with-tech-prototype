@@ -31,6 +31,52 @@ $govuk-assets-path: '/govuk/assets/';
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
+.app-masthead {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  margin-top: -60px;
+  margin-bottom: 30px;
+  background-color: #1d70b8;
+  padding-bottom: 30px;
+  h1, p, a {
+    color: white;
+  }
+  h1 {
+    margin-top: 30px;
+  }
+  .govuk-grid-column-two-thirds {
+    padding-left: 0px;
+  }
+  .govuk-tag, .app-masthead-button {
+    background-color: white;
+    color: #1d70b8;
+  }
+  .govuk-heading-banner {
+    border-bottom: 1px solid white;
+  }
+  .app-button-and-p {
+    width: 100%;
+    .govuk-button {
+      float: left;
+      margin-right: 20px;
+    }
+    p {
+      padding-top: 12px;
+    }
+  }
+}
+
+.app-masthead-container {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app-below-masthead { 
+  margin-top: 360px;
+ }
+
 .govuk-summary-list--wide-terms {
   .govuk-summary-list__key {
     width: 70%;
@@ -177,4 +223,16 @@ $govuk-assets-path: '/govuk/assets/';
 
 .app-no-wrap {
   white-space: nowrap;
+}
+
+.app-call-out {
+  background-color: govuk-colour("light-grey");
+  border-left: 4px solid govuk-colour("dark-grey");
+  padding: 10px;
+  padding-right: 15px;
+  display: inline-block;
+  a {
+    text-decoration: none;
+    font-weight: bold;
+  }
 }

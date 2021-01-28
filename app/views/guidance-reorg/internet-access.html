@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% set title = "Internet access" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Get help with technology",
+        href: "/guidance-reorg"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+    <p class="govuk-body-l">
+      Get internet access for disadvantaged children and young people when <span class='app-no-wrap'>face-to-face</span> education is disrupted.
+    </p>
+    <h2 class="govuk-heading-m govuk-!-margin-top-7">
+      Increasing mobile data
+    </h2>
+    <h3 class="govuk-heading-s">
+      Before you make a request
+    </h3>
+    <ul class="govuk-list">
+        <li><a href="#">Who can get their mobile data increased</a></li>
+        <li><a href="/guide">What information you need to request extra mobile data</a></li>
+    </ul>
+    <h3 class="govuk-heading-s">
+      Request mobile data
+    </h2>
+    <ul class="govuk-list">
+      {# <li><a href="#">Place an order</a></li> #}
+      <li class="app-call-out"><a href="/school">Sign in to request mobile data</a></li>
+    </ul>
+    <h3 class="govuk-heading-s">
+      View your requests
+    </h3>
+    <ul class="govuk-list">
+      <li class="app-call-out"><a href="/school">Sign in to view your requests</a></li>
+    </ul>
+    <h2 class="govuk-heading-m govuk-!-margin-top-7">
+      4G wireless routers
+    </h2>
+    <h3 class="govuk-heading-s">
+      Before you make a request
+    </h3>
+    <ul class="govuk-list">
+      <li><a href="#">Who can get 4G wireless routers</a></li>
+      <li><a href="#">Who owns the 4G wireless routers and how to distribute them</a></li>
+    </ul>
+    <h3 class="govuk-heading-s">
+      Request 4G wireless routers
+    </h3>
+    <ul class="govuk-list">
+      <li class="app-call-out"><a href="/school">Sign in to request 4G wireless routers</a></li>
+    </ul>
+    <h2 class="govuk-heading-s">
+      Managing 4G wireless routers
+    </h2>
+    <ul class="govuk-list">
+      <li><a href="#">How to setup a 4G wireless router</a></li>
+      <li><a href="#">Support and maintence</a></li>
+      <li><a href="#">Replace a faulty device</a></li>
+    </ul>
+</div>
+{% endblock %}
