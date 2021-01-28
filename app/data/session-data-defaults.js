@@ -6,6 +6,7 @@ const schoolsInResponsibleBody = require('./responsible-body-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
+  signedInHomePath: '/responsible-body',
   rb: 'LEO ACADEMY TRUST',
   trust: true,
   devicesOrdered: 9,
