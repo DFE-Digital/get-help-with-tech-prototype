@@ -1,11 +1,28 @@
 {% extends "layout.html" %}
 {% block pageTitle %}{{ navigation.title }}{% endblock %}
 
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Get help with technology",
+        href: "/guidance-reorg"
+      },
+      {
+        text: "Internet access",
+        href: "/guidance-reorg/internet-access"
+      },
+      {
+        text: "Guide to collecting mobile information"
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">Increasing children’s internet access</span>
       Guide to collecting mobile information
     </h1>
 
