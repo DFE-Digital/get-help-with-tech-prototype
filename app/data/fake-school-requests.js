@@ -40,7 +40,7 @@ function generateFakeRequests (count) {
       date: dateFormat(faker.date.recent(), 'd mmmm h:MMtt'),
       tag: lastRequest ? unavailableStatus() : getRandomStatus(),
       'mobile-network': lastRequest ? 'Comcast' : faker.random.arrayElement([
-        'Lebara', 'Lebara',
+        'Lycamobile', 'Lycamobile',
         'Three', 'Three',
         'O2', 'O2', 'O2',
         'GiffGaff',
