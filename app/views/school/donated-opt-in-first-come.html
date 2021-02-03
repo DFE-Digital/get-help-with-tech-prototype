@@ -1,6 +1,5 @@
 {% extends "_wizard-form.html" %}
 {% set action = "/school" %}
-{% set isOrderUser = data['school-details'].order_user %}
 {% set title = 'Do you want donated Microsoft Windows laptops?' %}
 
 {% block form %}
@@ -14,7 +13,7 @@
 
   <p>We do not know how many laptops will be donated. Newly received laptops will be distributed on a first-come first-served basis to opted-in schools and colleges.</p>
 
-  <p>You could receive up to 25 refurbished devices, in boxes of 5. We’ll email you if you’re going to receive devices.</p>
+  <p>You could receive up to 25 donated devices, in boxes of 5. We’ll email you if you’re going to receive devices.</p>
 
   {% include '_shared/donated/_opt-in.html' %}
 {% endblock %}
