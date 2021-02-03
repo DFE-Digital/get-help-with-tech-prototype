@@ -1,0 +1,22 @@
+<p>Donated laptops are in addition to your allocation.</p>
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: "Do you want to opt-in?",
+      classes: "govuk-fieldset__legend--m"
+    },
+    classes: "govuk-!-margin-top-6"
+  },
+  items: [
+    {
+      text: 'Yes, opt-in to donated laptops'
+    },
+    {
+      text: 'No, we do not want donated devices'
+    },
+    {
+      text: 'I will decide later'
+    }
+  ]
+} | decorateFormAttributes(["refurbished"]) ) }}

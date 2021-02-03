@@ -1,0 +1,19 @@
+{% extends "_wizard-form.html" %}
+{% set isOrderUser = data['school-details'].order_user %}
+{% set title = 'Do you want donated Microsoft Windows laptops?' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {% include '_shared/donated/_preamble.html' %}
+
+  <h2 class="govuk-heading-m">How many devices you will get</h2>
+
+  <p>We do not know how many laptops will be donated. Newly received laptops will be distributed to a random selection of opted-in schools and colleges each week.</p>
+
+  <p>You could receive up to 25 refurbished devices, in boxes of 5, or you might not get any. We’ll email you if you’re selected.</p>
+
+  {% include '_shared/donated/_opt-in.html' %}
+{% endblock %}
