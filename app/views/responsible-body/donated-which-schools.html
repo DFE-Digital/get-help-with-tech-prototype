@@ -1,0 +1,17 @@
+{% extends "_wizard-form.html" %}
+{% set action = "/responsible-body" %}
+{% set paths = { back: '/responsible-body/donated-opt-in-first-come' } %}
+{% set title = 'Which of your schools do you want to opt-in?' %}
+
+{% block form %}
+  {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+      }
+    },
+    items: schools
+  } | decorateFormAttributes(["refurbished", "schools"])) }}
+{% endblock %}
