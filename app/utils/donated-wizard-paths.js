@@ -20,7 +20,24 @@ function donatedWizardPaths (req) {
 }
 
 function donatedWizardForks (req) {
-  var forks = {}
+  var forks = {
+    '/school/donated': {
+      'donated-interested': {
+        values: [
+          'no'
+        ],
+        path: '/school/donated/no'
+      }
+    },
+    '/school/donated/opt-in': {
+      'donated-opt-in': {
+        values: [
+          'no'
+        ],
+        path: '/school/donated/no'
+      }
+    }
+  }
 
   return nextForkPath(forks, req)
 }
