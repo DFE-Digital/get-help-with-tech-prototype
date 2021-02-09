@@ -7,7 +7,7 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   signedInHomePath: '/responsible-body',
-  rb: 'WMG ACADEMY FOR YOUNG ENGINEERS',
+  rb: 'THE SLOUGH AND EAST BERKSHIRE C OF E MULTI ACADEMY TRUST',
   trust: true,
   devicesOrdered: 9,
   routersAllocated: 0,
