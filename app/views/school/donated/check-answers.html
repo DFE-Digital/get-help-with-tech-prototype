@@ -1,0 +1,39 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Check your answers before confirming' %}
+{% set buttonText = 'Confirm and opt in' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Delivery details"
+        },
+        value: {
+          html: "<strong>[Your name]</strong><br />School name<br />123 Street<br />Town<br />County<br />SW1 1AA"
+        }
+      },
+      {
+        key: {
+          text: "Preferred devices"
+        },
+        value: {
+          html: "Microsoft Windows laptops<br />Google Chromebooks"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "preferred devices"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+{% endblock %}

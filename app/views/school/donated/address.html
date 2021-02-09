@@ -1,0 +1,18 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Delivery details' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  <p>Donated devices will be delivered to:</p>
+
+  <div class="govuk-inset-text">
+    <p><strong>[Your name]</strong><br />School name<br />123 Street<br />Town<br />County<br />SW1 1AA</p>
+  </div>
+
+  <p>If you confirm, we will share these details with Computacenter and <span class="app-no-wrap">Mail Force</span>.</p>
+
+  <p><a href="#">Read about how we use your data in our privacy policy</a>.</p>
+{% endblock %}

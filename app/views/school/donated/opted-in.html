@@ -1,0 +1,37 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Donated devices' %}
+{% set buttonText = 'Continue' %}
+{% set notStandardForm = true %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block primary %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleHtml: "Your school is opted in",
+        html: "You’re in the queue to receive&nbsp;devices",
+        classes: "govuk-!-margin-bottom-8"
+      }) }}
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p>If it’s your turn in the queue, you’ll get an email confirmation and Computacenter will deliver your preferred devices to:</p>
+      <div class="govuk-inset-text">
+        <p><strong>[Your name]</strong><br />School name<br />123 Street<br />Town<br />County<br />SW1 1AA</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -3,6 +3,7 @@ const router = express.Router()
 
 require('./routes/mobile')(router)
 require('./routes/family')(router)
+require('./routes/donated')(router)
 require('./routes/school')(router)
 require('./routes/guide')(router)
 require('./routes/devices')(router)

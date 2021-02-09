@@ -1,0 +1,31 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Which of these devices do you need?' %}
+
+{% block form %}
+  {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: title,
+        classes: 'govuk-fieldset__legend--xl govuk-!-margin-bottom-6',
+        isPageHeading: true
+      }
+    },
+    items: [
+     {
+       text: 'Microsoft Windows laptops'
+     },
+     {
+       text: 'Microsoft Windows tablets'
+     },
+     {
+       text: 'Android tablets'
+     },
+     {
+       text: 'Google Chromebooks'
+     },
+     {
+       text: 'Apple iPads'
+     }
+    ]
+  } | decorateFormAttributes(["donated", "types"])) }}
+{% endblock %}
