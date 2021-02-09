@@ -4,14 +4,23 @@
 {% set title = 'Which of your schools do you want to opt-in?' %}
 
 {% block form %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+    {{ title }}
+  </h1>
+
   {{ govukCheckboxes({
-    fieldset: {
-      legend: {
-        text: title,
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
-      }
-    },
+    items: [
+     {
+       text: 'Select all'
+     }
+    ],
+    formGroup: {
+      classes: 'govuk-!-margin-bottom-0'
+    }
+  } | decorateFormAttributes(["refurbished", "schools"])) }}
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+  {{ govukCheckboxes({
     items: schools
   } | decorateFormAttributes(["refurbished", "schools"])) }}
 {% endblock %}
