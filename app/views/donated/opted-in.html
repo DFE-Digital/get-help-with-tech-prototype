@@ -40,11 +40,29 @@
           classes: "govuk-!-margin-bottom-8"
         }) }}
 
-        <p>You can still <a href="#">opt in the rest of your schools</a>.</p>
-
         <h2 class="govuk-heading-m">What happens next</h2>
 
         <p>If it’s their turn in the queue, you’ll get an email confirmation and Computacenter will deliver devices directly to the school.</p>
+
+        {% if data['donated-opt-in-schools'] %}
+          <h2 class="govuk-heading-m">Schools you opted in</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            {% for school in data['donated-opt-in-schools'] %}
+              <li>{{ school }}</li>
+            {% endfor %}
+          </ul>
+
+          <p>You can still <a href="#">opt in the rest of your schools</a>.</p>
+        {% endif %}
+      {% endif %}
+
+      {% if data['donated-types'] %}
+        <h2 class="govuk-heading-m">Devices you prefer</h2>
+        <ul class="govuk-list govuk-list--bullet">
+          {% for type in data['donated-types'] %}
+            <li>{{ type }}</li>
+          {% endfor %}
+        </ul>
       {% endif %}
     </div>
   </div>
