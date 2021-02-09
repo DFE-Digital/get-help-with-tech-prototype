@@ -12,8 +12,7 @@ require('./routes/shop')(router)
 router.get('/responsible-body/donated-which-schools', (req, res, next) => {
   res.locals.schools = req.session.data.schools.map(school => {
     return {
-      text: school.name,
-      value: school.URN
+      text: school.name
     }
   })
 

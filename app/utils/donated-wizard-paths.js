@@ -7,13 +7,23 @@ function donatedWizardPaths (req) {
   var paths = [
     '/school/donated',
     '/school/donated/about-devices',
-    '/school/donated/what-devices-do-you-need',
+    '/school/donated/what-devices-do-you-want',
     '/school/donated/deliveries',
     '/school/donated/opt-in',
     '/school/donated/address',
     '/school/donated/check-answers',
     '/school/donated/opted-in',
-    '/school'
+    '/school',
+    '/responsible-body',
+    '/responsible-body/donated',
+    '/responsible-body/donated/about-devices',
+    '/responsible-body/donated/deliveries',
+    '/responsible-body/donated/opt-in',
+    '/responsible-body/donated/what-devices-do-schools-want',
+    // '/responsible-body/donated/address',
+    '/responsible-body/donated/check-answers',
+    '/responsible-body/donated/opted-in',
+    '/responsible-body'
   ]
 
   return nextAndBackPaths(paths, req)
@@ -35,6 +45,22 @@ function donatedWizardForks (req) {
           'no'
         ],
         path: '/school/donated/no'
+      }
+    },
+    '/responsible-body/donated': {
+      'donated-interested': {
+        values: [
+          'no'
+        ],
+        path: '/responsible-body/donated/no'
+      }
+    },
+    '/responsible-body/donated/opt-in': {
+      'donated-opt-in': {
+        values: [
+          'no'
+        ],
+        path: '/responsible-body/donated/no'
       }
     }
   }

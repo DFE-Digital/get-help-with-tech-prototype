@@ -1,0 +1,44 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Pick which schools and which devices' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: 'Which schools do you want to opt in?',
+        classes: 'govuk-fieldset__legend--m',
+        isPageHeading: true
+      }
+    },
+    items: schools
+  } | decorateFormAttributes(["donated-opt-in-schools"])) }}
+
+  {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: 'Which of these devices do they want?',
+        classes: 'govuk-fieldset__legend--m',
+        isPageHeading: true
+      }
+    },
+    items: [
+     {
+       text: 'Microsoft Windows laptops'
+     },
+     {
+       text: 'Microsoft Windows tablets'
+     },
+     {
+       text: 'Android tablets'
+     },
+     {
+       text: 'Google Chromebooks'
+     },
+     {
+       text: 'Apple iPads'
+     }
+    ]
+  } | decorateFormAttributes(["donated-types"])) }}
+{% endblock %}

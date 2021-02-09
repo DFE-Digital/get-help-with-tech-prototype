@@ -7,6 +7,26 @@
     {{ title }}
   </h1>
 
+  {% set schoolsHtml %}
+    {% for school in data['donated-opt-in-schools'] %}
+      {{ school }}<br />
+    {% endfor %}
+  {% endset %}
+
+  {% if isRb %}
+    {% set schoolsHtml %}
+      {% for school in data['donated-opt-in-schools'] %}
+        {{ school }}<br />
+      {% endfor %}
+    {% endset %}
+  {% endif %}
+
+  {% set typesHtml %}
+    {% for type in data['donated-types'] %}
+      {{ type }}<br />
+    {% endfor %}
+  {% endset %}
+
   {{ govukSummaryList({
     rows: [
       {
@@ -16,13 +36,21 @@
         value: {
           html: "<strong>[Your name]</strong><br />School name<br />123 Street<br />Town<br />County<br />SW1 1AA"
         }
-      },
+      } if isSchool,
+      {
+        key: {
+          text: "Schools"
+        },
+        value: {
+          html: schoolsHtml
+        }
+      } if isRb,
       {
         key: {
           text: "Preferred devices"
         },
         value: {
-          html: "Microsoft Windows laptops<br />Google Chromebooks"
+          html: typesHtml
         },
         actions: {
           items: [
