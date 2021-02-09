@@ -21,6 +21,11 @@ module.exports = router => {
     res.render(`school/donated/${req.params.view}`, { paths: donatedWizardPaths(req) })
   })
 
+  router.post('/school/donated/check-answers', function (req, res, next) {
+    req.session.data['donated-opted-in'] = true
+    next()
+  })
+
   router.post(['/school/donated/:view', '/responsible-body/donated/:view'], function (req, res) {
     const fork = donatedWizardForks(req)
     const paths = donatedWizardPaths(req)
