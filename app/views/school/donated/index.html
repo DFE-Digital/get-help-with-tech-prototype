@@ -1,6 +1,20 @@
 {% extends "_wizard-form.html" %}
 {% set title = 'Do you want donated devices?' %}
 
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% block form %}
   <h1 class="govuk-heading-xl">
     {{ title }}
