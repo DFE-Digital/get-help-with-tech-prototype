@@ -52,6 +52,17 @@
       <li>access the Computacenter TechSource website</li>
     </ul>
 
+    {% if data.features.donated %}
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="#">Do your schools want donated devices?</a>
+      </h2>
+      <p>Use this section to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>opt in schools to be considered for devices donated via the Mail Force programme</li>
+        <li>set preferences for the devices they would want</li>
+      </ul>
+    {% endif %}
+
     {% if not data.features.push %}
     <h2 class="govuk-heading-l govuk-!-font-size-27">
       <a href="/responsible-body/devices/request-devices">Request devices for specific circumstances</a>
