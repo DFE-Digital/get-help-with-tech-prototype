@@ -64,6 +64,9 @@
       {% else %}
         <li>give schools access to the services they need</li>
       {% endif %}
+      {% if data.features.donated %}
+        <li>opt in schools to be considered for devices donated via the Daily Mail’s Mail Force programme</li>
+      {% endif %}
     </ul>
 
     {% if data.features['in-connectivity-pilots'] %}
