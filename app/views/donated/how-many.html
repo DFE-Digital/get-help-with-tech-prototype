@@ -1,0 +1,29 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'How many devices do you want?' %}
+{% set buttonText = 'Continue' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-4",
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        text: '5 devices'
+      },
+      {
+        text: '10 devices'
+      },
+      {
+        text: '15 devices'
+      },
+      {
+        text: '20 devices'
+      }
+    ]
+  } | decorateFormAttributes(["donated-count"]) ) }}
+{% endblock %}

@@ -7,9 +7,10 @@ function donatedWizardPaths (req) {
   var paths = [
     '/school/donated',
     '/school/donated/about-devices',
-    '/school/donated/what-devices-do-you-want',
     '/school/donated/deliveries',
     '/school/donated/opt-in',
+    '/school/donated/what-devices-do-you-want',
+    '/school/donated/how-many',
     '/school/donated/address',
     '/school/donated/check-answers',
     '/school/donated/opted-in',

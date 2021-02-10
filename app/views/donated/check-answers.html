@@ -61,6 +61,23 @@
             }
           ]
         }
+      },
+      {
+        key: {
+          text: "Preferred number"
+        },
+        value: {
+          html: data['donated-count'] if isSchool else data['donated-count'] + ' per school'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "preferred number"
+            }
+          ]
+        }
       }
     ]
   }) }}
