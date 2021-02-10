@@ -21,7 +21,7 @@ function donatedWizardPaths (req) {
     '/responsible-body/donated/deliveries',
     '/responsible-body/donated/opt-in',
     '/responsible-body/donated/what-devices-do-schools-want',
-    // '/responsible-body/donated/address',
+    '/responsible-body/donated/address',
     '/responsible-body/donated/check-answers',
     '/responsible-body/donated/opted-in',
     '/responsible-body'
