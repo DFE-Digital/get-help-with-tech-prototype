@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'Frodsham Manor House Primary School',
+  name: 'Amington Heath Primary School and Nursery',
   type: 'Primary school',
   allocation: 82,
   can_order: false,
