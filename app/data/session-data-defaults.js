@@ -7,7 +7,7 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   signedInHomePath: '/responsible-body',
-  rb: 'BRIDGWATER & TAUNTON COLLEGE TRUST',
+  rb: 'ASPIRE ACADEMY TRUST',
   trust: true,
   devicesOrdered: 9,
   routersAllocated: 0,
