@@ -17,16 +17,16 @@
   {{ govukCheckboxes({
     fieldset: {
       legend: {
-        text: 'Which of these devices do they want?',
+        text: 'Which of these device types would you accept?',
         classes: 'govuk-fieldset__legend--m'
       }
     },
+    hint: {
+      text: 'Select all device types that you would use.'
+    },
     items: [
      {
-       text: 'Microsoft Windows laptops'
-     },
-     {
-       text: 'Microsoft Windows tablets'
+       text: 'Microsoft Windows'
      },
      {
        text: 'Android tablets'

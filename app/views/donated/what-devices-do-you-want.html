@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Which of these devices do you want?' %}
+{% set title = 'Which of these device types would you accept?' %}
 
 {% block form %}
   {{ govukCheckboxes({
@@ -10,12 +10,12 @@
         isPageHeading: true
       }
     },
+    hint: {
+      text: 'Select all device types that you would use.'
+    },
     items: [
      {
-       text: 'Microsoft Windows laptops'
-     },
-     {
-       text: 'Microsoft Windows tablets'
+       text: 'Microsoft Windows'
      },
      {
        text: 'Android tablets'
