@@ -12,6 +12,7 @@ function donatedWizardPaths (req) {
     '/school/donated/what-devices-do-you-want',
     '/school/donated/how-many',
     '/school/donated/address',
+    '/school/donated/disclaimer',
     '/school/donated/check-answers',
     '/school/donated/opted-in',
     '/school',
@@ -26,6 +27,7 @@ function donatedWizardPaths (req) {
     '/responsible-body/donated/how-many',
     // '/responsible-body/donated/what-devices-do-schools-want',
     '/responsible-body/donated/address',
+    '/responsible-body/donated/disclaimer',
     '/responsible-body/donated/check-answers',
     '/responsible-body/donated/opted-in',
     '/responsible-body'
