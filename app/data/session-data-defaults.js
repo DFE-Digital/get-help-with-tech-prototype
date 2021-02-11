@@ -7,7 +7,7 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   signedInHomePath: '/responsible-body',
-  rb: 'THE GOSFORTH FEDERATED ACADEMIES LIMITED',
+  rb: 'BRIDGWATER & TAUNTON COLLEGE TRUST',
   trust: true,
   devicesOrdered: 9,
   routersAllocated: 0,

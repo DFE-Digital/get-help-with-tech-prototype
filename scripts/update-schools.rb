@@ -5,7 +5,7 @@ require 'JSON'
 
 class UpdateSchoolsList
   def run
-    responsible_body = 'THE GOSFORTH FEDERATED ACADEMIES LIMITED'
+    responsible_body = 'BRIDGWATER & TAUNTON COLLEGE TRUST'
     is_trust = true
     trust_column_header = 'Column1'
 
