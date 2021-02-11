@@ -15,9 +15,13 @@
 
   {% if isRb %}
     {% set schoolsHtml %}
-      {% for school in data['donated-opt-in-schools'] %}
-        {{ school }}<br />
-      {% endfor %}
+      {% if data['donated-opt-in-all-or-some'] == 'some' %}
+        {% for school in data['donated-opt-in-schools'] %}
+          {{ school }}<br />
+        {% endfor %}
+      {% else %}
+        All schools
+      {% endif %}
     {% endset %}
   {% endif %}
 
@@ -39,15 +43,24 @@
       } if isSchool,
       {
         key: {
-          text: "Schools"
+          text: "Schools to opt in"
         },
         value: {
           html: schoolsHtml
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "schools"
+            }
+          ]
         }
       } if isRb,
       {
         key: {
-          text: "Accepted device types"
+          text: "Device types"
         },
         value: {
           html: typesHtml

@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'How many devices do you want?' %}
+{% set title = 'How many devices do you want?' if isSchool else 'How many devices does each school want?' %}
 {% set buttonText = 'Continue' %}
 
 {% block form %}

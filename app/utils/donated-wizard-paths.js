@@ -20,7 +20,11 @@ function donatedWizardPaths (req) {
     '/responsible-body/donated/about-devices',
     '/responsible-body/donated/deliveries',
     '/responsible-body/donated/opt-in',
-    '/responsible-body/donated/what-devices-do-schools-want',
+    '/responsible-body/donated/all-or-some',
+    '/responsible-body/donated/which-schools',
+    '/responsible-body/donated/what-devices-do-you-want',
+    '/responsible-body/donated/how-many',
+    // '/responsible-body/donated/what-devices-do-schools-want',
     '/responsible-body/donated/address',
     '/responsible-body/donated/check-answers',
     '/responsible-body/donated/opted-in',
@@ -62,6 +66,14 @@ function donatedWizardForks (req) {
           'no'
         ],
         path: '/responsible-body/donated/no'
+      }
+    },
+    '/responsible-body/donated/all-or-some': {
+      'donated-opt-in-all-or-some': {
+        values: [
+          'all'
+        ],
+        path: '/responsible-body/donated/what-devices-do-you-want'
       }
     }
   }

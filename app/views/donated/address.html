@@ -17,10 +17,10 @@
       <p><strong>[Your name]</strong><br />{{ data['school-details'].name }}<br />123 Street<br />Town<br />County<br />SW1 1AA</p>
     </div>
   {% else %}
-    <p>For example, for {{ data['donated-opt-in-schools'][0] }}:</p>
+    <p>For example, for {{ data['donated-opt-in-schools'][0] if data['donated-opt-in-schools'] else '[School name]'  }}:</p>
 
     <div class="govuk-inset-text">
-      <p><strong>[Your name]</strong><br />{{ data['donated-opt-in-schools'][0] }}<br />123 Street<br />Town<br />County<br />SW1 1AA</p>
+      <p><strong>[Your name]</strong><br />{{ data['donated-opt-in-schools'][0] if data['donated-opt-in-schools'] else '[School name]'  }}<br />123 Street<br />Town<br />County<br />SW1 1AA</p>
     </div>
   {% endif %}
 {% endblock %}
