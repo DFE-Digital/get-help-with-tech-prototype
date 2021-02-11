@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Do you want to opt in?' if isSchool else 'Do you want to opt in any schools?' %}
+{% set title = 'Are you still interested?' %}
 {% set buttonText = 'Continue' %}
 
 {% block form %}
@@ -17,7 +17,7 @@
         value: 'yes'
       },
       {
-        text: 'No, do not opt in',
+        text: 'No, I’m not interested',
         value: 'no'
       }
     ]
