@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'Kirkby Avenue Primary School',
+  name: 'Frodsham Manor House Primary School',
   type: 'Primary school',
   allocation: 82,
   can_order: false,
