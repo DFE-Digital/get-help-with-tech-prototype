@@ -1,0 +1,21 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Which schools do you want to opt in?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        classes: 'govuk-fieldset__legend--xl govuk-!-margin-bottom-6',
+        isPageHeading: true
+      }
+    },
+    items: [{
+      text: 'Opt in all schools',
+      value: 'all'
+    }, {
+      text: 'Opt in some schools',
+      value: 'some'
+    }]
+  } | decorateFormAttributes(["donated-opt-in-all-or-some"])) }}
+{% endblock %}

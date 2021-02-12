@@ -7,7 +7,7 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   signedInHomePath: '/responsible-body',
-  rb: 'WMG ACADEMY FOR YOUNG ENGINEERS',
+  rb: 'ASPIRE ACADEMY TRUST',
   trust: true,
   devicesOrdered: 9,
   routersAllocated: 0,
@@ -28,6 +28,7 @@ module.exports = {
   features: {
     push: true,
     mno: true,
+    donated: true,
     'further-education': true,
     'sixth-form-increase': false,
     'xmas-soon': false,

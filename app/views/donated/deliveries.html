@@ -1,0 +1,39 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'There’s a queue for these devices' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {% if isSchool %}
+    <p>We do not know how many devices will be donated. Opting in to this offer will put you in a queue.</p>
+  {% else %}
+    <p>We do not know how many devices will be donated. Opting a school into this offer will put them in a queue.</p>
+  {% endif %}
+
+  <p>Newly donated devices will be distributed to opted-in schools and colleges at the top of the queue.</p>
+
+  {% if isSchool %}
+    <p>There’s no guarantee you will get any devices.</p>
+  {% else %}
+    <p>There’s no guarantee they will get any devices.</p>
+  {% endif %}
+
+  <h2 class="govuk-heading-m">You do not need to place an order</h2>
+
+  {% if isSchool %}
+    <p>When it’s your turn, your devices will be automatically delivered to your school. Computacenter will email you if you’re going to receive devices.</p>
+    <p>Donated devices are in addition to your allocation.</p>
+  {% else %}
+    <p>When it’s a school’s turn, their devices will be automatically delivered to them. Computacenter will email you beforehand.</p>
+    <p>Donated devices are in addition to a school’s allocation.</p>
+  {% endif %}
+
+  {% if isRb %}
+    <h2 class="govuk-heading-m">
+      Delivered to the school
+    </h2>
+    <p class="govuk-!-margin-bottom-6">Devices must be delivered directly to each school. They cannot be sent to a central location.</p>
+  {% endif %}
+{% endblock %}

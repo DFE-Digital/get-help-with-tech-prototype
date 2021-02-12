@@ -1,0 +1,23 @@
+{% extends "_wizard-form.html" %}
+{% set action = "/school" %}
+{% set title = 'Do you want donated Microsoft Windows laptops?' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {% include '_shared/donated/_preamble.html' %}
+
+  <h2 class="govuk-heading-m">When you will get them</h2>
+
+  <p>We do not know how many laptops will be donated. Newly received laptops will be distributed on a first-come first-served basis to opted-in schools and colleges.</p>
+
+  <p>You do not need to place an order. They will be delivered directly to your school when available.</p>
+
+  <h2 class="govuk-heading-m">How many laptops you will get</h2>
+
+  <p>You could receive up to 25 donated devices, in boxes of 5. Computacenter will email you if you’re going to receive devices.</p>
+
+  {% include '_shared/donated/_opt-in.html' %}
+{% endblock %}

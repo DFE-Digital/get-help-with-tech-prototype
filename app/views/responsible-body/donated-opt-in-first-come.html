@@ -1,0 +1,48 @@
+{% extends "_wizard-form.html" %}
+{% set action = "/responsible-body" %}
+{% set title = 'Do your schools want donated Microsoft Windows laptops?' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {% include '_shared/donated/_preamble.html' %}
+
+  <h2 class="govuk-heading-m">Delivery</h2>
+
+  <p>Laptops will be delivered directly to each school. They cannot be sent to a central location.</p>
+
+  <h2 class="govuk-heading-m">How many devices you will get</h2>
+
+  <p>We do not know how many laptops will be donated. Newly received laptops will be distributed on a first-come first-served basis to opted-in schools and colleges.</p>
+
+  <p>Each school could receive up to 25 donated devices, in boxes of 5. We’ll email you if they’re going to receive devices.</p>
+
+  <p>Donated laptops will be in addition to each school’s allocation.</p>
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "Do you want to opt-in?",
+        classes: "govuk-fieldset__legend--m"
+      },
+      classes: "govuk-!-margin-top-6"
+    },
+    items: [
+      {
+        text: 'Yes, opt-in every school'
+      },
+      {
+        text: 'Yes, opt-in some of our schools'
+      },
+      {
+        text: 'No, do not opt-in any of our schools'
+      },
+      {
+        text: 'I will decide later'
+      }
+    ]
+  } | decorateFormAttributes(["refurbished"]) ) }}
+
+{% endblock %}

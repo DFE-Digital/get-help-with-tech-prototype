@@ -1,0 +1,31 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Which of these device types would you accept?' %}
+
+{% block form %}
+  {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: title,
+        classes: 'govuk-fieldset__legend--xl govuk-!-margin-bottom-6',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      text: 'Select all device types that you would use.'
+    },
+    items: [
+     {
+       text: 'Microsoft Windows'
+     },
+     {
+       text: 'Android tablets'
+     },
+     {
+       text: 'Google Chromebooks'
+     },
+     {
+       text: 'Apple iPads'
+     }
+    ]
+  } | decorateFormAttributes(["donated-types"])) }}
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Check your answers before confirming' %}
+{% set buttonText = 'Confirm and opt in' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {% set schoolsHtml %}
+    {% for school in data['donated-opt-in-schools'] %}
+      {{ school }}<br />
+    {% endfor %}
+  {% endset %}
+
+  {% if isRb %}
+    {% set schoolsHtml %}
+      {% if data['donated-opt-in-all-or-some'] == 'some' %}
+        {% for school in data['donated-opt-in-schools'] %}
+          {{ school }}<br />
+        {% endfor %}
+      {% else %}
+        All schools
+      {% endif %}
+    {% endset %}
+  {% endif %}
+
+  {% set typesHtml %}
+    {% for type in data['donated-types'] %}
+      {{ type }}<br />
+    {% endfor %}
+  {% endset %}
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Delivery details"
+        },
+        value: {
+          html: "<strong>[Your name]</strong><br />School name<br />123 Street<br />Town<br />County<br />SW1 1AA"
+        }
+      } if isSchool,
+      {
+        key: {
+          text: "Schools to opt in"
+        },
+        value: {
+          html: schoolsHtml
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "schools"
+            }
+          ]
+        }
+      } if isRb,
+      {
+        key: {
+          text: "Device types"
+        },
+        value: {
+          html: typesHtml
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "accepted devices"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Preferred number"
+        },
+        value: {
+          html: data['donated-count'] if isSchool else data['donated-count'] + ' per school'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "preferred number"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+
+  <!-- <h2 class="govuk-heading-m">Disclaimer</h2>
+
+  <p>This page to the Get Help with Technology website is to enable schools to easily opt-in to the Computers For Kids operational system. Computers For Kids is a Mail Force initiative and separate to the Department for Education ‘DfE’ and Get Help with Technology ordering system. By opting in to this page your details will be provided to Mail Force and its Third Party Supplier. The devices will be allocated by the Third Party Supplier on a first come, first serve basis. The devices are refurbished by Mail Force’s, Third Party Supplier to industry standard security and safety stipulations. It is the responsibility of the school or responsible body to ensure that the device is fit for purpose by the child or young person. The DfE do not provide any guarantee, condition or warranty as to the reliability, suitability or completeness of the Devices and/or Related Software and Third Party Service or accept any responsibility for the currency, security, availability, compatibility, suitability, reliability or freedom from damaging software or for any other similar qualities or features of the Devices and/or Related Software and Third Party Service or for the results of any actions taken in reliance on the Devices and/or Related Softwareand Third Party Service or how they are used.</p> -->
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Pick the schools you want to opt in' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">Pick the schools<br />you want to opt in</h1>
+
+  {{ govukCheckboxes({
+    items: [
+     {
+       text: 'Select all'
+     }
+    ],
+    formGroup: {
+      classes: 'govuk-!-margin-bottom-0'
+    }
+  } | decorateFormAttributes(["refurbished", "schools"])) }}
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+  {{ govukCheckboxes({
+    items: schools
+  } | decorateFormAttributes(["donated-opt-in-schools"])) }}
+{% endblock %}

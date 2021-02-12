@@ -1,0 +1,26 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Your details will be shared and associated with the delivery' if isSchool else 'Your details will be shared and associated with each delivery' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  <p>As the person opting in a school, your name, email address and telephone number will be associated with {% if isSchool %}the{% else %}each{% endif %} delivery.</p> <p>Your name, email address and telephone number will be shared with Computacenter and <span class="app-no-wrap">Mail Force</span>. <a href="#">Read about how we use your data in our privacy policy</a>.</p>
+
+  <p>When these devices are delivered they will be addressed to you.</p>
+
+  {% if isSchool %}
+    <p>They will be delivered to:</p>
+
+    <div class="govuk-inset-text">
+      <p><strong>[Your name]</strong><br />{{ data['school-details'].name }}<br />123 Street<br />Town<br />County<br />SW1 1AA</p>
+    </div>
+  {% else %}
+    <p>For example, for {{ data['donated-opt-in-schools'][0] if data['donated-opt-in-schools'] else '[School name]'  }}:</p>
+
+    <div class="govuk-inset-text">
+      <p><strong>[Your name]</strong><br />{{ data['donated-opt-in-schools'][0] if data['donated-opt-in-schools'] else '[School name]'  }}<br />123 Street<br />Town<br />County<br />SW1 1AA</p>
+    </div>
+  {% endif %}
+{% endblock %}

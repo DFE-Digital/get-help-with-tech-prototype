@@ -1,0 +1,65 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Pick which schools and which devices' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: 'Which schools do you want to opt in?',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    items: schools
+  } | decorateFormAttributes(["donated-opt-in-schools"])) }}
+
+  {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: 'Which of these device types would you accept?',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    hint: {
+      text: 'Select all device types that you would use.'
+    },
+    items: [
+     {
+       text: 'Microsoft Windows'
+     },
+     {
+       text: 'Android tablets'
+     },
+     {
+       text: 'Google Chromebooks'
+     },
+     {
+       text: 'Apple iPads'
+     }
+    ]
+  } | decorateFormAttributes(["donated-types"])) }}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "How many devices does each school want?",
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    items: [
+      {
+        text: '5 devices'
+      },
+      {
+        text: '10 devices'
+      },
+      {
+        text: '15 devices'
+      },
+      {
+        text: '20 devices'
+      }
+    ]
+  } | decorateFormAttributes(["donated-count"]) ) }}
+{% endblock %}

@@ -3,10 +3,21 @@ const router = express.Router()
 
 require('./routes/mobile')(router)
 require('./routes/family')(router)
+require('./routes/donated')(router)
 require('./routes/school')(router)
 require('./routes/guide')(router)
 require('./routes/devices')(router)
 require('./routes/shop')(router)
+
+router.get('/responsible-body/donated-which-schools', (req, res, next) => {
+  res.locals.schools = req.session.data.schools.map(school => {
+    return {
+      text: school.name
+    }
+  })
+
+  next()
+})
 
 router.post('/account', (req, res) => {
   const hasAccount = req.session.data['has-account']

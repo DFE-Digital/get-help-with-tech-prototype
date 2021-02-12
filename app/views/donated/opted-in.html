@@ -1,0 +1,78 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Donated devices' %}
+{% set buttonText = 'Continue' %}
+{% set notStandardForm = true %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school" if isSchool else "/responsible-body"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block primary %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if isSchool %}
+        {{ govukPanel({
+          titleHtml: "Your school is opted in",
+          html: "You’re in the queue to receive&nbsp;devices",
+          classes: "govuk-!-margin-bottom-8"
+        }) }}
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+
+        <p>If it’s your turn in the queue, you’ll get an email confirmation and Computacenter will deliver your preferred devices to:</p>
+        <div class="govuk-inset-text">
+          <p><strong>[Your name]</strong><br />School name<br />123 Street<br />Town<br />County<br />SW1 1AA</p>
+        </div>
+      {% else %}
+        {{ govukPanel({
+          titleHtml: "Schools are opted&nbsp;in",
+          html: "They are in the queue to receive&nbsp;devices",
+          classes: "govuk-!-margin-bottom-8"
+        }) }}
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+
+        <p>If it’s their turn in the queue, you’ll get an email confirmation and Computacenter will deliver devices directly to the school.</p>
+
+        {% if data['donated-opt-in-all-or-some'] %}
+          <h2 class="govuk-heading-m">Schools opted in</h2>
+          {% if data['donated-opt-in-all-or-some'] == 'some' %}
+            <ul class="govuk-list govuk-list--bullet">
+              {% for school in data['donated-opt-in-schools'] %}
+                <li>{{ school }}</li>
+              {% endfor %}
+            </ul>
+
+            <p>You can still <a href="#">opt in the rest of your schools</a>.</p>
+          {% else %}
+            <p>All schools</p>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+
+      {% if data['donated-types'] %}
+        <h2 class="govuk-heading-m">Accepted device types</h2>
+        <ul class="govuk-list govuk-list--bullet">
+          {% for type in data['donated-types'] %}
+            <li>{{ type }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if data['donated-count'] %}
+        <h2 class="govuk-heading-m">Preferred number of devices</h2>
+        <p>{{ data['donated-count'] }} {% if isRb %} per school {% endif %}</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
