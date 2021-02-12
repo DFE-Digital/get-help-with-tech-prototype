@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'Amington Heath Primary School and Nursery',
+  name: 'Livingstone Road Junior School',
   type: 'Primary school',
   allocation: 82,
   can_order: false,
