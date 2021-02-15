@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% set title = "Who needs the extra mobile data?" %}
 {% block pageTitle %}{{ title }}{% endblock %}
+{% set isFe = true %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
@@ -56,6 +57,14 @@
       </ul>
     {% endset %}
 
+    {% set hintHtml %}
+      {% if isFe %}
+        Only mobile networks participating in the service are listed.<br />O2 and giffgaff are not shown as they do not accept requests for students in further&nbsp;education.<br /><a href="/guide/asking-for-network">Guidance on asking for mobile network</a> and <a href="/guide/telling-about-offer">telling people about their offer</a>
+      {% else %}
+        Only mobile networks participating in the service are listed<br /><a href="/guide/asking-for-network">Guidance on asking for mobile network</a> and <a href="/guide/telling-about-offer">telling people about their offer</a>
+      {% endif %}
+    {% endset %}
+
     {{ govukRadios({
       fieldset: {
         legend: {
@@ -64,7 +73,7 @@
         }
       },
       hint: {
-        html: 'Only mobile networks participating in the service are listed<br /><a href="/guide/asking-for-network">Guidance on asking for mobile network</a> and <a href="/guide/telling-about-offer">telling people about their offer</a>',
+        html: hintHtml,
         classes: 'govuk-!-margin-bottom-3'
       },
       items: [
@@ -85,7 +94,7 @@
           conditional: {
             html: genericOfferDetailsHTML
           }
-        },
+        } if not isFe,
         {
           text: "Tesco Mobile",
           conditional: {

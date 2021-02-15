@@ -41,6 +41,11 @@
       }
     }) }}
 
+    {{ govukWarningText({
+      html: 'O2 and giffgaff will not accept requests for students in further&nbsp;education',
+      iconFallbackText: 'Warning'
+    }) }}
+
     {{ govukButton({
       text: 'Upload requests',
       href: mobilePath + '/bulk/uploaded'
