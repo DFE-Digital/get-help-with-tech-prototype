@@ -7,7 +7,7 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   signedInHomePath: '/responsible-body',
-  rb: 'ASPIRE ACADEMY TRUST',
+  rb: 'ACADEMIES ENTERPRISE TRUST',
   trust: true,
   devicesOrdered: 9,
   routersAllocated: 0,
