@@ -30,7 +30,10 @@ function donatedWizardPaths (req) {
     '/responsible-body/donated/disclaimer',
     '/responsible-body/donated/check-answers',
     '/responsible-body/donated/opted-in',
-    '/responsible-body'
+    '/responsible-body',
+    '/responsible-body/donated/opted-in',
+    '/responsible-body/donated/remaining-schools',
+    '/responsible-body/donated/opted-in'
   ]
 
   return nextAndBackPaths(paths, req)

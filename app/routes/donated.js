@@ -7,7 +7,11 @@ const {
  * Donated walkthrough routes
  */
 module.exports = router => {
-  router.get(['/responsible-body/donated/what-devices-do-schools-want', '/responsible-body/donated/which-schools'], (req, res, next) => {
+  router.get([
+    '/responsible-body/donated/remaining-schools',
+    '/responsible-body/donated/what-devices-do-schools-want',
+    '/responsible-body/donated/which-schools'
+  ], (req, res, next) => {
     res.locals.schools = req.session.data.schools.map(school => {
       return {
         text: school.name
