@@ -160,6 +160,22 @@
           }
         ]
       }
-    } if recoveryAddress
+    } if recoveryAddress,
+    {
+      key: {
+        text: "Opted into Daily Mail donated devices scheme?"
+      },
+      value: {
+        html: "No"
+      },
+      actions: {
+        items: [
+          {
+            text: 'Read more and opt in',
+            href: '/responsible-body/devices/schools/' + school.URN + '/who-contact'
+          }
+        ]
+      }
+    } if data.features.donated
   ]
 }) }}
