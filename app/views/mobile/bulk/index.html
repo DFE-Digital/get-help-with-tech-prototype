@@ -41,6 +41,11 @@
       }
     }) }}
 
+    {{ govukWarningText({
+      html: 'giffgaff and O2 will not accept requests for students over the age of 16',
+      iconFallbackText: 'Warning'
+    }) }}
+
     {{ govukButton({
       text: 'Upload requests',
       href: mobilePath + '/bulk/uploaded'
