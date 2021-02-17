@@ -59,7 +59,7 @@
 
     {% set hintHtml %}
       {% if isFe %}
-        Only mobile networks participating in the service are listed.<br />giffgaff, O2 and Tesco Mobile are not shown as they do not accept requests for students over the age of 16.<br /><a href="/guide/asking-for-network">Guidance on asking for mobile network</a> and <a href="/guide/telling-about-offer">telling people about their offer</a>
+        Only mobile networks participating in the service are listed.<br />giffgaff and O2 are not shown as they do not accept requests for students over the age of 16.<br /><a href="/guide/asking-for-network">Guidance on asking for mobile network</a> and <a href="/guide/telling-about-offer">telling people about their offer</a>
       {% else %}
         Only mobile networks participating in the service are listed<br /><a href="/guide/asking-for-network">Guidance on asking for mobile network</a> and <a href="/guide/telling-about-offer">telling people about their offer</a>
       {% endif %}
@@ -100,7 +100,7 @@
           conditional: {
             html: genericOfferDetailsHTML
           }
-        } if not isFe,
+        },
         {
           text: "Three",
           conditional: {
