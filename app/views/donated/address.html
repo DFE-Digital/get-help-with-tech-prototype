@@ -1,12 +1,26 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Your details will be shared and associated with the delivery' if isSchool else 'Your details will be shared and associated with each delivery' %}
+{% set title = 'How your details will be shared and associated with the delivery' if isSchool else 'How your details will be shared and associated with each delivery' %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
 
-  <p>As the person opting in a school, your name, email address and telephone number will be associated with {% if isSchool %}the{% else %}each{% endif %} delivery.</p> <p>Your name, email address and telephone number will be shared with Computacenter and <span class="app-no-wrap">Mail Force</span>. <a href="#">Read about how we use your data in our privacy policy</a>.</p>
+  <p>
+    We share with Computacenter the following information that you provide to us:
+  </p>
+  <ul class="govuk-list govuk-bullet--list">
+    <li>
+      the number and device types in which you have expressed an interest
+    </li>
+    <li>
+      your organisation’s name, address and URN (as available on <a href="https://www.get-information-schools.service.gov.uk/" class="govuk-link" target="none">Get Information About Schools</a>)
+    </li>
+  </ul>
+
+  <p>
+    <a href="/pages/dm-privacy-notice">Read about how we use your data in our privacy policy</a>
+  </p>
 
   <p>When these devices are delivered they will be addressed to you.</p>
 

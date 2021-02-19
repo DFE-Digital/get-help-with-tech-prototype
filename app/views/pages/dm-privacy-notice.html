@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% set title = "How we look after personal information where you express an interest in Computers for Kids" %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Privacy",
+        href: "#"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <h2 class="govuk-heading-m" id="who-this-information-is-for">Who this information is for</h2>
+
+      <p class="govuk-body">This information is for individuals who have opted into the Computers for Kids initiative on behalf of:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>local authorities (LAs)</li>
+        <li>academy trusts (trusts)</li>
+        <li>schools</li>
+        <li>colleges</li>
+        <li>further education institutions</li>
+      </ul>
+
+      <p>
+        The Computers for Kids scheme is run by Mail Force and is not administered by the Department for Education (DfE)
+      </p>
+      <p>
+        However, DfE enables LAs, trusts, schools, colleges and further education institutions to express an interest in obtaining computing devices through the Computers for Kids scheme.
+      </p>
+      <p>
+        This notice explains how we use the information that you supply to us.
+      </p>
+      <p>
+        When you opt in to the Computers for Kids scheme, the following non personal information is shared by DfE with Computacenter (UK) Limited (“Computacenter”). Computacenter share this information with Mail Force:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          organisation details (name, address and Unique Registration Number, as published e.g. on <a href="#">Get Information About Schools</a>)
+        </li>
+        <li>
+          the number and types of device in which the organisation has expressed an interest
+        </li>
+      </ul>
+      <h2 class="govuk-heading-m">
+        How we use your personal information
+      </h2>
+      <p>
+        We collect your name and contact details (email address and telephone number) associated with your organisation and share it with Computacenter, who use the information to:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          co-ordinate allocation and delivery of devices to your organisation
+        </li>
+      </ul>
+      <p>
+        The DfE is the data controller for the DfE's processing of the personal information for the purposes of collecting and sharing with Computacenter your organisation’s expression of interest. The DfE is not the data controller (or otherwise responsible for) Computacenter's processing of your personal information.
+      </p>
+      <h2 class="govuk-heading-m">
+        When we can use your personal information
+      </h2>
+      <p>
+        To use your personal information we need to meet a condition in the data protection legislation. For this service, we use your personal information as part of our legitimate interests (and the legitimate interests of Computacenter and Mail Force) to collect and share your opt-in information with Computacenter to allow Computacenterto co-ordinate the allocation and delivery of devices to your organisation under the Computers for Kids scheme. 
+      </p>
+      <h2 class="govuk-heading-m">
+        Who we share your personal information with
+      </h2>
+      <p>
+        We share your information with Computacenter (UK) Limited - so that they can co-ordinate allocation and administer the delivery of computing devices.
+      </p>
+      <p>
+        We will also share data if there is a legal requirement for us to share it.
+      </p>
+      <h2 class="govuk-heading-m">
+        Your individual rights
+      </h2>
+      <p>
+        Under UK data protection legislation, you have various rights with respect to your personal information.  In particular, you’re entitled to ask if we hold information relating to you and ask for a copy, by making a ‘subject access request’.
+      </p>
+      <p>
+        Contact details for the DfE Data Protection Officer are registered with and published by the <a href="#">Information Commissioner's Office</a>.
+      </p>
+      <p>
+        For further information and how to request your data, please use the ‘contact form’ under the ‘How to find out what personal information we hold about you’ section in the <a href="#">Personal Information Charter</a>.
+      </p>
+
+      <p>For further information on how the DfE uses personal information and on your rights, please see the DfE <a href="#">Personal Information Charter</a>.</p>
+
+      <p>You can read further information about your data protection rights at the <a href="#">Information Commissioner’s Office</a>.</p>
+    </div>
+  </div>
+{% endblock %}

@@ -43,7 +43,7 @@
       } if isSchool,
       {
         key: {
-          text: "Schools to opt in"
+          text: "Schools and colleges to opt in"
         },
         value: {
           html: schoolsHtml
@@ -80,7 +80,7 @@
           text: "Preferred number"
         },
         value: {
-          html: data['donated-count'] if isSchool else data['donated-count'] + ' per school'
+          html: data['donated-count'] if isSchool else data['donated-count'] + ' per school or college'
         },
         actions: {
           items: [
