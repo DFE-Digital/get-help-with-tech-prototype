@@ -236,3 +236,9 @@ $govuk-assets-path: '/govuk/assets/';
     font-weight: bold;
   }
 }
+
+.app-survey-container {
+  background-color: govuk-colour("light-grey");
+  padding: 15px;
+  margin-top: -15px;
+}
