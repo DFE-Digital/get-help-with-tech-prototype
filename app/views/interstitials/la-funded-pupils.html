@@ -1,0 +1,22 @@
+
+{% extends "layout.html" %}
+  {% set title = 'Devices for local authority funded pupils' | safe %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+    <p class="govuk-body govuk-!-margin-bottom-6">
+      You can now order laptops for eligible pupils at independent special schools who have places funded by {{ data.rb }}.
+    </p>
+    <p class="govuk-body">
+      <a href="/responsible-body" class="govuk-button">
+        Continue
+      </a>
+    </p>
+  </div>
+</div>
+{% endblock %}
