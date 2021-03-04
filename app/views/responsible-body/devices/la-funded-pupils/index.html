@@ -6,7 +6,7 @@
 
 {% extends "layout.html" %}
   {% set title = 'Order laptops for <span class="app-no-wrap">local authority</span> funded pupils' | safe %}
-{% block pageTitle %}{{ title }}{% endblock %}
+{% block pageTitle %}Order laptops for local authority funded pupils{% endblock %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
@@ -36,23 +36,38 @@
       Devices are available for pupils with local authority funded places at <span class="app-no-wrap">independent special schools</span>.
     </p>
     <p class="govuk-body">
-      {{ data.rb }} has {{ numberOfDevices }} pupils eligible for devices at {{ data.independentSpecialSchools.length }} schools.
+      To help with these pupil’s education during the Coronavirus pandemic you need to order devices for them. Laptops will be delivered to your <span class="app-no-wrap">local authority</span> office. You will need to arrange for the laptops to be delivered to the pupils.
     </p>
+
+    <h2 class="govuk-heading-m">
+      Your allocation
+    </h2>
+    <p class="govuk-body">
+      {{ data.rb }} has been allocated {{ numberOfDevices }} devices.
+    </p>
+    <p class="govuk-body">
+      This allocation is the number pupils we estimate {{ data.rb }} supports to attend independant special schools who are also eligible for free school meals.
+    </p>
+    <h2 class="govuk-heading-m">
+      What to do if your allocation is too low
+    </h2>
+    <p class="govuk-body">
+      If this allocation is incorrect, contact <a href="#" class="govuk-link">covid.technology@education.gov.uk</a> with the number of pupils who:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        have places at independant special schools funded by {{ data.rb }}
+      </li>
+      <li>
+        are also eligble for free school meals (or other evidence the pupil is eligible to be considered ‘disadvanteged’)
+      </li>
+    </ul>
     {% if data.devicesOrded %}
     <p class="govuk-body">
       {{ data.rb }} placed an order for 5 devices on 2 March 2020.
     </p>
     {% endif %}
 
-    <p class="govuk-body">
-      <a href="/responsible-body/devices/la-funded-pupils/independent-special-schools" class="govuk-link">
-        View independent special schools and pupils eligible for laptops
-      </a>
-    </p>
-
-    <p class="govuk-body">
-      To help with these pupil’s education during the Coronavirus pandemic you need to order devices for them. Laptops will be delivered to your <span class="app-no-wrap">local authority</span> office. You will need to arrange for the laptops to be delivered to the pupils.
-    </p>
     <h2 class="govuk-heading-m">
       Before you order
     </h2>
