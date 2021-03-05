@@ -1,0 +1,56 @@
+{% set title = 'Will your order include Chromebooks?' %}
+{% extends "layout.html" %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/responsible-body"
+      },
+      {
+        text: "Order devices",
+        href: "/responsible-body/devices"
+      },
+      {
+        text: "Order laptops for local authority funded pupils",
+        href: "/responsible-body/devices/la-funded-pupils"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/responsible-body/devices/la-funded-pupils/index#chromebooks" method="post" novalidate>
+      {{ govukRadios({
+        idPrefix: "la-chromebook-preference",
+          name: "la-chromebook-preference",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+      items: [
+        {
+          value: "yes-la-chromebooks",
+          text: "Yes, we will order Chromebooks"
+        },
+        {
+          value: "no-la-chromebooks",
+          text: "No, we will not order Chromebooks"
+        }
+      ]
+    }) }}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+</div>
+{% endblock %}

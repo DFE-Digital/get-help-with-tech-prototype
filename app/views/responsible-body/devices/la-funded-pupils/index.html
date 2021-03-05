@@ -33,35 +33,50 @@
       {{ title }}
     </h1>
     <p class="govuk-body">
-      Devices are available for pupils with local authority funded places at <span class="app-no-wrap">independent special schools</span>.
+      Laptops are available for pupils with local authority funded places at <span class="app-no-wrap">independent special schools</span>.
     </p>
     <p class="govuk-body">
-      To help with these pupil’s education during the Coronavirus pandemic you need to order devices for them. Laptops will be delivered to your <span class="app-no-wrap">local authority</span> office. You will need to arrange for the laptops to be delivered to the pupils.
+      To help with these pupil’s education during the Coronavirus pandemic you need to:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        check if {{ data.rb }} has been allocated enough laptops
+      </li>
+      <li>
+        find out what laptops pupils needs
+      </li>
+      <li>
+        tell us if any pupils will need Chromebooks
+      </li>
+      <li>
+        order the laptops
+      </li>
+      <li>
+        arrange for the laptops to be sent to the pupils
+      </li>
+    </ul>
+    <p class="govuk-body">
+      The laptops will belong to {{ data.rb }} and you are responsible for maintance and redistributing them if a pupil moves school or leaves education.
     </p>
 
     <h2 class="govuk-heading-m">
       Your allocation
     </h2>
-    <p class="govuk-body">
-      {{ data.rb }} has been allocated {{ numberOfDevices }} devices.
+    <p class="govuk-body govuk-inset-text">
+      {{ data.rb }} has been allocated {{ numberOfDevices }} laptops.
     </p>
     <p class="govuk-body">
-      This allocation is the number pupils we estimate {{ data.rb }} supports to attend independant special schools who are also eligible for free school meals.
+      This allocation is the number of pupils we estimate {{ data.rb }} supports at independant special schools who are also eligible for free school meals.
     </p>
-    <h2 class="govuk-heading-m">
-      What to do if your allocation is too low
-    </h2>
+    <h3 class="govuk-heading-s">
+      If your allocation is too low
+    </h3>
     <p class="govuk-body">
-      If this allocation is incorrect, contact <a href="#" class="govuk-link">covid.technology@education.gov.uk</a> with the number of pupils who:
+      Let us know how many pupils {{ data.rb }} supports at independant special schools who are also eligible for free school meals (or other evidence of financial disadvantage) at <a href="#">COVID.TECHNOLOGY@education.gov.uk</a>.
     </p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        have places at independant special schools funded by {{ data.rb }}
-      </li>
-      <li>
-        are also eligble for free school meals (or other evidence the pupil is eligible to be considered ‘disadvanteged’)
-      </li>
-    </ul>
+    <p class="govuk-body">
+      Do not send us any personal information, like names of children or dates of birth.
+    </p>
     {% if data.devicesOrded %}
     <p class="govuk-body">
       {{ data.rb }} placed an order for 5 devices on 2 March 2020.
@@ -69,11 +84,60 @@
     {% endif %}
 
     <h2 class="govuk-heading-m">
-      Before you order
+      Find out what laptops pupils need
     </h2>
     <p class="govuk-body">
-      <a href='#' class="govuk-link">Check laptops types and specifications</a> and speak to each school to find out what type of laptop the pupils need.
+      Speak to each school to find out what type of laptop the pupils need.
     </p>
+    <h3 class="govuk-heading-s">
+      The laptops in stock are:
+    </h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        Google Chromebooks
+      </li>
+      <li>
+        Standard and DfE Restricted Windows laptops – low stock, delivery may take longer than 5 working days
+      </li>
+    </ul>
+    <p class="govuk-body">
+      <a href='#' class="govuk-link">Read more about the devices and specifications available</a>
+    </p>
+    <p class="govuk-body">
+      If any pupil needs a Chromebook, you will need to know:
+    </p>
+    <p class="govuk-body">
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          the domain the school has registered for G Suite for Education, for example ‘school.co.uk’
+        </li>
+        <li>
+          a recovery email address. This should be on a seperate domain to the one registered for G Suite for Education. For example, if the domain registered for G Suite for Education is ‘school.com’, the recovery email cannot be ‘recovery@school.com’
+        </li>
+      </ul>
+    </p>
+
+    <h2 class="govuk-heading-m" id="chromebooks">
+      Tell us if you will order Chromebooks
+    </h2>
+    <p class="govuk-body">
+      To make sure your order is not delayed and the Chromebooks are setup correctly let us know if you will order Chromebooks.
+    </p>
+    <h3 class="govuk-heading-s">
+      Will you order chromebooks?
+    </h3>
+    <p class="govuk-body govuk-inset-text">
+      {% if data["la-chromebook-preference"] %}
+        {% if data["la-chromebook-preference"] === "yes-la-chromebooks" %}
+          Yes, your order will include Chromebooks – <a href="/responsible-body/devices/la-funded-pupils/chromebooks" class="govuk-link">change</a>
+        {% else %}
+          No, your order will not include Chromebooks – <a href="/responsible-body/devices/la-funded-pupils/chromebooks" class="govuk-link">change</a>
+        {% endif %}
+      {% else %}
+        <a href="/responsible-body/devices/la-funded-pupils/chromebooks" class="govuk-link">Tell us if you will order Chromebooks</a>
+      {% endif %}
+    </p>
+
     <h2 class="govuk-heading-m">
       How to order
     </h2>
@@ -88,17 +152,17 @@
       When you’re asked for a URN, use ‘<strong>{{ data.rb | lower }}</strong>’.
     </p>
     <p class="govuk-body">
-      Most devices will be delivered within 5 working days.
+      Most laptops will be delivered within 5 working days.
     </p>
     <h3 class="govuk-heading-s">Delivery address</h3>
-    <p class="govuk-body">Your devices will be delivered to:</p>
+    <p class="govuk-body">Your laptops will be delivered to:</p>
     <p class="govuk-body">
       {% for items in data.rbAddress %}
       {{ items }}<br>
       {% endfor %}
     </p>
     <p class="govuk-body">
-      If you need to change your delivery address, <a href="#" class="govuk-link">contact us</a>.
+      <a href="#" class="govuk-link">Contact us to change your delivery address</a>
     </p>
     <h3 class="govuk-heading-s">Using TechSource for the first time</h3>
       <p>Use these details to sign in:</p>
@@ -106,6 +170,19 @@
       <li>User ID: [email address]</li>
       <li>Password: Use the ‘Forgotten password’ link to set a password the first time you sign in</li>
     </ul>
+    {% if data["la-chromebook-preference"] == False %}
+    <div class="govuk-inset-text">
+      <p>
+        <strong>
+          You need to tell us if you will order Chromebooks
+        </strong>
+      </p>
+      <p>
+        If you order Chromebooks without letting us know first they may be configured incorrectly or the order may be cancelled.
+      </p>
+      <a href="/responsible-body/devices/la-funded-pupils/chromebooks" class="govuk-link">Tell us if you will order Chromebooks</a>
+    </div>
+    {% endif %}
     {% include '_shared/order/_start-now.html' %}
   </div>
 </div>
