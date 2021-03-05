@@ -1,0 +1,98 @@
+
+{% set allocation = 0 %}
+{% for item in data.independentSpecialSchools %}
+ {% set allocation = allocation + item.numberOfPupils %}
+{% endfor %}
+
+{% set laptopsOrdered = 0 %}
+
+{% extends "layout.html" %}
+  {% set title = 'How to order laptops for <span class="app-no-wrap">local authority</span> funded pupils' | safe %}
+{% block pageTitle %}Order laptops for local authority funded pupils{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/responsible-body"
+      },
+      {
+        text: "Order devices",
+        href: "/responsible-body/devices"
+      },
+      {
+        text: "Order laptops for local authority funded pupils",
+        href: "/responsible-body/devices/la-funded-pupils"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+      <p class="govuk-body">
+        You need to place orders on a website called TechSource.
+      </p>
+      <p class="govuk-body">
+        If you place an order for more than {{ allocation - laptopsOrdered }} devices the order will be cancelled.
+      </p>
+      {# Could cap this length or use the first word? #}
+      <p class="govuk-body">
+        When you’re asked for a URN, use ‘<strong>{{ data.rb | lower }}</strong>’.
+      </p>
+      <p class="govuk-body">
+        Most laptops will be delivered within 5 working days.
+      </p>
+      <h3 class="govuk-heading-s">
+        The laptops in stock are
+      </h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          Google Chromebooks
+        </li>
+        <li>
+          Standard and DfE Restricted Windows laptops – low stock, delivery may take longer than 5 working days
+        </li>
+      </ul>
+      <h3 class="govuk-heading-s">Your laptops will be delivered to</h3>
+      <p class="govuk-body">
+        {% for items in data.rbAddress %}
+          {{ items }}<br>
+        {% endfor %}
+      </p>
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Contact us to change your delivery address</a>
+      </p>
+      <h3 class="govuk-heading-s">How to sign in to TechSource for the first time</h3>
+        <p>Use these details to sign in:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>User ID: [email address]</li>
+        <li>Password: Use the ‘Forgotten password’ link to set a password the first time you sign in</li>
+      </ul>
+      {% if data["la-chromebook-preference"] == False %}
+      <div class="govuk-inset-text">
+        <p>
+          <strong>
+            You need to tell us if you will order Chromebooks
+          </strong>
+        </p>
+        <p>
+          If you order Chromebooks without letting us know first, they may be configured incorrectly or the order may be cancelled.
+        </p>
+        <a href="/responsible-body/devices/la-funded-pupils/chromebooks" class="govuk-link">Tell us if you will order Chromebooks</a>
+      </div>
+      {% endif %}
+      {% include '_shared/order/_start-now.html' %}
+
+  </div>
+</div>
+{% endblock %}
