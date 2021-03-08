@@ -1,4 +1,4 @@
-{% set title = 'Will your order include Chromebooks?' %}
+{% set title = 'Will this order include Chromebooks?' %}
 {% extends "layout.html" %}
 
 {% block pageNavigation %}
@@ -26,15 +26,21 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/responsible-body/devices/la-funded-pupils/index" method="post" novalidate>
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+    <p class="govuk-body">
+      We need to know if you order will include Chromebooks so they can be setup correctly.
+    </p>
+    <form action="/responsible-body/devices/la-funded-pupils/order" method="post" novalidate>
       {{ govukRadios({
         idPrefix: "la-chromebook-preference",
           name: "la-chromebook-preference",
           fieldset: {
             legend: {
               text: title,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--xl"
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--xl govuk-visually-hidden"
             }
           },
       items: [
