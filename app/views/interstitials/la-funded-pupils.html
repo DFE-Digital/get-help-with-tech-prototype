@@ -1,6 +1,6 @@
 
 {% extends "layout.html" %}
-  {% set title = 'Devices for local authority funded pupils' | safe %}
+  {% set title = 'Laptops and internet access for state-funded pupils in independent settings' | safe %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block content %}
@@ -10,7 +10,14 @@
       {{ title }}
     </h1>
     <p class="govuk-body govuk-!-margin-bottom-6">
-      You can now order laptops for eligible pupils at independent special schools who have places funded by {{ data.rb }}.
+       You can now order laptops for disadvantaged pupils funded by {{ data.rb }}, who:
+    </p>
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>have a place at an independent special school, or through independent alternative provision</li>
+        <li>do not have access to a suitable device for remote education</li>
+    </ul>
+        <p class="govuk-body govuk-!-margin-bottom-6">
+       You can also request internet access for these pupils if they need it.
     </p>
     <p class="govuk-body">
       <a href="/responsible-body" class="govuk-button">
