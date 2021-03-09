@@ -49,12 +49,13 @@
       {% endif %}
     {% else %}
       <h2 class="govuk-heading-m">
-        You’ve ordered laptops for all eligible pupils
+        You’ve ordered devices for all eligible pupils
       </h2>
     {% endif %}
     </div>
 
-    <p class="govuk-body">
+    {% if allocation != laptopsOrdered %}
+      <p class="govuk-body">
         Laptops are available for pupils with local authority funded places at <span class="app-no-wrap">independent special schools</span>.
       </p>
       <p class="govuk-body">

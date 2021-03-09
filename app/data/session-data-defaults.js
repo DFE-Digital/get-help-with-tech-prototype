@@ -8,6 +8,7 @@ const schoolDetails = require('./school-details')
 module.exports = {
   signedInHomePath: '/responsible-body',
   rb: 'Greenwhich',
+  trust: true,
   rbAddress: [
     'The Woolwich Centre',
     'Wellington Street',
