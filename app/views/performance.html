@@ -8,135 +8,387 @@
   {{ title }}
 </h1>
 
-<h2 class="govuk-heading-l">Sign-ins</h2>
+<!--
 
-<div class="govuk-!-margin-bottom-4">
-  <div class="app-card app-card--blue">
-    <span class="app-card__count">35</span>
-    users have signed in
-  </div>
-</div>
+Devices
 
-<div class="govuk-grid-row govuk-!-margin-bottom-4">
-  <div class="govuk-grid-column-one-half">
-    <div class="app-card">
-      <span class="app-card__count">30</span>
-      different responsible bodies
+x Percentage of schools with a user signed in
+x Number of schools who have ordered
+x Percentage of those who have ordered who have ordered full capacity
+x Number of schools open to order who have not [all schools open]
+x Number of devices delivered
+
+x Percentage of RBs who have given all information needed
+Average & Range for the time between schools ordering and receiving devices
+Number of cancelled orders
+x Number of devices available to be delivered
+
+Connectivity & MNO
+
+x Number of schools who have ordered routers
+x Number of RBs who have ordered routers
+x Number of routers delivered - Laura will talk to Karl who takes ownership of this, and see if we could pull this data into the dashboard.
+x Number of schools who have not ordered routers
+x Number of RBs who have not ordered routers
+x Number of schools with MNO requests
+x Number of RBs with MNO requests
+Average and Range for the time between schools ordering and receiving routers
+Percentages of orders for each region
+x Breakdown of providers for orders
+x Number of routers available to be delivered
+Could we combine data on requests for MNO and routers - schools that have both?
+
+-->
+
+{% set serviceHtml %}
+  <h2 class="govuk-heading-l">Sign-ins</h2>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-4">
+    <div class="govuk-grid-column-one-half">
+      <div class="app-card">
+        <span class="app-card__count">95%</span>
+        of devolved schools signed in<br />(950 out of 1,000)
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <div class="app-card">
+        <span class="app-card__count">97%</span>
+        of responsible bodies signed in<br />(194 out of 200)
+      </div>
     </div>
   </div>
-  <div class="govuk-grid-column-one-half">
-    <div class="app-card">
-      <span class="app-card__count">5</span>
-      different mobile network operators
+
+  <h2 class="govuk-heading-l govuk-!-margin-top-8">Who orders</h2>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-4">
+    <div class="govuk-grid-column-one-half">
+      <div class="app-card">
+        <span class="app-card__count">18,048</span>
+        schools order their own devices
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <div class="app-card">
+        <span class="app-card__count">2,034</span>
+        schools are managed centrally
+      </div>
     </div>
   </div>
-</div>
+{% endset %}
 
-<h2 class="govuk-heading-l govuk-!-margin-top-8">BT hotspots</h2>
+{% set devicesHtml %}
+  <h2 class="govuk-heading-l">Devices</h2>
 
-<div class="govuk-grid-row govuk-!-margin-bottom-4">
-  <div class="govuk-grid-column-one-half">
-    <div class="app-card">
-      <span class="app-card__count">35</span>
-      vouchers activated
-    </div>
-  </div>
-  <div class="govuk-grid-column-one-half">
-    <div class="app-card">
-      <span class="app-card__count">5,200</span>
-      vouchers downloaded by 24 responsible bodies
-    </div>
-  </div>
-</div>
-
-<h2 class="govuk-heading-l govuk-!-margin-top-8">Mobile data requests</h2>
-
-<div class="govuk-grid-row govuk-!-margin-bottom-4">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-!-margin-bottom-4">
     <div class="app-card app-card--blue">
-      <span class="app-card__count">25</span>
-      requests
+    <span class="app-card__count">1.30m</span>
+    total devices available
     </div>
   </div>
-</div>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-quarter">
-    <div class="app-card">
-      <span class="app-card__secondary-count">5</span>
-      new
+  <div class="govuk-grid-row govuk-!-margin-bottom-4">
+    <div class="govuk-grid-column-one-half">
+      <div class="app-card app-card--green">
+        <span class="app-card__count">1.21m</span>
+        devices shipped
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <div class="app-card app-card--orange">
+        <span class="app-card__count">95,000</span>
+        remaining
+      </div>
     </div>
   </div>
-  <div class="govuk-grid-column-one-quarter">
-    <div class="app-card">
-      <span class="app-card__secondary-count">5</span>
-      in progress
-    </div>
-  </div>
-  <div class="govuk-grid-column-one-quarter">
-    <div class="app-card app-card--red">
-      <span class="app-card__secondary-count">3</span>
-      not valid
-    </div>
-  </div>
-  <div class="govuk-grid-column-one-quarter">
-    <div class="app-card app-card--green">
-      <span class="app-card__secondary-count">17</span>
-    completed
-    </div>
-  </div>
-</div>
 
+  <h3 class="govuk-heading-m govuk-!-margin-top-7">Schools</h3>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <table class="govuk-table govuk-!-margin-top-4">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Network</th>
-          <th scope="col" class="govuk-table__header govuk-table__header--numeric">New</th>
-          <th scope="col" class="govuk-table__header govuk-table__header--numeric">In progress</th>
-          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Completed</th>
-          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Not valid</th>
-          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Total</th>
-        </tr>
-      </thead>
-
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">EE</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">1</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">1</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Three</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">1</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">1</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">1</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Virgin</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">10</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Smarty</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">1</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">1</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="govuk-!-margin-bottom-4">
+    <div class="app-card app-card--blue">
+    <span class="app-card__count">21,000</span>
+    devolved schools
+    </div>
   </div>
-</div>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-4">
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--green">
+        <span class="app-card__count">76%</span>
+        ordered their full allocation<br />(16,054 out of 21,000)
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--orange">
+        <span class="app-card__count">9%</span>
+        ordered but have devices left<br />(2,000 out of 21,000)
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--red">
+        <span class="app-card__count">14%</span>
+        have not ordered<br />(3,000 out of 21,000)
+      </div>
+    </div>
+  </div>
+
+  <h3 class="govuk-heading-m govuk-!-margin-top-7">Responsible bodies</h3>
+
+  <div class="govuk-!-margin-bottom-4">
+    <div class="app-card app-card--blue">
+      <span class="app-card__count">4,000</span>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          responsible bodies managing orders centrally<br/>on behalf of 6,000 schools
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-4">
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--green">
+        <span class="app-card__count">76%</span>
+        ordered their full allocation<br />(3,040 out of 4,000)
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--orange">
+        <span class="app-card__count">9%</span>
+        ordered but have devices left<br />(360 out of 4,000)
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--red">
+        <span class="app-card__count">14%</span>
+        have not ordered<br />(560 out of 21,000)
+      </div>
+    </div>
+  </div>
+{% endset %}
+
+{% set mnoHtml %}
+  <h2 class="govuk-heading-l">Mobile data requests</h2>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-4">
+    <div class="govuk-grid-column-full">
+      <div class="app-card app-card--blue">
+        <span class="app-card__count">30,000</span>
+        requests
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <div class="app-card">
+        <span class="app-card__secondary-count">5,000</span>
+        new
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+      <div class="app-card app-card--orange">
+        <span class="app-card__secondary-count">5,000</span>
+        in progress
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+      <div class="app-card app-card--red">
+        <span class="app-card__secondary-count">3,000</span>
+        not valid
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+      <div class="app-card app-card--green">
+        <span class="app-card__secondary-count">17,000</span>
+      completed
+      </div>
+    </div>
+  </div>
+
+  <h3 class="govuk-heading-m govuk-!-margin-top-7">Requests by network</h3>
+
+  <table class="govuk-table govuk-!-margin-top-4">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header" style="width: 25%">Network</th>
+        <th scope="col" class="govuk-table__header govuk-table__header--numeric">New</th>
+        <th scope="col" class="govuk-table__header govuk-table__header--numeric">In progress</th>
+        <th scope="col" class="govuk-table__header govuk-table__header--numeric">Completed</th>
+        <th scope="col" class="govuk-table__header govuk-table__header--numeric">Problem</th>
+        <th scope="col" class="govuk-table__header govuk-table__header--numeric" style="width: 25%">Total</th>
+      </tr>
+    </thead>
+
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">EE</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">2,000</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">4,000</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Three</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">2,000</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">5,000</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Virgin</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">2,000</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">4,000</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">4,000</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">10,000</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Smarty</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="govuk-heading-m govuk-!-margin-top-7">Who has made requests</h3>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-4">
+    <div class="govuk-grid-column-one-half">
+      <div class="app-card">
+        <span class="app-card__count">5,000</span>
+        devolved schools<br />(out of 21,000)
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <div class="app-card">
+        <span class="app-card__count">1,000</span>
+        responsible bodies managing orders centrally<br />(out of 4,000, and on behalf of 6,000 schools)
+      </div>
+    </div>
+  </div>
+{% endset %}
+
+{% set routersHtml %}
+  <h2 class="govuk-heading-l">Routers</h2>
+
+  <div class="govuk-!-margin-bottom-4">
+    <div class="app-card app-card--blue">
+    <span class="app-card__count">100,000</span>
+    total routers available
+    </div>
+  </div>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-4">
+    <div class="govuk-grid-column-one-half">
+      <div class="app-card app-card--green">
+        <span class="app-card__count">59,000</span>
+        routers shipped
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <div class="app-card app-card--orange">
+        <span class="app-card__count">41,000</span>
+        routers remaining
+      </div>
+    </div>
+  </div>
+
+  <h3 class="govuk-heading-m govuk-!-margin-top-7">Schools</h3>
+
+  <div class="govuk-!-margin-bottom-4">
+    <div class="app-card app-card--blue">
+    <span class="app-card__count">1,023</span>
+    schools have a router allocation
+    </div>
+  </div>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-4">
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--green">
+        <span class="app-card__count">50%</span>
+        ordered their full allocation<br />(511 out of 1,023)
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card  app-card--orange">
+        <span class="app-card__count">25%</span>
+        ordered but have routers left<br />(256 out of 1,023)
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--red">
+        <span class="app-card__count">25%</span>
+        have not ordered<br />(256 out of 1,023)
+      </div>
+    </div>
+  </div>
+
+  <h3 class="govuk-heading-m govuk-!-margin-top-7">Responsible bodies</h3>
+
+  <div class="govuk-!-margin-bottom-4">
+    <div class="app-card app-card--blue">
+      <span class="app-card__count">100</span>
+      responsible bodies managing centrally have a school with a router allocation
+    </div>
+  </div>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-4">
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--green">
+        <span class="app-card__count">50%</span>
+        ordered their full allocation<br />(50 out of 100)
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--orange">
+        <span class="app-card__count">30%</span>
+        ordered but have routers left<br />(30 out of 100)
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--red">
+        <span class="app-card__count">20%</span>
+        have not ordered<br />(20 out of 100)
+      </div>
+    </div>
+  </div>
+{% endset %}
+
+{{ govukTabs({
+  items: [
+    {
+      label: "Service",
+      id: "service",
+      panel: {
+        html: serviceHtml
+      }
+    },
+    {
+      label: "Devices",
+      id: "devices",
+      panel: {
+        html: devicesHtml
+      }
+    },
+    {
+      label: "MNO",
+      id: "mno",
+      panel: {
+        html: mnoHtml
+      }
+    },
+    {
+      label: "Routers",
+      id: "routers",
+      panel: {
+        html: routersHtml
+      }
+    }
+  ]
+}) }}
 {% endblock %}
