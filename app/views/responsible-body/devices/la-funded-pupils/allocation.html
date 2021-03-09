@@ -1,0 +1,60 @@
+
+{% set allocation = 0 %}
+{% for item in data.independentSpecialSchools %}
+ {% set allocation = allocation + item.numberOfPupils %}
+{% endfor %}
+
+{% set laptopsOrdered = 0 %}
+
+{% extends "layout.html" %}
+  {% set title = 'Devices allocated to local authority funded pupils' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/responsible-body"
+      },
+      {
+        text: "Order devices",
+        href: "/responsible-body/devices"
+      },
+      {
+        text: "Order laptops for local authority funded pupils",
+        href: "/responsible-body/devices/la-funded-pupils"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+      <p class="govuk-body">
+        {{ data.rb }} has been allocated {{ allocation }} laptops.
+      </p>
+
+      <p class="govuk-body">
+        This allocation is the number of pupils we estimate {{ data.rb }} supports at independent special schools who are also eligible for free school meals.
+      </p>
+      <h3 class="govuk-heading-s">
+        If your allocation is too low
+      </h3>
+      <p class="govuk-body">
+        Let us know how many pupils {{ data.rb }} supports at independent special schools who are also eligible for free school meals (or other evidence of financial disadvantage) at <a href="#">COVID.TECHNOLOGY@education.gov.uk</a>.
+      </p>
+      <p class="govuk-body">
+        Do not send us any personal information, like names of children or <span class="app-no-wrap">dates of birth</span>.
+      </p>
+  </div>
+</div>
+{% endblock %}

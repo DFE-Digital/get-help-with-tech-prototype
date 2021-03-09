@@ -56,7 +56,12 @@
 
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>place orders</li>
+      {% if data.features['la-funded-places'] %}
+        <li>order laptops for pupils at independent special schools</li>
+        <li>order laptops for schools and colleges</li>
+      {% else %}
+        <li>place orders</li>
+      {% endif %}
       <li>add{% if not data.features['further-education'] %} school{% endif %} contacts</li>
       <li>tell us who will place orders{% if not data.features['further-education'] %} for schools{% endif %}</li>
       {% if data.features['further-education'] %}
