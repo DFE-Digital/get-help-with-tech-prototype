@@ -73,6 +73,12 @@
         <h2 class="govuk-heading-m">Preferred number of devices</h2>
         <p>{{ data['donated-count'] }} {% if isRb %} per school or college{% endif %}</p>
       {% endif %}
+
+      <h2 class="govuk-heading-m">
+        Get free Vodafone SIM cards
+      </h2>
+
+      {% include '_shared/donated/_sim-promo.html' %}
     </div>
   </div>
 {% endblock %}

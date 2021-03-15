@@ -1,0 +1,13 @@
+{% extends "_wizard-form.html" %}
+{% set action = "/school" %}
+{% set title = "Get free Vodafone SIM cards" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {% include '_shared/donated/_sim-promo.html' %}
+
+  <p>or</p>
+{% endblock %}
