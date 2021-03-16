@@ -1,13 +1,9 @@
 
-{% set allocation = 0 %}
-{% for item in data.independentSpecialSchools %}
- {% set allocation = allocation + item.numberOfPupils %}
-{% endfor %}
-
-{% set laptopsOrdered = 0 %}
+{% set allocation = data.laFundedPlacesAllocation %}
+{% set laptopsOrdered = data.laFundedPlacesOrdered %}
 
 {% extends "layout.html" %}
-  {% set title = 'Get laptops for <span class="app-no-wrap">local authority</span> funded pupils' | safe %}
+  {% set title = 'Get laptops for <span class="app-no-wrap">state-funded</span> pupils in independent settings' | safe %}
 {% block pageTitle %}Get laptops for funded pupils{% endblock %}
 
 {% block pageNavigation %}
@@ -18,7 +14,7 @@
         href: "/responsible-body"
       },
       {
-        text: "Order laptops",
+        text: "Get laptops",
         href: "/responsible-body/devices"
       },
       {
@@ -40,7 +36,7 @@
         Laptops available:
       </h2>
       <p class="govuk-body govuk-!-margin-bottom-0">
-        {{ data.rb }} has {{ allocation - laptopsOrdered }} laptop{% if allocation != 1 %}s{% endif %} available to order for pupils in <span class="app-no-wrap">independent special schools</span>.
+        {{ data.rb }} has {{ allocation - laptopsOrdered }} laptop{% if allocation != 1 %}s{% endif %} available to order now.
       </p>
       {% if laptopsOrdered > 0 %}
       <p class="govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
@@ -49,45 +45,54 @@
       {% endif %}
     {% else %}
       <h2 class="govuk-heading-m">
-        You’ve ordered devices for all eligible pupils
+        You’ve ordered your full allocation of laptops
       </h2>
     {% endif %}
     </div>
 
       <p class="govuk-body">
-        Laptops are available for pupils with local authority funded places at <span class="app-no-wrap">independent special schools</span>.
+        These laptops are for pupils you fund to attend<span class="app-no-wrap"> independent special schools</span>, or independent alternative provision.
       </p>
+
       <p class="govuk-body">
-        The laptops will belong to {{ data.rb }} and you are responsible for maintance and redistributing them if a pupil moves school or leaves education.
+        <a href="/responsible-body/devices/la-funded-pupils/allocation">Tell us if you need more laptops than you’ve been allocated</a>.
       </p>
 
       <h2 class="govuk-heading-m">
-        Before you order your laptops
+        Ownership and responsibility
       </h2>
       <p class="govuk-body">
-        You will need to:
-      </p>
-      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-        <li>
-          <a href="/responsible-body/devices/la-funded-pupils/allocation">check enough laptops have been allocated</a>
-        </li>
-        <li>
-          <a href="/responsible-body/devices/la-funded-pupils/laptops-types-for-la-funded-pupils">find out what laptop types pupils need</a>
-        </li>
-      </ul>
+        {{ data.rb }} will own these laptops. You’re responsible for making sure devices have <a href="#">appropriate safety and security measures installed and maintained</a>.
+      </p> 
       <p class="govuk-body">
-        You will then need to arrange for the laptops to be sent to the pupils.
+        You’re responsible for lending the laptops to pupils who need them, and redistributing them if pupils move school or leave education.
       </p>
-      {% if data["la-chromebook-preference"] %}
-      {{ govukButton({
-        text: "Order devices",
-        href: "/responsible-body/devices/la-funded-pupils/order"
-      }) }}
-      {% else %}
-      {{ govukButton({
-        text: "Order devices",
-        href: "/responsible-body/devices/la-funded-pupils/chromebooks"
-      }) }}
+
+      <h2 class="govuk-heading-m">
+        Before you order
+      </h2>
+      <p class="govuk-body">
+        It’s important to <a href="/responsible-body/devices/la-funded-pupils/laptops-types-for-la-funded-pupils">find out what type of laptop each pupil needs</a>. We suggest you contact schools to get this information as soon as possible.
+      </p>
+      <p class="govuk-body">
+        You can order all of your laptops at once, or place multiple orders.
+      </p>
+      <p class="govuk-body govuk-!-margin-bottom-8">
+       All devices will be sent to your local authority. You then need to arrange for safe distribution to pupils.
+      </p>
+
+      {% if allocation != laptopsOrdered %}
+        {% if data["la-chromebook-preference"] %}
+        {{ govukButton({
+          text: "Continue",
+          href: "/responsible-body/devices/la-funded-pupils/order"
+        }) }}
+        {% else %}
+        {{ govukButton({
+          text: "Continue",
+          href: "/responsible-body/devices/la-funded-pupils/chromebooks"
+        }) }}
+        {% endif %}
       {% endif %}
   </div>
 </div>

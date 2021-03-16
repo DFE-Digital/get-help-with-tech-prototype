@@ -9,7 +9,7 @@
         href: "/responsible-body"
       },
       {
-        text: "Order devices",
+        text: "Get devices",
         href: "/responsible-body/devices"
       },
       {
@@ -30,7 +30,7 @@
       {{ title }}
     </h1>
     <p class="govuk-body">
-      We need to know if you order will include Chromebooks so they can be setup correctly.
+      We need to know this so we can set devices up correctly for pupils.
     </p>
     <form action="/responsible-body/devices/la-funded-pupils/order" method="post" novalidate>
       {{ govukRadios({
@@ -46,11 +46,15 @@
       items: [
         {
           value: "yes-la-chromebooks",
-          text: "Yes, we will order Chromebooks"
+          text: "Yes, we'll order Google Chromebooks"
         },
         {
           value: "no-la-chromebooks",
-          text: "No, we will not order Chromebooks"
+          text: "No, we will not order Google Chromebooks"
+        },
+        {
+          value: FALSE,
+          text: "I don’t know"
         }
       ]
     }) }}

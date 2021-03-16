@@ -31,7 +31,11 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+  {% if data.features.iss %}
+    <span class="govuk-caption-xl">State-funded pupils at independent settings</span>
+  {% else %}
     <span class="govuk-caption-xl">{{ data['school-details'].name }}</span>
+  {%  endif %}
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
@@ -60,7 +64,7 @@
             text: "Setting:"
           },
           value: {
-            text: data['school-details'].type
+              text: data['school-details'].type
           }
         },
         {
@@ -124,15 +128,14 @@
       About allocations
     </h2>
 
-    <p>Allocations are based on:</p>
-
-    {% include "_shared/school/_allocation-description.html" %}
-
-    {% if not data.features.push %}
-      <p>Numbers will be reassessed at the time of ordering based on availability and the extent of coronavirus restrictions.</p>
+    {% if data.features.iss %}
+    <p>
+      Your {% include "_shared/responsible-body/la-funded-places/_allocation-description.html" %}
+    {% else %}
+      <p>Allocations are based on:</p>
+      {% include "_shared/school/_allocation-description.html" %}
+      <p>If the number of {% if data.features["further-education"] %}students unable to take part in face-to-face education{% else %}pupils unable to attend school{% endif %} and in need of laptops and tablets is greater than your allocation, you can <a href='#'>request more devices</a>.</p>
     {% endif %}
-
-    <p>If the number of {% if data.features["further-education"] %}students unable to take part in face-to-face education{% else %}pupils unable to attend school{% endif %} and in need of laptops and tablets is greater than your allocation, you can <a href='#'>request more devices</a>.</p>
   </div>
 </div>
 {% endblock %}
