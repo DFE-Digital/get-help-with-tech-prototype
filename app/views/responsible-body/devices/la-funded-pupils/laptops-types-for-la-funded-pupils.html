@@ -7,7 +7,7 @@
 {% set laptopsOrdered = 0 %}
 
 {% extends "layout.html" %}
-  {% set title = 'Find out what laptop types pupils need' %}
+  {% set title = 'Find out what type of laptop pupils need' %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -18,11 +18,11 @@
         href: "/responsible-body"
       },
       {
-        text: "Order devices",
+        text: "Get devices",
         href: "/responsible-body/devices"
       },
       {
-        text: "Order laptops for local authority funded pupils",
+        text: "Get laptops for local authority funded pupils",
         href: "/responsible-body/devices/la-funded-pupils"
       },
       {
@@ -39,28 +39,28 @@
       {{ title }}
     </h1>
 
-      <p class="govuk-body">
-        Speak to each school to find out what type of laptop the pupils need.
-      </p>
-      <h3 class="govuk-heading-s">
-        The laptops in stock are
+    <h3 class="govuk-heading-s">
+        These laptops are currently in stock:
       </h3>
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          Google Chromebooks
+          Google Chromebooks - usually delivered within 5 working days
         </li>
         <li>
           Standard and DfE Restricted Windows laptops – low stock, delivery may take longer than 5 working days
         </li>
       </ul>
       <p class="govuk-body">
-        <a href='#' class="govuk-link">Read more about the devices and specifications available</a>
+        It's important to check with schools to find out which is the best type of laptop to order for each pupil.
+      </p> 
+      <p class="govuk-body">
+        You can <a href="/devices/device-specification" class="govuk-link">send schools this information about device settings and specifications</a> to help.
       </p>
       <h3 class="govuk-heading-s">
-        Pupils who need Chromebooks
+        If any pupils need Google Chromebooks
       </h3>
       <p class="govuk-body">
-        If any pupil needs a Chromebook, you will need to provide:
+        We need the following information to set up their device correctly:
       </p>
       <p class="govuk-body">
         <ul class="govuk-list govuk-list--bullet">
@@ -71,6 +71,9 @@
             a recovery email address. This should be on a seperate domain to the one registered for G Suite for Education. For example, if the domain registered for G Suite for Education is ‘school.com’, the recovery email cannot be ‘recovery@school.com’
           </li>
         </ul>
+      </p>
+      <p class="govuk-body">
+        The school’s IT support should be able to give you this information.
       </p>
 
   </div>

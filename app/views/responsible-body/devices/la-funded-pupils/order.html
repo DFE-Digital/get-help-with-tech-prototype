@@ -1,14 +1,11 @@
 
-{% set allocation = 0 %}
-{% for item in data.independentSpecialSchools %}
- {% set allocation = allocation + item.numberOfPupils %}
-{% endfor %}
+{% set allocation = data.laFundedPlacesAllocation %}
 
-{% set laptopsOrdered = 0 %}
+{% set laptopsOrdered = data.laFundedPlacesOrdered %}
 
 {% extends "layout.html" %}
-  {% set title = 'How to order laptops for <span class="app-no-wrap">local authority</span> funded pupils' | safe %}
-{% block pageTitle %}Order laptops for funded pupils{% endblock %}
+  {% set title = 'Order laptops for <span class="app-no-wrap">state-funded</span> pupils' | safe %}
+{% block pageTitle %}Order laptops for local authority funded pupils{% endblock %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
@@ -18,11 +15,11 @@
         href: "/responsible-body"
       },
       {
-        text: "Order devices",
+        text: "Get devices",
         href: "/responsible-body/devices"
       },
       {
-        text: "Order laptops for local authority funded pupils",
+        text: "Get laptops for state-funded pupils",
         href: "/responsible-body/devices/la-funded-pupils"
       },
       {
@@ -39,53 +36,79 @@
       {{ title }}
     </h1>
 
-      <p class="govuk-body">
-        You need to place orders on a website called TechSource.
-      </p>
-      <p class="govuk-body">
-        If you place an order for more than {{ allocation - laptopsOrdered }} devices the order will be cancelled.
-      </p>
-      {# Could cap this length or use the first word? #}
-      <p class="govuk-body">
-        When you’re asked for a URN, use ‘<strong>{{ data.rb | lower }}</strong>’.
-      </p>
-      <p class="govuk-body">
-        Most laptops will be delivered within 5 working days.
-      </p>
-        <h3 class="govuk-heading-s">Chromebooks</h3>
-        {% if data["la-chromebook-preference"] == "yes-la-chromebooks" %}
-        <p class="govuk-body">
-          You’ve told us your order will include Chromebooks — <a href="/responsible-body/devices/la-funded-pupils/chromebooks">change<span class="govuk-visually-hidden"> if you do not want Chromebooks</span></a>
-        </p>
-        <p class="govuk-body">
-          TechSource will contact you about which ‘G Suite for Education’ domains you want to use.
-        </p>
-      {% else %}
-        <p class="govuk-body">
-          You’ve told us your order will not include Chromebooks — <a href="/responsible-body/devices/la-funded-pupils/chromebooks">change<span class="govuk-visually-hidden"> if you do want Chromebooks</span></a>
-        </p>
-      {% endif %}
-      <h3 class="govuk-heading-s">
-        The laptops in stock are
-      </h3>
+      <h2 class="govuk-heading-m">
+        These laptops are currently in stock:
+      </h2>
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          Google Chromebooks
+          Google Chromebooks – usually delivered within 5 working days
         </li>
         <li>
           Standard and DfE Restricted Windows laptops – low stock, delivery may take longer than 5 working days
         </li>
       </ul>
-      <h3 class="govuk-heading-s">Your laptops will be delivered to</h3>
+      <p class="govuk-body">
+        <a href="/responsible-body/devices/la-funded-pupils/laptops-types-for-la-funded-pupils" class="govuk-link">It’s important to check you’re ordering the best type of laptop for each pupil.</a>
+      </p>
+
+      <h2 class="govuk-heading-m">Chromebooks</h2>
+      {% if data["la-chromebook-preference"] == "yes-la-chromebooks" %}
+        <div class="govuk-inset-text">
+          <p>You have told us you will order Chromebooks – <a href="/responsible-body/devices/la-funded-pupils/chromebooks">Change <span class="govuk-visually-hidden">Chromebook preference</span></a></p>
+        </div>
+        <p>
+          After you place your order you’ll get a request for:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            the independent setting’s Google domain for G Suite for Education
+          </li>
+          <li>
+            a recovery email address, which must be on a different domain to the independent setting's Google domain
+          </li>
+        </ul>
+        <p>
+          If you’re not sure how to find this information, the setting’s IT support should be able to help.
+        </p>
+      {% elif data["la-chromebook-preference"] == "no-la-chromebooks" %}
+        <div class="govuk-inset-text">
+          <p>You have told us you will not order Chromebooks – <a href="/responsible-body/devices/la-funded-pupils/chromebooks">Change if you will order Chromebooks</a></p>
+        </div>
+      {% else %}
+        <div class="govuk-inset-text">
+          <p>
+            <strong>
+              You need to tell us if you’ll order Google Chromebooks
+            </strong>
+          </p>
+          <p>
+            If you order Google Chromebooks without letting us know first, they may be set up incorrectly or the order may be cancelled.
+          </p>
+          <a href="/responsible-body/devices/la-funded-pupils/chromebooks" class="govuk-link">Tell us if you’ll order Google Chromebooks</a>
+        </div>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">Your laptops will be delivered to:</h2>
       <p class="govuk-body">
         {% for items in data.rbAddress %}
           {{ items }}<br>
         {% endfor %}
       </p>
       <p class="govuk-body">
-        <a href="#" class="govuk-link">Contact us to change your delivery address</a>
+        <a href="#" class="govuk-link">Contact us to change your delivery address.</a>
       </p>
-      <h3 class="govuk-heading-s">How to sign in to TechSource for the first time</h3>
+    <h2 class="govuk-heading-m">Information for your order</h2>
+      <p class="govuk-body">
+        You’ll place your order on a website called TechSource.
+      </p>
+      {# Could cap this length or use the first word? #}
+      <p class="govuk-body">
+        When you’re asked for a URN, use ‘<strong>{{ data.rb | lower }}</strong>’.
+      </p>
+      <p class="govuk-body">
+        If you place an order for more than {{ allocation - laptopsOrdered }} laptops, your order will be cancelled.
+      </p>
+      <h2 class="govuk-heading-m">How to sign in to TechSource for the first time</h2>
         <p>Use these details to sign in:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>User ID: [email address]</li>

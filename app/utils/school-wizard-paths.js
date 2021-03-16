@@ -4,20 +4,17 @@ const {
 } = require('../utils/wizard-helpers')
 
 function schoolWizardPaths (req) {
-  const isOrderUser = req.session.data['school-details'].order_user
   const isFirstUser = req.session.data['school-details'].first_user
+  const isLAFundedUser = req.session.data.features.iss
 
   var paths = [
     '/school/welcome',
     '/school/privacy',
     '/school/allocation',
-    // '/school/order-your-own',
-    // ...isFirstUser ? ['/school/you-ordering'] : [],
-    // ...isOrderUser ? ['/school/techsource-account'] : [],
     ...isFirstUser ? ['/school/other-ordering'] : [],
     '/school/devices-you-can-order',
-    '/school/chromebooks',
-    '/school/what-next',
+    ...isLAFundedUser ? [] : ['/school/chromebooks'],
+    ...isLAFundedUser ? [] : ['/school/what-next'],
     '/school'
   ]
 

@@ -6,7 +6,13 @@
     {{ title }}
   </h1>
 
-  {% include '_shared/invite/_who.html' %}
+  {% if data.features.iss %}
+    <p>
+      Invite someone in your local authority who can help you manage ordering devices and requesting internet access for state-funded pupils in independent settings.
+    </p>
+  {% else %}
+    {% include '_shared/invite/_who.html' %}
+  {% endif %}
 
   {% set contactFields %}
     {% set isNested = true %}

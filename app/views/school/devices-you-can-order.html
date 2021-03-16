@@ -1,22 +1,33 @@
 {% extends "_wizard-form.html" %}
 {% set isOrderUser = data['school-details'].order_user %}
-{% set title = "You can order a range of laptops and tablets" if isOrderUser else "Your school can order a range of laptops and tablets" %}
+{% if data.features.iss %}
+  {% set title = "Laptops you can order" %}
+{% else %}
+  {% set title = "You can order a range of laptops and tablets" if isOrderUser else "Your school can order a range of laptops and tablets" %}
+{% endif %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
 
+{% if data.features.iss %}
+  <p>You can choose from:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>Microsoft Windows laptops</li>
+    <li>Microsoft Windows laptops with DfE settings installed</li>
+    <li>Google Chromebooks</li>
+  </ul>
+{% else %}
   <p>Your school{% if data.features['further-education'] %}, or college,{% endif %} will own the devices. It’s up to you to decide who will benefit most from them.</p>
 
   <p>You can choose from:</p>
 
   <ul class="govuk-list govuk-list--bullet">
     <li>Microsoft Windows laptop</li>
-    <li>Microsoft Windows tablet</li>
     <li>Google Chromebook</li>
-    <li>Apple iPad</li>
   </ul>
+{% endif %}
 
   <p class="govuk-!-margin-bottom-6"><a href="#">Read more about the device specifications</a></p>
 {% endblock %}
