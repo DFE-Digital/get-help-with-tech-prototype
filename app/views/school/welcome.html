@@ -1,23 +1,43 @@
 {% extends "_wizard-form.html" %}
 {% set isOrderUser = data['school-details'].order_user %}
-{% set title = "You’re signed in as " + data['school-details'].name %}
+{% if data.features.iss %}
+  {% set title = "Get laptops for state-funded pupils at independent settings" %}
+  {% else %}
+  {% set title = "You’re signed in as " + data['school-details'].name %}
+{% endif %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
-    {{ title }}
+    Get laptops for <span class="app-no-wrap">state-funded</span> pupils at independent settings
   </h1>
 
+{% if data.features.iss %}
+  <p>
+    Laptops are available for state-funded pupils that {{ data.rb }} funds to attend independent special schools or independent alternative provision.
+  </p>
+  <p>
+    Use this service to:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      check you have been allocated the correct number of laptops
+    </li>
+    <li>
+      place orders for laptops
+    </li>
+    <li>
+      request internet access for pupils
+    </li>
+  </ul>
+{% else %}
   <p>You can use the ‘Get help with technology’ service to:</p>
   <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-    {% if data.features.push %}
-      <li>check how many devices you can order</li>
-    {% else %}
-      <li>view your device allocation</li>
-    {% endif %}
+    <li>check how many devices you can order</li>
     {% if isOrderUser %}
       <li>access the Computacenter TechSource website to place orders{% if not data.features.push %} when devices are made available{% endif %}</li>
     {% endif %}
     <li>give us technical details for Chromebooks if you’ll be ordering them</li>
     <li>manage who can order devices</li>
   </ul>
+{% endif %}
 {% endblock %}

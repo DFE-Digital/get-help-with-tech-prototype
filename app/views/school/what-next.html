@@ -6,7 +6,6 @@
   <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
-
   <p>You can continue to use this service to:</p>
   <ul class="govuk-list govuk-list--bullet">
     <li>add more users</li>
@@ -14,10 +13,5 @@
     <li>review your allocation</li>
     <li>request devices for clinically vulnerable students who are shielding</li>
   </ul>
-
-  {% if not data.features.push %}
-    <p class="govuk-!-margin-bottom-6">If your school is affected by local coronavirus restrictions, we’ll contact you as soon as you’re able to place orders.</p>
-  {% else %}
-    <p class="govuk-!-margin-bottom-6">When your TechSource account is ready you can order your devices.</p>
-  {% endif %}
+  <p class="govuk-!-margin-bottom-6">When your TechSource account is ready you can order your devices.</p>
 {% endblock %}
