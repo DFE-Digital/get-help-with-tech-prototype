@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% if data.features.iss %}
-  {% set title = "Local authority funded pupils at independent settings" %}
+  {% set title = "State-funded pupils in independent settings" %}
 {% else %}
   {% set title = data['school-details'].name %}
 {% endif %}
@@ -35,7 +35,7 @@
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">
     {% if data.features.iss %}
-      <a href="/responsible-body/devices/la-funded-pupils">Order laptops</a>
+      <a href="/responsible-body/devices/la-funded-pupils">Get laptops</a>
     {% else %}
       <a href="/school/devices/order-lockdown">Order devices</a>
     {% endif %}
@@ -43,10 +43,13 @@
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
     {% if data.features.iss %}
-      <li>tell us if you will order Chromebooks</li>
-    {% endif %}
+      <li>tell us if you want to order Chromebooks</li>
+      <li>find out how to place orders on the TechSource website</li>
+      <li>find out about who owns the laptops</li>
+    {% else %}
       <li>place orders</li>
       <li>access the Computacenter TechSource website</li>
+    {% endif %}
     </ul>
 
     {% if data.features['school-mno'] %}

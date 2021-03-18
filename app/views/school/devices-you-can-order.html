@@ -12,12 +12,7 @@
   </h1>
 
 {% if data.features.iss %}
-  <p>You can choose from:</p>
-  <ul class="govuk-list govuk-list--bullet">
-    <li>Microsoft Windows laptops</li>
-    <li>Microsoft Windows laptops with DfE settings installed</li>
-    <li>Google Chromebooks</li>
-  </ul>
+  {% include '_shared/responsible-body/la-funded-places/_laptops-you-can-order.html' %}
 {% else %}
   <p>Your school{% if data.features['further-education'] %}, or college,{% endif %} will own the devices. It’s up to you to decide who will benefit most from them.</p>
 
@@ -27,7 +22,7 @@
     <li>Microsoft Windows laptop</li>
     <li>Google Chromebook</li>
   </ul>
+  <p class="govuk-!-margin-bottom-6"><a href="#">Read more about the device specifications</a></p>
 {% endif %}
 
-  <p class="govuk-!-margin-bottom-6"><a href="#">Read more about the device specifications</a></p>
 {% endblock %}

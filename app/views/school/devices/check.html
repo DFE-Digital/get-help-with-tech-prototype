@@ -129,8 +129,7 @@
     </h2>
 
     {% if data.features.iss %}
-    <p>
-      Your {% include "_shared/responsible-body/la-funded-places/_allocation-description.html" %}
+    {% include "_shared/responsible-body/la-funded-places/_allocation-description.html" %}
     {% else %}
       <p>Allocations are based on:</p>
       {% include "_shared/school/_allocation-description.html" %}

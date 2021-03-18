@@ -39,7 +39,6 @@ module.exports = {
     push: true,
     mno: true,
     donated: true,
-    'la-funded-places': true,
     'further-education': true,
     'sixth-form-increase': false,
     'xmas-soon': false,

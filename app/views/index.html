@@ -6,10 +6,9 @@
   <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Get help with technology prototype</h1>
       <ul class="govuk-list govuk-list--bullet">
-        <li><a href="/school/welcome">{% if data.features.iss %}LA funded school wizard (iss flag set to true){% else %}School first-login wizard{% endif %}</a></li>
-        <li><a href="/interstitials/la-funded-pupils">LA Responsible body view</a></li>
-        <li><a href="/school">School index</a></li>
-        <li><a href="/responsible-body">Responsible body</a></li>
+        <li><a href="/school/welcome">{% if data.features.iss %}State-funded pupils placeholder school wizard – iss flag set to true{% else %}School first-login wizard{% endif %}</a></li>
+        <li><a href="/school">{% if data.features.iss %}State-funded pupils placeholder school – iss flag set to true{% else %}School index{% endif %}</a></li>
+        <li><a href="/interstitials/la-funded-pupils">Responsible body {% if data.features.iss %}– iss flag set to true{% endif %}</a></li>
         <li><a href="/mno">MNO</a></li>
         <li><a href="/guidance-reorg">Alternate homepage</a></li>
         <li><a href="/performance">Performance dashboard</a></li>

@@ -46,7 +46,7 @@
 
     {% if data['who-orders-laptops'] %}
       <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/responsible-body/devices">Get laptops and tablets</a>
+        <a href="/responsible-body/devices">Get laptops</a>
       </h2>
     {% else %}
       <h2 class="govuk-heading-l govuk-!-font-size-27">
@@ -56,12 +56,7 @@
 
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      {% if data.features['la-funded-places'] %}
-        <li>order laptops for pupils you fund at independent special schools</li>
-        <li>order laptops for schools and colleges</li>
-      {% else %}
-        <li>place orders</li>
-      {% endif %}
+      <li>place orders</li>
       <li>add{% if not data.features['further-education'] %} school{% endif %} contacts</li>
       <li>tell us who will place orders{% if not data.features['further-education'] %} for schools{% endif %}</li>
       {% if data.features['further-education'] %}

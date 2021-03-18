@@ -4,7 +4,7 @@
 {% set laptopsOrdered = data.laFundedPlacesOrdered %}
 
 {% extends "layout.html" %}
-  {% set title = 'Order laptops for <span class="app-no-wrap">state-funded</span> pupils' | safe %}
+  {% set title = 'How to order' %}
 {% block pageTitle %}Order laptops for local authority funded pupils{% endblock %}
 
 {% block pageNavigation %}
@@ -12,14 +12,14 @@
     items: [
       {
         text: "Home",
-        href: "/responsible-body"
+        href: "#"
       },
       {
-        text: "Get devices",
-        href: "/responsible-body/devices"
+        text: "State-funded pupils in independent settings",
+        href: "/school"
       },
       {
-        text: "Get laptops for state-funded pupils",
+        text: "Get laptops",
         href: "/responsible-body/devices/la-funded-pupils"
       },
       {
@@ -54,22 +54,12 @@
       <h2 class="govuk-heading-m">Chromebooks</h2>
       {% if data["la-chromebook-preference"] == "yes-la-chromebooks" %}
         <div class="govuk-inset-text">
-          <p>You have told us you will order Chromebooks – <a href="/responsible-body/devices/la-funded-pupils/chromebooks">Change <span class="govuk-visually-hidden">Chromebook preference</span></a></p>
+          <p>You’ve told us you will order Chromebooks – <a href="/responsible-body/devices/la-funded-pupils/chromebooks">Change <span class="govuk-visually-hidden">Chromebook preference</span></a></p>
         </div>
         <p>
-          After you place your order you’ll get a request for:
+          After you place your order you’ll get an email asking for:
         </p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            the independent setting’s Google domain for G Suite for Education
-          </li>
-          <li>
-            a recovery email address, which must be on a different domain to the independent setting's Google domain
-          </li>
-        </ul>
-        <p>
-          If you’re not sure how to find this information, the setting’s IT support should be able to help.
-        </p>
+        {% include "_shared/responsible-body/la-funded-places/_chromebook-details-description.html" %}
       {% elif data["la-chromebook-preference"] == "no-la-chromebooks" %}
         <div class="govuk-inset-text">
           <p>You have told us you will not order Chromebooks – <a href="/responsible-body/devices/la-funded-pupils/chromebooks">Change if you will order Chromebooks</a></p>
@@ -107,6 +97,9 @@
       </p>
       <p class="govuk-body">
         If you place an order for more than {{ allocation - laptopsOrdered }} laptops, your order will be cancelled.
+      </p>
+      <p>
+        You can order all of your laptops at once, or place multiple orders.
       </p>
       <h2 class="govuk-heading-m">How to sign in to TechSource for the first time</h2>
         <p>Use these details to sign in:</p>
