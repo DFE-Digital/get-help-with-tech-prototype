@@ -14,7 +14,7 @@
           text: "Devices"
         },
         value: {
-          html: "30 Microsoft Windows laptops<br />10 Google Chromebooks"
+          html: "20 Microsoft Windows laptops<br />10 Google Chromebooks"
         },
         actions: {
           items: [
@@ -43,6 +43,40 @@
           ]
         }
       },
+      {
+        key: {
+          text: "Google Chromebook: Domain"
+        },
+        value: {
+          text: data['domain']
+        },
+        actions: {
+          items: [
+            {
+              href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      } if data['domain'],
+      {
+        key: {
+          text: "Google Chromebook: Recovery email address"
+        },
+        value: {
+          text: data['recovery']
+        },
+        actions: {
+          items: [
+            {
+              href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      } if data['recovery'],
       {
         key: {
           text: "Delivery address"

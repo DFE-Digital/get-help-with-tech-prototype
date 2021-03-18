@@ -9,6 +9,7 @@ function shopWizardPaths (req) {
     '/shop',
     '/shop/how-many',
     '/shop/windows',
+    '/shop/chromebooks',
     '/shop/address',
     '/shop/confirm',
     '/shop/confirmation',
