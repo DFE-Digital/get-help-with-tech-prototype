@@ -36,14 +36,28 @@ function nextForkPath (forks, req) {
 
   if (fork) {
     for (const [key, condition] of Object.entries(fork)) {
-      const values = Array.isArray(condition.values) ? condition.values : [condition.values]
       const storedValues = Array.isArray(data[key]) ? data[key] : [data[key]]
 
-      if (values.some(v => storedValues.indexOf(v) >= 0)) {
-        data['forked-from'] = currentPath
-        data['forked-to'] = condition.path
+      if (condition.values) {
+        const values = Array.isArray(condition.values) ? condition.values : [condition.values]
 
-        return condition.path
+        if (values.some(v => storedValues.indexOf(v) >= 0)) {
+          data['forked-from'] = currentPath
+          data['forked-to'] = condition.path
+
+          return condition.path
+        }
+      }
+
+      if (condition.excludedValues) {
+        const excludedValues = Array.isArray(condition.excludedValues) ? condition.excludedValues : [condition.excludedValues]
+
+        if (!excludedValues.some(v => storedValues.indexOf(v) >= 0)) {
+          data['forked-from'] = currentPath
+          data['forked-to'] = condition.path
+
+          return condition.path
+        }
       }
     }
   }
