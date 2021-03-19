@@ -31,6 +31,10 @@ $govuk-assets-path: '/govuk/assets/';
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
+.app-\!-font-family-tabular {
+  @include govuk-font($size: false, $tabular: true);
+}
+
 .app-masthead {
   width: 100%;
   position: absolute;
@@ -73,7 +77,7 @@ $govuk-assets-path: '/govuk/assets/';
   margin-right: auto;
 }
 
-.app-below-masthead { 
+.app-below-masthead {
   margin-top: 360px;
  }
 
