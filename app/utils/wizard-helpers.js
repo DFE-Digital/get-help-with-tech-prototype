@@ -37,8 +37,9 @@ function nextForkPath (forks, req) {
   if (fork) {
     for (const [key, condition] of Object.entries(fork)) {
       const values = Array.isArray(condition.values) ? condition.values : [condition.values]
+      const storedValues = Array.isArray(data[key]) ? data[key] : [data[key]]
 
-      if (values.includes(data[key])) {
+      if (values.some(v => storedValues.indexOf(v) >= 0)) {
         data['forked-from'] = currentPath
         data['forked-to'] = condition.path
 
