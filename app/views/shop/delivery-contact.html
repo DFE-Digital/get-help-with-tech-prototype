@@ -1,0 +1,49 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Tell us who the delivery contact is" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  <p>The delivery contact will:</p>
+  <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+    <li>receive the despatch email from Computacenter</li>
+    <li>be contacted about any issues relating to the delivery</li>
+  </ul>
+
+  {% set someoneElseHtml %}
+    {{ govukInput({
+      label: {
+        text: 'Their name'
+      }
+    } | decorateFormAttributes('shop-delivery-contact-name') ) }}
+
+    {{ govukInput({
+      label: {
+        text: 'Their email address'
+      }
+    } | decorateFormAttributes('shop-delivery-contact-email') ) }}
+
+    {{ govukInput({
+      label: {
+        text: 'Their telephone number'
+      }
+    } | decorateFormAttributes('shop-delivery-contact-number') ) }}
+  {% endset %}
+
+  {{ govukRadios({
+    items: [
+      {
+        text: 'I am the delivery contact'
+      },
+      {
+        text: 'Someone else is the delivery contact',
+        value: 'someone-else',
+        conditional: {
+          html: someoneElseHtml
+        }
+      }
+    ]
+  }  | decorateFormAttributes('shop-delivery-who') ) }}
+{% endblock %}

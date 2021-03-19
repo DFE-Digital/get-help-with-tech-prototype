@@ -16,6 +16,18 @@
     <span class="app-!-font-family-tabular govuk-!-margin-right-1">10</span> 4G Wireless routers
   {% endset %}
 
+  {% set deliveryContactHtml %}
+    {% if data['shop-delivery-who'] == 'someone-else' %}
+      {{ data['shop-delivery-contact-name'] }}<br />
+      {{ data['shop-delivery-contact-email'] }}<br />
+      {{ data['shop-delivery-contact-number'] }}
+    {% else %}
+      My Name<br />
+      my-email@my-email.com<br />
+      01234 123456
+    {% endif %}
+  {% endset %}
+
   {{ govukSummaryList({
     rows: [
       {
@@ -105,6 +117,23 @@
       } if data['recovery'],
       {
         key: {
+          text: "Delivery contact"
+        },
+        value: {
+          html: deliveryContactHtml
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "contact information"
+            }
+          ]
+        }
+      },
+      {
+        key: {
           text: "Delivery address"
         },
         value: {
@@ -115,7 +144,7 @@
             {
               href: "#",
               text: "Change",
-              visuallyHiddenText: "contact information"
+              visuallyHiddenText: "delivery address"
             }
           ]
         }

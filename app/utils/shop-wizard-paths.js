@@ -7,11 +7,12 @@ function shopWizardPaths (req) {
   var paths = [
     '/shop/devices/order-lockdown',
     '/shop',
-    ...req.session.data.routersAllocated > 0 ? '/shop/how-many-routers' : [],
+    ...req.session.data.routersAllocated > 0 ? ['/shop/how-many-routers'] : [],
     '/shop/how-many',
     '/shop/windows',
     '/shop/chromebooks',
     '/shop/address',
+    '/shop/delivery-contact',
     '/shop/confirm',
     '/shop/confirmation',
     '/school'
