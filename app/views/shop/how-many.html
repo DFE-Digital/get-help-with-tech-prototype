@@ -1,5 +1,6 @@
 {% extends "_wizard-form.html" %}
-{% set multipleDeviceTypes = data['shop-devices'].length > 1 %}
+{% set selectedRouters = '4G Wireless router' in data['shop-devices'] %}
+{% set multipleDeviceTypes = data['shop-devices'].length > 2 if selectedRouters else data['shop-devices'].length > 1 %}
 {% set title = "How many devices do you need?" %}
 
 {% block form %}
@@ -18,13 +19,15 @@
     </div>
 
     {% for type in data['shop-devices'] %}
-      {{ govukInput({
-        label: {
-          text: type + 's',
-          classes: 'govuk-label--m'
-        },
-        classes: 'govuk-input--width-4'
-      } | decorateFormAttributes('shop-amount-' + type) ) }}
+      {% if type != '4G Wireless router' %}
+        {{ govukInput({
+          label: {
+            text: type + 's',
+            classes: 'govuk-label--m'
+          },
+          classes: 'govuk-input--width-4'
+        } | decorateFormAttributes('shop-routers-amount-' + type) ) }}
+      {% endif %}
     {% endfor %}
   {% else %}
 

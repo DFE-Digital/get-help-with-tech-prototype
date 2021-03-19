@@ -1,11 +1,20 @@
 {% extends "_wizard-form.html" %}
-{% set buttonText = "Confirm order" %}
-{% set title = "Confirm your order details" %}
+{% set buttonText = "Place order" %}
+{% set title = "Confirm your details before placing your order" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
+
+  {% set devicesHtml %}
+    <span class="app-!-font-family-tabular govuk-!-margin-right-1">20</span> Microsoft Windows laptops<br />
+    <span class="app-!-font-family-tabular govuk-!-margin-right-1">10</span> Google Chromebooks
+  {% endset %}
+
+  {% set routersHtml %}
+    <span class="app-!-font-family-tabular govuk-!-margin-right-1">10</span> 4G Wireless routers
+  {% endset %}
 
   {{ govukSummaryList({
     rows: [
@@ -14,7 +23,7 @@
           text: "Devices"
         },
         value: {
-          html: "20 Microsoft Windows laptops<br />10 Google Chromebooks"
+          html: devicesHtml
         },
         actions: {
           items: [
@@ -26,6 +35,23 @@
           ]
         }
       },
+      {
+        key: {
+          text: "Routers"
+        },
+        value: {
+          html: routersHtml
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      } if data.routersAllocated > 0,
       {
         key: {
           text: "Type of Windows devices"

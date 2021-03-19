@@ -1,0 +1,36 @@
+{% extends "_wizard-form.html" %}
+{% set multipleDeviceTypes = data['shop-devices'].length > 1 %}
+{% set title = "How many routers do you need?" %}
+
+{% block form %}
+    {% set howManyHtml %}
+      {{ govukInput({
+        label: {
+          text: 'How many 4G wireless routers?'
+        },
+        classes: 'govuk-input--width-4'
+      } | decorateFormAttributes('shop-amount-' + type) ) }}
+    {% endset %}
+
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: "How many 4G Wireless routers do you need?",
+          classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          text: 'Our full allocation of 10 routers'
+        },
+        {
+          text: 'Less than our allocation',
+          conditional: {
+            html: howManyHtml
+          }
+        }
+      ]
+    }  | decorateFormAttributes('shop-amount-routers-choice') ) }}
+
+{% endblock %}
