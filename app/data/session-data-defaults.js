@@ -35,7 +35,7 @@ module.exports = {
     }
   },
   features: {
-    iss: true,
+    iss: false,
     push: true,
     mno: true,
     donated: true,
