@@ -5,7 +5,7 @@ const {
 
 function shopWizardPaths (req) {
   var paths = [
-    '/school/shop/devices/order-lockdown',
+    '/school/devices/order-in-service',
     '/school/shop',
     ...req.session.data.routersAllocated > 0 ? ['/school/shop/how-many-routers'] : [],
     '/school/shop/how-many',

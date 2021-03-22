@@ -34,7 +34,9 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">
-    {% if data.features.iss %}
+    {% if data.features['order-in-service'] %}
+      <a href="/school/devices/order-in-service">Order devices</a>
+    {% elseif data.features.iss %}
       <a href="/responsible-body/devices/la-funded-pupils">Get laptops</a>
     {% else %}
       <a href="/school/devices/order-lockdown">Order devices</a>
