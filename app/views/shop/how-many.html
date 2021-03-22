@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set selectedRouters = '4G Wireless router' in data['shop-devices'] %}
+{% set selectedRouters = '4G wireless router' in data['shop-devices'] %}
 {% set multipleDeviceTypes = data['shop-devices'].length > 2 if selectedRouters else data['shop-devices'].length > 1 %}
 {% set title = "How many devices are you ordering?" %}
 
@@ -19,7 +19,7 @@
     </div>
 
     {% for type in data['shop-devices'] %}
-      {% if type != '4G Wireless router' %}
+      {% if type != '4G wireless router' %}
         {{ govukInput({
           label: {
             text: type + 's',

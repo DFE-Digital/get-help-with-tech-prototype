@@ -26,7 +26,7 @@ function shopWizardForks (req) {
     '/school/shop': {
       'shop-devices': {
         excludedValues: [
-          '4G Wireless router'
+          '4G wireless router'
         ],
         path: '/school/shop/how-many'
       }
