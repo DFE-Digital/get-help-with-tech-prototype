@@ -1,7 +1,7 @@
 {% extends "_wizard-form.html" %}
 {% set selectedRouters = '4G Wireless router' in data['shop-devices'] %}
 {% set multipleDeviceTypes = data['shop-devices'].length > 2 if selectedRouters else data['shop-devices'].length > 1 %}
-{% set title = "How many devices do you need?" %}
+{% set title = "How many devices are you ordering?" %}
 
 {% block form %}
   {% if multipleDeviceTypes %}
@@ -43,7 +43,7 @@
     {{ govukRadios({
       fieldset: {
         legend: {
-          text: "How many " + data['shop-devices'][0] + "s do you need?",
+          text: "How many " + data['shop-devices'][0] + "s are you ordering?",
           classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
           isPageHeading: true
         }

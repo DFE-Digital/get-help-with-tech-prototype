@@ -1,6 +1,6 @@
 {% extends "_wizard-form.html" %}
 {% set multipleDeviceTypes = data['shop-devices'].length > 1 %}
-{% set title = "How many routers do you need?" %}
+{% set title = "How many 4G Wireless routers are you ordering?" %}
 
 {% block form %}
     {% set howManyHtml %}
@@ -15,7 +15,7 @@
     {{ govukRadios({
       fieldset: {
         legend: {
-          text: "How many 4G Wireless routers do you need?",
+          text: title,
           classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
           isPageHeading: true
         }
