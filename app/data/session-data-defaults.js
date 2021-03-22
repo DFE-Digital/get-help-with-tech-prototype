@@ -36,7 +36,8 @@ module.exports = {
     'sign-up': false,
     'bulk-upload': true,
     'in-connectivity-pilots': true,
-    'request-devices-google-form': true
+    'request-devices-google-form': true,
+    'order-in-service': true
   },
   mno: {
     requests: fakeMnoRequests
