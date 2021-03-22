@@ -15,14 +15,14 @@
     items: [
       {
         text: "Home",
-        href: "/responsible-body"
+        href: "#"
       },
       {
-        text: "Get devices",
-        href: "/responsible-body/devices"
+        text: "State-funded pupils in independent settings",
+        href: "/school"
       },
       {
-        text: "Get laptops for local authority funded pupils",
+        text: "Get laptops",
         href: "/responsible-body/devices/la-funded-pupils"
       },
       {
@@ -39,42 +39,14 @@
       {{ title }}
     </h1>
 
+    {% include "_shared/responsible-body/la-funded-places/_laptops-you-can-order.html" %}
     <h3 class="govuk-heading-s">
-        These laptops are currently in stock:
-      </h3>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          Google Chromebooks - usually delivered within 5 working days
-        </li>
-        <li>
-          Standard and DfE Restricted Windows laptops – low stock, delivery may take longer than 5 working days
-        </li>
-      </ul>
-      <p class="govuk-body">
-        It's important to check with schools to find out which is the best type of laptop to order for each pupil.
-      </p> 
-      <p class="govuk-body">
-        You can <a href="/devices/device-specification" class="govuk-link">send schools this information about device settings and specifications</a> to help.
-      </p>
-      <h3 class="govuk-heading-s">
-        If any pupils need Google Chromebooks
-      </h3>
-      <p class="govuk-body">
-        We need the following information to set up their device correctly:
-      </p>
-      <p class="govuk-body">
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            the domain the school has registered for G Suite for Education, for example ‘school.co.uk’
-          </li>
-          <li>
-            a recovery email address. This should be on a seperate domain to the one registered for G Suite for Education. For example, if the domain registered for G Suite for Education is ‘school.com’, the recovery email cannot be ‘recovery@school.com’
-          </li>
-        </ul>
-      </p>
-      <p class="govuk-body">
-        The school’s IT support should be able to give you this information.
-      </p>
+      Setting up Google Chromebooks
+    </h3>
+    <p class="govuk-body">
+      If you order Chromebooks we will need some technical information. After you place your order you’ll get a an email asking for:
+    </p>
+    {% include "_shared/responsible-body/la-funded-places/_chromebook-details-description.html" %}
 
   </div>
 </div>

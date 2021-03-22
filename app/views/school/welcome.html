@@ -8,7 +8,11 @@
 
 {% block form %}
   <h1 class="govuk-heading-xl">
-    Get laptops for <span class="app-no-wrap">state-funded</span> pupils at independent settings
+    {% if data.features.iss %}
+      Get laptops for and internet access <span class="app-no-wrap">state-funded</span> pupils at independent settings
+    {% else %}
+      {{ title }}
+    {% endif %}
   </h1>
 
 {% if data.features.iss %}
@@ -20,13 +24,13 @@
   </p>
   <ul class="govuk-list govuk-list--bullet">
     <li>
-      check you have been allocated the correct number of laptops
+      check you’ve been allocated the correct number of laptops
     </li>
     <li>
       place orders for laptops
     </li>
     <li>
-      request internet access for pupils
+      request internet access for eligible pupils
     </li>
   </ul>
 {% else %}

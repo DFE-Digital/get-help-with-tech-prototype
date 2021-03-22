@@ -1,4 +1,4 @@
-{% set title = 'Will your order include Chromebooks?' %}
+{% set title = 'Will your order include Google Chromebooks?' %}
 {% extends "layout.html" %}
 
 {% block pageNavigation %}
@@ -6,14 +6,14 @@
     items: [
       {
         text: "Home",
-        href: "/responsible-body"
+        href: "#"
       },
       {
-        text: "Get devices",
-        href: "/responsible-body/devices"
+        text: "State-funded pupils in independent settings",
+        href: "/school"
       },
       {
-        text: "Order laptops for local authority funded pupils",
+        text: "Get laptops",
         href: "/responsible-body/devices/la-funded-pupils"
       },
       {
@@ -30,7 +30,7 @@
       {{ title }}
     </h1>
     <p class="govuk-body">
-      We need to know this so we can set devices up correctly for pupils.
+      We need to know this so we can set-up the Chromebooks correctly for pupils.
     </p>
     <form action="/responsible-body/devices/la-funded-pupils/order" method="post" novalidate>
       {{ govukRadios({
@@ -46,15 +46,15 @@
       items: [
         {
           value: "yes-la-chromebooks",
-          text: "Yes, we'll order Google Chromebooks"
+          text: "Yes, we’ll order Chromebooks"
         },
         {
           value: "no-la-chromebooks",
-          text: "No, we will not order Google Chromebooks"
+          text: "No, we will not order Chromebooks"
         },
         {
           value: FALSE,
-          text: "I don’t know"
+          text: "I’m not sure"
         }
       ]
     }) }}

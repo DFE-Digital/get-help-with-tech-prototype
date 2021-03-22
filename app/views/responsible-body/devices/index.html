@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
-{% if data.features['la-funded-places'] %}
-  {% set title = "Get devices" %}
+{% if data.features.iss %}
+  {% set title = "Get laptops" %}
 {% else %}
   {% set title = "Get laptops and tablets" %}
 {% endif %}
@@ -26,10 +26,6 @@
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
-
-    {% if data.features['la-funded-places'] %}
-      {{ sectionNav('Order laptops and internet access for state-funded pupils in independent settings', '/school', ['order laptops for disadvantaged pupils with a funded place at an independent special school, or through independent alternative provision.', 'request internet access']) }}
-    {% endif %}
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">
       <a href="/responsible-body/devices/schools">Your schools {% if data.features['further-education'] %}and colleges{% endif %}</a>

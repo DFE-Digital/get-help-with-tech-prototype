@@ -7,36 +7,7 @@
     <h1 class="govuk-heading-xl">
       {{ data.rb }} has been allocated <span class="app-no-wrap">{{ data['school-details'].allocation }} laptops</span>
     </h1>
-    <p>
-      This allocation is based on the number of pupils we estimate {{  data.rb }} funds at independent settings, or through independent alternative provision, who are also eligible for free school meals.
-    </p>
-    <details class="govuk-details" data-module="govuk-details">
-    <summary class="govuk-details__summary">
-      <span class="govuk-details__summary-text">
-        If your allocation is wrong
-      </span>
-    </summary>
-      <div class="govuk-details__text">
-        <p>Tell us how many pupils {{ data.rb }} funds who:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            have a place at an independent special setting, or through an independent alternative provision
-          </li>
-          <li>
-            do not have access to a suitable device for remote education
-          </li>
-          <li>
-            are eligible for free school meals
-          </li>
-        </ul>
-        <p>
-          Do not send any personal information, like names of pupils or dates of birth.
-        </p>
-        <p>
-          Email this information to <a href="">COVID.TECHNOLOGY@education.gov.uk</a>.
-        </p>
-      </div>
-    </details>
+    {% include "_shared/responsible-body/la-funded-places/_allocation-description.html" %}
   {% else %}
     <h1 class="govuk-heading-xl">
       You’ve been allocated <span class="app-no-wrap">{{ data['school-details'].allocation }} laptops</span>
