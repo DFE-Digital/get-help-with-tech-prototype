@@ -22,7 +22,7 @@ module.exports = {
   routersOrdered: 0,
   'who-orders-laptops': 'central',
   features: {
-    iss: true,
+    iss: false,
     push: true,
     mno: true,
     donated: true,

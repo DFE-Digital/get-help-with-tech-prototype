@@ -4,18 +4,28 @@ const {
 } = require('../utils/shop-wizard-paths')
 
 /**
- * Family walkthrough routes
+ * Shop walkthrough routes
  */
 module.exports = router => {
-  router.get('/shop', function (req, res) {
+  router.all('/school/shop*', function (req, res, next) {
+    res.locals.isSchool = true
+    next()
+  })
+
+  router.all('/responsible-body/shop*', function (req, res, next) {
+    res.locals.isRb = true
+    next()
+  })
+
+  router.get(['/school/shop', '/responsible-body/shop'], function (req, res) {
     res.render('shop/index', { paths: shopWizardPaths(req) })
   })
 
-  router.get('/shop/:view', function (req, res) {
+  router.get(['/school/shop/:view', '/responsible-body/shop/:view'], function (req, res) {
     res.render(`shop/${req.params.view}`, { paths: shopWizardPaths(req) })
   })
 
-  router.post(['/shop', '/shop/:view'], function (req, res) {
+  router.post(['/school/shop*', '/responsible-body/shop*'], function (req, res) {
     const fork = shopWizardForks(req)
     const paths = shopWizardPaths(req)
     fork ? res.redirect(fork) : res.redirect(paths.next)

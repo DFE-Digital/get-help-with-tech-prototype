@@ -5,16 +5,16 @@ const {
 
 function shopWizardPaths (req) {
   var paths = [
-    '/shop/devices/order-lockdown',
-    '/shop',
-    ...req.session.data.routersAllocated > 0 ? ['/shop/how-many-routers'] : [],
-    '/shop/how-many',
-    '/shop/windows',
-    '/shop/chromebooks',
-    '/shop/address',
-    '/shop/delivery-contact',
-    '/shop/confirm',
-    '/shop/confirmation',
+    '/school/shop/devices/order-lockdown',
+    '/school/shop',
+    ...req.session.data.routersAllocated > 0 ? ['/school/shop/how-many-routers'] : [],
+    '/school/shop/how-many',
+    '/school/shop/windows',
+    '/school/shop/chromebooks',
+    '/school/shop/address',
+    '/school/shop/delivery-contact',
+    '/school/shop/confirm',
+    '/school/shop/confirmation',
     '/school'
   ]
 
@@ -23,12 +23,12 @@ function shopWizardPaths (req) {
 
 function shopWizardForks (req) {
   var forks = {
-    '/shop': {
+    '/school/shop': {
       'shop-devices': {
         excludedValues: [
           '4G Wireless router'
         ],
-        path: '/shop/how-many'
+        path: '/school/shop/how-many'
       }
     }
   }
