@@ -1,6 +1,6 @@
 {% extends "_wizard-form.html" %}
 {% set buttonText = "Place order" %}
-{% set title = "Confirm your details before placing your order" %}
+{% set title = "Check your order before confirming" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
@@ -28,127 +28,165 @@
     {% endif %}
   {% endset %}
 
-  {{ govukSummaryList({
-    rows: [
-      {
-        key: {
-          text: "Devices"
+  {% set orderingList %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Devices"
+          },
+          value: {
+            html: devicesHtml
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "which devices"
+              }
+            ]
+          }
         },
-        value: {
-          html: devicesHtml
-        },
-        actions: {
-          items: [
-            {
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
+        {
+          key: {
+            text: "Routers"
+          },
+          value: {
+            html: routersHtml
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "how many routers"
+              }
+            ]
+          }
+        } if data.routersAllocated > 0
+      ]
+    }) }}
+  {% endset %}
+
+  {% set windowsList %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Type of Windows devices"
+          },
+          value: {
+            text: "Standard"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "type of windows device"
+              }
+            ]
+          }
         }
-      },
-      {
-        key: {
-          text: "Routers"
+      ]
+    }) }}
+  {% endset %}
+
+  {% set deliveryList %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Delivery contact"
+          },
+          value: {
+            html: deliveryContactHtml
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact information"
+              }
+            ]
+          }
         },
-        value: {
-          html: routersHtml
-        },
-        actions: {
-          items: [
-            {
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
+        {
+          key: {
+            text: "Delivery address"
+          },
+          value: {
+            html: "Pool Hayes Primary<br>72 Guild Street<br>London<br>SE23 6FH"
+          }
         }
-      } if data.routersAllocated > 0,
-      {
-        key: {
-          text: "Type of Windows devices"
-        },
-        value: {
-          text: "Standard"
-        },
-        actions: {
-          items: [
-            {
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "date of birth"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "Google Chromebook: Domain"
-        },
-        value: {
-          text: data['domain']
-        },
-        actions: {
-          items: [
-            {
-              href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
-      } if data['domain'],
-      {
-        key: {
-          text: "Google Chromebook: Recovery email address"
-        },
-        value: {
-          text: data['recovery']
-        },
-        actions: {
-          items: [
-            {
-              href: "/responsible-body/devices/schools/" + school.URN + "/chromebooks",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
-        }
-      } if data['recovery'],
-      {
-        key: {
-          text: "Delivery contact"
-        },
-        value: {
-          html: deliveryContactHtml
-        },
-        actions: {
-          items: [
-            {
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "contact information"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "Delivery address"
-        },
-        value: {
-          html: "Pool Hayes Primary<br>72 Guild Street<br>London<br>SE23 6FH"
-        },
-        actions: {
-          items: [
-            {
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "delivery address"
-            }
-          ]
-        }
-      }
-    ]
+      ]
+    }) }}
+  {% endset %}
+
+  {% set chromebookList %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Domain registered for G Suite for Education"
+          },
+          value: {
+            text: data['domain']
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "domain"
+              }
+            ]
+          }
+        } if data['domain'],
+        {
+          key: {
+            text: "Recovery email address"
+          },
+          value: {
+            text: data['recovery']
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "recovery email address"
+              }
+            ]
+          }
+        } if data['recovery']
+      ]
+    }) }}
+  {% endset %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Your order",
+    html: orderingList
+  }) }}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Microsoft Windows",
+    html: windowsList
+  }) }}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Google Chromebooks",
+    html: chromebookList
+  }) }}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Delivery",
+    html: deliveryList
   }) }}
 {% endblock %}
