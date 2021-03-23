@@ -36,7 +36,7 @@
         Laptops available:
       </h2>
       <p class="govuk-body govuk-!-margin-bottom-0">
-        {{ data.rb }} has {{ allocation - laptopsOrdered }} laptop{% if allocation != 1 %}s{% endif %} available to order now.
+        {{ allocation - laptopsOrdered }} laptop{% if allocation != 1 %}s{% endif %} available to order now.
       </p>
       {% if laptopsOrdered > 0 %}
       <p class="govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
@@ -50,6 +50,9 @@
     {% endif %}
     </div>
 
+      <p class="govuk-body">
+        You have been allocated {{ allocation }} for state-funded pupils at independent settings.
+      </p>
       <p class="govuk-body">
         {% include "_shared/responsible-body/la-funded-places/_allocation-description.html" %}
       </p>
@@ -70,15 +73,19 @@
       <p class="govuk-body">
         {{ data.rb }} will own these laptops. You’re responsible for:
       </p>
-        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-         <li>making sure laptops have appropriate safety and security measures installed and maintained – <a href="#">read about device safeguarding</a></li>
-         <li>getting the laptops fixed – <a href="#">read about how to organise repairs</a></li>
-         <li>distributing the laptops</li>
-         <li>redistributing the laptops if pupils move school or leave education</li>
-        </ul>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+       <li>making sure laptops have appropriate safety and security measures installed and maintained – <a href="#">read about device safeguarding</a></li>
+       <li>getting the laptops fixed – <a href="#">read about how to organise repairs</a></li>
+       <li>distributing the laptops</li>
+       <li>redistributing the laptops if pupils move school or leave education</li>
+      </ul>
 
+      {{ govukButton ({
+        text: "Continue",
+        href: "/responsible-body/devices/la-funded-pupils/order"
+      }) }}
       {% if allocation != laptopsOrdered %}
-        {% if data["la-chromebook-preference"] %}
+        {#  #% if data["la-chromebook-preference"] %}
         {{ govukButton({
           text: "Continue",
           href: "/responsible-body/devices/la-funded-pupils/order"
@@ -88,7 +95,7 @@
           text: "Continue",
           href: "/responsible-body/devices/la-funded-pupils/chromebooks"
         }) }}
-        {% endif %}
+        {% endif %#}
       {% endif %}
   </div>
 </div>

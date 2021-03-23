@@ -9,7 +9,7 @@ module.exports = {
   signedInHomePath: '/responsible-body',
   rb: 'Greenwhich',
   laFundedPlacesAllocation: 20,
-  laFundedPlacesOrdered: 0,
+  laFundedPlacesOrdered:0,
   trust: true,
   rbAddress: [
     'The Woolwich Centre',
