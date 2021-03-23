@@ -15,6 +15,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/cookie-banner";
 @import "components/card";
 @import "components/order-card";
+@import "components/summary-card";
 
 // Prototype hack to hide broken breadcrumbs
 // Allows something like this in the template:
