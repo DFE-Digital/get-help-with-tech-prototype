@@ -44,12 +44,10 @@
     </h2>
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
-    {% if data.features.iss %}
-{#       <li>tell us if you want to order Chromebooks</li> #}
-      <li>find out how to place orders on the TechSource website</li>
-      <li>find out about who owns the laptops</li>
-    {% else %}
       <li>place orders</li>
+    {% if data.features['order-in-service'] %}
+      <li>tell us which devices you want to order</li>
+    {% else %}
       <li>access the Computacenter TechSource website</li>
     {% endif %}
     </ul>
@@ -121,11 +119,15 @@
     <h2 class="govuk-heading-l govuk-!-font-size-27">
       <a href="/school/users">Manage users</a>
     </h2>
-    <p>Use this section to give others{% if data.features['further-education'] == false %} in your school{% endif %}:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>access to this service</li>
-      <li>access to the TechSource website (where they’ll place orders)</li>
-    </ul>
+    {% if data.features['order-in-service'] %}
+      <p>Use this section to give others access to this service.</p>
+    {% else %}
+      <p>Use this section to give others:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>access to this service</li>
+        <li>access to the TechSource website (where they’ll place orders)</li>
+      </ul>
+    {% endif %}
   </div>
 
   <div class="govuk-grid-column-one-third">

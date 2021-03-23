@@ -23,12 +23,19 @@
       {{ title }}
     </h1>
 
-    <p>No more than {{ data['max-school-order-users'] }} users will be allowed to place orders.</p>
+    {% if not data.features['order-in-service'] %}
+      <p>No more than {{ data['max-school-order-users'] }} users will be allowed to place orders.</p>
+    {% endif %}
 
     <p>Everyone with access can:</p>
     <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      {% if data.features['order-in-service'] %}
+        <li>place orders</li>
+      {% endif %}
       <li>add or edit existing users</li>
-      <li>change who places orders for devices</li>
+      {% if not data.features['order-in-service'] %}
+        <li>change who places orders for devices</li>
+      {% endif %}
     </ul>
 
     {{ govukButton({

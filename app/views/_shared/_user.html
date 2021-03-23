@@ -29,7 +29,7 @@
       value: {
         text: 'Yes' if user['order-devices'] else 'No'
       }
-    } if isSchoolUser,
+    } if isSchoolUser and not data.features['order-in-service'],
     {
       key: {
         text: "Last sign-in"
