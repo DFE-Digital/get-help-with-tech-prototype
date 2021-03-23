@@ -11,7 +11,9 @@
     <li>add more users</li>
     <li>change your Chromebook settings</li>
     <li>review your allocation</li>
-    <li>request devices for clinically vulnerable students who are shielding</li>
   </ul>
-  <p class="govuk-!-margin-bottom-6">When your TechSource account is ready you can order your devices.</p>
+
+  {% if not data.features['order-in-service'] %}
+    <p class="govuk-!-margin-bottom-6">When your TechSource account is ready you can order your devices.</p>
+  {% endif %}
 {% endblock %}

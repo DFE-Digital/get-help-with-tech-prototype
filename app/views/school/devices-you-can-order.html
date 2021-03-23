@@ -1,10 +1,9 @@
 {% extends "_wizard-form.html" %}
-{% set isOrderUser = data['school-details'].order_user %}
-{% if data.features.iss %}
-  {% set title = "Laptops you can order" %}
-{% else %}
-  {% set title = "You can order a range of laptops and tablets" if isOrderUser else "Your school can order a range of laptops and tablets" %}
+{% if  data.features['order-in-service'] %}
+  {% set buttonText = 'Finish and go to homepage' %}
 {% endif %}
+
+{% set title = "You can order a range of devices" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
@@ -14,15 +13,16 @@
 {% if data.features.iss %}
   {% include '_shared/responsible-body/la-funded-places/_laptops-you-can-order.html' %}
 {% else %}
-  <p>Your school{% if data.features['further-education'] %}, or college,{% endif %} will own the devices. It’s up to you to decide who will benefit most from them.</p>
+  <p>Your school or college will own the devices. It’s up to you to decide who will benefit most from them.</p>
 
   <p>You can choose from:</p>
-
   <ul class="govuk-list govuk-list--bullet">
-    <li>Microsoft Windows laptop</li>
-    <li>Google Chromebook</li>
+    <li>Microsoft Windows laptops</li>
+    <li>Microsoft Windows laptops with DfE settings installed</li>
+    <li>Google Chromebooks</li>
   </ul>
-  <p class="govuk-!-margin-bottom-6"><a href="#">Read more about the device specifications</a></p>
+
+  <p>You can also request 4G wireless routers.</p>
 {% endif %}
 
 {% endblock %}
