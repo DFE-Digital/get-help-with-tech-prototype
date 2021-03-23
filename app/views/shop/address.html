@@ -5,7 +5,7 @@
   <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
-  
+
   <div class="app-order-card">
     <p class="govuk-!-margin-bottom-0">
       <strong>Pool Hayes Primary</strong><br>
@@ -14,4 +14,14 @@
       SE23 6FH
     </p>
   </div>
+
+  {% set detailsHtml %}
+    <p>This is the school address we have on record.</p>
+    <p>If it’s not right, email <a href="#">COVID.TECHNOLOGY@education.gov.uk</a> and tell us what to change.</p>
+  {% endset %}
+
+  {{ govukDetails({
+    summaryText: "Is there a problem with this address?",
+    html: detailsHtml
+  }) }}
 {% endblock %}
