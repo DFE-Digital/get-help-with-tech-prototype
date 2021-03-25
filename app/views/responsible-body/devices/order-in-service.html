@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% set title = "Order devices" %}
+{% set devicesAllocated = 14 %}
+{% set devicesAvailableToOrder = devicesAllocated - data.devicesOrdered %}
+{% set routersAvailableToOrder = data.routersAllocated - data.routersOrdered %}
+
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {% set customBreadcrumbTitle = 'Order devices' %}
+  {% include '_shared/breadcrumbs/_get-laptops-and-tablets.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    {% include '_shared/responsible-body/_group-items-available.html' %}
+
+    <h2 class="govuk-heading-m">
+      How you order devices has changed
+    </h2>
+
+    <p>You can now place orders directly on this service. You no longer need to sign in to TechSource.</p>
+
+    <p>Most devices will be delivered within 5 working days.</p>
+
+    <h2 class="govuk-heading-m">
+      Combining allocations into one order
+    </h2>
+    <p>You can combine allocations for your schools and colleges, and have devices delivered to one location.</p>
+    <p>If you want devices delivered directly to different locations, place a separate order for each delivery address.</p>
+
+    {{ govukButton({
+      text: 'Order devices',
+      href: '/responsible-body/shop',
+      classes: 'govuk-!-margin-top-4'
+    }) }}
+  </div>
+</div>
+{% endblock %}

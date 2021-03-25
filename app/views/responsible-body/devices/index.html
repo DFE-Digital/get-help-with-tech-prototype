@@ -39,7 +39,9 @@
     </ul>
 
     <h2 class="govuk-heading-l govuk-!-font-size-27">
-      {% if data.covid or data.features.push %}
+      {% if data.features['order-in-service'] %}
+        <a href="/responsible-body/devices/order-in-service">Order devices</a>
+      {% elseif data.covid or data.features.push %}
         <a href="/responsible-body/devices/order-virtual-cap">Order devices</a>
       {% else %}
         <a href="/responsible-body/devices/order">Order devices</a>
