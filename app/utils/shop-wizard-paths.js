@@ -15,7 +15,17 @@ function shopWizardPaths (req) {
     '/school/shop/delivery-contact',
     '/school/shop/confirm',
     '/school/shop/confirmation',
-    '/school'
+    '/school',
+    '/responsible-body/devices/order-in-service',
+    '/responsible-body/shop',
+    ...req.session.data.routersAllocated > 0 ? ['/responsible-body/shop/how-many-routers'] : [],
+    '/responsible-body/shop/how-many',
+    '/responsible-body/shop/windows',
+    '/responsible-body/shop/chromebooks',
+    '/responsible-body/shop/delivery-contact',
+    '/responsible-body/shop/confirm',
+    '/responsible-body/shop/confirmation',
+    '/responsible-body'
   ]
 
   return nextAndBackPaths(paths, req)
