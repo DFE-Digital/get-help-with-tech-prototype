@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+{% set title = "Your order (HDJ2123F)" %}
+{% set lockdown = false %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/school"
+      },
+      {
+        text: "Order history",
+        href: "/school/devices/order-history"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+    {% set devicesHtml %}
+      <span class="app-!-font-family-tabular govuk-!-margin-right-1">10</span> Microsoft Windows laptops
+    {% endset %}
+
+    {% set routersHtml %}
+      <span class="app-!-font-family-tabular govuk-!-margin-right-1">10</span> 4G wireless routers
+    {% endset %}
+
+    {% set deliveryContactHtml %}
+      {% if data['shop-delivery-who'] == 'someone-else' %}
+        Jane Doe<br />
+        jane.doe@school.gov.uk<br />
+        01234 321456
+      {% else %}
+        My Name<br />
+        my-email@my-email.com<br />
+        01234 123456
+      {% endif %}
+    {% endset %}
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Date"
+          },
+          value: {
+            html: "2 May 2021"
+          }
+        },
+        {
+          key: {
+            text: "Reference"
+          },
+          value: {
+            html: "HDJ2123F"
+          }
+        },
+        {
+          key: {
+            text: "Placed by"
+          },
+          value: {
+            html: "John Hancock"
+          }
+        },
+        {
+          key: {
+            text: "Status"
+          },
+          value: {
+            html: "Dispatched"
+          }
+        },
+        {
+          key: {
+            text: "Devices"
+          },
+          value: {
+            html: devicesHtml
+          }
+        },
+        {
+          key: {
+            text: "Routers"
+          },
+          value: {
+            html: routersHtml
+          }
+        },
+        {
+          key: {
+            text: "Type of Windows devices"
+          },
+          value: {
+            text: "Standard"
+          }
+        },
+        {
+          key: {
+            text: "Google Chromebook: Domain"
+          },
+          value: {
+            text: "schooldomain.com"
+          }
+        },
+        {
+          key: {
+            text: "Google Chromebook: Recovery email address"
+          },
+          value: {
+            text: "email@email.com"
+          }
+        },
+        {
+          key: {
+            text: "Delivery contact"
+          },
+          value: {
+            html: deliveryContactHtml
+          }
+        },
+        {
+          key: {
+            text: "Delivery address"
+          },
+          value: {
+            html: "Pool Hayes Primary<br>72 Guild Street<br>London<br>SE23 6FH"
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+{% endblock %}

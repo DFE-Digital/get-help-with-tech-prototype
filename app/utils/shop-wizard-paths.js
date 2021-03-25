@@ -5,13 +5,16 @@ const {
 
 function shopWizardPaths (req) {
   var paths = [
-    '/shop/devices/order-lockdown',
-    '/shop',
-    '/shop/how-many',
-    '/shop/windows',
-    '/shop/address',
-    '/shop/confirm',
-    '/shop/confirmation',
+    '/school/devices/order-in-service',
+    '/school/shop',
+    ...req.session.data.routersAllocated > 0 ? ['/school/shop/how-many-routers'] : [],
+    '/school/shop/how-many',
+    '/school/shop/windows',
+    '/school/shop/chromebooks',
+    '/school/shop/address',
+    '/school/shop/delivery-contact',
+    '/school/shop/confirm',
+    '/school/shop/confirmation',
     '/school'
   ]
 
@@ -19,17 +22,17 @@ function shopWizardPaths (req) {
 }
 
 function shopWizardForks (req) {
-  // var forks = {
-  //   '/shop/you-ordering': {
-  //     'you-ordering': {
-  //       values: [
-  //         'No'
-  //       ],
-  //       path: '/shop/other-ordering'
-  //     }
-  //   }
-  // }
-  return nextForkPath({}, req)
+  var forks = {
+    '/school/shop': {
+      'shop-devices': {
+        excludedValues: [
+          '4G wireless router'
+        ],
+        path: '/school/shop/how-many'
+      }
+    }
+  }
+  return nextForkPath(forks, req)
 }
 
 module.exports = {

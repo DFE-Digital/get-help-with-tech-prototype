@@ -1,0 +1,11 @@
+{% extends "_wizard-form.html" %}
+{% set title = "We need some details to configure your Chromebooks" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {% set isSchool = true %}
+  {% include '_shared/chromebooks/_yes-fields.html' %}
+{% endblock %}

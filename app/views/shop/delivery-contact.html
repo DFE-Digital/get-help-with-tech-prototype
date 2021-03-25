@@ -1,0 +1,108 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Tell us who the delivery contact is" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  <p>The delivery contact will:</p>
+  <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+    <li>receive the dispatch email from Computacenter</li>
+    <li>be contacted about any issues relating to the delivery</li>
+  </ul>
+
+  {% set meHtml %}
+    {% set userHasTelephone = false %}
+
+    {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Name"
+        },
+        value: {
+          text: "Jane Doe"
+        }
+      },
+      {
+        key: {
+          text: "Email address"
+        },
+        value: {
+          text: "email@email.com"
+        }
+      },
+      {
+        key: {
+          text: "Telephone number"
+        },
+        value: {
+          text: "01234 345678"
+        }
+      } if userHasTelephone
+    ]
+    }) }}
+
+    {% if not userHasTelephone %}
+      {{ govukInput({
+        label: {
+          text: 'Your telephone number',
+          classes: 'govuk-label--s'
+        },
+        hint: {
+          text: 'A courier may need to call if there’s a problem with delivery'
+        }
+      } | decorateFormAttributes('shop-my-contact-number') ) }}
+    {% endif %}
+  {% endset %}
+
+  {% set someoneElseHtml %}
+    <h3 class="govuk-heading-m">Delivery contact details</h3>
+
+    {{ govukInput({
+      label: {
+        text: 'Their name',
+        classes: 'govuk-label--s'
+      }
+    } | decorateFormAttributes('shop-delivery-contact-name') ) }}
+
+    {{ govukInput({
+      label: {
+        text: 'Their email address',
+        classes: 'govuk-label--s'
+      }
+    } | decorateFormAttributes('shop-delivery-contact-email') ) }}
+
+    {{ govukInput({
+      label: {
+        text: 'Their telephone number',
+        classes: 'govuk-label--s'
+      }
+    } | decorateFormAttributes('shop-delivery-contact-number') ) }}
+
+    <h3 class="govuk-heading-m govuk-!-margin-top-6">Your contact details</h3>
+
+    <p>Your contact details will also be shared with Computacenter.</p>
+
+    {{ meHtml | safe }}
+  {% endset %}
+
+  {{ govukRadios({
+    items: [
+      {
+        text: 'I am the delivery contact',
+        conditional: {
+          html: meHtml
+        }
+      },
+      {
+        text: 'Someone else is the delivery contact',
+        value: 'someone-else',
+        conditional: {
+          html: someoneElseHtml
+        }
+      }
+    ]
+  }  | decorateFormAttributes('shop-delivery-who') ) }}
+{% endblock %}

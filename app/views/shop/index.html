@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = "Which devices do you need?" %}
+{% set title = "Which devices are you ordering?" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
@@ -12,16 +12,15 @@
         text: 'Microsoft Windows laptop'
       },
       {
-        text: 'Microsoft Windows tablet'
-      },
-      {
         text: 'Google Chromebook'
       },
       {
-        text: 'Apple iPad'
-      }
+        text: '4G wireless router'
+      } if data.routersAllocated > 0
     ]
   }  | decorateFormAttributes('shop-devices') ) }}
 
   <p>Read more about <a href="https://get-help-with-tech.education.gov.uk/devices/device-specification">device specifications</a>.</p>
+
+  <p class="govuk-!-margin-bottom-6">Your school or college will own the devices. It’s up to you to decide who will benefit most from them.</p>
 {% endblock %}

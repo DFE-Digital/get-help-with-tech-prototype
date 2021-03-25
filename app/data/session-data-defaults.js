@@ -7,35 +7,22 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   signedInHomePath: '/responsible-body',
-  rb: 'Greenwhich',
   laFundedPlacesAllocation: 20,
-  laFundedPlacesOrdered:0,
-  trust: true,
+  laFundedPlacesOrdered: 0,
+  trust: false,
+  rb: 'Greenwhich',
   rbAddress: [
     'The Woolwich Centre',
     'Wellington Street',
     'Woolwich',
     'SE18 6HQ'
   ],
-  trust: false,
   devicesOrdered: 9,
-  routersAllocated: 0,
+  routersAllocated: 10,
   routersOrdered: 0,
   'who-orders-laptops': 'central',
-  'responsible-body': {
-    140961: {
-      chromebooks: 'yes',
-      domain: 'domain.co.uk',
-      recovery: 'email@email.com'
-    },
-    142900: {
-      chromebooks: 'yes',
-      domain: 'domain.co.uk',
-      recovery: 'email@email.com'
-    }
-  },
   features: {
-    iss: true,
+    iss: false,
     push: true,
     mno: true,
     donated: true,
@@ -49,7 +36,8 @@ module.exports = {
     'sign-up': false,
     'bulk-upload': true,
     'in-connectivity-pilots': true,
-    'request-devices-google-form': true
+    'request-devices-google-form': true,
+    'order-in-service': true
   },
   mno: {
     requests: fakeMnoRequests

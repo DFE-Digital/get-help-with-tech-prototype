@@ -20,26 +20,27 @@
   }
 } | decorateFormAttributes(["school", "new-invite-number"]) )}}
 
-
-{{ govukRadios({
-  fieldset: {
-    legend: {
-      text: "Will they place orders for devices?",
-      classes: "govuk-fieldset__legend--s" if isNested else "govuk-fieldset__legend--m"
-    }
-  },
-  hint: {
-    text: "No more than " + data['max-school-order-users'] + " users will be allowed to place orders."
-  },
-  items: [
-    {
-      text: "Yes, give them access to order on the TechSource website",
-      hint: {
-        html: 'This is where they’ll place orders.<br />They’ll also get access to a Support Portal.'
+{% if not data.features['order-in-service'] %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "Will they place orders for devices?",
+        classes: "govuk-fieldset__legend--s" if isNested else "govuk-fieldset__legend--m"
       }
     },
-    {
-      text: "No"
-    }
-  ]
-} | decorateFormAttributes(["responsible-body", "can-order-devices"]) ) }}
+    hint: {
+      text: "No more than " + data['max-school-order-users'] + " users will be allowed to place orders."
+    },
+    items: [
+      {
+        text: "Yes, give them access to order on the TechSource website",
+        hint: {
+          html: 'This is where they’ll place orders.<br />They’ll also get access to a Support Portal.'
+        }
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(["responsible-body", "can-order-devices"]) ) }}
+{% endif %}

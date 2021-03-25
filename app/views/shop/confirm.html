@@ -1,65 +1,192 @@
 {% extends "_wizard-form.html" %}
-{% set buttonText = "Confirm order" %}
-{% set title = "Confirm your order details" %}
+{% set buttonText = "Place order" %}
+{% set title = "Check your order before confirming" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
 
-  {{ govukSummaryList({
-    rows: [
-      {
-        key: {
-          text: "Devices"
+  {% set devicesHtml %}
+    <span class="app-!-font-family-tabular govuk-!-margin-right-1">20</span> Microsoft Windows laptops<br />
+    <span class="app-!-font-family-tabular govuk-!-margin-right-1">10</span> Google Chromebooks
+  {% endset %}
+
+  {% set routersHtml %}
+    <span class="app-!-font-family-tabular govuk-!-margin-right-1">10</span> 4G wireless routers
+  {% endset %}
+
+  {% set deliveryContactHtml %}
+    {% if data['shop-delivery-who'] == 'someone-else' %}
+      {{ data['shop-delivery-contact-name'] }}<br />
+      {{ data['shop-delivery-contact-email'] }}<br />
+      {{ data['shop-delivery-contact-number'] }}
+    {% else %}
+      Jane Doe<br />
+      email@email.com<br />
+      01234 345678
+    {% endif %}
+  {% endset %}
+
+  {% set orderingList %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Devices"
+          },
+          value: {
+            html: devicesHtml
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "which devices"
+              }
+            ]
+          }
         },
-        value: {
-          html: "30 Microsoft Windows laptops<br />10 Google Chromebooks"
-        },
-        actions: {
-          items: [
-            {
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }
-          ]
+        {
+          key: {
+            text: "Routers"
+          },
+          value: {
+            html: routersHtml
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "how many routers"
+              }
+            ]
+          }
+        } if data.routersAllocated > 0
+      ]
+    }) }}
+  {% endset %}
+
+  {% set windowsList %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Type of Windows devices"
+          },
+          value: {
+            text: "Standard"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "type of windows device"
+              }
+            ]
+          }
         }
-      },
-      {
-        key: {
-          text: "Type of Windows devices"
+      ]
+    }) }}
+  {% endset %}
+
+  {% set deliveryList %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Delivery contact"
+          },
+          value: {
+            html: deliveryContactHtml
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact information"
+              }
+            ]
+          }
         },
-        value: {
-          text: "Standard"
-        },
-        actions: {
-          items: [
-            {
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "date of birth"
-            }
-          ]
+        {
+          key: {
+            text: "Delivery address"
+          },
+          value: {
+            html: "Pool Hayes Primary<br>72 Guild Street<br>London<br>SE23 6FH"
+          }
         }
-      },
-      {
-        key: {
-          text: "Delivery address"
-        },
-        value: {
-          html: "Pool Hayes Primary<br>72 Guild Street<br>London<br>SE23 6FH"
-        },
-        actions: {
-          items: [
-            {
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "contact information"
-            }
-          ]
-        }
-      }
-    ]
+      ]
+    }) }}
+  {% endset %}
+
+  {% set chromebookList %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Domain registered for G Suite for Education"
+          },
+          value: {
+            text: data['domain']
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "domain"
+              }
+            ]
+          }
+        } if data['domain'],
+        {
+          key: {
+            text: "Recovery email address"
+          },
+          value: {
+            text: data['recovery']
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "recovery email address"
+              }
+            ]
+          }
+        } if data['recovery']
+      ]
+    }) }}
+  {% endset %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Your order",
+    html: orderingList
+  }) }}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Microsoft Windows",
+    html: windowsList
+  }) }}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Google Chromebooks",
+    html: chromebookList
+  }) }}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Delivery",
+    html: deliveryList
   }) }}
 {% endblock %}

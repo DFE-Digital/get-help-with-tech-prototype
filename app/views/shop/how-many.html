@@ -1,6 +1,7 @@
 {% extends "_wizard-form.html" %}
-{% set multipleDeviceTypes = data['shop-devices'].length > 1 %}
-{% set title = "How many devices do you need?" %}
+{% set selectedRouters = '4G wireless router' in data['shop-devices'] %}
+{% set multipleDeviceTypes = data['shop-devices'].length > 2 if selectedRouters else data['shop-devices'].length > 1 %}
+{% set title = "How many devices are you ordering?" %}
 
 {% block form %}
   {% if multipleDeviceTypes %}
@@ -18,13 +19,15 @@
     </div>
 
     {% for type in data['shop-devices'] %}
-      {{ govukInput({
-        label: {
-          text: type + 's',
-          classes: 'govuk-label--m'
-        },
-        classes: 'govuk-input--width-4'
-      } | decorateFormAttributes('shop-amount-' + type) ) }}
+      {% if type != '4G wireless router' %}
+        {{ govukInput({
+          label: {
+            text: 'How many ' + type + 's?',
+            classes: 'govuk-label--m'
+          },
+          classes: 'govuk-input--width-4'
+        } | decorateFormAttributes('shop-routers-amount-' + type) ) }}
+      {% endif %}
     {% endfor %}
   {% else %}
 
@@ -40,7 +43,7 @@
     {{ govukRadios({
       fieldset: {
         legend: {
-          text: "How many " + data['shop-devices'][0] + "s do you need?",
+          text: "How many " + data['shop-devices'][0] + "s are you ordering?",
           classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
           isPageHeading: true
         }
