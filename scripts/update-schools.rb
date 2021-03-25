@@ -59,6 +59,13 @@ class UpdateSchoolsList
       school[:headteacher] = "#{row['HeadFirstName']} #{row['HeadLastName']}"
       school[:headteacher_email] = "#{row['HeadFirstName']}.#{row['HeadLastName']}@school.gov.uk".downcase
       school[:fsm_percentage] = row['PercentageFSM']
+      school[:street] = row['Street']
+      school[:locality] = row['Locality']
+      school[:address3] = row['Address3']
+      school[:town] = row['Town']
+      school[:county] = row['County']
+      school[:postcode] = row['Postcode']
+      school[:address] = [row['Street'], row['Address3'], row['Town'], row['County'], row['Postcode']].compact.reject {|r| r.empty? }.join(', ')
     end
   end
 
