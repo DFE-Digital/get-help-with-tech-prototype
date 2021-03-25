@@ -22,6 +22,8 @@ function shopWizardPaths (req) {
     '/responsible-body/shop/how-many',
     '/responsible-body/shop/windows',
     '/responsible-body/shop/chromebooks',
+    '/responsible-body/shop/pick-a-delivery-address',
+    '/responsible-body/shop/address',
     '/responsible-body/shop/delivery-contact',
     '/responsible-body/shop/confirm',
     '/responsible-body/shop/confirmation',
