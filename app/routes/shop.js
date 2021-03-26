@@ -12,6 +12,50 @@ module.exports = router => {
     next()
   })
 
+  router.get([
+    '/responsible-body/shop/address',
+    '/responsible-body/shop/confirm'], (req, res, next) => {
+    const data = req.session.data
+
+    if (data['shop-rb-delivery-who']) {
+      res.locals.schoolToDeliverTo = data.schools.find(obj => {
+        return obj.URN === parseInt(data['shop-rb-delivery-who'], 10)
+      })
+    }
+
+    next()
+  })
+
+  router.get('/responsible-body/shop/pick-a-delivery-address', (req, res, next) => {
+    const schools = req.session.data.schools
+
+    if (schools.length <= 10) {
+      res.locals.schoolItems = req.session.data.schools.map(school => {
+        return {
+          text: school.name,
+          value: school.URN,
+          label: {
+            classes: 'govuk-!-font-weight-bold'
+          },
+          hint: {
+            html: school.address
+          }
+        }
+      })
+    } else {
+      const schoolSelectItems = req.session.data.schools.map(school => {
+        return {
+          text: school.name,
+          value: school.URN
+        }
+      })
+      schoolSelectItems.unshift(' ')
+      res.locals.schoolItems = schoolSelectItems
+    }
+
+    next()
+  })
+
   router.all('/responsible-body/shop*', function (req, res, next) {
     res.locals.isRb = true
     next()

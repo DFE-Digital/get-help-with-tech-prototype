@@ -8,15 +8,24 @@
 
   <div class="app-order-card">
     <p class="govuk-!-margin-bottom-0">
-      <strong>Pool Hayes Primary</strong><br>
-      72 Guild Street<br>
-      London<br>
-      SE23 6FH
+      {% if isRb %}
+        <strong>{{ schoolToDeliverTo.name }}</strong><br />
+        {% if schoolToDeliverTo.street %}{{ schoolToDeliverTo.street }}<br />{% endif %}
+        {% if schoolToDeliverTo.address3 %}{{ schoolToDeliverTo.address3 }}<br />{% endif %}
+        {% if schoolToDeliverTo.town %}{{ schoolToDeliverTo.town }}<br />{% endif %}
+        {% if schoolToDeliverTo.county %}{{ schoolToDeliverTo.county }}<br />{% endif %}
+        {% if schoolToDeliverTo.postcode %}{{ schoolToDeliverTo.postcode }}{% endif %}
+      {% else %}
+        <strong>Pool Hayes Primary</strong><br>
+        72 Guild Street<br>
+        London<br>
+        SE23 6FH
+      {% endif %}
     </p>
   </div>
 
   {% set detailsHtml %}
-    <p>This is the school address we have on record.</p>
+    <p>This is the school or college address we have on record.</p>
     <p>If it’s not right, email <a href="#">COVID.TECHNOLOGY@education.gov.uk</a> and tell us what to change.</p>
   {% endset %}
 

@@ -93,6 +93,22 @@
     }) }}
   {% endset %}
 
+  {% set deliveryAddress %}
+    {% if isRb %}
+      {{ schoolToDeliverTo.name }}<br />
+      {% if schoolToDeliverTo.street %}{{ schoolToDeliverTo.street }}<br />{% endif %}
+      {% if schoolToDeliverTo.address3 %}{{ schoolToDeliverTo.address3 }}<br />{% endif %}
+      {% if schoolToDeliverTo.town %}{{ schoolToDeliverTo.town }}<br />{% endif %}
+      {% if schoolToDeliverTo.county %}{{ schoolToDeliverTo.county }}<br />{% endif %}
+      {% if schoolToDeliverTo.postcode %}{{ schoolToDeliverTo.postcode }}{% endif %}
+    {% else %}
+      Pool Hayes Primary<br>
+      72 Guild Street<br>
+      London<br>
+      SE23 6FH
+    {% endif %}
+  {% endset %}
+
   {% set deliveryList %}
     {{ govukSummaryList({
       rows: [
@@ -118,7 +134,7 @@
             text: "Delivery address"
           },
           value: {
-            html: "Pool Hayes Primary<br>72 Guild Street<br>London<br>SE23 6FH"
+            html: deliveryAddress
           }
         }
       ]

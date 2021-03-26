@@ -13,9 +13,24 @@ function shopWizardPaths (req) {
     '/school/shop/chromebooks',
     '/school/shop/address',
     '/school/shop/delivery-contact',
+    '/school/shop/safeguarding',
     '/school/shop/confirm',
     '/school/shop/confirmation',
-    '/school'
+    '/school',
+    '/responsible-body/devices/order-in-service',
+    '/responsible-body/shop',
+    ...req.session.data.routersAllocated > 0 ? ['/responsible-body/shop/how-many-routers'] : [],
+    '/responsible-body/shop/how-many',
+    '/responsible-body/shop/windows',
+    // '/responsible-body/shop/multi-chromebooks',
+    '/responsible-body/shop/chromebooks',
+    '/responsible-body/shop/pick-a-delivery-address',
+    '/responsible-body/shop/address',
+    '/responsible-body/shop/delivery-contact',
+    '/responsible-body/shop/safeguarding',
+    '/responsible-body/shop/confirm',
+    '/responsible-body/shop/confirmation',
+    '/responsible-body'
   ]
 
   return nextAndBackPaths(paths, req)

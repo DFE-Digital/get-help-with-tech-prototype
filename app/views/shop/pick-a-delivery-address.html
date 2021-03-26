@@ -1,0 +1,23 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Pick a school or college to deliver to" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {% set useRadiosLimit = 10 %}
+  {% if schoolItems.length <= useRadiosLimit %}
+    {{ govukRadios({
+      items: schoolItems
+    } | decorateFormAttributes('shop-rb-delivery-who') ) }}
+  {% else %}
+    {{ govukSelect({
+      label: {
+        text: "Address",
+        classes: "govuk-!-font-weight-bold"
+      },
+      items: schoolItems
+    } | decorateFormAttributes('shop-rb-delivery-who')) }}
+  {% endif %}
+{% endblock %}
