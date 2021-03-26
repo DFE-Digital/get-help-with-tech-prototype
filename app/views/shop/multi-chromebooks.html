@@ -1,0 +1,25 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Will your Chromebooks all need the same licence?" %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        text: 'Yes, they will all use the same domain registered for G Suite for Education'
+      },
+      {
+        text: 'No, we are ordering Chromebooks for multiple schools or colleges with different domains',
+        conditional: {
+          html: howManyHtml
+        }
+      }
+    ]
+  }  | decorateFormAttributes('shop-amount-routers-choice') ) }}
+{% endblock %}

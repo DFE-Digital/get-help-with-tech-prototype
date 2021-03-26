@@ -1,0 +1,48 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Are you ordering Chromebooks for many schools or colleges?" %}
+
+{% block form %}
+  {% set explainHtml %}
+    <h2 class="govuk-heading-m">Ordering for multiple schools or colleges</h2>
+
+    <p>If you are ordering...</p>
+
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: "Will your Chromebooks all need the same licence?",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      items: [
+        {
+          text: 'Yes, they will all use the same domain registered for G Suite for Education'
+        },
+        {
+          text: 'No, some schools or colleges will need difference licences'
+        }
+      ]
+    }  | decorateFormAttributes('shop-amount-routers-choice') ) }}
+  {% endset %}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        text: 'Yes, they will be given to different schools or colleges',
+        conditional: {
+          html: explainHtml
+        }
+      },
+      {
+        text: 'No, they are all for the same school or college'
+      }
+    ]
+  }  | decorateFormAttributes('shop-amount-routers-choice') ) }}
+{% endblock %}

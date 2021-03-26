@@ -21,6 +21,7 @@ function shopWizardPaths (req) {
     ...req.session.data.routersAllocated > 0 ? ['/responsible-body/shop/how-many-routers'] : [],
     '/responsible-body/shop/how-many',
     '/responsible-body/shop/windows',
+    // '/responsible-body/shop/multi-chromebooks',
     '/responsible-body/shop/chromebooks',
     '/responsible-body/shop/pick-a-delivery-address',
     '/responsible-body/shop/address',
