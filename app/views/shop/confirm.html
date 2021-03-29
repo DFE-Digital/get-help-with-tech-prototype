@@ -93,7 +93,7 @@
     }) }}
   {% endset %}
 
-  {% set deliveryAddress %}
+  {% set deliveryAddressHtml %}
     {% if isRb %}
       {{ schoolToDeliverTo.name }}<br />
       {% if schoolToDeliverTo.street %}{{ schoolToDeliverTo.street }}<br />{% endif %}
@@ -134,7 +134,7 @@
             text: "Delivery address"
           },
           value: {
-            html: deliveryAddress
+            html: deliveryAddressHtml
           }
         }
       ]

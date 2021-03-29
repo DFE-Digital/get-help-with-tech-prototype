@@ -10,7 +10,11 @@
   {{ govukBreadcrumbs({
     items: [
       {
-        text: "Home"
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Your account"
       }
     ]
   }) }}
@@ -102,22 +106,36 @@
       </ul>
     {% endif %}
 
-    <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/school/devices/check">Check your{% if data.features['further-education'] == false %} school{% endif %} details</a>
-    </h2>
+    {% if not data.features['order-in-service'] %}
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/school/devices/check">Check your details</a>
+      </h2>
 
-    <p>Use this section to:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>review your allocation</li>
-      <li>change your Chromebook settings</li>
-    </ul>
+      <p>Use this section to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>review your allocation</li>
+        <li>change your Chromebook settings</li>
+      </ul>
+    {% endif %}
 
-    <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/school/users">Manage users</a>
-    </h2>
     {% if data.features['order-in-service'] %}
-      <p>Use this section to give others access to this service.</p>
+      </div>
+      <div class="govuk-column-two-thirds">
+    {% endif %}
+
+    {% if data.features['order-in-service'] %}
+      <ul class="govuk-list govuk-list--spaced">
+        <li><a href="/school/your-orders">View your orders</a></li>
+        <li><a href="/school/get-support">Get support with a faulty device</a></li>
+        <li><a href="/school/users">Invite a colleague</a></li>
+      </h2>
+      </ul>
     {% else %}
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/school/users">Manage users</a>
+      </h2>
+    {% endif %}
+    {% if not data.features['order-in-service'] %}
       <p>Use this section to give others:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>access to this service</li>
@@ -126,6 +144,7 @@
     {% endif %}
   </div>
 
+  {% if not data.features['order-in-service'] %}
   <div class="govuk-grid-column-one-third">
     <div class="app-survey-container">
       <h3 class="govuk-heading-l govuk-!-font-size-27">
@@ -142,6 +161,7 @@
       </p>
     </div>
   </div>
+{% endif %}
 
 </div>
 {% endblock %}
