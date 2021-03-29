@@ -1,0 +1,187 @@
+{% extends "layout.html" %}
+{% set title = "Your orders" %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Your account",
+        href: "/school"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">{{ data['school-details'].name }}</span>
+      {{ title }}
+    </h1>
+
+  {% set devicesHtml %}
+    <span class="app-!-font-family-tabular govuk-!-margin-right-1">20</span> Microsoft Windows laptops<br />
+    <span class="app-!-font-family-tabular govuk-!-margin-right-1">10</span> Google Chromebooks
+  {% endset %}
+
+  {% set routersHtml %}
+    <span class="app-!-font-family-tabular govuk-!-margin-right-1">10</span> 4G wireless routers
+  {% endset %}
+
+  {% set deliveryContactHtml %}
+    Jane Doe<br />
+    email@email.com<br />
+    01234 345678
+  {% endset %}
+
+  {% set deliveryAddressHtml %}
+    {% if isRb %}
+      {{ schoolToDeliverTo.name }}<br />
+      {% if schoolToDeliverTo.street %}{{ schoolToDeliverTo.street }}<br />{% endif %}
+      {% if schoolToDeliverTo.address3 %}{{ schoolToDeliverTo.address3 }}<br />{% endif %}
+      {% if schoolToDeliverTo.town %}{{ schoolToDeliverTo.town }}<br />{% endif %}
+      {% if schoolToDeliverTo.county %}{{ schoolToDeliverTo.county }}<br />{% endif %}
+      {% if schoolToDeliverTo.postcode %}{{ schoolToDeliverTo.postcode }}{% endif %}
+    {% else %}
+      Pool Hayes Primary<br>
+      72 Guild Street<br>
+      London<br>
+      SE23 6FH
+    {% endif %}
+  {% endset %}
+
+  {% set orderingList %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Date placed"
+          },
+          value: {
+            text: "1 April 2021"
+          }
+        },
+        {
+          key: {
+            text: "Status"
+          },
+          value: {
+            text: "Waiting to be confirmed"
+          }
+        },
+        {
+          key: {
+            text: "Devices"
+          },
+          value: {
+            html: devicesHtml
+          }
+        },
+        {
+          key: {
+            text: "Routers"
+          },
+          value: {
+            html: routersHtml
+          }
+        },
+        {
+          key: {
+            text: "Delivery contact"
+          },
+          value: {
+            html: deliveryContactHtml
+          }
+        },
+        {
+          key: {
+            text: "Delivery address"
+          },
+          value: {
+            html: deliveryAddressHtml
+          }
+        }
+      ]
+    }) }}
+  {% endset %}
+
+
+  <h2 class="govuk-heading-m">
+    Recent orders
+  </h2>
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Reference – DFE-123456-010521-ABCDE",
+    html: orderingList
+  }) }}
+
+  <p class="govuk-body">
+    To change or cancel your order, email <a href="#">COVID.TECHNOLOGY@education.gov.uk</a>
+  </p>
+
+  <h2 class="govuk-heading-m">
+    Completed orders
+  </h2>
+</div>
+
+<div class="govuk-grid-column-full">
+
+  {% set oldOrders = [
+      {
+        reference: "DFE-123123-011233-DEFGH",
+        placed: "1 May 2020",
+        delivered: "16 May 2020",
+        devices: [ '<span class="app-!-font-family-tabular">1</span> 4G wireless router']
+      },
+      {
+        reference: "DFE-123456-010521-ABCDE",
+        placed: "20 September 2020",
+        delivered: "25 September 2020",
+        devices: [ '<span class="app-!-font-family-tabular">10</span> Windows laptops', 
+                   '<span class="app-!-font-family-tabular">10</span> Google Chromebooks'
+                  ]
+      },
+      {
+        reference: "DFE-891011-011233-DEFGH",
+        placed: "1 May 2020",
+        delivered: "15 May 2020",
+        devices: [ '<span class="app-!-font-family-tabular">100</span> Windows laptops'
+                  ]
+      }
+    ] %}
+  <table class="govuk-table">
+    <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Dates and amounts</caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">Reference</th>
+        <th scope="col" class="govuk-table__header">Placed</th>
+        <th scope="col" class="govuk-table__header">Delivered</th>
+        <th scope="col" class="govuk-table__header">Devices</th>
+        <th scope="col" class="govuk-table__header"></th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      {% for item in oldOrders %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="app-!-font-family-tabular">{{ item.reference }}</span></td>
+          <td class="govuk-table__cell">{{ item.placed }}</td>
+          <td class="govuk-table__cell">{{ item.delivered }}</td>
+          <td class="govuk-table__cell">{% for device in item.devices %} {{ device | safe }}<br> {% endfor %}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><a href="#">View</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
