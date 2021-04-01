@@ -80,12 +80,8 @@
        <li>redistributing the laptops if pupils move school or leave education</li>
       </ul>
 
-      {{ govukButton ({
-        text: "Continue",
-        href: "/responsible-body/devices/la-funded-pupils/order"
-      }) }}
       {% if allocation != laptopsOrdered %}
-        {#  #% if data["la-chromebook-preference"] %}
+        {% if data["la-chromebook-preference"] %}
         {{ govukButton({
           text: "Continue",
           href: "/responsible-body/devices/la-funded-pupils/order"
@@ -95,7 +91,7 @@
           text: "Continue",
           href: "/responsible-body/devices/la-funded-pupils/chromebooks"
         }) }}
-        {% endif %#}
+        {% endif %}
       {% endif %}
   </div>
 </div>
