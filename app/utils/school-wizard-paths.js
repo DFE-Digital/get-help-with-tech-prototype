@@ -12,7 +12,7 @@ function schoolWizardPaths (req) {
     '/school/welcome',
     '/school/privacy',
     '/school/allocation',
-    ...isFirstUser ? ['/school/other-ordering'] : [],
+    // ...isFirstUser ? ['/school/other-ordering'] : [],
     '/school/devices-you-can-order',
     ...(isLAFundedUser || data.features['order-in-service']) ? [] : ['/school/chromebooks'],
     ...(isLAFundedUser || data.features['order-in-service']) ? [] : ['/school/what-next'],
