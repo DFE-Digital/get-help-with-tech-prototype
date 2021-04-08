@@ -7,15 +7,15 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   signedInHomePath: '/responsible-body',
-  laFundedPlacesAllocation: 20,
+  laFundedPlacesAllocation: 9,
   laFundedPlacesOrdered: 0,
   trust: false,
-  rb: 'Greenwhich',
+  rb: 'Newham',
   rbAddress: [
-    'The Woolwich Centre',
-    'Wellington Street',
-    'Woolwich',
-    'SE18 6HQ'
+    '328 Barking Road',
+    'East Ham',
+    'London',
+    'E6 2RT'
   ],
   devicesOrdered: 9,
   routersAllocated: 10,

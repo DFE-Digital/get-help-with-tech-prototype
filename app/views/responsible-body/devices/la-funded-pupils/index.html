@@ -36,7 +36,7 @@
         Laptops available:
       </h2>
       <p class="govuk-body govuk-!-margin-bottom-0">
-        {{ allocation - laptopsOrdered }} laptop{% if allocation != 1 %}s{% endif %} available to order now.
+        You can order {{ allocation - laptopsOrdered }} laptop{% if allocation != 1 %}s{% endif %} now.
       </p>
       {% if laptopsOrdered > 0 %}
       <p class="govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
@@ -51,7 +51,7 @@
     </div>
 
       <p class="govuk-body">
-        You have been allocated {{ allocation }} for state-funded pupils at independent settings.
+        You’ve been allocated {{ allocation }} laptops.
       </p>
       <p class="govuk-body">
         {% include "_shared/responsible-body/la-funded-places/_allocation-description.html" %}
@@ -61,7 +61,7 @@
         Before you order
       </h2>
       <p class="govuk-body">
-        We recommend you ask independent settings which device type and IT settings are best for each pupil.
+        We recommend that you ask independent settings which device type and IT settings are best for each pupil.
       </p>
       <p class="govuk-body">
         <a href="la-funded-pupils/laptops-types-for-la-funded-pupils">Check what types of laptop are available</a>
