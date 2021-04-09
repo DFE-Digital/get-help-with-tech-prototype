@@ -7,15 +7,15 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   signedInHomePath: '/responsible-body',
-  laFundedPlacesAllocation: 9,
+  laFundedPlacesAllocation: 19,
   laFundedPlacesOrdered: 0,
   trust: false,
-  rb: 'Newham',
+  rb: 'Harrow',
   rbAddress: [
-    '328 Barking Road',
-    'East Ham',
-    'London',
-    'E6 2RT'
+    'Harrow Civic Centre',
+    'Station Rd',
+    'Harrow',
+    'HA1 2XY'
   ],
   devicesOrdered: 9,
   routersAllocated: 10,
