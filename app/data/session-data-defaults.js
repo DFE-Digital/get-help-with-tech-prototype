@@ -7,15 +7,15 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   signedInHomePath: '/responsible-body',
-  laFundedPlacesAllocation: 19,
+  laFundedPlacesAllocation: 1,
   laFundedPlacesOrdered: 0,
   trust: false,
-  rb: 'Harrow',
+  rb: 'Isle of Wight',
   rbAddress: [
-    'Harrow Civic Centre',
-    'Station Rd',
-    'Harrow',
-    'HA1 2XY'
+    'County Hall',
+    'High St',
+    'Newport',
+    'PO30 1UD'
   ],
   devicesOrdered: 9,
   routersAllocated: 10,
