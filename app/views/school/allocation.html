@@ -6,7 +6,7 @@
 
   {% if data.features.iss %}
     <h1 class="govuk-heading-xl">
-      {{ data.rb }} has been allocated <span class="app-no-wrap">{{ allocation }} laptops</span>
+      {{ data.rb }} has been allocated <span class="app-no-wrap">{{ allocation }} laptop{% if allocation != 1 %}s{% endif %}</span>
     </h1>
     {% include "_shared/responsible-body/la-funded-places/_allocation-description.html" %}
   {% else %}
