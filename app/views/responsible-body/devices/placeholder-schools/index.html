@@ -1,0 +1,121 @@
+
+{% set allocation = data.laPlaceholderSchoolAllocation %}
+{% set laptopsOrdered = data.laPlaceholderSchoolOrdered %}
+{% if data.features.iss %}
+  {% set typeOfPlaceholderSchool = "State-funded pupils in independent settings" %}
+{% else %}
+  {% set typeOfPlaceholderSchool = ">>> SOCIAL CARE LEAVERS <<<" %}
+{% endif %}
+
+{% extends "layout.html" %}
+  {% set title = 'Get laptops' %}
+{% block pageTitle %}Get laptops for funded pupils{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: typeOfPlaceholderSchool,
+        href: "/school"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+    <div class="app-order-card">
+    {% if allocation != laptopsOrdered %}
+      <h2 class="govuk-heading-m">
+        Laptops available:
+      </h2>
+      <p class="govuk-body govuk-!-margin-bottom-0">
+        You can order {{ allocation - laptopsOrdered }} laptop{% if allocation != 1 %}s{% endif %} now.
+      </p>
+      {% if laptopsOrdered > 0 %}
+      <p class="govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+        You’ve ordered {{ laptopsOrdered }}.
+      </p>
+      {% endif %}
+    {% else %}
+      <h2 class="govuk-heading-m">
+        You’ve ordered your full allocation of laptops
+      </h2>
+    {% endif %}
+    </div>
+
+      <h2 class="govuk-heading-m">
+        Your allocation
+      </h2>
+      {% if data.features.iss %}
+        <p class="govuk-body">
+          {% include "_shared/responsible-body/la-funded-places/_allocation-description.html" %}
+        </p>
+      {% else %}
+        <p class="govuk-body">
+          >>> SOCIAL CARE LEAVERS <<<
+        </p>
+      {% endif %}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+        Before you order
+      </h2>
+      {% if data.features.iss %}
+        <p class="govuk-body">
+          We recommend checking with schools, families or pupils as soon as possible to find out which device type and <span class="app-no-wrap">IT settings</span> would be most suitable.
+        </p>
+      {% else %}
+        <p class="govuk-body">
+        >>> SOCIAL CARE LEAVERS <<<
+        </p>
+      {% endif %}
+      <p class="govuk-body">
+        <a href="placeholder-schools/laptops-types-for-placeholder-schools">Check what types of laptop are available</a>
+      </p>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+        Ownership and responsibility
+      </h2>
+      {% if data.features.iss %}
+        <p class="govuk-body">
+          {{ data.rb }} will own these laptops and is responsible for:
+        </p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+         <li>making sure laptops have appropriate safety and security measures installed and maintained – <a href="#">read about laptop safeguarding</a></li>
+         <li>fixing any technical issues – <a href="#">read about how to organise repairs</a></li>
+         <li>distributing the laptops safely – <a href="#">read about how to get devices to pupils</a></li>
+         <li>redistributing the laptops if pupils move school or leave education</li>
+        </ul>
+      {% else %}
+        <p class="govuk-body">
+          >>> SOCIAL CARE LEAVERS <<<
+        </p>
+      {% endif %}
+
+      {% if allocation != laptopsOrdered %}
+        {% if data["la-chromebook-preference"] %}
+        {{ govukButton({
+          text: "Continue",
+          href: "/responsible-body/devices/placeholder-schools/order"
+        }) }}
+        {% else %}
+        {{ govukButton({
+          text: "Continue",
+          href: "/responsible-body/devices/placeholder-schools/chromebooks"
+        }) }}
+        {% endif %}
+      {% endif %}
+  </div>
+</div>
+{% endblock %}

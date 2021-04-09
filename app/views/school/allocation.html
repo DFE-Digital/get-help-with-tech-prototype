@@ -1,14 +1,24 @@
 {% extends "_wizard-form.html" %}
-{% set allocation = data.laFundedPlacesAllocation %}
-{% set title = "You’ve been allocated " + data['school-details'].allocation + " laptops" %}
+
+{% set allocation = data.laPlaceholderSchoolAllocation %}
+
+{% if data.features.iss or data.features.socialCare %}
+  {% set title = data.rb + " has been allocated " + allocation + " laptops" %}
+{% else %}
+  {% set title = "You’ve been allocated " + data['school-details'].allocation + " laptops" %}
+{% endif %}
 
 {% block form %}
 
-  {% if data.features.iss %}
+  {% if data.features.iss or data.features.socialCare %}
     <h1 class="govuk-heading-xl">
       {{ data.rb }} has been allocated <span class="app-no-wrap">{{ allocation }} laptop{% if allocation != 1 %}s{% endif %}</span>
     </h1>
+  {% endif %}
+  {% if data.features.iss %}
     {% include "_shared/responsible-body/la-funded-places/_allocation-description.html" %}
+  {% elif data.features.socialCare %}
+    {% include "_shared/responsible-body/social-care/_allocation-description.html" %}
   {% else %}
     <h1 class="govuk-heading-xl">
       You’ve been allocated <span class="app-no-wrap">{{ data['school-details'].allocation }} laptops</span>

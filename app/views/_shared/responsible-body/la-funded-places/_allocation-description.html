@@ -1,19 +1,25 @@
-<p>
-  Your allocation estimate is based on the data {{ data.rb }} submitted in the latest published alternative provision census (2020).
-</p>
-<p>
-  We’ve allocated one laptop for each pupil in years 3 to 11 that {{ data.rb }} reported as having a state-funded place at an independent setting, and also being eligible for free school meals.
-</p>
-<p>
-  You can request internet access for these pupils if they need it too.
-</p>
+  <p>
+    You’ve been allocated {{ data.laPlaceholderSchoolAllocation }} laptop{% if data.laPlaceholderSchoolAllocation != 1 %}s{% endif %}.
+  </p>
 <details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
-      Tell us if your allocation is wrong
+      How your allocation has been calculated
     </span>
   </summary>
   <div class="govuk-details__text">
+  <p>
+    Your allocation estimate is based on the data {{ data.rb }} submitted in the latest published alternative provision census (2020).
+  </p>
+  <p>
+    We’ve allocated one laptop for each pupil in years 3 to 11 that {{ data.rb }} reported as having a state-funded place at an independent setting, and also being eligible for free school meals.
+  </p>
+  <h3 class="govuk-heading-m">
+    Tell us if your allocation is wrong
+  </h3>
+  <p>
+    You can request internet access for these pupils if they need it too.
+  </p>
     <p>
       Tell us how many pupils {{ data.rb }} funds who:
     </p>

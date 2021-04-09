@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 {% if data.features.iss %}
-  {% set title = "State-funded pupils in independent settings" %}
+  {% set title = "Get laptops and internet access" %}
+{% elif data.features.socialCare %}
+  {% set title = ">>> SOCIAL CARE LEAVERS <<<" %}
 {% else %}
   {% set title = data['school-details'].name %}
 {% endif %}
@@ -11,6 +13,9 @@
     items: [
       {
         text: "Home"
+      },
+      {
+        text: "Your account"
       }
     ]
   }) }}
@@ -20,6 +25,15 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+  {% if data.features.iss %}
+    <span class="govuk-caption-xl">
+      State-funded pupils in independent schools and alternative provision
+    </span>
+  {% elif data.features.socialCare %}
+    <span class="govuk-caption-xl">
+      >>> SOCIAL CARE LEAVERS <<<
+    </span>
+  {% endif %}
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
@@ -32,8 +46,8 @@
     <h2 class="govuk-heading-l govuk-!-font-size-27">
     {% if data.features['order-in-service'] %}
       <a href="/school/devices/order-in-service">Order devices</a>
-    {% elseif data.features.iss %}
-      <a href="/responsible-body/devices/la-funded-pupils">Get laptops</a>
+    {% elseif data.features.iss or data.features.socialCare %}
+      <a href="/responsible-body/devices/placeholder-schools">Get laptops</a>
     {% else %}
       <a href="/school/devices/order-lockdown">Order devices</a>
     {% endif %}
@@ -43,7 +57,7 @@
     {% if data.features['order-in-service'] %}
       <li>tell us which devices you want to order</li>
     {% else %}
-      <li>see how many laptops you have been allocated</li>
+      <li>see how many laptops you’ve been allocated</li>
       <li>place orders on the TechSource website</li>
     {% endif %}
     </ul>
@@ -60,7 +74,7 @@
       </ul>
     {% endif %}
 
-    {% if data.features.donated and not data.features.iss %}
+    {% if data.features.donated and not (data.features.iss or data.features.socialCare) %}
       {% if data['donated-opted-in'] %}
         <h2 class="govuk-heading-l govuk-!-font-size-27">
           <a href="/school/donated/opted-in">Daily Mail donated devices scheme</a>

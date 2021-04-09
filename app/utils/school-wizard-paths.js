@@ -6,7 +6,7 @@ const {
 function schoolWizardPaths (req) {
   const data = req.session.data
   const isFirstUser = data['school-details'].first_user
-  const isLAFundedUser = data.features.iss
+  const isLAFundedUser = data.features.iss || data.features.socialCare
 
   var paths = [
     '/school/welcome',

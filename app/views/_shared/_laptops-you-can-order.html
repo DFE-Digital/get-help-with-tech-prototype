@@ -1,0 +1,33 @@
+<p>
+  Depending on availability, you can choose from:
+</p>
+<h2 class="govuk-heading-s">
+  Standard Windows laptops
+</h2>
+<p>
+  You’ll be responsible for arranging and maintaining safeguarding measures, like content filtering.
+</p>
+<h2 class="govuk-heading-s">
+  DfE Restricted Windows laptops
+</h2>
+<p>
+  These have temporary safeguarding settings installed — content filtering and mobile device management software — which you’ll need to replace when they expire. You’ll need to reset these devices before you can apply new settings, or download some types of software
+</p>
+<h2 class="govuk-heading-s">
+  Google Chromebooks
+</h2>
+{% if data.features.iss %}
+<p>
+  You’ll need to provide us with the relevant school’s email domain for <span class="app-no-wrap">G Suite for Education</span>, and a recovery email address.
+</p>
+{% elif data.features.socialCare %}
+<p>
+  >>> SOCIAL CARE LEAVERS <<<
+</p>
+{% else %}
+<p>
+  You’ll need to provide us with your school’s email domain for <span class="app-no-wrap">G Suite for Education</span>, and a recovery email address.
+</p>
+{% endif %}
+<p><a href="#">See detailed laptop specifications</a></p>
+<p class="govuk-!-margin-bottom-6">You can also request 4G wireless routers.</p>

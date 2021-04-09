@@ -6,13 +6,7 @@
     {{ title }}
   </h1>
 
-  {% if data.features.iss %}
-    <p>
-      You can invite someone from your local authority to help you manage ordering devices, and request internet access for state-funded pupils in independent settings.
-    </p>
-  {% else %}
-    {% include '_shared/invite/_who.html' %}
-  {% endif %}
+  {% include '_shared/invite/_who.html' %}
 
   {% set contactFields %}
     {% set isNested = true %}
