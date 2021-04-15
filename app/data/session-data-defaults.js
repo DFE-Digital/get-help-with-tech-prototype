@@ -22,7 +22,7 @@ module.exports = {
   routersOrdered: 0,
   'who-orders-laptops': 'central',
   features: {
-    iss: true,
+    iss: false,
     push: true,
     mno: true,
     donated: true,
@@ -37,7 +37,7 @@ module.exports = {
     'bulk-upload': true,
     'in-connectivity-pilots': true,
     'request-devices-google-form': true,
-    'order-in-service': false
+    'order-in-service': true
   },
   mno: {
     requests: fakeMnoRequests

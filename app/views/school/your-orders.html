@@ -29,6 +29,8 @@
       {{ title }}
     </h1>
 
+  {% set devicesHaveBeenOrdered = true %}
+
   {% set devicesHtml %}
     <span class="app-!-font-family-tabular govuk-!-margin-right-1">20</span> Microsoft Windows laptops<br />
     <span class="app-!-font-family-tabular govuk-!-margin-right-1">10</span> Google Chromebooks
@@ -115,6 +117,7 @@
     }) }}
   {% endset %}
 
+  {% if devicesHaveBeenOrdered == false %}
 
   <h2 class="govuk-heading-m">
     Recent orders
@@ -127,7 +130,7 @@
   }) }}
 
   <p class="govuk-body">
-    To change or cancel your order, email <a href="#">COVID.TECHNOLOGY@education.gov.uk</a>
+    To change or cancel your order, email <a href="#">devices@education.gov.uk</a>
   </p>
 
   <h2 class="govuk-heading-m">
@@ -183,5 +186,13 @@
       {% endfor %}
     </tbody>
   </table>
+
+  {% else %}
+
+    <p>
+      You haven’t ordered any devices yet.
+    </p>
+
+  {% endif %}
 
 {% endblock %}

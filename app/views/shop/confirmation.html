@@ -4,17 +4,18 @@
 {% set title = "Your order has been placed" %}
 
 {% block primary %}
-  {{ govukPanel({
-    titleText: title,
-    html: "Your reference number<br><strong>DFE-123456-010521-ABCDE</strong>",
-    classes: "govuk-!-margin-bottom-6"
-  }) }}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: title,
+        html: "Your reference number<br><strong>DFE-123456</strong>",
+        classes: "govuk-!-margin-bottom-6"
+      }) }}
+
       <h2 class="govuk-heading-m">What happens next</h2>
 
-      <p>Your delivery contact will receive a dispatch email from Computacenter giving details about your delivery.</p>
+      <p>Your delivery contact will receive a dispatch email giving details about your delivery.</p>
 
       <p>Most orders will arrive within 5 working days of being confirmed, subject to stock availability.</p>
 

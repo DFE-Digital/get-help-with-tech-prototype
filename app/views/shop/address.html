@@ -7,21 +7,23 @@
   </h1>
 
   <div class="app-order-card">
-    <p class="govuk-!-margin-bottom-0">
       {% if isRb %}
-        <strong>{{ schoolToDeliverTo.name }}</strong><br />
-        {% if schoolToDeliverTo.street %}{{ schoolToDeliverTo.street }}<br />{% endif %}
-        {% if schoolToDeliverTo.address3 %}{{ schoolToDeliverTo.address3 }}<br />{% endif %}
-        {% if schoolToDeliverTo.town %}{{ schoolToDeliverTo.town }}<br />{% endif %}
-        {% if schoolToDeliverTo.county %}{{ schoolToDeliverTo.county }}<br />{% endif %}
-        {% if schoolToDeliverTo.postcode %}{{ schoolToDeliverTo.postcode }}{% endif %}
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">{{ schoolToDeliverTo.name }}</h2>
+        <p class="govuk-!-margin-bottom-0">
+          {% if schoolToDeliverTo.street %}{{ schoolToDeliverTo.street }}<br />{% endif %}
+          {% if schoolToDeliverTo.address3 %}{{ schoolToDeliverTo.address3 }}<br />{% endif %}
+          {% if schoolToDeliverTo.town %}{{ schoolToDeliverTo.town }}<br />{% endif %}
+          {% if schoolToDeliverTo.county %}{{ schoolToDeliverTo.county }}<br />{% endif %}
+          {% if schoolToDeliverTo.postcode %}{{ schoolToDeliverTo.postcode }}{% endif %}
+        </p>
       {% else %}
-        <strong>Pool Hayes Primary</strong><br>
-        72 Guild Street<br>
-        London<br>
-        SE23 6FH
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Pool Hayes Primary</h2>
+        <p class="govuk-!-margin-bottom-0">
+          72 Guild Street<br>
+          London<br>
+          SE23 6FH
+        </p>
       {% endif %}
-    </p>
   </div>
 
   {% set detailsHtml %}

@@ -33,26 +33,26 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h2 class="govuk-heading-l govuk-!-font-size-27">
     {% if data.features['order-in-service'] %}
-      <a href="/school/devices/order-in-service">Order devices</a>
-    {% elseif data.features.iss %}
+      {{ sectionNav('Order devices', '/school/devices/order-in-service', ['to order laptops, tablets and 4G wireless routers.']) }}
+    {%   elseif data.features.iss %}
+    <h2 class="govuk-heading-l govuk-!-font-size-27">
       <a href="/responsible-body/devices/la-funded-pupils">Get laptops</a>
     {% else %}
       <a href="/school/devices/order-lockdown">Order devices</a>
     {% endif %}
     </h2>
+    {% if not data.features['order-in-service'] %}
     <p>Use this section to:</p>
     <ul class="govuk-list govuk-list--bullet">
-    {% if data.features['order-in-service'] %}
-      <li>tell us which devices you want to order</li>
-    {% else %}
       <li>see how many laptops you have been allocated</li>
       <li>place orders on the TechSource website</li>
     {% endif %}
     </ul>
 
-    {% if data.features['school-mno'] %}
+    {% if data.features['order-in-service'] %}
+      {{ sectionNav('Request mobile data', '/school/internet', ['to get extra mobile phone data for pupils.']) }}
+    {% elif data.features['school-mno'] %}
       <h2 class="govuk-heading-l govuk-!-font-size-27">
         <a href="/school/internet">Get internet access</a>
       </h2>
@@ -64,7 +64,7 @@
       </ul>
     {% endif %}
 
-    {% if data.features.donated and not data.features.iss %}
+    {% if data.features.donated and not (data.features.iss or data.features['order-in-service']) %}
       {% if data['donated-opted-in'] %}
         <h2 class="govuk-heading-l govuk-!-font-size-27">
           <a href="/school/donated/opted-in">Daily Mail donated devices scheme</a>
