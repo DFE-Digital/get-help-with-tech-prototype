@@ -6,9 +6,35 @@
   <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Get help with technology prototype</h1>
       <ul class="govuk-list govuk-list--bullet">
-        <li><a href="/school/welcome">{% if data.features.iss %}State-funded pupils placeholder school wizard – iss flag set to true{% else %}School first-login wizard{% endif %}</a></li>
-        <li><a href="/school">{% if data.features.iss %}State-funded pupils placeholder school – iss flag set to true{% else %}School index{% endif %}</a></li>
-        <li><a href="/interstitials/la-funded-pupils">Responsible body {% if data.features.iss %}– iss flag set to true{% endif %}</a></li>
+        <li>
+          <a href="/school/welcome">
+            {% if data.features.iss %}
+              State-funded pupils – placeholder school wizard
+            {% elif data.features.socialCare %}
+              Devices for care leavers placeholder school – wizard
+            {% else %}
+              School first-login wizard
+            {% endif %}
+          </a>
+        </li>
+        <li>
+          <a href="/school">
+            {% if data.features.iss %}
+              State-funded pupils placeholder school – iss flag set to true
+            {% elif data.features.socialCare %}
+              Devices for care leavers placeholder school – index
+            {% else %}
+              School index
+            {% endif %}
+            </a>
+          </li>
+        <li>
+          {% if data.features.iss %}
+            <a href="/interstitials/placeholder-schools">Responsible body – iss flag set to true</a>
+          {% else %}
+            <a href="/responsible-body">Responsible body</a>
+          {% endif %}
+        </li>
         <li><a href="/mno">MNO</a></li>
         <li><a href="/guidance-reorg">Alternate homepage</a></li>
         <li><a href="/performance">Performance dashboard</a></li>

@@ -2,6 +2,8 @@
 
 {% if data.features.iss %}
   {% set title = "Get laptops for state-funded pupils at independent settings" %}
+{% elif data.features.socialCare %}
+  {% set title = ">>> SOCIAL CARE LEAVERS <<<" %}
 {% else %}
   {% set title = "You’re signed in as " + data['school-details'].name %}
 {% endif %}
@@ -9,7 +11,7 @@
 {% block form %}
   <h1 class="govuk-heading-xl">
     {% if data.features.iss %}
-      Get laptops and internet access for <span class="app-no-wrap">state-funded</span> pupils at independent settings
+      Get laptops and <span class="app-no-wrap">internet access</span> for <span class="app-no-wrap">state-funded</span> pupils at <span class="app-no-wrap">independent settings</span>
     {% else %}
       {{ title }}
     {% endif %}
@@ -33,6 +35,10 @@
       request internet access for eligible pupils
     </li>
   </ul>
+{% elif data.features.socialCare %}
+  <p>
+    >>> SOCIAL CARE LEAVERS <<<
+  </p>
 {% else %}
   <p>You can use this service to:</p>
   <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">

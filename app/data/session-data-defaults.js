@@ -7,8 +7,8 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   signedInHomePath: '/responsible-body',
-  laFundedPlacesAllocation: 1,
-  laFundedPlacesOrdered: 0,
+  laPlaceholderSchoolAllocation: 1,
+  laPlaceholderSchoolOrdered: 0,
   trust: false,
   rb: 'Isle of Wight',
   rbAddress: [
@@ -22,6 +22,7 @@ module.exports = {
   routersOrdered: 0,
   'who-orders-laptops': 'central',
   features: {
+    socialCare: false,
     iss: true,
     push: true,
     mno: true,

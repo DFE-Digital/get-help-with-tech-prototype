@@ -1,5 +1,10 @@
 {% set title = 'Will your order include Google Chromebooks?' %}
 {% extends "layout.html" %}
+{% if data.features.iss %}
+  {% set typeOfPlaceholderSchool = "State-funded pupils in independent settings" %}
+{% else %}
+  {% set typeOfPlaceholderSchool = ">>> SOCIAL CARE LEAVERS <<<" %}
+{% endif %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
@@ -9,12 +14,12 @@
         href: "#"
       },
       {
-        text: "State-funded pupils in independent settings",
+        text: typeOfPlaceholderSchool,
         href: "/school"
       },
       {
         text: "Get laptops",
-        href: "/responsible-body/devices/la-funded-pupils"
+        href: "/responsible-body/devices/placeholder-schools"
       },
       {
         text: title
@@ -30,9 +35,9 @@
       {{ title }}
     </h1>
     <p class="govuk-body">
-      We need to know this so we can apply the right settings to the laptops you order.
+      We need to know this so we can apply the right settings to the laptops you order. You can change your answer later.
     </p>
-    <form action="/responsible-body/devices/la-funded-pupils/order" method="post" novalidate>
+    <form action="/responsible-body/devices/placeholder-schools/order" method="post" novalidate>
       {{ govukRadios({
         idPrefix: "la-chromebook-preference",
           name: "la-chromebook-preference",
@@ -46,7 +51,10 @@
       items: [
         {
           value: "yes-la-chromebooks",
-          text: "Yes, we’ll order Chromebooks"
+          text: "Yes, we’ll order Chromebooks",
+          conditional: {
+            html: '<p class="govuk-body">When you order you’ll be contacted by email for G Suite for Education license information.</p>'
+          }
         },
         {
           value: "no-la-chromebooks",
@@ -54,7 +62,10 @@
         },
         {
           value: FALSE,
-          text: "I’m not sure"
+          text: "I’m not sure",
+          conditional: {
+            html: '<p class="govuk-body">If you order Chromebooks without letting us know first, they’ll be delivered without safeguarding settings and access to G Suite for Education.</p>'
+          }
         }
       ]
     }) }}

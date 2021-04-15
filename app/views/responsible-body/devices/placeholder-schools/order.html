@@ -1,0 +1,137 @@
+
+{% set allocation = data.laPlaceholderSchoolAllocation %}
+{% set laptopsOrdered = data.laPlaceholderSchoolOrdered %}
+{% if data.features.iss %}
+  {% set typeOfPlaceholderSchool = "State-funded pupils in independent settings" %}
+{% else %}
+  {% set typeOfPlaceholderSchool = ">>> SOCIAL CARE LEAVERS <<<" %}
+{% endif %}
+
+{% extends "layout.html" %}
+  {% set title = 'How to order' %}
+{% block pageTitle %}Order laptops for local authority funded pupils{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: typeOfPlaceholderSchool,
+        href: "/school"
+      },
+      {
+        text: "Get laptops",
+        href: "/responsible-body/devices/placeholder-schools"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
+
+      <h2 class="govuk-heading-m">
+        These laptops are currently in stock:
+      </h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          Google Chromebooks
+        </li>
+        <li>
+          Standard Windows laptops
+        </li>
+        <li>
+          DfE Restricted Windows laptops — low stock, delivery may take longer than 5 working days
+        </li>
+      </ul>
+      {% if data.features.iss %}
+        <p class="govuk-body">
+          <a href="/responsible-body/devices/placeholder-schools/laptops-types-for-placeholder-schools" class="govuk-link">It’s important to check you’re ordering the best type of laptop for each pupil.</a>
+        </p>
+      {% else %}
+        <p class="govuk-body">
+          >>> SOCIAL CARE LEAVERS <<<
+        </p>
+      {% endif %}
+
+    <h2 class="govuk-heading-m">Chromebooks</h2>
+      {% if data["la-chromebook-preference"] == "yes-la-chromebooks" %}
+          <p>You’ve told us you’ll order Chromebooks – <a href="/responsible-body/devices/placeholder-schools/chromebooks">Change <span class="govuk-visually-hidden">Chromebook preference</span></a></p>
+        <div class="govuk-inset-text">
+        <p>
+          You can order straight away. After you place your order you’ll get an email asking for:
+        </p>
+        {% if data.features.iss %}
+          {% include "_shared/responsible-body/la-funded-places/_chromebook-details-description.html" %}
+        {% else %}
+          <p class="govuk-body">
+            >>> SOCIAL CARE LEAVERS <<<
+          </p>
+        {% endif %}
+        </div>
+      {% elif data["la-chromebook-preference"] == "no-la-chromebooks" %}
+          <p>
+            You have told us you will not order Chromebooks – <a href="/responsible-body/devices/placeholder-schools/chromebooks">Change <span class="govuk-visually-hidden">your preference for ordering Chromebooks</span></a>
+          </p>
+      {% else %}
+        <div class="govuk-inset-text">
+          <p>
+            <strong>
+              You have not told us if you plan to order Google Chromebooks
+            </strong>
+          </p>
+          <p>
+            If you order Chromebooks without letting us know first, they’ll be delivered without safeguarding settings and access to G Suite for Education.
+          </p>
+          <a href="/responsible-body/devices/placeholder-schools/chromebooks" class="govuk-link">
+            Tell us if you’ll order Google Chromebooks
+          </a>
+        </div>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">Your laptops will be delivered to:</h2>
+      <p class="govuk-body">
+        {% for items in data.rbAddress %}
+          {{ items }}<br>
+        {% endfor %}
+      </p>
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Contact us to change your delivery address.</a>
+      </p>
+    <h2 class="govuk-heading-m">Information for your order</h2>
+      <p class="govuk-body">
+        You’ll place your order on a website called TechSource.
+      </p>
+      {# Could cap this length or use the first word? #}
+      <p class="govuk-body">
+        When you’re asked for a URN, use ‘<strong>scl {{ data.rb | lower }}</strong>’.
+      </p>
+      <p class="govuk-body">
+        If you place an order for more than {{ allocation - laptopsOrdered }} laptop{% if allocation != 1 %}s{% endif %}, your order will be cancelled.
+      </p>
+      {% if allocation != 1 %}
+        <p>
+          You can order all of your laptops at once, or place multiple orders.
+        </p>
+      {% endif %}
+      <h2 class="govuk-heading-m">How to sign in to TechSource for the first time</h2>
+        <p>Use these details to sign in:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>User ID: [email address]</li>
+        <li>Password: Use the ‘Forgotten password’ link to set a password the first time you sign in</li>
+      </ul>
+      {% include '_shared/order/_start-now.html' %}
+
+  </div>
+</div>
+{% endblock %}
