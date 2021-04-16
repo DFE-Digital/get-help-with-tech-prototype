@@ -1,23 +1,14 @@
 {% extends "_wizard-form.html" %}
-{% set allocation = data.laFundedPlacesAllocation %}
-{% set title = "You’ve been allocated " + data['school-details'].allocation + " laptops" %}
+{% set title = "You’ve been allocated " + " devices" %}
 
 {% block form %}
-
-  {% if data.features.iss %}
-    <h1 class="govuk-heading-xl">
-      {{ data.rb }} has been allocated <span class="app-no-wrap">{{ allocation }} laptop{% if allocation != 1 %}s{% endif %}</span>
-    </h1>
-    {% include "_shared/responsible-body/la-funded-places/_allocation-description.html" %}
-  {% else %}
-    <h1 class="govuk-heading-xl">
-      You’ve been allocated <span class="app-no-wrap">{{ data['school-details'].allocation }} laptops</span>
-    </h1>
-    <p>Your allocation of {{ data['school-details'].allocation }} laptops is based on:</p>
-    {% include "_shared/school/_allocation-description.html" %}
-    <p class="govuk-!-margin-bottom-6"><a href="https://get-help-with-tech.education.gov.uk/devices/device-allocations" target="_blank">Read more about allocations</a></p>
-  {% endif %}
-
-  <!-- <p>Numbers will be reassessed at the time of ordering based on availability and the extent of coronavirus restrictions.</p> -->
-
+  <h1 class="govuk-heading-xl">
+    You’ve been allocated <span class="app-no-wrap">{{ data.user.deviceAllocation }} devices</span>
+  </h1>
+  {% include "_shared/school/_allocation-description.html" %}
+  <p class="govuk-!-margin-bottom-6">
+    <a href="https://get-help-with-tech.education.gov.uk/devices/device-allocations" target="_blank">
+      Read more about allocations
+    </a>
+  </p>
 {% endblock %}

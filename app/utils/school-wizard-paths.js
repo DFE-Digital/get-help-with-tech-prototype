@@ -13,9 +13,9 @@ function schoolWizardPaths (req) {
     '/school/privacy',
     ...isLAFundedUser ? [] : ['/school/allocation'],
     // ...isFirstUser ? ['/school/other-ordering'] : [],
-    ...isLAFundedUser ? [] : ['/school/devices-you-can-order'],
-    ...(isLAFundedUser || data.features['order-in-service']) ? [] : ['/school/chromebooks'],
-    ...(isLAFundedUser || data.features['order-in-service']) ? [] : ['/school/what-next'],
+    // ...isLAFundedUser ? [] : ['/school/devices-you-can-order'],
+    // ...(isLAFundedUser || data.features['order-in-service']) ? [] : ['/school/chromebooks'],
+    // ...(isLAFundedUser || data.features['order-in-service']) ? [] : ['/school/what-next'],
     '/school'
   ]
 

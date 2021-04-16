@@ -6,9 +6,17 @@ const schoolsInResponsibleBody = require('./responsible-body-schools')
 const schoolDetails = require('./school-details')
 
 module.exports = {
+  user: {
+    email: 'name@example.com',
+    org_type_is_school: true,
+    setting: 'Primary school',
+    institution_type: 'School',
+    deviceAllocation: 150,
+    ordered: 0
+  },
   signedInHomePath: '/responsible-body',
-  laFundedPlacesAllocation: 1,
-  laFundedPlacesOrdered: 0,
+  laPlaceholderSchoolAllocation: 1,
+  laPlaceholderSchoolOrdered: 0,
   trust: false,
   rb: 'Isle of Wight',
   rbAddress: [
@@ -22,6 +30,7 @@ module.exports = {
   routersOrdered: 0,
   'who-orders-laptops': 'central',
   features: {
+    socialCare: true,
     iss: false,
     push: true,
     mno: true,
@@ -37,7 +46,7 @@ module.exports = {
     'bulk-upload': true,
     'in-connectivity-pilots': true,
     'request-devices-google-form': true,
-    'order-in-service': true
+    'order-in-service': false
   },
   mno: {
     requests: fakeMnoRequests
