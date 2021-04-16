@@ -3,7 +3,7 @@
 
 {% block form %}
   <h1 class="govuk-heading-xl">
-    You’ve been allocated <span class="app-no-wrap">{{ data.user.deviceAllocation }} devices</span>
+    You’ve been allocated <span class="app-no-wrap">{{ data.user.devices.allocation }} devices</span>
   </h1>
   {% include "_shared/school/_allocation-description.html" %}
   <p class="govuk-!-margin-bottom-6">

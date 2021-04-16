@@ -1,9 +1,5 @@
 {% extends "layout.html" %}
-{% if data.features.iss %}
-  {% set title = "State-funded pupils in independent settings" %}
-{% else %}
-  {% set title = data['school-details'].name %}
-{% endif %}
+  {% set title = data.user.setting.name %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -33,134 +29,23 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    {% if data.features['order-in-service'] %}
-      {{ sectionNav('Order devices', '/school/devices/order-in-service', ['to order laptops, tablets and 4G wireless routers.']) }}
-    {%   elseif data.features.iss %}
-    <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/responsible-body/devices/la-funded-pupils">Get laptops</a>
-    {% else %}
-      <a href="/school/devices/order-lockdown">Order devices</a>
-    {% endif %}
-    </h2>
-    {% if not data.features['order-in-service'] %}
-    <p>Use this section to:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>see how many laptops you have been allocated</li>
-      <li>place orders on the TechSource website</li>
-    {% endif %}
-    </ul>
-
-    {% if data.features['order-in-service'] %}
-      {{ sectionNav('Request mobile data', '/school/internet', ['to get extra mobile phone data for pupils.']) }}
-    {% elif data.features['school-mno'] %}
-      <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/school/internet">Get internet access</a>
-      </h2>
-      <p>Use this section to:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>request extra data for mobile devices</li>
-        <li>check the status of your data requests</li>
-        <li>request 4G wireless routers</li>
-      </ul>
-    {% endif %}
-
-    {% if data.features.donated and not (data.features.iss or data.features['order-in-service']) %}
-      {% if data['donated-opted-in'] %}
-        <h2 class="govuk-heading-l govuk-!-font-size-27">
-          <a href="/school/donated/opted-in">Daily Mail donated devices scheme</a>
-        </h2>
-        <p>Your school has opted in. Use this section to:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>check your delivery address and device preferences</li>
-          <li>read more about the scheme</li>
-        </ul>
-      {% else %}
-        <h2 class="govuk-heading-l govuk-!-font-size-27">
-          <a href="/school/donated">Opt in to the Daily Mail’s donated devices scheme</a>
-        </h2>
-        <p>Use this section to:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>opt in and be considered for devices donated through their scheme</li>
-          <li>set a preference for devices you want</li>
-        </ul>
-      {% endif %}
-    {% endif %}
-
-    {% if data.features['school-mno'] and not data.features.push %}
-      <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/school/specific-circumstances">Get help for specific circumstances</a>
-      </h2>
-      <p>Use this section to:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>understand when children and students can get support</li>
-        <li>see what help they can get</li>
-      </ul>
-    {% elseif not data.features.push %}
-      <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/school/devices/request-devices">Request devices for specific circumstances</a>
-      </h2>
-      <p>Use this section to request devices for children or students who:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>are shielding on official advice</li>
-        <li>cannot attend school because they live in a different area with coronavirus restrictions</li>
-      </ul>
-    {% endif %}
-
-    {% if not data.features['order-in-service'] %}
-      <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/school/devices/check">Check your details</a>
-      </h2>
-
-      <p>Use this section to:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>review your allocation</li>
-        <li>change your Chromebook settings</li>
-      </ul>
-    {% endif %}
-
-    {% if data.features['order-in-service'] %}
+      {{ sectionNav('
+        Order devices', 
+        '/school/devices/order-in-service', 
+        ['to order laptops, tablets and 4G wireless routers']) 
+      }}
+      {{ sectionNav('
+        Request mobile data', 
+        '/school/internet', 
+        ['to get extra mobile phone data for pupils']) 
+      }}
       </div>
       <div class="govuk-column-two-thirds">
-    {% endif %}
-
-    {% if data.features['order-in-service'] %}
       <ul class="govuk-list govuk-list--spaced">
         <li><a href="/school/your-orders">View your orders</a></li>
         <li><a href="/school/users">Invite a colleague</a></li>
-      </h2>
       </ul>
-    {% else %}
-      <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/school/users">Manage users</a>
-      </h2>
-    {% endif %}
-    {% if not data.features['order-in-service'] %}
-      <p>Use this section to give others:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>access to this service</li>
-        <li>access to the TechSource website (where they’ll place orders)</li>
-      </ul>
-    {% endif %}
-  </div>
-
-  {% if not data.features['order-in-service'] %}
-  <div class="govuk-grid-column-one-third">
-    <div class="app-survey-container">
-      <h3 class="govuk-heading-l govuk-!-font-size-27">
-        Give feedback
-      </h3>
-      {# For production – change 'school to @school.institution_type' #}
-      <p class="govuk-body">
-        Help us understand the impact this programme has had on your school.
-      </p>
-      <p class="govuk-body govuk-!-margin-bottom-1">
-        <a href="#">
-          Complete a survey
-        </a>
-      </p>
     </div>
   </div>
-{% endif %}
-
 </div>
 {% endblock %}

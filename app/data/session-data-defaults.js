@@ -8,11 +8,16 @@ const schoolDetails = require('./school-details')
 module.exports = {
   user: {
     email: 'name@example.com',
-    org_type_is_school: true,
-    setting: 'Primary school',
-    institution_type: 'School',
-    deviceAllocation: 150,
-    ordered: 0
+    setting: {
+      org_type_is_school: true,
+      name: 'Pool Hayes Primay School',
+      type: 'Primary school',
+      institution: 'school',
+    },
+    devices: {
+      allocation: 150,
+      ordered: 0
+    }
   },
   signedInHomePath: '/responsible-body',
   laPlaceholderSchoolAllocation: 1,

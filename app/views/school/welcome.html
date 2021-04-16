@@ -1,49 +1,16 @@
 {% extends "_wizard-form.html" %}
 
-{% if data.features.iss %}
-  {% set title = "Get laptops for state-funded pupils at independent settings" %}
-{% else %}
-  {% set title = "You’re signed in as " + data['school-details'].name %}
-{% endif %}
+{% set title = "You’re signed in as " + data.user.setting.name %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
-    {% if data.features.iss %}
-      Get laptops and internet access for <span class="app-no-wrap">state-funded</span> pupils at independent settings
-    {% else %}
-      {{ title }}
-    {% endif %}
+    You’re signed in as <span class="app-no-wrap">{{ data.user.setting.name }}</span>
   </h1>
 
-{% if data.features.iss %}
-  <p>
-    Laptops are available for state-funded pupils that {{ data.rb }} funds to attend independent special schools or independent alternative provision.
-  </p>
-  <p>
-    Use this service to:
-  </p>
-  <ul class="govuk-list govuk-list--bullet">
-    <li>
-      check you’ve been allocated the correct number of laptops
-    </li>
-    <li>
-      place orders for laptops
-    </li>
-    <li>
-      request internet access for eligible pupils
-    </li>
-  </ul>
-{% else %}
-  <p>You can use this service to:</p>
+  <p>Use this service to:</p>
   <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-    {% if data.features['order-in-service'] %}
-      <li>place orders</li>
-    {% else %}
-      <li>access the Computacenter TechSource website to place orders</li>
-      <li>give us technical details for Chromebooks if you’ll be ordering them</li>
-    {% endif %}
-    <li>check how many devices you can order</li>
-    <li>manage who can use this service</li>
+    <li>see how many devices your {{ data.user.setting.institution }} has been allocated</li>
+    <li>order devices</li>
+    <li>request internet access</li>
   </ul>
-{% endif %}
 {% endblock %}
