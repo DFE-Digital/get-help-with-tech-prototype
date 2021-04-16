@@ -78,12 +78,8 @@
     containerClasses: "govuk-width-container",
     navigation: [
       {
-        href: "/",
-        text: "Guidance"
-      },
-      {
         href: "/sign-out" if data['sign-in-email-address-rb'] else "/account/sign-in-responsible-body",
-        text: "Sign out" if data['sign-in-email-address-rb'] else "Sign in"
+        text: "Sign out" if data['sign-in-email-address-rb'] else "Your account"
       }
     ]
   }) }}
