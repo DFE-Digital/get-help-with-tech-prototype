@@ -4,7 +4,7 @@
 {% if data.features.iss %}
   {% set typeOfPlaceholderSchool = "State-funded pupils in independent settings" %}
 {% else %}
-  {% set typeOfPlaceholderSchool = ">>> SOCIAL CARE LEAVERS <<<" %}
+  {% set typeOfPlaceholderSchool = "Care leavers" %}
 {% endif %}
 
 {% extends "layout.html" %}
@@ -60,10 +60,9 @@
         </p>
       {% else %}
         <p class="govuk-body">
-          >>> SOCIAL CARE LEAVERS <<<
+          It’s important to check you’re ordering the best type of laptop for each care leaver.
         </p>
       {% endif %}
-
     <h2 class="govuk-heading-m">Chromebooks</h2>
       {% if data["la-chromebook-preference"] == "yes-la-chromebooks" %}
           <p>You’ve told us you’ll order Chromebooks – <a href="/responsible-body/devices/placeholder-schools/chromebooks">Change <span class="govuk-visually-hidden">Chromebook preference</span></a></p>
@@ -74,9 +73,17 @@
         {% if data.features.iss %}
           {% include "_shared/responsible-body/la-funded-places/_chromebook-details-description.html" %}
         {% else %}
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            the domain the educational setting has registered for G Suite for Education, for example ‘school.co.uk’
+          </li>
+           <li>
+            a recovery email address. This should be on a separate domain to the one registered for G Suite for Education. For example, if the domain registered for G Suite for Education is ‘school.com’, the recovery email cannot be ‘recovery@school.com’
+          </li>
+        </ul>
           <p class="govuk-body">
-            >>> SOCIAL CARE LEAVERS <<<
-          </p>
+        The educational setting's IT support should be able to give you this information.
+        </p>
         {% endif %}
         </div>
       {% elif data["la-chromebook-preference"] == "no-la-chromebooks" %}

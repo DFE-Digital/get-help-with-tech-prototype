@@ -1,33 +1,39 @@
 <p>
   Depending on availability, you can choose from:
 </p>
-<h2 class="govuk-heading-s">
+<h2 class="govuk-heading-m">
   Standard Windows laptops
 </h2>
 <p>
   You’ll be responsible for arranging and maintaining safeguarding measures, like content filtering.
 </p>
-<h2 class="govuk-heading-s">
+<h2 class="govuk-heading-m">
   DfE Restricted Windows laptops
 </h2>
 <p>
-  These have temporary safeguarding settings installed — content filtering and mobile device management software — which you’ll need to replace when they expire on 30 September 2021. You’ll need to reset these devices before you can apply new settings, or download some types of software
+  These have temporary safeguarding settings installed - content filtering and mobile device management software - which you’ll need to replace before they expire on 30 September 2021. You’ll need to reset these devices before you can apply new settings, or download some types of software.
 </p>
-<h2 class="govuk-heading-s">
+<h2 class="govuk-heading-m">
   Google Chromebooks
 </h2>
 {% if data.features.iss %}
 <p>
-  You’ll need to provide us with the relevant school’s email domain for <span class="app-no-wrap">G Suite for Education</span>, and a recovery email address.
+  You’ll need to provide us with the relevant school’s email domain for <span class="app-no-wrap">Google Workspace for Education Fundamentals (formerly G Suite for Education)</span>, and a recovery email address.
 </p>
 {% elif data.features.socialCare %}
-<p>
-  >>> SOCIAL CARE LEAVERS <<<
+  <h2 class="govuk-heading-s">Ordering for care leavers in education</h2>
+  <p>After you order, we'll ask you for each educational setting's email domain for Google Workspace for Education Fundamentals (formerly G Suite for Education), and a recovery email address. Each setting's IT team should be able to give you this information.
 </p>
+  <h2 class="govuk-heading-s">Ordering for care leavers who are not in education</h2> 
+  <p>If we cannot link a Chromebook to a Google Workspace for Education domain, it will not be secure. Your LA can choose to:</p> 
+  <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+        <li>order a Windows laptop instead</li>
+        <li><a href="/devices/google-domain-for-care-leavers-and-children-with-social-worker">set up and manage a Google domain</a></li>
+        <li>distribute the device unsecured - <a href="/devices/safeguarding-for-device-users">read our guidance on safeguarding before making this choice</a></li>
+        </ul>
 {% else %}
 <p>
   You’ll need to provide us with your school’s email domain for <span class="app-no-wrap">G Suite for Education</span>, and a recovery email address.
 </p>
 {% endif %}
 <p><a href="#">See detailed laptop specifications</a></p>
-<p class="govuk-!-margin-bottom-6">You can also request 4G wireless routers.</p>

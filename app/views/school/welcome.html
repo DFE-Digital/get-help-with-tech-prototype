@@ -3,7 +3,7 @@
 {% if data.features.iss %}
   {% set title = "Get laptops for state-funded pupils at independent settings" %}
 {% elif data.features.socialCare %}
-  {% set title = ">>> SOCIAL CARE LEAVERS <<<" %}
+  {% set title = "Order laptops and internet access for care leavers" %}
 {% else %}
   {% set title = "You’re signed in as " + data['school-details'].name %}
 {% endif %}
@@ -37,8 +37,22 @@
   </ul>
 {% elif data.features.socialCare %}
   <p>
-    >>> SOCIAL CARE LEAVERS <<<
+    You can now order laptops for care leavers aged 16 to 25 who do not have access to a laptop or tablet from any other source.
   </p>
+  <p>
+    Use this service to:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      check you’ve been allocated the correct number of laptops
+    </li>
+    <li>
+      place orders for laptops
+    </li>
+    <li>
+      request internet access for eligible care leavers
+    </li>
+  </ul>
 {% else %}
   <p>You can use this service to:</p>
   <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
