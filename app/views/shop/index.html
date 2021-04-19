@@ -20,7 +20,13 @@
     ]
   }  | decorateFormAttributes('shop-devices') ) }}
 
-  <p>Read more about <a href="https://get-help-with-tech.education.gov.uk/devices/device-specification">device specifications</a>.</p>
+  <p>
+    <a href="https://get-help-with-tech.education.gov.uk/devices/device-specification">
+      Read more about device specifications
+    </a>
+  </p>
 
-  <p class="govuk-!-margin-bottom-6">Your school or college will own the devices. It’s up to you to decide who will benefit most from them.</p>
+  <p class="govuk-!-margin-bottom-6">
+    Your {{ data.user.setting.institution }} will own the devices. It’s up to you to decide who will benefit most from them.
+  </p>
 {% endblock %}

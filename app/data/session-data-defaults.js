@@ -13,9 +13,14 @@ module.exports = {
       name: 'Pool Hayes Primay School',
       type: 'Primary school',
       institution: 'school',
+      end_user_group: 'pupil'
     },
-    devices: {
+    laptops_and_tablets: {
       allocation: 150,
+      ordered: 5
+    },
+    routers: {
+      allocation: 10,
       ordered: 0
     }
   },

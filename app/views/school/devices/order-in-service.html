@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Order devices" %}
-{% set lockdown = false %}
+{% set title = "Available devices" %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block pageNavigation %}
@@ -8,6 +7,10 @@
     items: [
       {
         text: "Home",
+        href: "#"
+      },
+      {
+        text: "Your account",
         href: "/school"
       },
       {
@@ -25,21 +28,56 @@
     </h1>
 
     <div class="app-order-card">
-      <h1 class="govuk-panel__title govuk-!-font-size-36 govuk-!-margin-bottom-2">
-        82 devices available
-      </h1>
-      <div class="govuk-panel__body govuk-!-font-size-24">
-        You’ve ordered 0 of 82 devices
-      </div>
+      <h2 class="govuk-panel__title govuk-!-font-size-27 govuk-!-margin-bottom-2">
+        {{ data.user.laptops_and_tablets.allocation - data.user.laptops_and_tablets.ordered }} laptop and tablets available
+      </h2>
+      <p class="">
+        You’ve ordered {{ data.user.laptops_and_tablets.ordered }} of {{ data.user.laptops_and_tablets.allocation }}
+      </p>
+      {{ govukButton({
+        text: 'Place an order',
+        href: '/school/shop',
+        classes: 'govuk-!-margin-bottom-0'
+      }) }}
     </div>
 
-    <p>Most orders will arrive within 5 working days of being confirmed, subject to stock availability.</p>
 
-    {{ govukButton({
-      text: 'Order devices',
-      href: '/school/shop',
-      classes: 'govuk-!-margin-top-4'
-    }) }}
+    <h2 class="govuk-heading-m">
+      Your allocation
+    </h2>
+
+    <h3 class="govuk-heading-s">
+      Laptop and tablets
+    </h3>
+    <p>
+      You have been allocated {{ data.user.laptops_and_tablets.allocation }} laptops and tablets. This is to provide a laptop or tablet for each {{ data.user.setting.end_user_group }} that does not have sole access to one.
+    </p>
+    <p>
+      <a href="#">Tell us if you need more devices</a>
+    </p>
+
+    <h3 class="govuk-heading-s">
+      Wireless routers
+    </h3>
+    {% if data.user.routers.allocation == 0 %}
+    <p>
+      You can get wireless routers for {{ data.user.setting.end_user_group }}s who do not have internet access at home.
+    </p>
+    <p>
+      <a href="#">Tell us if you need wireless routers</a>
+    </p>
+    {% else %}
+    <p>
+      You can order {{ data.user.routers.allocation - data.user.routers.ordered }} wireless routers.
+    </p>
+    <p>
+      <a href="#">Tell us if you need more wireless routers</a>
+    </p>
+    {% endif %}
+
+
+
+
   </div>
 </div>
 {% endblock %}

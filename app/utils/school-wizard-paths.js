@@ -11,7 +11,7 @@ function schoolWizardPaths (req) {
   var paths = [
     '/school/welcome',
     '/school/privacy',
-    ...isLAFundedUser ? [] : ['/school/allocation'],
+    // ...isLAFundedUser ? [] : ['/school/allocation'],
     // ...isFirstUser ? ['/school/other-ordering'] : [],
     // ...isLAFundedUser ? [] : ['/school/devices-you-can-order'],
     // ...(isLAFundedUser || data.features['order-in-service']) ? [] : ['/school/chromebooks'],
