@@ -15,8 +15,11 @@
         text: 'Google Chromebook'
       },
       {
+        text: 'Apple iPad'
+      },
+      {
         text: '4G wireless router'
-      } if data.routersAllocated > 0
+      } if (data.user.routers.allocation > 0) and (data.user.routers.allocation != data.user.routers.ordered)
     ]
   }  | decorateFormAttributes('shop-devices') ) }}
 

@@ -29,18 +29,36 @@
 
     <div class="app-order-card">
       <h2 class="govuk-panel__title govuk-!-font-size-27 govuk-!-margin-bottom-2">
-        {{ data.user.laptops_and_tablets.allocation - data.user.laptops_and_tablets.ordered }} laptop and tablets available
+        {% if data.user.laptops_and_tablets.allocation != data.user.laptops_and_tablets.ordered %}
+            {{ data.user.laptops_and_tablets.allocation - data.user.laptops_and_tablets.ordered }} laptop and tablets available
+        {% else %}
+            All laptops and tablets ordered
+        {% endif %}
       </h2>
-      <p class="">
+      <p>
         You’ve ordered {{ data.user.laptops_and_tablets.ordered }} of {{ data.user.laptops_and_tablets.allocation }}
       </p>
+
+      {% if data.user.routers.allocation > 0 %}
+        <h2 class="govuk-panel__title govuk-!-font-size-27 govuk-!-margin-bottom-2">
+        {% if data.user.routers.allocation != data.user.routers.ordered %}
+          {{ data.user.routers.allocation - data.user.routers.ordered }} routers available
+        {% else %}
+          All routers ordered
+        {% endif %}
+        </h2>
+        <p>
+          You’ve ordered {{ data.user.routers.ordered }} of {{ data.user.routers.allocation }} routers
+        </p>
+      {% endif %}
+
       {{ govukButton({
         text: 'Place an order',
         href: '/school/shop',
         classes: 'govuk-!-margin-bottom-0'
       }) }}
-    </div>
 
+    </div>
 
     <h2 class="govuk-heading-m">
       Your allocation
@@ -50,33 +68,38 @@
       Laptop and tablets
     </h3>
     <p>
-      You have been allocated {{ data.user.laptops_and_tablets.allocation }} laptops and tablets. This is to provide a laptop or tablet for each {{ data.user.setting.end_user_group }} that does not have sole access to one.
+      You’ve been allocated {{ data.user.laptops_and_tablets.allocation }} laptops and tablets. This is to provide a laptop or tablet for each {{ data.user.setting.end_user_group }} that does not have sole access to one.
     </p>
     <p>
       <a href="#">Tell us if you need more devices</a>
     </p>
 
     <h3 class="govuk-heading-s">
-      Wireless routers
+      4G wireless routers
     </h3>
+
     {% if data.user.routers.allocation == 0 %}
-    <p>
-      You can get wireless routers for {{ data.user.setting.end_user_group }}s who do not have internet access at home.
-    </p>
-    <p>
-      <a href="#">Tell us if you need wireless routers</a>
-    </p>
+      <p>
+        You can get wireless routers for {{ data.user.setting.end_user_group }}s who do not have internet access at home.
+      </p>
+      <p>
+        <a href="#">Tell us if you need wireless routers</a>
+      </p>
+    {% elif data.user.routers.allocation == data.user.routers.ordered %}
+      <p>
+        You’ve order all the routers you told us you needed.
+      </p>
+      <p>
+        <a href="#">Tell us if you need wireless routers</a>
+      </p>
     {% else %}
-    <p>
-      You can order {{ data.user.routers.allocation - data.user.routers.ordered }} wireless routers.
-    </p>
-    <p>
-      <a href="#">Tell us if you need more wireless routers</a>
-    </p>
+      <p>
+        You can order {{ data.user.routers.allocation - data.user.routers.ordered }} 4G wireless routers.
+      </p>
+      <p>
+        <a href="#">Tell us if you need more wireless routers</a>
+      </p>
     {% endif %}
-
-
-
 
   </div>
 </div>

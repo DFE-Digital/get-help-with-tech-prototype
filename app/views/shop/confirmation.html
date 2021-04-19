@@ -1,6 +1,5 @@
 {% extends "_wizard-form.html" %}
 {% set notStandardForm = true %}
-{% set buttonText = "Return to service" %}
 {% set title = "Your order has been placed" %}
 
 {% block primary %}
@@ -23,7 +22,7 @@
 
       {{ govukButton({
         href: paths.next,
-        html: 'Return to service'
+        html: 'Finished'
       }) }}
     </div>
   </div>

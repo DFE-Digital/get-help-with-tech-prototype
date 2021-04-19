@@ -17,12 +17,15 @@ module.exports = {
     },
     laptops_and_tablets: {
       allocation: 150,
-      ordered: 5
+      ordered: 0
     },
     routers: {
-      allocation: 10,
+      allocation: 0,
       ordered: 0
     }
+  },
+  order: {
+    reference: 'QWER-001'
   },
   signedInHomePath: '/responsible-body',
   laPlaceholderSchoolAllocation: 1,
