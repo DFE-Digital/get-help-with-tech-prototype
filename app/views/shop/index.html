@@ -33,6 +33,10 @@
     <p class="govuk-!-margin-bottom-6">
       Your {{ data.user.setting.institution }} will own the devices. It’s up to you to decide who will benefit most from them.
     </p>
+    </div>
+    </div>
+    <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
     {% for item in data.device_groups %}
       {% set deviceGroup = loop.index0 %}
@@ -64,5 +68,4 @@
       {% endfor %}
     {% endfor %}
     </div>
-  </div>
 {% endblock %}

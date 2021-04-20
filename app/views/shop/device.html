@@ -29,6 +29,47 @@
       <h1 class="govuk-heading-xl">
         {{ data['order-devices'].name }}
       </h1>
+      {% if data['order-devices'].generic == true  %}
+        <p>
+          The {{ data['order-devices'].type }}s you get will from 1 or more of these brands:
+        </p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+          {% for brand in data['order-devices'].brands %}
+            <li>
+              {{ brand }}
+            </li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      <table class="govuk-table">
+        {% if data['order-devices'].generic == true  %}
+          <caption class="govuk-table__caption govuk-table__caption--m">Minimum specification</caption>
+        {% else %}
+          <caption class="govuk-table__caption govuk-table__caption--m">Specification</caption>
+        {% endif %}
+        <tbody class="govuk-table__body">
+        {% for category, specification in data['order-devices'].overview %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              {{ category }}
+            </th>
+            <td class="govuk-table__cell">
+              {{ specification }}
+            </td>
+          </tr>
+        {% endfor %}
+        {% for category, specification in data['order-devices'].specification %}
+            <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              {{ category }}:
+            </th>
+            <td class="govuk-table__cell">
+              {{ specification }}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      </table>
       {{ govukButton({
         text: 'Add to basket',
         href: '/shop/devices/how-many',

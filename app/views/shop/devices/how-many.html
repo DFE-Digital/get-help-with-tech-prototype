@@ -43,14 +43,14 @@
       {{ govukRadios({
       fieldset: {
         legend: {
-          text: "How many " + data['order-devices'].name + " are you ordering?",
+          text: "How many " + data['order-devices'].name + "s are you ordering?",
           classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
           isPageHeading: true
         }
       },
       items: [
         {
-          text: 'Our full allocation of ' + data.user.laptops_and_tablets.allocation + ' devices',
+          text: 'Our full allocation of ' + data.user.laptops_and_tablets.allocation + ' ' + data['order-devices'].type + 's',
           value: 'all'
         },
         {
