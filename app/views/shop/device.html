@@ -27,14 +27,15 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        {{ data['order-devices'].name }}
+        {{ deviceData.name }}
       </h1>
-      {% if data['order-devices'].generic == true  %}
+
+      {% if deviceData.generic == true  %}
         <p>
-          The {{ data['order-devices'].type }}s you get will from 1 or more of these brands:
+          The {{ deviceData.type }}s you get will from 1 or more of these brands:
         </p>
           <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-          {% for brand in data['order-devices'].brands %}
+          {% for brand in deviceData.brands %}
             <li>
               {{ brand }}
             </li>
@@ -42,13 +43,13 @@
           </ul>
         {% endif %}
       <table class="govuk-table">
-        {% if data['order-devices'].generic == true  %}
+        {% if deviceData.generic == true  %}
           <caption class="govuk-table__caption govuk-table__caption--m">Minimum specification</caption>
         {% else %}
           <caption class="govuk-table__caption govuk-table__caption--m">Specification</caption>
         {% endif %}
         <tbody class="govuk-table__body">
-        {% for category, specification in data['order-devices'].overview %}
+        {% for category, specification in deviceData.overview %}
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">
               {{ category }}
@@ -58,7 +59,7 @@
             </td>
           </tr>
         {% endfor %}
-        {% for category, specification in data['order-devices'].specification %}
+        {% for category, specification in deviceData.specification %}
             <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">
               {{ category }}:

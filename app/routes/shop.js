@@ -72,7 +72,7 @@ module.exports = router => {
     req.session.data['order-devices'] = deviceData
     req.session.data['devices-group-id'] = groupId
     req.session.data['device-id'] = deviceId
-    res.render('shop/device')
+    res.render('shop/device', {deviceData})
   } )
 
   router.get(['/school/shop/:view', '/responsible-body/shop/:view'], function (req, res) {
