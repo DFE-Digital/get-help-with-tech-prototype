@@ -35,11 +35,11 @@
     </p>
 
     {% for item in data.device_groups %}
-      {% set deviceGroup = loop.index %}
+      {% set deviceGroup = loop.index0 %}
       <h2 class="govuk-heading-l">{{ item.group_name }}</h2>
       {% for device in item.devices %}
         <h3 class="govuk-heading-m">
-          <a href="/shop/devices/windows-laptop">
+          <a href="/school/shop/device?id={{ deviceGroup }}{{ loop.index0 }}">
             {{ device.name }}
           </a>
         </h3>
@@ -50,16 +50,16 @@
             Specification:
           {% endif %}
         </h4>
-        <dl>
+        <div class="data-l">
           {% for category, specification in device.overview %}
-            <dt>
+            <div class="data-t">
               {{ category }}:
-            </dt>
-            <dd>
+            </div>
+            <div class="data-d">
               {{ specification }}
-            </dd>
+            </div>
           {% endfor %}
-        </dl>
+        </div>
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
       {% endfor %}
     {% endfor %}

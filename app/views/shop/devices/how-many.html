@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% set title = "How many " + data['order-devices'].name + "s" %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Your account",
+        href: "/school/"
+      },
+      {
+        text: "Available devices",
+        href: "/school/devices/order-in-service"
+      },
+      {
+        text: "Which devices are you ordering?",
+        href: "/school/devices/shop"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <form action="/school/shop/address" method="post" novalidate>
+      {% set howManyHtml %}
+        {{ govukInput({
+          label: {
+            text: "How many " + data['order-devices'].name + "s?"
+          },
+          name: 'shop-amount-number-ordered',
+          classes: 'govuk-input--width-4'
+        } ) }}
+      {% endset %}
+      {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: "How many " + data['order-devices'].name + " are you ordering?",
+          classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          text: 'Our full allocation of ' + data.user.laptops_and_tablets.allocation + ' devices',
+          value: 'all'
+        },
+        {
+          text: 'Less than our allocation',
+          value: 'some',
+          conditional: {
+            html: howManyHtml
+          }
+        }
+      ]
+    }  | decorateFormAttributes('shop-amount-choice') ) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% set title = "Microsoft Windows laptop" %}
+{% set title = "Microsoft Windows laptops" %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
@@ -33,12 +33,41 @@
       <h1 class="govuk-heading-xl">
         {{ title }}
       </h1>
-      <p>
-        This is the minimum specification for this laptop.
+      <p class="govuk-!-margin-bottom-1">
+        Your laptops will from one or some of these manufacturers:
       </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Asus</li>
+        <li>Dell</li>
+        <li>HP</li>
+      </ul>
+      <h2 class="govuk-heading-m">
+        Minimum specification:
+      </h2>
+      <div class="data-large">
+        <div class="data-t">
+          Operating system:
+        </div>
+        <div class="data-d">
+          Windows education pro
+        </div>
+        <div class="data-t">
+          Screen size:
+        </div>
+        <div class="data-d">
+          15 inch
+        </div>
+        <div class="data-t">
+          Memory:
+        </div>
+        <div class="data-d">
+          4 GB
+        </div>
+      </div>
       {{ govukButton({
         text: 'Add to basket',
-        href: '/school/shop'
+        href: '/shop/devices/how-many',
+        classes: 'govuk-!-margin-top-6'
       }) }}
     </div>
   </div>

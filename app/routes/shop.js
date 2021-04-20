@@ -65,8 +65,32 @@ module.exports = router => {
     res.render('shop/index', { paths: shopWizardPaths(req) })
   })
 
+  router.get('/school/shop/device', (req, res) => {
+    var groupId = req.query.id.split('')[0]
+    var deviceId = req.query.id.split('')[1]
+    var deviceData = req.session.data.device_groups[groupId].devices[deviceId]
+    req.session.data['order-devices'] = deviceData
+    req.session.data['devices-group-id'] = groupId
+    req.session.data['device-id'] = deviceId
+    res.render('shop/device')
+  } )
+
   router.get(['/school/shop/:view', '/responsible-body/shop/:view'], function (req, res) {
     res.render(`shop/${req.params.view}`, { paths: shopWizardPaths(req) })
+  })
+
+  router.post('/school/shop/address', (req, res) => {
+    const amountOrdered = req.session.data['shop-amount-choice']
+    if (amountOrdered === 'all') {
+      res.redirect('/school/shop/address')
+    } else {
+      var groupId = req.session.data['devices-group-id']
+      var deviceId = req.session.data['device-id']
+      console.log(req.session.data)
+      req.session.data.device_groups[groupId].devices[deviceId].numberOrdered = req.session.data['shop-amount-number-ordered']
+      console.log(req.session.data.device_groups[groupId].devices[deviceId])
+      res.redirect('/school/shop')
+    }
   })
 
   router.post(['/school/shop*', '/responsible-body/shop*'], function (req, res) {

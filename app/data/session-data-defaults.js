@@ -30,19 +30,19 @@ module.exports = {
       devices: [
         {
           name: "Windows laptop",
-          url: "windows-laptop",
           generic: true,
+          numberOrdered: 0,
           overview: {
             "Operating system": "Windows 10 pro education",
             "Screen size": "11 inch",
             "Memory": "4 GB",
             "Hard disk size": "32 GB"
-          }
+          },
         },
         {
           name: "Chromebook",
-          url: "chromebook",
           generic: true,
+          numberOrdered: 0,
           overview: {
             "Operating system": "Chrome OS",
             "Screen size": "11 inch",
@@ -57,7 +57,6 @@ module.exports = {
       devices: [
         {
           name: "Apple iPad",
-          url: "apple-ipad",
           generic: false,
           overview: {
             "Operating system": "iPad OS",
@@ -68,7 +67,6 @@ module.exports = {
         },
         {
           name: "Windows tablet",
-          url: "windows-tablet",
           generic: true,
           overview: {
             "Operating system": "Windows 10 pro education",

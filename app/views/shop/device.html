@@ -27,9 +27,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        {{ title }}
-        {{ id }}
+        {{ data['order-devices'].name }}
       </h1>
+      {{ govukButton({
+        text: 'Add to basket',
+        href: '/shop/devices/how-many',
+        classes: 'govuk-!-margin-top-6'
+      }) }}
     </div>
   </div>
 {% endblock %}

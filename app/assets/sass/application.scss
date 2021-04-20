@@ -252,16 +252,32 @@ $govuk-assets-path: '/govuk/assets/';
   text-decoration-line: none;
 }
 
-dl {
+.data-l {
   overflow: hidden;
   @extend .govuk-body-s;
-  dt {
+  .data-t {
     clear: left;
     float: left;
     display: block;
     width: 40%;
   }
-  dd {
+  .data-d {
+    margin-left: 0px;
+    width: 60%;
+    display: inline-block;
+  }
+}
+
+.data-large {
+  overflow: hidden;
+  @extend .govuk-body;
+  .data-t {
+    clear: left;
+    float: left;
+    display: block;
+    width: 40%;
+  }
+  .data-d {
     margin-left: 0px;
     width: 60%;
     display: inline-block;
