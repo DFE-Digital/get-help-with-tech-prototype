@@ -24,13 +24,13 @@ module.exports = {
       ordered: 0
     }
   },
-  device_groups: [
     {
       group_name: "Windows laptops",
       devices: [
         {
           name: "Chromebook",
           url: "#",
+          generic: true,
           details: { 
             "Brand": "HP",
             "Operating system": "Chrome OS",
