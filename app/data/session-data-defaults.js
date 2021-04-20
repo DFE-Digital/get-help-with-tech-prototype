@@ -24,6 +24,55 @@ module.exports = {
       ordered: 0
     }
   },
+  device_groups: [
+    {
+      group_name: "Windows laptops",
+      devices: [
+        {
+          name: "Chromebook",
+          url: "#",
+          details: { 
+            "Brand": "HP",
+            "Operating system": "Chrome OS",
+            "Screen size": "14 inch",
+            "Memory": "4 GB",
+            "Hard disk size": "32 GB"
+          }
+        },
+        {
+          name: "Windows tablet",
+          url: "#"
+        }
+      ]
+    },
+    {
+      group_name: "Chromebooks",
+      devices: [
+        {
+          name: "Chromebook",
+          url: "HP"
+        }
+      ]
+    },
+    {
+      group_name: "Tablets",
+      devices: [
+        {
+          name: "Apple iPad",
+          url: "#",
+          manufacturer: "Apple"
+        },
+        {
+          name: "Windows tablet",
+          url: "#"
+        }
+      ]
+    },
+    {
+      group_name: "Routers",
+      devices: []
+    }
+  ],
   order: {
     reference: 'QWER-001'
   },

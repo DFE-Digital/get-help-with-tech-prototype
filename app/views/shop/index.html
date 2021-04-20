@@ -6,30 +6,26 @@
     {{ title }}
   </h1>
 
-  {{ govukCheckboxes({
-    items: [
-      {
-        text: 'Microsoft Windows laptop'
-      },
-      {
-        text: 'Google Chromebook'
-      },
-      {
-        text: 'Apple iPad'
-      },
-      {
-        text: '4G wireless router'
-      } if (data.user.routers.allocation > 0) and (data.user.routers.allocation != data.user.routers.ordered)
-    ]
-  }  | decorateFormAttributes('shop-devices') ) }}
-
-  <p>
-    <a href="https://get-help-with-tech.education.gov.uk/devices/device-specification">
-      Read more about device specifications
-    </a>
-  </p>
-
   <p class="govuk-!-margin-bottom-6">
     Your {{ data.user.setting.institution }} will own the devices. It’s up to you to decide who will benefit most from them.
   </p>
+
+  {% for item in data.device_groups %}
+    <h2 class="govuk-heading-l">{{ item.group_name }}</h2>
+    {% for device in item.devices %}
+      <h3 class="govuk-heading-s"><a href="{{ device.url }}">{{ device.name }}</a></h3>
+      <dl>
+        {% for category, detail in device.details %}
+          <dt>
+            {{ category }}:
+          </dt>
+          <dd>
+            {{ detail }}
+          </dd>
+        {% endfor %}
+      </dl>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    {% endfor %}
+  {% endfor %}
+
 {% endblock %}

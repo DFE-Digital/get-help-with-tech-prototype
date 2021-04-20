@@ -251,3 +251,19 @@ $govuk-assets-path: '/govuk/assets/';
 .app-no-underline {
   text-decoration-line: none;
 }
+
+dl {
+  overflow: hidden;
+  @extend .govuk-body;
+  dt {
+    clear: left;
+    float: left;
+    display: block;
+    width: 40%;
+  }
+  dd {
+    margin-left: 0px;
+    width: 60%;
+    display: inline-block;
+  }
+}
