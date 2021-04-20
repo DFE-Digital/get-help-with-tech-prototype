@@ -24,33 +24,31 @@ module.exports = {
       ordered: 0
     }
   },
+  device_groups: [
     {
-      group_name: "Windows laptops",
+      group_name: "Laptops",
       devices: [
         {
-          name: "Chromebook",
-          url: "#",
+          name: "Windows laptop",
+          url: "windows-laptop",
           generic: true,
-          details: { 
-            "Brand": "HP",
-            "Operating system": "Chrome OS",
-            "Screen size": "14 inch",
+          overview: {
+            "Operating system": "Windows 10 pro education",
+            "Screen size": "11 inch",
             "Memory": "4 GB",
             "Hard disk size": "32 GB"
           }
         },
         {
-          name: "Windows tablet",
-          url: "#"
-        }
-      ]
-    },
-    {
-      group_name: "Chromebooks",
-      devices: [
-        {
           name: "Chromebook",
-          url: "HP"
+          url: "chromebook",
+          generic: true,
+          overview: {
+            "Operating system": "Chrome OS",
+            "Screen size": "11 inch",
+            "Memory": "4 GB",
+            "Hard disk size": "32 GB"
+          }
         }
       ]
     },
@@ -59,18 +57,27 @@ module.exports = {
       devices: [
         {
           name: "Apple iPad",
-          url: "#",
-          manufacturer: "Apple"
+          url: "apple-ipad",
+          generic: false,
+          overview: {
+            "Operating system": "iPad OS",
+            "Screen size": "10.2 inch",
+            "Memory": "3 GB",
+            "Hard disk size": "32 GB"
+          }
         },
         {
           name: "Windows tablet",
-          url: "#"
+          url: "windows-tablet",
+          generic: true,
+          overview: {
+            "Operating system": "Windows 10 pro education",
+            "Screen size": "11 inch",
+            "Memory": "4 GB",
+            "Hard disk size": "32 GB"
+          }
         }
       ]
-    },
-    {
-      group_name: "Routers",
-      devices: []
     }
   ],
   order: {

@@ -1,31 +1,68 @@
-{% extends "_wizard-form.html" %}
+{% extends "layout.html" %}
 {% set title = "Which devices are you ordering?" %}
 
-{% block form %}
-  <h1 class="govuk-heading-xl">
-    {{ title }}
-  </h1>
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Your account",
+        href: "/school/"
+      },
+      {
+        text: "Available devices",
+        href: "/school/devices/order-in-service"
+      },
+      {
+        text: "Which devices are you ordering?"
+      }
+    ]
+  }) }}
+{% endblock %}
 
-  <p class="govuk-!-margin-bottom-6">
-    Your {{ data.user.setting.institution }} will own the devices. It’s up to you to decide who will benefit most from them.
-  </p>
+{% block content %}
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ title }}
+    </h1>
 
-  {% for item in data.device_groups %}
-    <h2 class="govuk-heading-l">{{ item.group_name }}</h2>
-    {% for device in item.devices %}
-      <h3 class="govuk-heading-s"><a href="{{ device.url }}">{{ device.name }}</a></h3>
-      <dl>
-        {% for category, detail in device.details %}
-          <dt>
-            {{ category }}:
-          </dt>
-          <dd>
-            {{ detail }}
-          </dd>
-        {% endfor %}
-      </dl>
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-!-margin-bottom-6">
+      Your {{ data.user.setting.institution }} will own the devices. It’s up to you to decide who will benefit most from them.
+    </p>
+
+    {% for item in data.device_groups %}
+      {% set deviceGroup = loop.index %}
+      <h2 class="govuk-heading-l">{{ item.group_name }}</h2>
+      {% for device in item.devices %}
+        <h3 class="govuk-heading-m">
+          <a href="/shop/devices/windows-laptop">
+            {{ device.name }}
+          </a>
+        </h3>
+        <h4 class="govuk-heading-s">
+          {% if device.generic == true %}
+            Minimum specification:
+          {% else %}
+            Specification:
+          {% endif %}
+        </h4>
+        <dl>
+          {% for category, specification in device.overview %}
+            <dt>
+              {{ category }}:
+            </dt>
+            <dd>
+              {{ specification }}
+            </dd>
+          {% endfor %}
+        </dl>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      {% endfor %}
     {% endfor %}
-  {% endfor %}
-
+    </div>
+  </div>
 {% endblock %}

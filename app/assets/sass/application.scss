@@ -254,7 +254,7 @@ $govuk-assets-path: '/govuk/assets/';
 
 dl {
   overflow: hidden;
-  @extend .govuk-body;
+  @extend .govuk-body-s;
   dt {
     clear: left;
     float: left;

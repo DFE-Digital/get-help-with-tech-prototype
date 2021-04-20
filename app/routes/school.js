@@ -7,6 +7,7 @@ const {
  * Family walkthrough routes
  */
 module.exports = router => {
+
   router.get('/school/users', function (req, res) {
     res.render('school/users/index')
   })
@@ -32,4 +33,5 @@ module.exports = router => {
     const paths = schoolWizardPaths(req)
     fork ? res.redirect(fork) : res.redirect(paths.next)
   })
+
 }
