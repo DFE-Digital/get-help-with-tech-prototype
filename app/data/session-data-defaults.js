@@ -7,15 +7,16 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   signedInHomePath: '/responsible-body',
-  laPlaceholderSchoolAllocation: 1,
+  laPlaceholderSchoolAllocation: 6,
   laPlaceholderSchoolOrdered: 0,
   trust: false,
-  rb: 'Isle of Wight',
+  userEmail: 'k.redfern@bury.gov.uk',
+  rb: 'Bury Council',
   rbAddress: [
-    'County Hall',
-    'High St',
-    'Newport',
-    'PO30 1UD'
+    'Knowsley Place',
+    'Knowsley St',
+    'Bury',
+    'BL9 0SW'
   ],
   devicesOrdered: 9,
   routersAllocated: 10,
