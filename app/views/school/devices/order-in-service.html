@@ -30,7 +30,7 @@
     <div class="app-order-card">
       <h2 class="govuk-panel__title govuk-!-font-size-27 govuk-!-margin-bottom-2">
         {% if data.user.laptops_and_tablets.allocation != data.user.laptops_and_tablets.ordered %}
-            {{ data.user.laptops_and_tablets.allocation - data.user.laptops_and_tablets.ordered }} laptop and tablets available
+            {{ data.user.laptops_and_tablets.allocation - data.user.laptops_and_tablets.ordered }} laptops and tablets available
         {% else %}
             All laptops and tablets ordered
         {% endif %}
@@ -65,11 +65,10 @@
     </h2>
 
     <h3 class="govuk-heading-s">
-      Laptop and tablets
+      Laptops and tablets
     </h3>
     <p>
-      You’ve been allocated {{ data.user.laptops_and_tablets.allocation }} laptops and tablets. This is to provide a laptop or tablet for each {{ data.user.setting.end_user_group }} that does not have sole access to one.
-    </p>
+      You’ve been allocated {{ data.user.laptops_and_tablets.allocation }} laptops and tablets so that you can help <a href="https://get-help-with-tech.education.gov.uk/devices/about-the-offer">disadvantaged pupils and students</a>.</p>
     <p>
       <a href="#">Tell us if you need more devices</a>
     </p>
