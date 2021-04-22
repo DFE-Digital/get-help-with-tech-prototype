@@ -7,7 +7,7 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   user: {
-    name: 'John Blake'
+    name: 'John Blake',
     email: 'jblake@greenhead.ac.uk',
     setting: {
       org_type_is_school: true,
