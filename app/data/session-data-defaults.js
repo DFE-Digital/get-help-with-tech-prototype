@@ -7,12 +7,12 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   user: {
-    name: 'John Wareham',
-    email: 'jwareham@bridgeschools.co.uk',
+    name: 'Lee Glynn',
+    email: 'lee.glynn@hawes-side.co.uk',
     setting: {
       org_type_is_school: true,
-      name: 'Bridges Schools',
-      type: 'Trust',
+      name: 'Hawes Side Academy',
+      type: 'Primary school',
       institution: 'school',
       end_user_group: 'pupil'
     },
