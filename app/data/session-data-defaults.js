@@ -7,17 +7,17 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   user: {
-    name: 'John Blake',
-    email: 'jblake@greenhead.ac.uk',
+    name: 'Richard Ellis', 
+    email: 'r.ellis@sumfield.bham.sch.uk',
     setting: {
       org_type_is_school: true,
-      name: 'Greenhead College',
-      type: 'Further education college',
-      institution: 'college',
-      end_user_group: 'student'
+      name: 'Summerfield Junior and Infant School',
+      type: 'Infant school',
+      institution: 'school',
+      end_user_group: 'pupil'
     },
     laptops_and_tablets: {
-      allocation: 450,
+      allocation: 150,
       ordered: 0
     },
     routers: {
