@@ -10,13 +10,13 @@ module.exports = {
     email: 'name@example.com',
     setting: {
       org_type_is_school: true,
-      name: 'Pool Hayes Primay School',
-      type: 'Primary school',
-      institution: 'school',
-      end_user_group: 'pupil'
+      name: 'Greenhead College',
+      type: 'Further education college',
+      institution: 'college',
+      end_user_group: 'student'
     },
     laptops_and_tablets: {
-      allocation: 150,
+      allocation: 450,
       ordered: 0
     },
     routers: {
