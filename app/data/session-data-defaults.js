@@ -7,12 +7,12 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   user: {
-    name: 'Richard Ellis', 
-    email: 'r.ellis@sumfield.bham.sch.uk',
+    name: 'John Wareham',
+    email: 'jwareham@bridgeschools.co.uk',
     setting: {
       org_type_is_school: true,
-      name: 'Summerfield Junior and Infant School',
-      type: 'Infant school',
+      name: 'Bridges Schools',
+      type: 'Trust',
       institution: 'school',
       end_user_group: 'pupil'
     },
