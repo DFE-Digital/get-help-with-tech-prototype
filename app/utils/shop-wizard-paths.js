@@ -43,6 +43,14 @@ function shopWizardForks (req) {
         ],
         path: '/school/shop/how-many'
       }
+    },
+    '/school/shop/how-many': {
+      'shop-devices': {
+        excludedValues: [
+          'Google Chromebook'
+        ],
+        path: '/school/shop/address'
+      }
     }
   }
   return nextForkPath(forks, req)
