@@ -7,17 +7,17 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   user: {
-    name: 'Lee Glynn',
-    email: 'lee.glynn@hawes-side.co.uk',
+    name: 'Kerry Gray',
+    email: 'kerry.gray@brookehillacademytrust.education',
     setting: {
       org_type_is_school: true,
-      name: 'Hawes Side Academy',
+      name: 'South Witham Academy',
       type: 'Primary school',
       institution: 'school',
       end_user_group: 'pupil'
     },
     laptops_and_tablets: {
-      allocation: 150,
+      allocation: 10,
       ordered: 0
     },
     routers: {
