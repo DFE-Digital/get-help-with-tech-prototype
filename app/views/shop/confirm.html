@@ -69,30 +69,6 @@
     }) }}
   {% endset %}
 
-  {% set windowsList %}
-    {{ govukSummaryList({
-      rows: [
-        {
-          key: {
-            text: "Type of Windows devices"
-          },
-          value: {
-            text: "Standard"
-          },
-          actions: {
-            items: [
-              {
-                href: "#",
-                text: "Change",
-                visuallyHiddenText: "type of windows device"
-              }
-            ]
-          }
-        }
-      ]
-    }) }}
-  {% endset %}
-
   {% set deliveryAddress %}
     {% if isRb %}
       {{ schoolToDeliverTo.name }}<br />
@@ -188,17 +164,13 @@
     html: orderingList
   }) }}
 
-  {{ appSummaryCard({
-    classes: "govuk-!-margin-bottom-6",
-    titleText: "Microsoft Windows",
-    html: windowsList
-  }) }}
-
-  {{ appSummaryCard({
-    classes: "govuk-!-margin-bottom-6",
-    titleText: "Google Chromebooks",
-    html: chromebookList
-  }) }}
+  {% if 'Google Chromebook' in data['shop-devices'] %}
+    {{ appSummaryCard({
+      classes: "govuk-!-margin-bottom-6",
+      titleText: "Google Chromebooks",
+      html: chromebookList
+    }) }}
+  {% endif %}
 
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
