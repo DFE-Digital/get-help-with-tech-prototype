@@ -29,16 +29,8 @@ module.exports = {
     mno: true,
     donated: true,
     'further-education': true,
-    'sixth-form-increase': false,
-    'xmas-soon': false,
-    'increased-allocations': false,
     '15-self': false,
     'delay-delivery': false,
-    'school-mno': true,
-    'sign-up': false,
-    'bulk-upload': true,
-    'in-connectivity-pilots': true,
-    'request-devices-google-form': true,
     'order-in-service': false
   },
   mno: {
