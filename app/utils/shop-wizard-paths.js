@@ -13,6 +13,7 @@ function shopWizardPaths (req) {
     '/school/shop/address',
     '/school/shop/delivery-contact',
     '/school/shop/safeguarding',
+    '/school/shop/check-devices',
     '/school/shop/confirm',
     '/school/shop/confirmation',
     '/school',
@@ -26,6 +27,7 @@ function shopWizardPaths (req) {
     '/responsible-body/shop/address',
     '/responsible-body/shop/delivery-contact',
     '/responsible-body/shop/safeguarding',
+    '/responsible-body/shop/check-devices',
     '/responsible-body/shop/confirm',
     '/responsible-body/shop/confirmation',
     '/responsible-body'
