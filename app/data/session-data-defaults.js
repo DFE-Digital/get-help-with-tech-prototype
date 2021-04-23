@@ -31,7 +31,8 @@ module.exports = {
     'further-education': true,
     '15-self': false,
     'delay-delivery': false,
-    'order-in-service': false
+    'order-in-service': true,
+    'autumn-service': true
   },
   mno: {
     requests: fakeMnoRequests
