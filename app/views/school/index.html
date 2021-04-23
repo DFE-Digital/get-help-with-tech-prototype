@@ -1,8 +1,6 @@
 {% extends "layout.html" %}
-{% if data.features.iss %}
+{% if data.features.iss or data.features.socialCare %}
   {% set title = "Get laptops and internet access" %}
-{% elif data.features.socialCare %}
-  {% set title = ">>> SOCIAL CARE LEAVERS <<<" %}
 {% else %}
   {% set title = data['school-details'].name %}
 {% endif %}
@@ -31,7 +29,7 @@
     </span>
   {% elif data.features.socialCare %}
     <span class="govuk-caption-xl">
-      >>> SOCIAL CARE LEAVERS <<<
+      Care leavers
     </span>
   {% endif %}
     <h1 class="govuk-heading-xl">

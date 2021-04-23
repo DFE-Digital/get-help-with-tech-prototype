@@ -23,8 +23,8 @@ module.exports = {
   routersOrdered: 0,
   'who-orders-laptops': 'central',
   features: {
-    socialCare: false,
-    iss: true,
+    socialCare: true,
+    iss: false,
     push: true,
     mno: true,
     donated: true,

@@ -4,7 +4,7 @@
 {% if data.features.iss %}
   {% set typeOfPlaceholderSchool = "State-funded pupils in independent settings" %}
 {% else %}
-  {% set typeOfPlaceholderSchool = ">>> SOCIAL CARE LEAVERS <<<" %}
+  {% set typeOfPlaceholderSchool = "Care leavers" %}
 {% endif %}
 
 {% extends "layout.html" %}
@@ -55,17 +55,38 @@
     {% endif %}
     </div>
 
-      <h2 class="govuk-heading-m">
-        Your allocation
-      </h2>
+      <p class="govuk-body">
+        You’ve been allocated {{ allocation }} laptop{% if allocation != 1 %}s{% endif %}.
+      </p>
       {% if data.features.iss %}
         <p class="govuk-body">
           {% include "_shared/responsible-body/la-funded-places/_allocation-description.html" %}
         </p>
       {% else %}
-        <p class="govuk-body">
-          >>> SOCIAL CARE LEAVERS <<<
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+          How your allocation has been calculated
+          </span>
+        </summary>
+      <div class="govuk-details__text">
+        <p class="govuk-body">This allocation estimate is based on your LA's individual care leaver population since August 2020. 
         </p>
+         <p class="govuk-body">You can request internet access for these care leavers if they need it too.</p>
+        <h2 class="govuk-heading-m">
+        Tell us if your allocation is wrong
+      </h2>
+        <p class="govuk-body">Tell us how many care leavers your local authority is responsible for who:</p>  
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+         <li>are aged 16 to 25</li>
+         <li>do not have access to a laptop or tablet from any other source</li>
+        </ul>
+        <p class="govuk-body">Do not send any personal information, like names of care leavers or dates of birth.</p>
+        
+        <p class="govuk-body">Email this information to COVID.TECHNOLOGY@education.gov.uk.</p>
+        <p>We cannot guarantee that we’ll be able to meet all requests for more laptops. We encourage you to order your current allocation anyway so that you can begin distributing devices. We’ll contact you once we’ve reviewed your request.</p>
+      </div>
+      </details>
       {% endif %}
 
       <h2 class="govuk-heading-m govuk-!-margin-top-6">
@@ -76,8 +97,7 @@
           We recommend checking with schools, families or pupils as soon as possible to find out which device type and <span class="app-no-wrap">IT settings</span> would be most suitable.
         </p>
       {% else %}
-        <p class="govuk-body">
-        >>> SOCIAL CARE LEAVERS <<<
+        <p class="govuk-body">We recommend that you work with your IT team to decide which device type and IT settings will be best for care leavers to use.
         </p>
       {% endif %}
       <p class="govuk-body">
@@ -99,8 +119,14 @@
         </ul>
       {% else %}
         <p class="govuk-body">
-          >>> SOCIAL CARE LEAVERS <<<
+          {{ data.rb }} will own these laptops and is responsible for:  
         </p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+        <li>deciding whether to temporarily lend or permanently gift devices to care leavers - <a href="#">read about ownership</a></li>
+         <li>making sure laptops have appropriate safety and security measures installed and maintained – <a href="#">read about laptop safeguarding</a></li>
+         <li>fixing any technical issues – <a href="#">read about how to organise repairs</a></li>
+         <li>distributing the laptops safely – <a href="#">read about how to get devices to care leavers</a></li>
+        </ul>
       {% endif %}
 
       {% if allocation != laptopsOrdered %}

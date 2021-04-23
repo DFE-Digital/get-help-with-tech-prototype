@@ -2,7 +2,7 @@
 {% if data.features.iss %}
   {% set typeOfPlaceholderSchool = "State-funded pupils in independent settings" %}
 {% else %}
-  {% set typeOfPlaceholderSchool = ">>> SOCIAL CARE LEAVERS <<<" %}
+  {% set typeOfPlaceholderSchool = "Care leavers" %}
 {% endif %}
 
 {% set laptopsOrdered = 0 %}
@@ -11,7 +11,7 @@
 {% if data.features.iss %}
   {% set title = 'Find out what type of laptop pupils need' %}
 {% else %}
-  {% set title = '>>> SOCIAL CARE LEAVERS <<<' %}
+  {% set title = 'Choose what type of laptop care leavers need' %}
 {% endif %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
@@ -43,25 +43,21 @@
     <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
-
+   {% if data.features.iss %}
     <p>
       We recommend checking with schools, families or pupils as soon as possible to find out which device type and IT settings would be most suitable.
     </p>
-
+    {% endif %}
     {% include "_shared/_laptops-you-can-order.html" %}
-
+    
+    {% if data.features.iss %}
     <h3 class="govuk-heading-s">
       Setting up Google Chromebooks
     </h3>
-    {% if data.features.iss %}
     <p class="govuk-body">
-      If you order Chromebooks we will need some technical information. After you place your order you’ll get a an email asking for:
+      If you order Chromebooks we'll need some technical information. After you place your order, you’ll get an email asking for:
     </p>
     {% include "_shared/responsible-body/la-funded-places/_chromebook-details-description.html" %}
-    {% else %}
-      <p>
-        >>> SOCIAL CARE LEAVERS <<<
-      </p>
     {% endif %}
 
   </div>
