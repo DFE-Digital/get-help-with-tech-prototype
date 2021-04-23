@@ -6,21 +6,244 @@
     {{ title }}
   </h1>
 
+  {% set windowsLaptopHtml %}
+      <div class="govuk-details__text govuk-!-margin-top-1 govuk-!-margin-bottom-6 govuk-!-padding-top-2 govuk-!-padding-bottom-0">
+        <p class="govuk-!-font-size-16 govuk-!-margin-bottom-0">Minimum specification:</p>
+        {{ govukSummaryList({
+          classes: 'govuk-!-font-size-16 govuk-!-margin-bottom-2',
+          rows: [
+            {
+              key: {
+                text: "Operating system"
+              },
+              value: {
+                text: "Windows 10 pro education"
+              }
+            },
+            {
+              key: {
+                text: "Brands"
+              },
+              value: {
+                text: "Asus, Dell, HP, Lenovo"
+              }
+            },
+            {
+              key: {
+                text: "Screen size"
+              },
+              value: {
+                text: "14 inch"
+              }
+            },
+            {
+              key: {
+                text: "Memory"
+              },
+              value: {
+                text: "4GB"
+              }
+            },
+            {
+              key: {
+                text: "Hard disk size"
+              },
+              value: {
+                text: "32GB"
+              }
+            }
+          ]
+        }) }}
+        <p class="govuk-!-font-size-16"><a href="#">View full specification</a></p>
+      </div>
+  {% endset %}
+
+  {% set chromebookHtml %}
+    <div class="govuk-details__text govuk-!-margin-top-1 govuk-!-margin-bottom-6 govuk-!-padding-top-2 govuk-!-padding-bottom-0">
+      <p class="govuk-!-font-size-16 govuk-!-margin-bottom-0">Minimum specification:</p>
+      {{ govukSummaryList({
+        classes: 'govuk-!-font-size-16 govuk-!-margin-bottom-2',
+        rows: [
+          {
+            key: {
+              text: "Operating system"
+            },
+            value: {
+              text: "Chrome OS"
+            }
+          },
+          {
+            key: {
+              text: "Screen size"
+            },
+            value: {
+              text: "11 inch"
+            }
+          },
+          {
+            key: {
+              text: "Memory"
+            },
+            value: {
+              text: "4GB"
+            }
+          },
+          {
+            key: {
+              text: "Hard disk size"
+            },
+            value: {
+              text: "32GB"
+            }
+          }
+        ]
+      }) }}
+      <p class="govuk-!-font-size-16"><a href="#">View full specification</a></p>
+    </div>
+  {% endset %}
+
+  {% set ipadHtml %}
+    <div class="govuk-details__text govuk-!-margin-top-1 govuk-!-margin-bottom-6 govuk-!-padding-top-2 govuk-!-padding-bottom-0">
+      <p class="govuk-!-font-size-16 govuk-!-margin-bottom-0">Minimum specification:</p>
+      {{ govukSummaryList({
+        classes: 'govuk-!-font-size-16 govuk-!-margin-bottom-2',
+        rows: [
+          {
+            key: {
+              text: "Operating system"
+            },
+            value: {
+              text: "iPad OS"
+            }
+          },
+          {
+            key: {
+              text: "Screen size"
+            },
+            value: {
+              text: "10.2 inch"
+            }
+          },
+          {
+            key: {
+              text: "Memory"
+            },
+            value: {
+              text: "3GB"
+            }
+          },
+          {
+            key: {
+              text: "Hard disk size"
+            },
+            value: {
+              text: "32GB"
+            }
+          }
+        ]
+      }) }}
+      <p class="govuk-!-font-size-16"><a href="#">View full specification</a></p>
+    </div>
+  {% endset %}
+
+  {% set windowsTabletHtml %}
+      <div class="govuk-details__text govuk-!-margin-top-1 govuk-!-margin-bottom-6 govuk-!-padding-top-2 govuk-!-padding-bottom-0">
+        <p class="govuk-!-font-size-16 govuk-!-margin-bottom-0">Minimum specification:</p>
+        {{ govukSummaryList({
+          classes: 'govuk-!-font-size-16 govuk-!-margin-bottom-2',
+          rows: [
+            {
+              key: {
+                text: "Operating system"
+              },
+              value: {
+                text: "Windows 10 pro education"
+              }
+            },
+            {
+              key: {
+                text: "Brands"
+              },
+              value: {
+                text: "Asus, Dell, HP, Lenovo"
+              }
+            },
+            {
+              key: {
+                text: "Screen size"
+              },
+              value: {
+                text: "11 inch"
+              }
+            },
+            {
+              key: {
+                text: "Memory"
+              },
+              value: {
+                text: "4GB"
+              }
+            },
+            {
+              key: {
+                text: "Hard disk size"
+              },
+              value: {
+                text: "32GB"
+              }
+            }
+          ]
+        }) }}
+        <p class="govuk-!-font-size-16"><a href="#">View full specification</a></p>
+      </div>
+  {% endset %}
+
   {{ govukCheckboxes({
     items: [
       {
-        text: 'Microsoft Windows laptop'
+        text: 'Microsoft Windows laptop',
+        label: {
+          classes: 'govuk-label--m'
+        },
+        hint: {
+          html: windowsLaptopHtml
+        }
       },
       {
-        text: 'Google Chromebook'
+        text: 'Google Chromebook',
+        label: {
+          classes: 'govuk-label--m'
+        },
+        hint: {
+          html: chromebookHtml
+        }
       },
       {
-        text: '4G wireless router'
+        text: 'Microsoft Windows tablet',
+        label: {
+          classes: 'govuk-label--m'
+        },
+        hint: {
+          html: windowsTabletHtml
+        }
+      },
+      {
+        text: 'Apple iPad',
+        label: {
+          classes: 'govuk-label--m'
+        },
+        hint: {
+          html: ipadHtml
+        }
+      },
+      {
+        text: '4G wireless router',
+        label: {
+          classes: 'govuk-label--m'
+        }
       } if data.routersAllocated > 0
     ]
   }  | decorateFormAttributes('shop-devices') ) }}
 
-  <p>Read more about <a href="https://get-help-with-tech.education.gov.uk/devices/device-specification">device specifications</a>.</p>
-
-  <p class="govuk-!-margin-bottom-6">Your school or college will own the devices. It’s up to you to decide who will benefit most from them.</p>
+  <p class="govuk-!-margin-bottom-6">Read more about <a href="https://get-help-with-tech.education.gov.uk/devices/device-specification">device specifications</a>.</p>
 {% endblock %}
