@@ -7,17 +7,17 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   user: {
-    name: 'Kerry Gray',
-    email: 'kerry.gray@brookehillacademytrust.education',
+    name: 'Roman Kutereba',
+    email: 'roman.kutereba@tunmarsh.newham.sch.uk',
     setting: {
       org_type_is_school: true,
-      name: 'South Witham Academy',
-      type: 'Primary school',
+      name: 'Tunmarsh School & New Directions',
+      type: 'School',
       institution: 'school',
       end_user_group: 'pupil'
     },
     laptops_and_tablets: {
-      allocation: 10,
+      allocation: 150,
       ordered: 0
     },
     routers: {
