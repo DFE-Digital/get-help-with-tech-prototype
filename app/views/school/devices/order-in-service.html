@@ -28,24 +28,32 @@
       <h1 class="govuk-panel__title govuk-!-font-size-36 govuk-!-margin-bottom-2">
         82 devices available
       </h1>
-      <div class="govuk-panel__body govuk-!-font-size-24">
-        You’ve ordered 0 of 82 devices
+      <div class="govuk-panel__body">
+        <p class="govuk-!-font-size-24">You’ve ordered 0 of 82 devices</p>
+
+        {{ govukButton({
+          text: 'Place an order',
+          href: '/school/shop',
+          classes: 'govuk-!-margin-top-2 govuk-!-margin-bottom-0'
+        }) }}
       </div>
     </div>
 
     <h2 class="govuk-heading-m">
-      How you order devices has changed
+      Your allocation
     </h2>
 
-    <p>You can now place orders directly on this service. You no longer need to sign in to TechSource.</p>
+    <h3 class="govuk-heading-s">Laptops and tablets</h3>
 
-    <p>Most orders will arrive within 5 working days of being confirmed, subject to stock availability.</p>
+    <p>You’ve been allocated 82 laptops and tablets so pupils who do not have sole access to a laptop or tablet can be provided with one.</p>
 
-    {{ govukButton({
-      text: 'Order devices',
-      href: '/school/shop',
-      classes: 'govuk-!-margin-top-4'
-    }) }}
+    <p><a href="#">Tell us if you need more devices</a></p>
+
+    <h3 class="govuk-heading-s">4G wireless routers</h3>
+
+    <p>You can get wireless routers for pupils who do not have internet access at home.</p>
+
+    <p><a href="#">Tell us if you need wireless routers</a></p>
   </div>
 </div>
 {% endblock %}
