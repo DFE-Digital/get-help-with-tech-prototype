@@ -47,24 +47,7 @@
               }
             ]
           }
-        },
-        {
-          key: {
-            text: "Routers"
-          },
-          value: {
-            html: routersHtml
-          },
-          actions: {
-            items: [
-              {
-                href: "#",
-                text: "Change",
-                visuallyHiddenText: "how many routers"
-              }
-            ]
-          }
-        } if data.routersAllocated > 0
+        }
       ]
     }) }}
   {% endset %}
@@ -193,12 +176,12 @@
     titleText: "Microsoft Windows",
     html: windowsList
   }) }}
-
+{# 
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
     titleText: "Google Chromebooks",
     html: chromebookList
-  }) }}
+  }) }} #}
 
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",

@@ -25,18 +25,18 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      {{ title }}
-    </h1>
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {{ title }}
+      </h1>
 
-    <p class="govuk-!-margin-bottom-6">
-      Your school will own the devices and you’re responsible for ensuring appropriate <a href="https://get-help-with-tech.education.gov.uk/devices/safeguarding-for-device-users">safeguarding and security settings</a> are applied to these laptops before distributing them. It’s up to you to decide who will benefit most from them.
-    </p>
+      <p class="govuk-!-margin-bottom-6">
+        Your {{ data.user.setting.institution }} will own the devices and is responsible for ensuring appropriate <a href="https://get-help-with-tech.education.gov.uk/devices/safeguarding-for-device-users">safeguarding and security settings</a> are applied to these laptops before distributing them.
+      </p>
     </div>
-    </div>
-    <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
     {% for item in data.device_groups %}
       {% set deviceGroup = loop.index0 %}
