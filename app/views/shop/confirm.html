@@ -22,8 +22,8 @@
       {{ data['shop-delivery-contact-email'] }}<br />
       {{ data['shop-delivery-contact-number'] }}
     {% else %}
-      Roman Kutereba<br />
-      roman.kutereba@tunmarsh.newham.sch.uk<br />
+      Jane Doe<br />
+      email@example.com<br />
       01234 345678
     {% endif %}
   {% endset %}
@@ -85,10 +85,11 @@
       {% if schoolToDeliverTo.county %}{{ schoolToDeliverTo.county }}<br />{% endif %}
       {% if schoolToDeliverTo.postcode %}{{ schoolToDeliverTo.postcode }}{% endif %}
     {% else %}
-      Tunmarsh School<br>
-      Tunmarsh Lane<br>
-      London<br>
-      E13 9NB
+      Diocese of Chichester Academy Trust<br>
+      Church House<br>
+      Church Rd<br>
+      Hove<br>
+      BN3 4ED
     {% endif %}
   {% endset %}
 
