@@ -7,8 +7,8 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   user: {
-    name: 'Roman Kutereba',
-    email: 'roman.kutereba@tunmarsh.newham.sch.uk',
+    name: 'user-name',
+    email: 'user@email.com',
     setting: {
       org_type_is_school: true,
       name: 'Tunmarsh School & New Directions',
