@@ -26,10 +26,10 @@
 
     <div class="app-order-card">
       <h1 class="govuk-panel__title govuk-!-font-size-36 govuk-!-margin-bottom-2">
-        82 devices available
+        {{ data.devicesAllocation - data.devicesOrdered }} devices available
       </h1>
       <div class="govuk-panel__body">
-        <p class="govuk-!-font-size-24">You’ve ordered 0 of 82 devices</p>
+        <p class="govuk-!-font-size-24">You’ve ordered {{ data.devicesOrdered }} of {{ data.devicesAllocation }} devices</p>
 
         {{ govukButton({
           text: 'Place an order',

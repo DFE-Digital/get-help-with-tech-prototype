@@ -18,7 +18,8 @@ module.exports = {
     'Bury',
     'BL9 0SW'
   ],
-  devicesOrdered: 9,
+  devicesAllocation: 150,
+  devicesOrdered: 0,
   routersAllocated: 10,
   routersOrdered: 0,
   'who-orders-laptops': 'central',
