@@ -11,10 +11,10 @@
 
     <div class="app-order-card">
       <h1 class="govuk-panel__title govuk-!-font-size-36 govuk-!-margin-bottom-2">
-        30 devices available to order
+        {{ data.devicesAllocation - data.devicesOrdered }} devices available to order
       </h1>
       <div class="govuk-panel__body govuk-!-font-size-24">
-        You’ve ordered 0 of 30 devices
+        You’ve ordered {{ data.devicesOrdered }} of {{ data.devicesAllocation }} devices
       </div>
     </div>
 
@@ -26,7 +26,7 @@
             classes: 'govuk-label--m'
           },
           classes: 'govuk-input--width-4'
-        } | decorateFormAttributes('shop-routers-amount-' + type) ) }}
+        } | decorateFormAttributes('shop-amount-' + type) ) }}
       {% endif %}
     {% endfor %}
   {% else %}
@@ -50,7 +50,7 @@
       },
       items: [
         {
-          text: 'Our full allocation of 30 devices'
+          text: 'Our full allocation of ' +  ( data.devicesAllocation - data.devicesOrdered ) + ' devices'
         },
         {
           text: 'Less than our allocation',

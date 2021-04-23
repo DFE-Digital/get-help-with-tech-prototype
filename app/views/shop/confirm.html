@@ -8,8 +8,18 @@
   </h1>
 
   {% set devicesHtml %}
-    <span class="app-!-font-family-tabular govuk-!-margin-right-1">20</span> Microsoft Windows laptops<br />
-    <span class="app-!-font-family-tabular govuk-!-margin-right-1">10</span> Google Chromebooks
+    {% if data['shop-amount-Microsoft Windows laptop'] %}
+      <span class="app-!-font-family-tabular govuk-!-margin-right-1">{{ data['shop-amount-Microsoft Windows laptop'] }}</span> Microsoft Windows laptops<br />
+    {% endif %}
+    {% if data['shop-amount-Google Chromebook'] %}
+      <span class="app-!-font-family-tabular govuk-!-margin-right-1">{{ data['shop-amount-Google Chromebook'] }}</span> Google Chromebooks<br />
+    {% endif %}
+    {% if data['shop-amount-Microsoft Windows tablet'] %}
+      <span class="app-!-font-family-tabular govuk-!-margin-right-1">{{ data['shop-amount-Microsoft Windows tablet'] }}</span> Microsoft Windows tablets<br />
+    {% endif %}
+    {% if data['shop-amount-Apple iPad'] %}
+      <span class="app-!-font-family-tabular govuk-!-margin-right-1">{{ data['shop-amount-Apple iPad'] }}</span> Apple iPads<br />
+    {% endif %}
   {% endset %}
 
   {% set routersHtml %}
@@ -65,30 +75,6 @@
             ]
           }
         } if data.routersAllocated > 0
-      ]
-    }) }}
-  {% endset %}
-
-  {% set windowsList %}
-    {{ govukSummaryList({
-      rows: [
-        {
-          key: {
-            text: "Type of Windows devices"
-          },
-          value: {
-            text: "Standard"
-          },
-          actions: {
-            items: [
-              {
-                href: "#",
-                text: "Change",
-                visuallyHiddenText: "type of windows device"
-              }
-            ]
-          }
-        }
       ]
     }) }}
   {% endset %}
@@ -188,17 +174,13 @@
     html: orderingList
   }) }}
 
-  {{ appSummaryCard({
-    classes: "govuk-!-margin-bottom-6",
-    titleText: "Microsoft Windows",
-    html: windowsList
-  }) }}
-
-  {{ appSummaryCard({
-    classes: "govuk-!-margin-bottom-6",
-    titleText: "Google Chromebooks",
-    html: chromebookList
-  }) }}
+  {% if 'Google Chromebook' in data['shop-devices'] %}
+    {{ appSummaryCard({
+      classes: "govuk-!-margin-bottom-6",
+      titleText: "Google Chromebooks",
+      html: chromebookList
+    }) }}
+  {% endif %}
 
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
