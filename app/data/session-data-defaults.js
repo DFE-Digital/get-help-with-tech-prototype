@@ -23,11 +23,11 @@ module.exports = {
   routersOrdered: 0,
   'who-orders-laptops': 'central',
   features: {
-    socialCare: true,
+    socialCare: false,
     iss: false,
     push: true,
     mno: true,
-    donated: true,
+    donated: false,
     'further-education': true,
     '15-self': false,
     'delay-delivery': false,
