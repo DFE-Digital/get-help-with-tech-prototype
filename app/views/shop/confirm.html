@@ -8,8 +8,18 @@
   </h1>
 
   {% set devicesHtml %}
-    <span class="app-!-font-family-tabular govuk-!-margin-right-1">20</span> Microsoft Windows laptops<br />
-    <span class="app-!-font-family-tabular govuk-!-margin-right-1">10</span> Google Chromebooks
+    {% if data['shop-amount-Microsoft Windows laptop'] %}
+      <span class="app-!-font-family-tabular govuk-!-margin-right-1">{{ data['shop-amount-Microsoft Windows laptop'] }}</span> Microsoft Windows laptops<br />
+    {% endif %}
+    {% if data['shop-amount-Google Chromebook'] %}
+      <span class="app-!-font-family-tabular govuk-!-margin-right-1">{{ data['shop-amount-Google Chromebook'] }}</span> Google Chromebooks<br />
+    {% endif %}
+    {% if data['shop-amount-Microsoft Windows tablet'] %}
+      <span class="app-!-font-family-tabular govuk-!-margin-right-1">{{ data['shop-amount-Microsoft Windows tablet'] }}</span> Microsoft Windows tablets<br />
+    {% endif %}
+    {% if data['shop-amount-Apple iPad'] %}
+      <span class="app-!-font-family-tabular govuk-!-margin-right-1">{{ data['shop-amount-Apple iPad'] }}</span> Apple iPads<br />
+    {% endif %}
   {% endset %}
 
   {% set routersHtml %}
