@@ -7,16 +7,13 @@ const schoolDetails = require('./school-details')
 
 module.exports = {
   signedInHomePath: '/responsible-body',
-  laPlaceholderSchoolAllocation: 6,
+  laPlaceholderSchoolAllocation: 100,
   laPlaceholderSchoolOrdered: 0,
   trust: false,
-  userEmail: 'k.redfern@bury.gov.uk',
-  rb: 'Bury Council',
+  userEmail: 'name@example.com',
+  rb: 'Sandwell',
   rbAddress: [
-    'Knowsley Place',
-    'Knowsley St',
-    'Bury',
-    'BL9 0SW'
+    'Sandwell Council House', 'Freeth St', 'Oldbury', 'B69 3DE'
   ],
   devicesAllocation: 150,
   devicesOrdered: 0,
@@ -25,15 +22,15 @@ module.exports = {
   'who-orders-laptops': 'central',
   features: {
     socialCare: false,
-    iss: false,
+    iss: true,
     push: true,
     mno: true,
     donated: false,
     'further-education': true,
     '15-self': false,
     'delay-delivery': false,
-    'order-in-service': true,
-    'autumn-service': true
+    'order-in-service': false,
+    'autumn-service': false
   },
   mno: {
     requests: fakeMnoRequests
