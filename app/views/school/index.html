@@ -47,7 +47,16 @@
       <p>Use this section to:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>see your allocation and how many devices you have available</li>
-        <li>order laptops, tablets and 4G wireless routers</li>
+        <li>order laptops, tablets</li>
+      </ul>
+
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        <a href="/get-internet-access">Get internet access</a>
+      </h2>
+      <p>Use this section to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>increase a {{ data.setting.learner }}’s mobile data allowance</li>
+        <li>request a 4G wireless router</li>
       </ul>
 
       <h2 class="govuk-heading-l govuk-!-font-size-27">
@@ -84,7 +93,7 @@
       </ul>
 
       <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/school/internet">Get internet access</a>
+        <a href="/get-internet-access ">Get internet access</a>
       </h2>
       <p>Use this section to:</p>
       <ul class="govuk-list govuk-list--bullet">
@@ -140,22 +149,24 @@
     {% endif %}
   </div>
 
-  <div class="govuk-grid-column-one-third">
-    <div class="app-survey-container">
-      <h3 class="govuk-heading-m">
-        Give feedback
-      </h3>
-      {# For production – change 'school to @school.institution_type' #}
-      <p class="govuk-body">
-        Help us understand the impact this programme has had on your school.
-      </p>
-      <p class="govuk-body govuk-!-margin-bottom-1">
-        <a href="#">
-          Complete a survey
-        </a>
-      </p>
+  {% if not data.features['autumn-service'] %}
+    <div class="govuk-grid-column-one-third">
+      <div class="app-survey-container">
+        <h3 class="govuk-heading-m">
+          Give feedback
+        </h3>
+        {# For production – change 'school to @school.institution_type' #}
+        <p class="govuk-body">
+          Help us understand the impact this programme has had on your school.
+        </p>
+        <p class="govuk-body govuk-!-margin-bottom-1">
+          <a href="#">
+            Complete a survey
+          </a>
+        </p>
+      </div>
     </div>
-  </div>
+  {% endif %}
 
 </div>
 {% endblock %}

@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home"
+      },
+      {
+        text: "Your account",
+        href: "/school/index"
+      },
+            {
+        text: "Your account"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Get internet access
+    </h1>
+    <div class="govuk-inset-text">
+      <h3 class="govuk-heading-s">
+        Broadband for families who recieve Universal Credit
+      </h3>
+
+      <p>
+        <a href="https://www.virginmedia.com/help/register-for-essential-broadband" target="none">Virgin media (opens in a new tab)</a> is providing broadband for £15 per month for families who recieve Universal Credit.
+      </p>
+    </div>
+
+    <h2 class="govuk-heading-m">
+      Request internet access now
+    </h2>
+
+    <p>
+      Make a request for internet access now for each pupil who does not have:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>fixed broadband at home</li>
+      <li>a mobile phone or cannot afford data</li>
+    </ul>
+
+    <p>
+      For each pupil we can increase their or their family’s mobile phone data allowance if they are on a participating network.
+    </p>
+
+    <p>
+      If they do not have access to a phone to tether to or its not on a participating network we can provide the pupil with a wireless 4G router.
+    </p>
+
+    <p>
+      As soon as your school experiences a disruption to face-to-face education we’ll provide the connectivity you’ve requested.
+    </p>
+
+    <h3 class="govuk-heading-s">
+      1. Collect the information you need to request internet access
+    </h3>
+
+    <p>
+      You will need to find out if the pupil has access to a phone or multiple phones they can use to tether and connect to the internet to attend remote learning.
+    </p>
+
+    <p>
+      For each phone number the {{ data.setting.learner }} uses data from, we need:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>the account holder’s name</li>
+      <li>their mobile number (a number beginning with ‘07’)</li>
+      <li>their mobile network</li>
+      <li>whether they pay monthly or pay as they go</li>
+    </ul>
+
+    <h3 class="govuk-heading-s">
+      2. Share this privacy policy with the account holder
+    </h3>
+    <p>
+      Before you add any personal information to this service, share the policy on how DfE and their mobile network will use their data with the account holder.
+    </p>
+    <p>
+      <a href="/pages/about-increasing-mobile-data">
+        View the privacy policy
+      </a>
+    </p>
+
+    <h3 class="govuk-heading-s">
+      3. Request internet access
+    </h3>
+    <p>
+      When you have shared the policy with the account holder you can <a href="" class="#">make a request</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

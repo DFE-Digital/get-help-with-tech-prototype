@@ -15,6 +15,9 @@ module.exports = {
   rbAddress: [
     'Sandwell Council House', 'Freeth St', 'Oldbury', 'B69 3DE'
   ],
+  setting: {
+    learner: 'pupil'
+  },
   devicesAllocation: 150,
   devicesOrdered: 0,
   routersAllocated: 10,
@@ -22,15 +25,15 @@ module.exports = {
   'who-orders-laptops': 'central',
   features: {
     socialCare: false,
-    iss: true,
+    iss: false,
     push: true,
     mno: true,
     donated: false,
     'further-education': true,
     '15-self': false,
     'delay-delivery': false,
-    'order-in-service': false,
-    'autumn-service': false
+    'order-in-service': true,
+    'autumn-service': true
   },
   mno: {
     requests: fakeMnoRequests
