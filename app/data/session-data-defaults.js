@@ -22,7 +22,7 @@ module.exports = {
   'who-orders-laptops': 'central',
   features: {
     socialCare: false,
-    iss: true,
+    iss: false,
     push: true,
     mno: true,
     donated: false,
@@ -30,7 +30,7 @@ module.exports = {
     '15-self': false,
     'delay-delivery': false,
     'order-in-service': false,
-    'autumn-service': false
+    'autumn-service': true
   },
   mno: {
     requests: fakeMnoRequests
