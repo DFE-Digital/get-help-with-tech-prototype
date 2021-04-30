@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'Livingstone Road Junior School',
+  name: 'New Heights',
   type: 'Primary school',
   allocation: 20,
   can_order: false,
