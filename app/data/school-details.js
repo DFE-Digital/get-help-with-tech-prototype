@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'New Heights',
+  name: 'Cardinal Newman Catholic High School',
   type: 'Primary school',
   allocation: 20,
   can_order: false,
