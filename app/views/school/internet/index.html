@@ -17,39 +17,63 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      {{ title }}
-    </h1>
-  </div>
-</div>
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="/school/internet/mobile">Request extra data for mobile devices</a>
-    </h2>
-
-    <p>We’re working with mobile companies to temporarily increase data allowances on certain networks. This is so children can continue their remote education without incurring extra data charges.</p>
-    <p>If they do not have their own phone, we can increase data on a family member’s phone, as long as they’re in the same household.</p>
-    <p>If they do not have access to a mobile device, or are not on a participating network a 4G wireless router might be more suitable.</p>
-
-    <h2 class="govuk-heading-l govuk-!-font-size-27">
-      <a href="https://get-help-with-tech.education.gov.uk/how-to-request-4g-wireless-routers">Request 4G wireless routers</a>
-    </h2>
-
-    <p class="govuk-body">
-      If your school{% if data.features['further-education'] %}, or college,{% endif %} is facing disruption to education and you’ve been invited to order devices, you can request 4G wireless routers.
-    </p>
-  </div>
-  <div class="govuk-grid-column-one-third">
-    <div class="app-related">
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Guidance</h2>
-      <p class="govuk-body">
-        <a href="#">Choosing help with internet access</a>
-      </p>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {{ title }}
+      </h1>
     </div>
   </div>
-</div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        Extra mobile data
+      </h2>
+      <p>
+        This scheme temporarily increases data allowances for mobile phone users on certain networks, if they do not have access to broadband at home.
+      </p>
+      <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-7">
+        <li><a href="/school/internet/mobile">Request extra data for mobile devices</a></li>
+        <li><a href="#">View your requests</a></li>
+      </ul>
+
+      <h2 class="govuk-heading-l govuk-!-font-size-27">
+        4G wireless routers
+      </h2>
+      <p class="govuk-body">
+        You can request a router for disadvantaged pupils and students who do not have access to the internet at home, and cannot get a mobile data increase.
+      </p>
+      <ul class="govuk-list govuk-list--spaced">
+        <li>
+          <a href="https://get-help-with-tech.education.gov.uk/how-to-request-4g-wireless-routers">
+            What you need to know to request 4G wireless routers
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Request a 4G wireless router
+          </a>
+        </li>
+        <li>
+          <a href="https://dfe-ghwt-pr-1592.herokuapp.com/devices/using-your-router-after-31-july-2021">
+            How to reset your router
+          </a>
+        </li>
+      </ul>
+      <h3 class="govuk-heading-s">
+        Reset your Huawei router
+      </h3>
+      <p>
+        If you do not reset your Huawei router before 16 July 2021, you will not be able to use it after 31 July 2021.
+      </p>
+      <ul class="govuk-list govuk-list--spaced">
+        <li>
+          <a href="/school/internet/router-password">
+            See your Huawei router password
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 {% endblock %}
