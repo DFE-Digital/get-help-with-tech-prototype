@@ -30,7 +30,7 @@ module.exports = {
     '15-self': false,
     'delay-delivery': false,
     'order-in-service': false,
-    'autumn-service': true
+    'autumn-service': false
   },
   mno: {
     requests: fakeMnoRequests
