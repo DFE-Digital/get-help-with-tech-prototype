@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+  {% set title = "Template email" %}
+  {% block pageTitle %}{{ title }}{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Order laptops and get internet access for state-funded pupils in independent special schools and alternative provision",
+        href: "/pages/how-to-order-for-iss"
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {{  title }}
+      </h1>
+
+      <button class="govuk-button govuk-button--secondary" data-module="govuk-button" onclick="copyToClipboard('#templateEmail')">
+        Copy email
+      </button>
+
+<div class="app-template-email" id="templateEmail">
+<p>
+  Hello <span class="app-placeholder-content">[ name ]</span>,
+</p>
+<br>
+<p>
+  The Department for Education is providing laptops and internet access to pupils at your institution who:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    are eligible for free school meals
+  </li>
+  <li>
+    do not have access to a suitable device for remote education, and for use in face-to-face education
+  </li>
+</ul>
+<p>
+  We fund <span class="app-placeholder-content">[ number of pupils you fund ]</span> pupils at your school who are eligible for free school meals.
+</p>
+<p>
+  We need some information from you so we can order these devices.
+</p>
+<p>
+  Can you let us know:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    how many of these pupils do not have a device they can use for remote education?
+  </li>
+  <li>
+    how many of these pupils do not have an internet connection?
+  </li>
+  <li>
+    what type of device each pupil will need?
+  </li>
+</ul>
+<p>
+  Windows laptops and Google Chromebooks are available.
+</p>
+<p>
+  You can see more about the devices specification here: <a href="https://get-help-with-tech.education.gov.uk/devices/device-specification">https://get-help-with-tech.education.gov.uk/devices/device-specification</a>
+</p>
+<p>
+  If any pupils will need Chromebooks:
+</p>
+<p>
+  Do you need them supplied with Chrome Education Upgrades (Chromebook licenses)?
+</p>
+<p>
+  If you do need Chrome Education Upgrades, we need to know:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    your Google domain for Google Workspace for Education Fundamentals (formerly G Suite for Education). For example ‘school.co.uk’
+  </li>
+
+  <li>
+    a recovery email address, which must be on a different domain to your domain. For example, if your domain is ‘school.co.uk’, the recovery email cannot be ‘recovery@school.co.uk’
+  </li>
+</ul>
+<p>
+  If any pupils need internet access, you can read about what is available here: <a href="https://get-help-with-tech.education.gov.uk/internet-access">https://get-help-with-tech.education.gov.uk/internet-access</a>
+</p>
+<p>
+  Thanks,
+</p>
+<p>
+  <span class="app-placeholder-content">[ Your name ]</span>
+</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

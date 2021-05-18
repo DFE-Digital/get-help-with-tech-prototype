@@ -83,16 +83,18 @@
       {% endif %}
       </ul>
 
-      <h2 class="govuk-heading-l govuk-!-font-size-27">
-        <a href="/school/internet">Get internet access</a>
-      </h2>
-      <p>Use this section to:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>request extra data for mobile devices</li>
-        <li>check the status of your data requests</li>
-        <li>request 4G wireless routers</li>
-        <li>see your Huawei router password</li>
-      </ul>
+      {% if not (data.features.iss or data.features.socialCare) %}
+        <h2 class="govuk-heading-l govuk-!-font-size-27">
+          <a href="/school/internet">Get internet access</a>
+        </h2>
+        <p>Use this section to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>request extra data for mobile devices</li>
+          <li>check the status of your data requests</li>
+          <li>request 4G wireless routers</li>
+          <li>see your Huawei router password</li>
+        </ul>
+      {% endif %}
 
       {% if data.features.donated and not (data.features.iss or data.features.socialCare) %}
         {% if data['donated-opted-in'] %}

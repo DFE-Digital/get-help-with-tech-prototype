@@ -251,3 +251,20 @@ $govuk-assets-path: '/govuk/assets/';
 .app-no-underline {
   text-decoration-line: none;
 }
+
+.app-template-email-header {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid $govuk-border-colour;
+  border-bottom: none;
+}
+
+.app-template-email {
+  width: 100%;
+  border: 1px solid $govuk-border-colour;
+  padding: 20px;
+  .app-placeholder-content {
+    background-color: govuk-colour("yellow");
+    box-shadow: 0 2px 0 2px white inset, 0 0 0 2px white inset;
+  }
+}
