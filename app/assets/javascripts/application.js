@@ -8,4 +8,13 @@ if (window.console && window.console.info) {
 $(document).ready(function () {
   GOVUK.modules.start()
   window.GOVUKFrontend.initAll()
+
 })
+
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}

@@ -22,7 +22,7 @@ module.exports = {
   'who-orders-laptops': 'central',
   features: {
     socialCare: false,
-    iss: false,
+    iss: true,
     push: true,
     mno: true,
     donated: false,
