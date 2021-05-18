@@ -11,10 +11,15 @@ $(document).ready(function () {
 
 })
 
+var copyButton = document.getElementById('copyButton');
+
+copyButton.classList.remove("govuk-visually-hidden");
+
 function copyToClipboard(element) {
   var $temp = $("<input>");
   $("body").append($temp);
   $temp.val($(element).text()).select();
   document.execCommand("copy");
   $temp.remove();
+  copyButton.innerHTML = "Email copied";
 }

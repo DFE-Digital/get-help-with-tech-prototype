@@ -21,14 +21,17 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
         {{  title }}
       </h1>
 
-      <button class="govuk-button govuk-button--secondary" data-module="govuk-button" onclick="copyToClipboard('#templateEmail')">
+      <p class="govuk-!-margin-bottom-6">
+        To help get the information about what devices pupils need, edit and share this template email with the education settings that host the pupils your <span class="app-no-wrap">Local authority</span> funds.
+      </p>
+
+      <button class="govuk-button govuk-button--secondary govuk-visually-hidden" data-module="govuk-button" onclick="copyToClipboard('#templateEmail')" id="copyButton">
         Copy email
       </button>
 
